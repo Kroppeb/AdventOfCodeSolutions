@@ -1,17 +1,73 @@
 package helpers
 
-fun <T>Iterator<T>.getNext(): T {
+fun <T> Iterator<T>.getNext(): T {
 	hasNext()
 	return next()
 }
 
-fun <T>Iterator<T>.getNextOrNull(): T? {
-	if(hasNext())
+fun <T> Iterator<T>.getNextOrNull(): T? {
+	if (hasNext())
 		return next()
 	return null
 }
 
-operator fun <T>List<T>.get(indexes : IntRange) = subList(indexes.first, indexes.last+1)
+inline fun <T, R> Iterable<Iterable<T>>.map2(convert: (T) -> R): List<List<R>> = map { it.map(convert) }
+
+inline fun <T, R> Iterable<T>.rleDecode(value: (T) -> R, length: (T) -> Int) = flatMap { listOf(value(it)).repeat(length(it)) }
+inline fun <T, R> Iterable<T>.rleEncode(convert: (T, Int) -> R) = groupBy { it }.map { convert(it.key, it.value.size) }
+
+fun <E> List<E>.repeat(length: Int): List<E> {
+	if (size == 0 || length == 0)
+		return emptyList()
+	val list = ArrayList<E>(size * length)
+	repeat(length) {
+		list.addAll(this)
+	}
+	return list
+}
+
+operator fun <T> Collection<T>.times(other: Iterable<T>): Set<T> = intersect(other)
+operator fun <T> Collection<T>.plus(other: Iterable<T>): Set<T> = union(other)
+
+fun <K, A> Map<K, A>.intersect(other: Iterable<K>) = this.keys.intersect(other).associateWith { this[it]!! }
+
+fun <K, A, B> Map<K, A>.union(other: Map<K, B>) = this.keys.union(other.keys).associateWith { this[it] to other[it] }
+inline fun <K, A> Map<K, A>.merge(other: Map<K, A>, m: (A, A) -> A) = this.keys.union(other.keys).associateWith {
+	this[it]?.let { a -> other[it]?.let { b -> m(a, b) } ?: a } ?: other[it]!!
+}
+
+inline fun <K, A, R> Map<K, A>.mergeMap(other: Map<K, A>, m: (A?, A?) -> R) = this.union(other).mapValues { (_, v) ->
+	m(v.first, v.second)
+}
+
+fun <K, A, B> Map<K, A>.intersect(other: Map<K, B>): Map<K, Pair<A, B>> = this.entries.mapNotNull { (key, value) ->
+	if (key in other) key to (value to other[key]!!)
+	else null
+}.toMap()
+
+inline fun <K, A, B, R> Map<K, A>.intersectMap(other: Map<K, B>, m:(A,B)->R): Map<K, R> = this.entries.mapNotNull { (key, value) ->
+	if (key in other) key to m(value, other[key]!!)
+	else null
+}.toMap()
+
+fun <K,V:Comparable<V>>Map<K,V>.minByValue() = minBy { it.value }!!.key
+fun <K:Comparable<K>,V>Map<K,V>.minByKey() = minBy { it.key }!!.value
+
+operator fun <E> List<E>.times(count: Int) = repeat(count)
+
+inline fun <T,R>Iterable<T>.foldMap(start:R, transform:(R, T)->R): List<R> {
+	var acc = start
+	val ret = mutableListOf<R>()
+	for(i in this){
+		acc = transform(acc, i)
+		ret.add(acc)
+	}
+	return ret
+}
+
+//region list components
+operator fun <T> List<T>.get(indexes: IntRange) = subList(indexes.first, indexes.last + 1)
+
 operator fun <E> List<E>.component6(): E = this[6]
 operator fun <E> List<E>.component7(): E = this[7]
 operator fun <E> List<E>.component8(): E = this[8]
@@ -106,3 +162,4 @@ operator fun <E> List<E>.component96(): E = this[96]
 operator fun <E> List<E>.component97(): E = this[97]
 operator fun <E> List<E>.component98(): E = this[98]
 operator fun <E> List<E>.component99(): E = this[99]
+// endregion
