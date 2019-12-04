@@ -169,34 +169,44 @@ fun Char.toPoint(): Point = when (this) {
 }
 
 
-fun abs(v: Point) = v.abs()
+fun <T:PointN<T>>abs(v: T) = v.abs()
 
 
-fun Iterable<Point>.getClosest(): Point? = this.minBy(Point::sqrDist)
-fun Iterable<Point>.getClosestMan(): Point? = this.minBy(Point::manDist)
+fun <T:PointN<T>>Iterable<T>.getClosest(): T? = this.minBy(PointN<T>::sqrDist)
+fun <T:PointN<T>>Iterable<T>.getClosestMan(): T? = this.minBy(PointN<T>::manDist)
 
-fun Iterable<Point>.getClosestTo(other: Point): Point? = this.minBy { it.sqrDistTo(other) }
-fun Iterable<Point>.getClosestManTo(other: Point): Point? = this.minBy { it.manDistTo(other) }
+fun <T:PointN<T>>Iterable<T>.getClosestTo(other: T): T? = this.minBy { it.sqrDistTo(other) }
+fun <T:PointN<T>>Iterable<T>.getClosestManTo(other: T): T? = this.minBy { it.manDistTo(other) }
 
-fun Iterable<Point>.getFurthest(): Point? = this.maxBy(Point::sqrDist)
-fun Iterable<Point>.getFurthestMan(): Point? = this.maxBy(Point::manDist)
+fun <T:PointN<T>>Iterable<T>.getFurthest(): T? = this.maxBy(PointN<T>::sqrDist)
+fun <T:PointN<T>>Iterable<T>.getFurthestMan(): T? = this.maxBy(PointN<T>::manDist)
 
-fun Iterable<Point>.getFurthestTo(other: Point): Point? = this.maxBy { it.sqrDistTo(other) }
-fun Iterable<Point>.getFurthestManTo(other: Point): Point? = this.maxBy { it.manDistTo(other) }
+fun <T:PointN<T>>Iterable<T>.getFurthestTo(other: T): T? = this.maxBy { it.sqrDistTo(other) }
+fun <T:PointN<T>>Iterable<T>.getFurthestManTo(other: T): T? = this.maxBy { it.manDistTo(other) }
 
-fun Iterable<Point>.getClosestSqrDist(): Int? = this.map(Point::sqrDist).min()
-fun Iterable<Point>.getClosestDist(): Double? = getClosestSqrDist()?.let { sqrt(it.toDouble()) }
-fun Iterable<Point>.getClosestManDist(): Int? = this.map(Point::manDist).min()
+fun <T:PointN<T>>Iterable<T>.getClosestSqrDist(): Int? = this.map(PointN<T>::sqrDist).min()
+fun <T:PointN<T>>Iterable<T>.getClosestDist(): Double? = getClosestSqrDist()?.let { sqrt(it.toDouble()) }
+fun <T:PointN<T>>Iterable<T>.getClosestManDist(): Int? = this.map(PointN<T>::manDist).min()
 
-fun Iterable<Point>.getClosestSqrDistTo(other: Point): Int? = this.map { it.sqrDistTo(other) }.min()
-fun Iterable<Point>.getClosestDistTo(other: Point): Double? = getClosestSqrDistTo(other)?.let { sqrt(it.toDouble()) }
-fun Iterable<Point>.getClosestManDistTo(other: Point): Int? = this.map { it.manDistTo(other) }.min()
+fun <T:PointN<T>>Iterable<T>.getClosestSqrDistTo(other: T): Int? = this.map { it.sqrDistTo(other) }.min()
+fun <T:PointN<T>>Iterable<T>.getClosestDistTo(other: T): Double? = getClosestSqrDistTo(other)?.let { sqrt(it.toDouble()) }
+fun <T:PointN<T>>Iterable<T>.getClosestManDistTo(other: T): Int? = this.map { it.manDistTo(other) }.min()
 
-fun Iterable<Point>.getFurthestSqrDist(): Int? = this.map(Point::sqrDist).max()
-fun Iterable<Point>.getFurthestDist(): Double? = getFurthestSqrDist()?.let { sqrt(it.toDouble()) }
-fun Iterable<Point>.getFurthestManDist(): Int? = this.map(Point::manDist).max()
+fun <T:PointN<T>>Iterable<T>.getFurthestSqrDist(): Int? = this.map(PointN<T>::sqrDist).max()
+fun <T:PointN<T>>Iterable<T>.getFurthestDist(): Double? = getFurthestSqrDist()?.let { sqrt(it.toDouble()) }
+fun <T:PointN<T>>Iterable<T>.getFurthestManDist(): Int? = this.map(PointN<T>::manDist).max()
 
-fun Iterable<Point>.getFurthestSqrDistTo(other: Point): Int? = this.map { it.sqrDistTo(other) }.max()
-fun Iterable<Point>.getFurthestDistTo(other: Point): Double? = getFurthestSqrDistTo(other)?.let { sqrt(it.toDouble()) }
-fun Iterable<Point>.getFurthestManDistTo(other: Point): Int? = this.map { it.manDistTo(other) }.max()
+fun <T:PointN<T>>Iterable<T>.getFurthestSqrDistTo(other: T): Int? = this.map { it.sqrDistTo(other) }.max()
+fun <T:PointN<T>>Iterable<T>.getFurthestDistTo(other: T): Double? = getFurthestSqrDistTo(other)?.let { sqrt(it.toDouble()) }
+fun <T:PointN<T>>Iterable<T>.getFurthestManDistTo(other: T): Int? = this.map { it.manDistTo(other) }.max()
 
+
+fun <T:PointN<T>>Iterable<T>.sortByClosestTo(other: T) = sortedBy {it.sqrDistTo(other)}
+fun <T:PointN<T>>Iterable<T>.sortByClosestManTo(other: T) = sortedBy {it.sqrDistTo(other)}
+fun <T:PointN<T>>Iterable<T>.sortByFurthestTo(other: T) = sortedByDescending {it.manDistTo(other)}
+fun <T:PointN<T>>Iterable<T>.sortByFurthestManTo(other: T) = sortedByDescending {it.manDistTo(other)}
+
+fun <T:PointN<T>>Iterable<T>.sortByClosest() = sortedBy(PointN<T>::sqrDist)
+fun <T:PointN<T>>Iterable<T>.sortByClosestMan() = sortedBy(PointN<T>::manDist)
+fun <T:PointN<T>>Iterable<T>.sortByFurthest() = sortedByDescending(PointN<T>::sqrDist)
+fun <T:PointN<T>>Iterable<T>.sortByFurthestMan() = sortedByDescending(PointN<T>::manDist)
