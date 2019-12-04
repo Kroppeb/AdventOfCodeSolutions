@@ -29,7 +29,7 @@ class Counter<T> : MutableCollection<T>{
 	 * and the element is already contained in the collection.
 	 */
 	override fun add(element: T): Boolean {
-		counts.merge(element, 0){a,_->a+1}
+		counts.merge(element, 1, Int::plus)
 		return true
 	}
 

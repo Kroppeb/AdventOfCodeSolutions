@@ -1,5 +1,8 @@
 package helpers
 
+import java.util.*
+import kotlin.collections.ArrayList
+
 fun <T> Iterator<T>.getNext(): T {
 	hasNext()
 	return next()
@@ -45,42 +48,176 @@ fun <K, A, B> Map<K, A>.intersect(other: Map<K, B>): Map<K, Pair<A, B>> = this.e
 	else null
 }.toMap()
 
-inline fun <K, A, B, R> Map<K, A>.intersectMap(other: Map<K, B>, m:(A,B)->R): Map<K, R> = this.entries.mapNotNull { (key, value) ->
+inline fun <K, A, B, R> Map<K, A>.intersectMap(other: Map<K, B>, m: (A, B) -> R): Map<K, R> = this.entries.mapNotNull { (key, value) ->
 	if (key in other) key to m(value, other[key]!!)
 	else null
 }.toMap()
 
-fun <K,V:Comparable<V>>Map<K,V>.minByValue() = minBy { it.value }!!.key
-fun <K:Comparable<K>,V>Map<K,V>.minByKey() = minBy { it.key }!!.value
+fun <K, V : Comparable<V>> Map<K, V>.minByValue() = minBy { it.value }!!.key
+fun <K : Comparable<K>, V> Map<K, V>.minByKey() = minBy { it.key }!!.value
 
 operator fun <E> List<E>.times(count: Int) = repeat(count)
 
-inline fun <T,R>Iterable<T>.scan(start:R, transform:(R, T)->R): List<R> {
+inline fun <T, R> Iterable<T>.scan(start: R, transform: (R, T) -> R): List<R> {
 	var acc = start
 	val ret = mutableListOf<R>()
-	for(i in this){
+	for (i in this) {
 		acc = transform(acc, i)
 		ret.add(acc)
 	}
 	return ret
 }
 
-inline fun <T>Iterable<T>.scan(transform:(T, T)->T): List<T> {
+inline fun <T> Iterable<T>.scan(transform: (T, T) -> T): List<T> {
 	val iter = iterator()
 	if (!iter.hasNext())
 		return emptyList()
 	var acc = iter.next()
 	val ret = mutableListOf<T>(acc)
-	for(i in iter){
+	for (i in iter) {
 		acc = transform(acc, i)
 		ret.add(acc)
 	}
 	return ret
 }
 
-fun Iterable<Int>.cumSum()=scan(Int::plus)
+fun <T> Iterable<T>.countEach(): Map<T, Int> {
+	val counts = mutableMapOf<T, Int>()
+	for (element in this)
+		counts.merge(element, 1, Int::plus)
+	return counts
+}
 
+fun <T> Iterable<T>.blockCounts(): List<Pair<T, Int>> {
+	val iter = iterator()
+	if (!iter.hasNext())
+		return emptyList()
+	var acc = iter.next()
+	var count = 1
+	val ret = mutableListOf<Pair<T, Int>>()
+	for (i in iter) {
+		if (acc == i)
+			count++
+		else {
+			ret.add(acc to count)
+			acc = i
+			count = 1
 
+		}
+	}
+	ret.add(acc to count)
+	return ret
+}
+
+fun <T> Iterable<T>.blocks(): List<List<T>> {
+	val iter = iterator()
+	if (!iter.hasNext())
+		return emptyList()
+	var acc = iter.next()
+	var count = mutableListOf<T>(acc)
+	val ret = mutableListOf<List<T>>()
+	for (i in iter) {
+		if (acc == i)
+			count.add(i)
+		else {
+			ret.add(count)
+			acc = i
+			count = mutableListOf<T>(acc)
+
+		}
+	}
+	ret.add(count)
+	return ret
+}
+
+/**
+ * Verifies by trying to sort
+ */
+fun <T : Comparable<T>> Iterable<T>.isSorted(): Boolean = this.sorted() == this.toList()
+
+fun <T : Comparable<T>> Iterable<T>.isAscending(): Boolean {
+	val iter = iterator()
+	if (!iter.hasNext())
+		return true
+	var acc = iter.next()
+	for (i in iter) {
+		if(acc >= i )
+			return false
+		acc = i
+	}
+	return true
+}
+
+fun <T : Comparable<T>> Iterable<T>.isDescending(): Boolean {
+	val iter = iterator()
+	if (!iter.hasNext())
+		return true
+	var acc = iter.next()
+	for (i in iter) {
+		if(acc <= i )
+			return false
+		acc = i
+	}
+	return true
+}
+
+fun <T : Comparable<T>> Iterable<T>.isNonAscending(): Boolean {
+	val iter = iterator()
+	if (!iter.hasNext())
+		return true
+	var acc = iter.next()
+	for (i in iter) {
+		if(acc < i )
+			return false
+		acc = i
+	}
+	return true
+}
+
+fun <T : Comparable<T>> Iterable<T>.isNonDescending(): Boolean {
+	val iter = iterator()
+	if (!iter.hasNext())
+		return true
+	var acc = iter.next()
+	for (i in iter) {
+		if(acc > i )
+			return false
+		acc = i
+	}
+	return true
+}
+
+/**
+ *
+ * @param transform called once for each item in the iterable
+ */
+fun <T, R> Iterable<T>.blockBy(transform: (T) -> R): List<List<T>> {
+	val iter = iterator()
+	if (!iter.hasNext())
+		return emptyList()
+	var acc = iter.next()
+	var key = transform(acc)
+	var count = mutableListOf<T>(acc)
+	val ret = mutableListOf<List<T>>()
+	for (i in iter) {
+		val ikey = transform(i)
+		if (key == ikey)
+			count.add(i)
+		else {
+			ret.add(count)
+			acc = i
+			key = ikey
+			count = mutableListOf<T>(acc)
+
+		}
+	}
+	return ret
+}
+
+fun Iterable<Int>.cumSum() = scan(Int::plus)
+
+val <T>Iterable<Pair<T, *>>.firsts get() = map { it.first }
+val <T>Iterable<Pair<*, T>>.seconds get() = map { it.second }
 
 //region list components
 operator fun <T> List<T>.get(indexes: IntRange) = subList(indexes.first, indexes.last + 1)

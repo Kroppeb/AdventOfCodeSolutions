@@ -62,9 +62,16 @@ Initially I felt like I was gonna need topoSort but wasn't needed
     *[x] maybe add `getIntsLines() = getLines().map{it.getInts()}` and similar
 * Forgot to call the recursive formula .. (OOF) 
 
+### Day 4
+* Thought I couldn't use groupBy so for part 2 I even wrote a regex to grab continuous chunks of numbers and then test if any had length 2
+    * I could cause the input would also need to sorted.
+    *[x] Add a `blocks` method
+*[x] add `isSorted`
+*[ ] add convolutions 
+
 
 ### Potential ToDo's
-* [ ] Make Point an actual class
+* [x] Make Point an actual class
 * [ ] Convolutions, forEach(unordered/Ordered)Pair/triplet
 * [ ] Grids
     * [ ] Path calculation
