@@ -55,7 +55,7 @@ fun <K:Comparable<K>,V>Map<K,V>.minByKey() = minBy { it.key }!!.value
 
 operator fun <E> List<E>.times(count: Int) = repeat(count)
 
-inline fun <T,R>Iterable<T>.foldMap(start:R, transform:(R, T)->R): List<R> {
+inline fun <T,R>Iterable<T>.scan(start:R, transform:(R, T)->R): List<R> {
 	var acc = start
 	val ret = mutableListOf<R>()
 	for(i in this){
@@ -64,6 +64,23 @@ inline fun <T,R>Iterable<T>.foldMap(start:R, transform:(R, T)->R): List<R> {
 	}
 	return ret
 }
+
+inline fun <T>Iterable<T>.scan(transform:(T, T)->T): List<T> {
+	val iter = iterator()
+	if (!iter.hasNext())
+		return emptyList()
+	var acc = iter.next()
+	val ret = mutableListOf<T>(acc)
+	for(i in iter){
+		acc = transform(acc, i)
+		ret.add(acc)
+	}
+	return ret
+}
+
+fun Iterable<Int>.cumSum()=scan(Int::plus)
+
+
 
 //region list components
 operator fun <T> List<T>.get(indexes: IntRange) = subList(indexes.first, indexes.last + 1)

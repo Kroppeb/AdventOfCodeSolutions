@@ -1,10 +1,9 @@
 package solutions
 
 import helpers.*
-import kotlin.math.abs
 
 private fun part1(data: List<List<Char>>) {
-	fun getPoints(wl: List<Char>): List<Point> = wl.foldMap(0 to 0) { p, c ->
+	fun getPoints(wl: List<Char>): List<Point> = wl.scan(0 to 0) { p, c ->
 		p+c.toPoint()
 	}
 
@@ -19,7 +18,7 @@ private fun part1(data: List<List<Char>>) {
 }
 
 private fun part2(data: List<List<Char>>) {
-	fun getPoints(wl: List<Char>): Map<Point, Int> = wl.foldMap(0 to 0 to 0) { (p,d), c ->
+	fun getPoints(wl: List<Char>): Map<Point, Int> = wl.scan(0 to 0 to 0) { (p,d), c ->
 		p+c.toPoint() to d+1
 	}.groupBy { it.first }.mapValues { (_,v)->v.first().second }
 
