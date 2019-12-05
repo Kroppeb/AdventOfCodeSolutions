@@ -67,17 +67,32 @@ Initially I felt like I was gonna need topoSort but wasn't needed
     * I could cause the input would also need to sorted.
     *[x] Add a `blocks` method
 *[x] add `isSorted`
-*[ ] add convolutions 
+*[x] add convolutions => `zipWithNext` and windowed exists
 
 
 ### Potential ToDo's
 * [x] Make Point an actual class
-* [ ] Convolutions, forEach(unordered/Ordered)Pair/triplet
+* [x] Convolutions, forEach(unordered/Ordered)Pair/
+* [ ] Some fancy lists
+    * [ ] cyclic list
+    * [ ] bi list (list for pos and neg indexes)
+    * [ ] py list? (wrapper? that allows neg index to count from back, like cyclic)
+    * [ ] default list
 * [ ] Grids
+    * [ ] a lot of freedom wanted yet many quick build-ins. Maybe builder?
+    * [ ] (quad)grid
+    * [ ] door grid
+    * [ ] gated-grid = grid + doors
+    * [ ] hex-grid
+    * [ ] triangle grid
     * [ ] Path calculation
+    * [ ] closest, furtest
+    * [ ] 3d grids?
+* [ ] Graphs (and grids are graphs)
 * [ ] BracketStack
 * [ ] Bounds
 * [ ] (stepped) Toposort
 * [ ] eventqueue 
-* [ ] cyclic list
 * [ ] ticking game system // for turnbased combat or similar
+* [ ] add a lot of `...Indexed()`
+* [ ] sequences

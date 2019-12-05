@@ -29,8 +29,8 @@ fun <E> List<E>.repeat(length: Int): List<E> {
 	return list
 }
 
-operator fun <T> Collection<T>.times(other: Iterable<T>): Set<T> = intersect(other)
-operator fun <T> Collection<T>.plus(other: Iterable<T>): Set<T> = union(other)
+operator fun <T> Set<T>.times(other: Set<T>): Set<T> = intersect(other)
+operator fun <T> Set<T>.plus(other: Set<T>): Set<T> = union(other)
 
 fun <K, A> Map<K, A>.intersect(other: Iterable<K>) = this.keys.intersect(other).associateWith { this[it]!! }
 
@@ -141,7 +141,7 @@ fun <T : Comparable<T>> Iterable<T>.isAscending(): Boolean {
 		return true
 	var acc = iter.next()
 	for (i in iter) {
-		if(acc >= i )
+		if (acc >= i)
 			return false
 		acc = i
 	}
@@ -154,7 +154,7 @@ fun <T : Comparable<T>> Iterable<T>.isDescending(): Boolean {
 		return true
 	var acc = iter.next()
 	for (i in iter) {
-		if(acc <= i )
+		if (acc <= i)
 			return false
 		acc = i
 	}
@@ -167,7 +167,7 @@ fun <T : Comparable<T>> Iterable<T>.isNonAscending(): Boolean {
 		return true
 	var acc = iter.next()
 	for (i in iter) {
-		if(acc < i )
+		if (acc < i)
 			return false
 		acc = i
 	}
@@ -180,7 +180,7 @@ fun <T : Comparable<T>> Iterable<T>.isNonDescending(): Boolean {
 		return true
 	var acc = iter.next()
 	for (i in iter) {
-		if(acc > i )
+		if (acc > i)
 			return false
 		acc = i
 	}
@@ -214,10 +214,39 @@ fun <T, R> Iterable<T>.blockBy(transform: (T) -> R): List<List<T>> {
 	return ret
 }
 
+fun Iterable<*>.areDistinct(): Boolean {
+	val seen = mutableSetOf<Any?>()
+	for (i in this)
+		if (!seen.add(i))
+			return false
+	return true
+}
+
+inline fun <T, R> Iterable<T>.flatMapIndexed(transform: (Int, T) -> Iterable<R>): List<R> = mapIndexed(transform).flatten()
+
+fun <T> Iterable<T>.pairWise(): List<Pair<T, T>> = flatMapIndexed { i, v -> drop(i + 1).map { v to it } }
+fun <T> Iterable<T>.orderedPairWise(): List<Pair<T, T>> = flatMapIndexed { i, v ->
+	filterIndexed { i2, _ -> i != i2 }.map { v to it }
+}
+fun <T> Iterable<T>.selfPairWise(): List<Pair<T, T>> = flatMapIndexed { i, v -> drop(i).map { v to it } }
+
+fun <T> Iterable<T>.cartesianSquare(): List<Pair<T, T>> = flatMap { v -> map { v to it } }
+fun <T,R> Iterable<T>.cartesianProduct(other: Iterable<R>): List<Pair<T, R>> = flatMap { v -> other.map { v to it } }
+
+fun <T> Iterator<T>.powerSet() : List<List<T>>{
+	val iter = iterator()
+	if (!iter.hasNext())
+		return emptyList()
+	val pre = listOf(iter.getNext())
+	val next = iter.powerSet()
+	return next + next.map{pre + it}
+}
+
 fun Iterable<Int>.cumSum() = scan(Int::plus)
 
 val <T>Iterable<Pair<T, *>>.firsts get() = map { it.first }
 val <T>Iterable<Pair<*, T>>.seconds get() = map { it.second }
+
 
 //region list components
 operator fun <T> List<T>.get(indexes: IntRange) = subList(indexes.first, indexes.last + 1)

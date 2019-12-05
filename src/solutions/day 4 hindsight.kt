@@ -18,6 +18,11 @@ private fun part1(){
 				&&
 				it.sorted() == it
 	}.count())
+	// or
+	println(paswords.map{it.toString().toList()}.count{
+		it.rleEncode { c, i -> i >= 2 }.any{it} &&
+				it.zipWithNext { a, b -> a<=b }.all{it}
+	})
 }
 
 private fun part2(){
@@ -27,6 +32,11 @@ private fun part2(){
 				&&
 				it.sorted() == it
 	}.count())
+	// or
+	println(paswords.map{it.toString().toList()}.count{
+		it.rleEncode { c, i -> i == 2 }.any{it} &&
+				it.zipWithNext { a, b -> a<=b }.all{it}
+	})
 
 }
 
