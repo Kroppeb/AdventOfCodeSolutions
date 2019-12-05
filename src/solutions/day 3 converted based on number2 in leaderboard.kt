@@ -4,7 +4,7 @@ import helpers.*
 
 fun getPoints(A:List<String>): Map<Point, Int> {
 	val ans = mutableMapOf<Point, Int>()
-	var cur = 0 to 0
+	var cur = 0 toP 0
 	var length = 0
 	for (cmd in A){
 		val d = cmd[0]

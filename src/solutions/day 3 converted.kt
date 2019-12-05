@@ -6,7 +6,7 @@ import kotlin.math.abs
 private fun part1(data:List<List<Pair<Char, Int>>>){
 	fun getPoints(wl:List<Pair<Char, Int>>): Set<Point> {
 		val w = mutableSetOf<Point>()
-		var cur = 0 to 0
+		var cur = 0 toP 0
 		for ((c, d) in wl){
 			val dcur = c.toPoint()
 
@@ -27,7 +27,7 @@ private fun part1(data:List<List<Pair<Char, Int>>>){
 private fun part2(data:List<List<Pair<Char, Int>>>){
 	fun getPoints(wl:List<Pair<Char, Int>>): Map<Point, Int> {
 		val w = mutableMapOf<Point, Int>()
-		var cur = 0 to 0
+		var cur = 0 toP 0
 		var dist = 0
 		for ((c, d) in wl){
 			val dcur = c.toPoint()
