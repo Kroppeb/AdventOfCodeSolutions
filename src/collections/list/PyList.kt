@@ -1,4 +1,4 @@
-package list
+package collections.list
 
 class PyList<T>(val inner:MutableList<T>): MutableList<T> by inner {
 	override fun get(index: Int): T {
