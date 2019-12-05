@@ -1,6 +1,6 @@
 package helpers
 
-class IntComputer(val data: MutableList<Int>) {
+class IntComputer(val data: MutableList<Int>, val inputs:Iterator<Int>) {
 	var ip = 0
 	var finished = false
 
@@ -10,23 +10,33 @@ class IntComputer(val data: MutableList<Int>) {
 		while(!finished){
 			step()
 		}
-		return !0
+		return data[0]
 	}
 
 	fun step() {
-		val op = ops[!ip]!!
-		execute(op)
+		val i = data[ip]
+		val opd = i % 100
+		val op = ops[opd]!!
+		val modes = (1..op.size).scan(i/10){old, new -> old/10}.map{it%10}
+
+		execute(op, modes)
 	}
 
 	operator fun set(inp: Int, value: Int) {
 		data[inp] = value
 	}
 
-	operator fun Int.not() = data[this]
+	operator fun Pair<Int,Int>.not() = when(this.first){
+		0 -> data[this.second]
+		1 -> this.second
+		else -> error("n")
+	}
 
-	fun execute(op: Op) {
-		op.action(this,data.subList(ip+1,ip+op.size))
+
+	fun execute(op: Op, modes:List<Int>) {
+		val oldIp =ip
 		ip+=op.size
+		op.action(this,modes.zip(data.subList(oldIp+1,oldIp+op.size)))
 	}
 
 	fun halt() {
@@ -34,11 +44,17 @@ class IntComputer(val data: MutableList<Int>) {
 	}
 
 	companion object{
-		operator fun invoke(data:List<Int>) = IntComputer(data.toMutableList())
+		operator fun invoke(data:List<Int>, inputs: Iterable<Int>) = IntComputer(data.toMutableList(), inputs.iterator())
 
 		val ops: Map<Int, Op> = opBuilder {
-			1{ a, b, c -> this[c] = !a + !b }
-			2{ a, b, c -> this[c] = !a * !b }
+			1{ a, b, c -> this[c.second] = !a + !b }
+			2{ a, b, c -> this[c.second] = !a * !b }
+			3{ a -> this[a.second] = inputs.also{it.hasNext()}.next() }
+			4{ a -> println(!a) }
+			5{ a, b -> if(!a != 0) ip = !b}
+			6{ a, b -> if(!a == 0) ip = !b}
+			7{ a, b ,c-> this[c.second] =  if(!a < !b) 1 else 0}
+			8{ a, b ,c-> this[c.second] =  if(!a == !b) 1 else 0}
 			99{-> halt()}
 		}
 
@@ -54,15 +70,16 @@ class IntComputer(val data: MutableList<Int>) {
 			inline operator fun Int.invoke(crossinline preOp: IntComputer.() -> Unit) {
 				ops[this] = Op(1){preOp()}
 			}
-			inline operator fun Int.invoke(crossinline preOp: IntComputer.(Int) -> Unit) {
+			inline operator fun Int.invoke(crossinline preOp: IntComputer.(Pair<Int,Int>) -> Unit) {
 				ops[this] = Op(2){(a)->preOp(a)}
 			}
-			inline operator fun Int.invoke(crossinline preOp: IntComputer.(Int, Int) -> Unit) {
+			inline operator fun Int.invoke(crossinline preOp: IntComputer.(Pair<Int,Int>, Pair<Int,Int>) -> Unit) {
 				ops[this] = Op(3){(a,b)->preOp(a,b)}
 			}
-			inline operator fun Int.invoke(crossinline preOp: IntComputer.(Int, Int, Int) -> Unit) {
+			inline operator fun Int.invoke(crossinline preOp: IntComputer.(Pair<Int,Int>, Pair<Int,Int>, Pair<Int,Int>) -> Unit) {
 				ops[this] = Op(4){(a,b,c)->preOp(a,b,c)}
 			}
+			/*
 			inline operator fun Int.invoke(crossinline preOp: IntComputer.(Int, Int, Int, Int) -> Unit) {
 				ops[this] = Op(5){(a,b,c,d)->preOp(a,b,c,d)}
 			}
@@ -77,7 +94,7 @@ class IntComputer(val data: MutableList<Int>) {
 			}
 			inline operator fun Int.invoke(crossinline preOp: IntComputer.(Int, Int, Int, Int, Int, Int, Int, Int) -> Unit) {
 				ops[this] = Op(9){(a,b,c,d,e,f,g,h)->preOp(a,b,c,d,e,f,g,h)}
-			}
+			}*/
 
 		}
 	}
@@ -85,7 +102,7 @@ class IntComputer(val data: MutableList<Int>) {
 
 
 
-class Op(val size: Int, val action: IntComputer.(List<Int>) -> Unit)
+class Op(val size: Int, val action: IntComputer.(List<Pair<Int,Int>>) -> Unit)
 
 
 
