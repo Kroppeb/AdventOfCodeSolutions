@@ -1,9 +1,7 @@
 package solutions
 
-import Collections.Counter
-import Collections.counter
+import collections.counter
 import helpers.*
-import kotlin.math.*
 
 private fun part1(){
 	val paswords = 145852..616942

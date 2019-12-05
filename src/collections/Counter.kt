@@ -1,4 +1,4 @@
-package Collections
+package collections
 
 class Counter<T> : MutableCollection<T>{
 	val counts = mutableMapOf<T,Int>()
