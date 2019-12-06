@@ -58,12 +58,50 @@ fun <K : Comparable<K>, V> Map<K, V>.minByKey() = minBy { it.key }!!.value
 
 operator fun <E> List<E>.times(count: Int) = repeat(count)
 
+/**
+ * Seed isn't returned, the retured list has length times
+ */
+fun <T>generateTimes(times:Int, seed:T, next: (T)->T) :List<T>{
+	var acc = seed
+	val ret = mutableListOf<T>()
+	repeat(times) {
+		acc = next(acc)
+		ret.add(acc)
+	}
+	return ret
+}
+
+/**
+ * Seed isn't returned, the retured list has length times
+ */
+fun <S, T>generateStateTimes(times:Int, seed:S, next: (state:S)->Pair<S,T>) :List<T>{
+	var acc = seed
+	val ret = mutableListOf<T>()
+	repeat(times) {
+		val (s,t) = next(acc)
+		acc = s
+		ret.add(t)
+	}
+	return ret
+}
+
 inline fun <T, R> Iterable<T>.scan(start: R, transform: (R, T) -> R): List<R> {
 	var acc = start
 	val ret = mutableListOf<R>()
 	for (i in this) {
 		acc = transform(acc, i)
 		ret.add(acc)
+	}
+	return ret
+}
+
+inline fun <T, S, R> Iterable<T>.stateScan(start: S, transform: (S, T) -> Pair<S,R>): List<R> {
+	var acc = start
+	val ret = mutableListOf<R>()
+	for (i in this) {
+		val(s, r) = transform(acc, i)
+		acc = s
+		ret.add(r)
 	}
 	return ret
 }

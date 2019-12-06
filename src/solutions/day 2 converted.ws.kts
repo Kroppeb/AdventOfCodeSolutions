@@ -1,7 +1,7 @@
 import helpers.*
 
 val ints = getInts(2)
-/*
+
 // part1
 val comp = IntComputer(ints)
 comp[1] = 12
@@ -20,4 +20,3 @@ for (n in 0..99)
 
 		}
 	}
-*/

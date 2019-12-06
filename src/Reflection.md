@@ -69,6 +69,15 @@ Initially I felt like I was gonna need topoSort but wasn't needed
 *[x] add `isSorted`
 *[x] add convolutions => `zipWithNext` and windowed exists
 
+### Day 5
+* Need more sleep
+* Mental error about `scan` when trying to extract modes
+    * [x] make a scan that updates state and returns separately
+* "No i dOnT ThInK I NeEd aN ErRoR If iM TrYiNg tO OvErRiDe aN OpCoDe"
+    * [ ] add an error
+* Use typealiases in tentative things. 
+
+
 
 ### Potential ToDo's
 * [x] Make Point an actual class
