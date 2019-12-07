@@ -77,7 +77,10 @@ Initially I felt like I was gonna need topoSort but wasn't needed
     * [ ] add an error
 * Use typealiases in tentative things. 
 
-
+### Day 6
+* [ ] Graphs
+* Run functions twice, first on test, then on actual data. Should show off by one errors faster
+* [ ] Add associateIndex
 
 ### Potential ToDo's
 * [x] Make Point an actual class
