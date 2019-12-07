@@ -6,7 +6,8 @@ class IntComputer(val data: MutableList<Int>, val inputs: Iterator<Int>) {
 
 
 	fun run(): Int {
-		while (!finished) {
+		y = false
+		while (!finished && !y) {
 			step()
 		}
 		return this[0]
@@ -57,11 +58,22 @@ class IntComputer(val data: MutableList<Int>, val inputs: Iterator<Int>) {
 		val oldIp = ip
 		ip += op.size
 		op.action(this, modes.zip(data.subList(oldIp + 1, oldIp + op.size)))
+		if(y){
+			ip = oldIp
+		}
 	}
 
 	fun halt() {
 		finished = true
 	}
+
+	var y = false
+
+	fun yield(){
+		y = true
+	}
+
+	var last:Int = 0
 
 	companion object {
 		operator fun invoke(data: List<Int>, inputs: Iterable<Int>? = null) =
@@ -74,8 +86,13 @@ class IntComputer(val data: MutableList<Int>, val inputs: Iterator<Int>) {
 		val ops: Map<Int, Op> = opBuilder {
 			1{ a, b, c -> this[c] = !a + !b }
 			2{ a, b, c -> this[c] = !a * !b }
-			3{ a -> this[a.second] = inputs.getNext() }
-			4{ a -> println(!a) }
+			3{ a -> inputs.getNext().let{
+				if(it == -1337)
+					yield()
+				else
+					this[a.second] = it
+			} }
+			4{ a -> last = !a;println(!a) }
 			5{ a, b -> if (!a != 0) ip = !b }
 			6{ a, b -> if (!a == 0) ip = !b }
 			7{ a, b, c -> this[c] = if (!a < !b) 1 else 0 }
