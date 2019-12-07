@@ -82,6 +82,11 @@ Initially I felt like I was gonna need topoSort but wasn't needed
 * Run functions twice, first on test, then on actual data. Should show off by one errors faster
 * [ ] Add associateIndex
 
+### Day 7
+* [ ] getPermutations
+* [ ] make the IntComputer io and yield more clean
+
+
 ### Potential ToDo's
 * [x] Make Point an actual class
 * [x] Convolutions, forEach(unordered/Ordered)Pair/
