@@ -87,6 +87,10 @@ Initially I felt like I was gonna need topoSort but wasn't needed
 * [ ] make the IntComputer io and yield more clean
 * [ ] quick input naming
 
+### Day 8
+* Forgot reduce existed
+* [ ] List.printLines maybe? errr .map{println(it)} is quite good
+
 
 ### Potential ToDo's
 * [x] Make Point an actual class
@@ -104,8 +108,11 @@ Initially I felt like I was gonna need topoSort but wasn't needed
     * [ ] hex-grid
     * [ ] triangle grid
     * [ ] Path calculation
-    * [ ] closest, furtest
+    * [ ] closest, furthest
     * [ ] 3d grids?
+    * [ ] sum query?
+        * [ ] max query
+        * [ ] binOp query
 * [ ] Graphs (and grids are graphs)
 * [ ] BracketStack
 * [ ] Bounds
