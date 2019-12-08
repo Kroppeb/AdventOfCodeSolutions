@@ -85,6 +85,7 @@ Initially I felt like I was gonna need topoSort but wasn't needed
 ### Day 7
 * [ ] getPermutations
 * [ ] make the IntComputer io and yield more clean
+* [ ] quick input naming
 
 
 ### Potential ToDo's
@@ -113,3 +114,4 @@ Initially I felt like I was gonna need topoSort but wasn't needed
 * [ ] ticking game system // for turnbased combat or similar
 * [ ] add a lot of `...Indexed()`
 * [ ] sequences
+* [ ] python itertools
