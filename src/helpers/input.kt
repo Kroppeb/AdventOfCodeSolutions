@@ -11,6 +11,34 @@ private val regexWord = Regex("""[a-zA-Z]+""")
 private val regexAlphaNum = Regex("""[a-zA-Z0-9]+""")
 
 
+fun getInt(day: Int): Int {
+	return regexInt.find(getData(day))!!.value.toInt()
+}
+
+fun getPosInt(day: Int): Int {
+	return regexPosInt.find(getData(day))!!.value.toInt()
+}
+
+fun getDigit(day: Int): Int {
+	return regexDigit.find(getData(day))!!.value.toInt()
+}
+
+fun getFloat(day: Int): Double {
+	return regexFloat.find(getData(day))!!.value.toDouble()
+}
+
+fun getPosFloat(day: Int): Double {
+	return regexPosFloat.find(getData(day))!!.value.toDouble()
+}
+
+fun getWord(day: Int): String {
+	return regexWord.find(getData(day))!!.value
+}
+
+fun getAlphaNum(day: Int): String {
+	return regexAlphaNum.find(getData(day))!!.value
+}
+
 fun getData(day: Int): String =
 		if (day > 100) {
 			val y = day / 100
@@ -60,6 +88,7 @@ fun getLines(day: Int): List<String> {
 fun getCSV(day: Int): List<List<String>> {
 	return getLines(day).map { it.split(',') }
 }
+typealias CSV = List<List<String>>
 
 /**
  * Read in Semicolon (';') Separated Values
@@ -67,6 +96,7 @@ fun getCSV(day: Int): List<List<String>> {
 fun getSSV(day: Int): List<List<String>> {
 	return getLines(day).map { it.split(';') }
 }
+typealias SSV = List<List<String>>
 
 /**
  * Read in Whitespace (' ' or '\t') Separated Values
@@ -74,6 +104,7 @@ fun getSSV(day: Int): List<List<String>> {
 fun getWSV(day: Int): List<List<String>> {
 	return getLines(day).map { it.split(' ', '\t') }
 }
+typealias WSV = List<List<String>>
 
 fun String.getInt() = regexInt.find(this)?.value?.toInt()
 fun String.getPosInt() = regexPosInt.find(this)?.value?.toInt()
@@ -99,3 +130,26 @@ fun getPosFloatLines(day:Int) = getLines(day).map{it.getPosFloats()}
 fun getWordLines(day:Int) = getLines(day).map{it.getWords()}
 fun getAlphaNumLines(day:Int) = getLines(day).map{it.getAlphaNums()}
 
+typealias PosInt = Int
+typealias Digit = Int
+typealias Float = Double
+typealias PosFloat = Double
+typealias Word = String
+typealias AlphaNum = String
+
+typealias Ints = List<Int>
+typealias PosInts = List<Int>
+typealias Digits = List<Int>
+typealias Floats = List<Double>
+typealias PosFloats = List<Double>
+typealias Words = List<String>
+typealias AlphaNums = List<String>
+
+
+typealias IntLines = List<List<Int>>
+typealias PosIntLines = List<List<Int>>
+typealias DigitLines = List<List<Int>>
+typealias FloatLines = List<List<Double>>
+typealias PosFloatLines = List<List<Double>>
+typealias WordLines = List<List<String>>
+typealias AlphaNumLines = List<List<String>>
