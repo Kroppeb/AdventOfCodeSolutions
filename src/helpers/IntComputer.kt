@@ -1,222 +1,191 @@
 package helpers
 
+import coroutines.toChannel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
-import kotlin.coroutines.CoroutineContext
 
-class IntComputer constructor(
-		val data: MutableList<Int>,
-		private val inputChannel: ReceiveChannel<Int>,
-		private val outputChannel: Channel<Int> = Channel()
-) : ReceiveChannel<Int> by outputChannel {
+typealias DataType = Long
+typealias IntCode = MutableMap<Pointer, DataType>
+typealias OpCode = Int
+typealias ParameterMode = Int
+typealias Param = Pair<ParameterMode, DataType>
+typealias Pointer = DataType
 
-	var ip = 0
-	var finished = false
+fun Number.toDataType(): DataType = this.toLong()
+fun List<Number>.toIntCode(): IntCode = this.withIndex().associate { (i, v) -> i.toPointer() to v.toDataType() }.toMutableMap()
+fun Number.toOpCode(): OpCode = this.toInt()
+fun Number.toParameterMode(): ParameterMode = this.toInt()
+fun Pair<Number, Number>.toParam(): Param = first.toParameterMode() to second.toDataType()
+fun Number.toPointer(): Pointer = this.toDataType()
 
 
-	fun runBlocked(): IntComputer = runBlocking {
-		run()
+class IntComputer(
+		private val data: IntCode,
+		val input: Channel<DataType> = Channel(Channel.UNLIMITED),
+		scope: CoroutineScope
+) : CoroutineScope by scope {
+	private var ip: Pointer = 0.toPointer()
+	private var sp: Pointer = 0.toPointer()
+	private var halted = false
+
+	private val outputChannel: Channel<DataType> = Channel(Channel.UNLIMITED)
+	val output: ReceiveChannel<DataType> get() = outputChannel
+
+	private val job: Job
+
+	suspend fun join() {
+		job.join()
 	}
 
-	suspend fun run(): IntComputer {
-		while (!finished) {
-			step()
+	constructor(
+			data: IntCode,
+			input: ReceiveChannel<DataType>,
+			scope: CoroutineScope) : this(data, Channel<DataType>().also {
+		scope.launch {
+			for (i in input)
+				it.send(i)
 		}
-		return this
-	}
+	}, scope)
 
-	suspend fun step() {
-		val i = this[ip]
-		val opd = i % 100
-		val op = ops[opd]!!
-		// original
-		//val modes = (1..op.size).scan(i / 10) { old, new -> old / 10 }.map { it % 10 }
+	// region setting and getting data
 
-		/*
-		suggestions
-		val modes = (i / 100).toString().map{"$it".toInt()} + listOf(0,0,0,0,0,0,0)
-		or
-		val modes = (i / 100).toString().map{"$it".toInt()}
-		*/
+	operator fun get(inp: Pointer): DataType = data.getOrDefault(inp, 0L)
 
-		val modes = generateStateTimes(op.size, i / 100) {
-			it / 10 to it % 10
-		}
-		execute(op, modes)
-	}
-
-	operator fun get(inp: Int): Int {
-		return data[inp]
-	}
-
-	operator fun get(inp: Param): Int = when (inp.first) {
-		0 -> data[inp.second]
-		1 -> inp.second
+	private operator fun Int.not(): DataType = when (getMode(this)) {
+		0 -> get(get(ip + this))
+		1 -> get(ip + this)
+		2 -> get(get(ip + this) + sp)
 		else -> error("n")
 	}
 
-	operator fun set(inp: Int, value: Int) {
+	private fun getMode(i: Int): ParameterMode {
+		var opd = get(ip).toOpCode() / 100
+		repeat(i - 1) { opd /= 10 }
+		return opd % 10
+	}
+
+
+	operator fun set(inp: Pointer, value: DataType) {
 		data[inp] = value
 	}
 
-	operator fun set(inp: Param, value: Int) {
-		data[inp.second] = value
+	private infix fun Long.at(i: Int) = when (getMode(i)) {
+		0 -> set(get(ip + i), this)
+		1 -> set(ip + i, this)                // yeah I know
+		2 -> set(get(ip + i) + sp, this)
+		else -> error("n")
 	}
 
-	operator fun Param.not() = this@IntComputer[this]
-
-
-	private suspend fun execute(op: Op, modes: List<Int>) {
-		val oldIp = ip
-		ip += op.size
-		op.action(this, modes.zip(data.subList(oldIp + 1, oldIp + op.size)))
+	private infix fun Unit.step(i: Int) {
+		ip += i
 	}
+
+	private infix fun Unit.step(i: Long) {
+		ip += i
+	}
+
+	// endregion
 
 	fun halt() {
-		finished = true
-		outputChannel.close()
+		halted = true
 	}
 
-
-	var last: Int = 0
-
-	companion object {
-		/*
-		operator fun invoke(data: List<Int>) =
-				IntComputer(data.toMutableList()).let{
-					val output = it.output
-					val reader = GlobalScope.launch {
-						for(i in System.`in`.bufferedReader().lineSequence().map { it.toInt() })
-							it.input.send(i)
-					}
-					output.invokeOnClose { reader.cancel() }
-				}
-		 */
-
-		operator fun invoke(data: List<Int>, input: List<Int> = emptyList()) =
-				IntComputer(data.toMutableList(), input.toChannel())
-
-		operator fun invoke(data: List<Int>, input: ReceiveChannel<Int>) =
-				IntComputer(data.toMutableList(), input)
-
-
-		val ops: Map<Int, Op> = opBuilder {
-			1{ a, b, c -> this[c] = !a + !b }
-			2{ a, b, c -> this[c] = !a * !b }
-			3{ a -> inputChannel.receive() }
-			4{ a -> outputChannel.send(!a) }
-			5{ a, b -> if (!a != 0) ip = !b }
-			6{ a, b -> if (!a == 0) ip = !b }
-			7{ a, b, c -> this[c] = if (!a < !b) 1 else 0 }
-			8{ a, b, c -> this[c] = if (!a == !b) 1 else 0 }
-			99{ -> halt() }
+	private suspend fun step() = when (val opId = this[ip].toOpCode() % 100) {
+		// ADD
+		1 -> !1 + !2 at 3 step 4
+		// MUL
+		2 -> !1 * !2 at 3 step 4
+		// INP
+		3 -> input.receive() at 1 step 2
+		// OUT
+		4 -> outputChannel.send(!1) step 2
+		// JNZ
+		5 -> {
+			if (!1 != 0L) {
+				ip = !2
+			} else {
+				ip += 3
+			}
 		}
-
-		private fun opBuilder(builder: OpBuilder.() -> Unit): Map<Int, Op> {
-			val o = OpBuilder()
-			o.builder()
-			return o.ops
+		// JZ
+		6 -> {
+			if (!1 == 0L) {
+				ip = !2
+			} else {
+				ip += 3
+			}
 		}
-
-		class OpBuilder {
-			val ops = mutableMapOf<Int, Op>()
-
-			inline operator fun Int.invoke(crossinline preOp: suspend IntComputer.() -> Unit) {
-				ops[this] = Op(1) { preOp() }
-			}
-
-			inline operator fun Int.invoke(crossinline preOp: suspend IntComputer.(Param) -> Unit) {
-				ops[this] = Op(2) { (a) -> preOp(a) }
-			}
-
-			inline operator fun Int.invoke(crossinline preOp: suspend IntComputer.(Param, Param) -> Unit) {
-				ops[this] = Op(3) { (a, b) -> preOp(a, b) }
-			}
-
-			inline operator fun Int.invoke(crossinline preOp: suspend IntComputer.(Param, Param, Param) -> Unit) {
-				ops[this] = Op(4) { (a, b, c) -> preOp(a, b, c) }
-			}
-
-			inline operator fun Int.invoke(crossinline preOp: suspend IntComputer.(Param, Param, Param, Param) -> Unit) {
-				ops[this] = Op(5) { (a, b, c, d) -> preOp(a, b, c, d) }
-			}
-
-			inline operator fun Int.invoke(crossinline preOp: suspend IntComputer.(Param, Param, Param, Param, Param) -> Unit) {
-				ops[this] = Op(6) { (a, b, c, d, e) -> preOp(a, b, c, d, e) }
-			}
-
-			inline operator fun Int.invoke(crossinline preOp: suspend IntComputer.(Param, Param, Param, Param, Param, Param) -> Unit) {
-				ops[this] = Op(7) { (a, b, c, d, e, f) -> preOp(a, b, c, d, e, f) }
-			}
-
-			inline operator fun Int.invoke(crossinline preOp: suspend IntComputer.(Param, Param, Param, Param, Param, Param, Param) -> Unit) {
-				ops[this] = Op(8) { (a, b, c, d, e, f, g) -> preOp(a, b, c, d, e, f, g) }
-			}
-
-			inline operator fun Int.invoke(crossinline preOp: suspend IntComputer.(Param, Param, Param, Param, Param, Param, Param, Param) -> Unit) {
-				ops[this] = Op(9) { (a, b, c, d, e, f, g, h) -> preOp(a, b, c, d, e, f, g, h) }
-			}
-
+		// LT
+		7 -> (if (!1 < !2) 1L else 0L) at 3 step 4
+		// EQ
+		8 -> (if (!1 == !2) 1L else 0L) at 3 step 4
+		9 -> { //AdjustBase
+			sp += !1
+			ip += 2
 		}
+		// HLT
+		99 -> halt()
+		else -> throw IllegalArgumentException("Unknown operation: $opId")
+	}
+
+	init {
+		this.job = launch {
+			while (isActive && !halted) {
+				step()
+			}
+		}
+		job.invokeOnCompletion { outputChannel.close(if (it is CancellationException) null else it) }
 	}
 }
 
+fun CoroutineScope.runComputer(data: IntCode) = IntComputer(data, scope = this)
+fun CoroutineScope.runComputer(data: List<Number>) = runComputer(data.toIntCode())
 
-fun <T> Iterable<T>.toChannel(): ReceiveChannel<T> = GlobalScope.produce {
-	for (i in this@toChannel)
-		send(i)
+fun CoroutineScope.runComputer(data: IntCode, input: Channel<DataType>) = IntComputer(data, input, scope = this)
+fun CoroutineScope.runComputer(data: List<Number>, input: Channel<DataType>) = runComputer(data.toIntCode(), input)
+
+fun CoroutineScope.runComputer(data: IntCode, input: ReceiveChannel<DataType>) = IntComputer(data, input, scope = this)
+fun CoroutineScope.runComputer(data: List<Number>, input: ReceiveChannel<DataType>) = runComputer(data.toIntCode(), input)
+
+
+fun CoroutineScope.runComputer(data: IntCode, input: List<Number>) = runComputer(data, input.map(Number::toDataType).toChannel())
+fun CoroutineScope.runComputer(data: List<Number>, input: List<Number>) = runComputer(data.toIntCode())
+
+/*
+class IntComputerBuilder() {
+	private var code: IntCode? = null
+	private var input: ((CoroutineScope) -> ReceiveChannel<DataType>)? = null
+	private var output: SendChannel<DataType>? = null
+
+	@JvmName("codeMutableMapDataType")
+	fun code(code: IntCode) {
+		this.code = code
+	}
+
+	@JvmName("codeMapDataType")
+	fun code(code: Map<Pointer, DataType>) {
+		code(code.toMutableMap())
+	}
+
+	@JvmName("codeMapNumber")
+	fun code(code: Map<Pointer, Number>) {
+		code(code.mapValues { it.value.toDataType() })
+	}
+
+	@JvmName("codeListDataType")
+	fun code(code: List<DataType>) {
+		code(code.withIndex().associate { (i, v) -> i.toPointer() to v })
+	}
+
+	@JvmName("codeListNumber")
+	fun code(code: List<Number>) {
+		code(code.withIndex().associate { (i, v) -> i.toPointer() to v.toDataType() })
+	}
+
+	fun input(input: ReceiveChannel)
 }
 
-typealias Param = Pair<Int, Int>
 
 class Op(val size: Int, val action: suspend IntComputer.(List<Param>) -> Unit)
 
-
-infix fun <T> ReceiveChannel<T>.pipeTo(to: SendChannel<T>) {
-	GlobalScope.launch {
-		for (i in this@pipeTo)
-			to.send(i)
-		to.close()
-	}
-}
-
-infix fun <T> ReceiveChannel<T>.pipeToTemp(to: SendChannel<T>) {
-	GlobalScope.launch {
-		for (i in this@pipeToTemp)
-			to.send(i)
-	}
-}
-
-fun ReceiveChannel<*>.print() {
-	GlobalScope.launch { this@print.consumeEach { println(it) } }
-}
-
-fun <T> SendChannel<T>.overFlowTo(to: SendChannel<T>) {
-	val receiveChannel = Channel<T>()
-}
-
-operator fun <T> ReceiveChannel<T>.plus(b: ReceiveChannel<T>) =
-		GlobalScope.produce<T> {
-			for (i in this@plus)
-				send(i)
-			for (i in b)
-				send(i)
-		}
-
-operator fun <T> Iterable<T>.plus(b: ReceiveChannel<T>) =
-		GlobalScope.produce<T> {
-			for (i in this@plus)
-				send(i)
-			for (i in b)
-				send(i)
-		}
-
-operator fun <T> ReceiveChannel<T>.plus(b: Iterable<T>) =
-		GlobalScope.produce<T> {
-			for (i in this@plus)
-				send(i)
-			for (i in b)
-				send(i)
-		}
-
-
+*/

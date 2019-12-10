@@ -1,38 +1,43 @@
 package solutions
 
+import coroutines.pipeTo
+import coroutines.plus
 import helpers.*
+import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ReceiveChannel
-import kotlinx.coroutines.runBlocking
-import java.util.concurrent.ArrayBlockingQueue
-import java.util.concurrent.BlockingQueue
-import java.util.concurrent.TimeUnit
-import kotlin.math.*
 
 fun permutations() = (0..4).cartesianProduct((0..4)).flatMap { (a, b) ->
 	(0..4).cartesianProduct((0..4))
 			.flatMap { (x, y) -> (0..4).map { listOf(a, b, x, y, it) } }
-}.filter { it.areDistinct() }
+}.filter { it.areDistinct() }.map2{it.toDataType()}
 
 
 private fun part1(data: List<Int>) = runBlocking {
+
 	val r = permutations().map { p ->
-		p.fold(0) { i, s -> IntComputer(data, listOf(s, i)).let { it.runBlocked().receive(); it.last } }
+		p.fold(0L) { i, s -> runComputer(data).run {
+			input.send(s)
+			input.send(i)
+			output.receive()
+		} }
 	}.max()
 	println(r)
 }
 
-private fun part2(data: List<Int>) = runBlocking {
+private fun part2(data: List<Int>) = runBlocking(Dispatchers.Default) {
 
 	val r = permutations().map { it.map { it + 5 } }.map { p ->
-		val input = Channel<Int>()
+		val input = Channel<DataType>()
 		input.send(0)
 
-		val computers = (0..4).fold<Int,ReceiveChannel<Int>>(input) { ic, mode ->
-			IntComputer(data, listOf(mode) + ic).run()
+		lateinit var last:IntComputer
+		val computers = (0L..4L).fold<Long,ReceiveChannel<DataType>>(input) { ic, mode ->
+			runComputer(data, listOf(mode) + ic).also{last = it}.output
 		}
 
 		computers pipeTo input
+		last.join()
 		input.receive()
 	}.max()
 	println(r)

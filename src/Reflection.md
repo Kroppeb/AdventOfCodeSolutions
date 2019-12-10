@@ -91,6 +91,26 @@ Initially I felt like I was gonna need topoSort but wasn't needed
 * Forgot reduce existed
 * [ ] List.printLines maybe? errr .map{println(it)} is quite good
 
+### Day 9
+* Try to keep my cool more
+* [ ] Clean up Intcomputer
+* Be way more liberal with typealiases for stuff in refactorings
+
+### IntComputer refactoring
+Goals:
+* Easy to call from non suspending context
+* Input
+    * list
+    * stdin? (can be done by a sequence)
+    * channel
+    * sequence?
+* Output
+    * list
+    * stdout (can be done by attaching it to the channel)
+    * channel
+* Debugging constructs
+    * reverse engineer a bit
+        * https://www.reddit.com/r/adventofcode/comments/e8eg4f/2019_day_9_excel_what_if_you_dont_really_have/
 
 ### Potential ToDo's
 * [x] Make Point an actual class
