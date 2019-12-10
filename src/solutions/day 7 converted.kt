@@ -10,37 +10,24 @@ import kotlinx.coroutines.channels.ReceiveChannel
 fun permutations() = (0..4).cartesianProduct((0..4)).flatMap { (a, b) ->
 	(0..4).cartesianProduct((0..4))
 			.flatMap { (x, y) -> (0..4).map { listOf(a, b, x, y, it) } }
-}.filter { it.areDistinct() }.map2{it.toDataType()}
+}.filter { it.areDistinct() }.map2{it.toLong()}
 
 
-private fun part1(data: List<Int>) = runBlocking {
+private fun part1(data: Map<Long,Long>) = runBlocking {
 
 	val r = permutations().map { p ->
-		p.fold(0L) { i, s -> runComputer(data).run {
+		p.fold(0L) { i, s -> IntComputer(data.toMutableMap()).run {
 			input.send(s)
 			input.send(i)
+			runProgram()
 			output.receive()
 		} }
 	}.max()
 	println(r)
 }
 
-private fun part2(data: List<Int>) = runBlocking(Dispatchers.Default) {
-
-	val r = permutations().map { it.map { it + 5 } }.map { p ->
-		val input = Channel<DataType>()
-		input.send(0)
-
-		lateinit var last:IntComputer
-		val computers = (0L..4L).fold<Long,ReceiveChannel<DataType>>(input) { ic, mode ->
-			runComputer(data, listOf(mode) + ic).also{last = it}.output
-		}
-
-		computers pipeTo input
-		last.join()
-		input.receive()
-	}.max()
-	println(r)
+private fun part2(data:  Map<Long,Long>):Unit = runBlocking(Dispatchers.Default) {
+TODO()
 }
 
 fun main() {
@@ -49,7 +36,7 @@ fun main() {
 	part1(test)
 	part2(test)
 */
-	val data = getInts(7)
+	val data = getInts(7).withIndex().associate { (i,v)->i.toLong() to v.toLong()}
 	part1(data)
 	part2(data)
 }
