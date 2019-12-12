@@ -6,7 +6,7 @@ import java.util.concurrent.BlockingQueue
 import java.util.concurrent.TimeUnit
 import kotlin.math.*
 
-fun ggd(a:Int, b:Int):Int = if(a == 0) b else ggd(b % a, a)
+private fun ggd(a:Int, b:Int):Int = if(a == 0) b else ggd(b % a, a)
 
 private fun part1(data: List<List<Boolean>>) {
 	(data.indices).map { x ->
@@ -30,7 +30,7 @@ private fun part1(data: List<List<Boolean>>) {
 	}.maxBy{it.first.first}!!.let{println("${it.second}, ${it.first.second}: ${it.first.first}")}
 }
 
-fun fix(i:Double) = if(i < 0) i +100 else i
+private fun fix(i:Double) = if(i < 0) i +100 else i
 
 private fun part2(data: List<List<Boolean>>) {
 	val x = 22

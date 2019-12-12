@@ -6,14 +6,16 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
 
 typealias DataType = Long
-typealias IntCode = MutableMap<Pointer, DataType>
+typealias IntCode = Map<Pointer, DataType>
+typealias Data = MutableMap<Pointer, DataType>
 typealias OpCode = Int
 typealias ParameterMode = Int
 typealias Param = Pair<ParameterMode, DataType>
 typealias Pointer = DataType
 
 fun Number.toDataType(): DataType = this.toLong()
-fun List<Number>.toIntCode(): IntCode = this.withIndex().associate { (i, v) -> i.toPointer() to v.toDataType() }.toMutableMap()
+fun List<Number>.toIntCode(): IntCode = this.withIndex().associate { (i, v) -> i.toPointer() to v.toDataType() }
+fun List<Number>.toData(): Data = this.withIndex().associate { (i, v) -> i.toPointer() to v.toDataType() }.toMutableMap()
 fun Number.toOpCode(): OpCode = this.toInt()
 fun Number.toParameterMode(): ParameterMode = this.toInt()
 fun Pair<Number, Number>.toParam(): Param = first.toParameterMode() to second.toDataType()
@@ -21,13 +23,18 @@ fun Number.toPointer(): Pointer = this.toDataType()
 
 
 class IntComputer(
-		private val data: IntCode,
+		private val data: Data,
 		private val inputChannel: ReceiveChannel<DataType>,
 		scope: CoroutineScope
 ) : CoroutineScope by scope {
 	private var ip: Pointer = 0.toPointer()
 	private var sp: Pointer = 0.toPointer()
 	private var halted = false
+
+	suspend fun isHalted(): Boolean {
+		yield()
+		return halted
+	}
 
 	var input: SendChannel<DataType>? = null
 		private set
@@ -54,7 +61,7 @@ class IntComputer(
 	}
 
 	constructor(
-			data: IntCode,
+			data: Data,
 			input: Channel<DataType> = Channel(Channel.UNLIMITED),
 			scope: CoroutineScope) : this(data, input as ReceiveChannel<DataType>, scope){
 		this.input = input
@@ -159,13 +166,13 @@ class IntComputer(
 	}
 }
 
-fun CoroutineScope.runComputer(data: IntCode) = IntComputer(data, scope = this)
+fun CoroutineScope.runComputer(data: IntCode) = IntComputer(data.toMutableMap(), scope = this)
 fun CoroutineScope.runComputer(data: List<Number>) = runComputer(data.toIntCode())
 
-fun CoroutineScope.runComputer(data: IntCode, input: Channel<DataType>) = IntComputer(data, input, scope = this)
+fun CoroutineScope.runComputer(data: IntCode, input: Channel<DataType>) = IntComputer(data.toMutableMap(), input, scope = this)
 fun CoroutineScope.runComputer(data: List<Number>, input: Channel<DataType>) = runComputer(data.toIntCode(), input)
 
-fun CoroutineScope.runComputer(data: IntCode, input: ReceiveChannel<DataType>) = IntComputer(data, input, scope = this)
+fun CoroutineScope.runComputer(data: IntCode, input: ReceiveChannel<DataType>) = IntComputer(data.toMutableMap(), input, scope = this)
 fun CoroutineScope.runComputer(data: List<Number>, input: ReceiveChannel<DataType>) = runComputer(data.toIntCode(), input)
 
 

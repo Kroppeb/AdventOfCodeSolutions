@@ -84,13 +84,27 @@ Initially I felt like I was gonna need topoSort but wasn't needed
 
 ### Day 7
 * [ ] getPermutations
-* [ ] make the IntComputer io and yield more clean
+* [x] make the IntComputer io and yield more clean
 * [ ] quick input naming
 
 ### Day 8
 * Forgot reduce existed
 * [ ] List.printLines maybe? errr .map{println(it)} is quite good
 
+### Day 10
+* Grids...
+    * Point steps
+* GGD and similar
+
+### Day 11
+* [ ] Clean the template and make the functions runblocking by default
+* [ ] Grids
+* [ ] directional points
+* [ ] list of points to Bounds
+* [ ] Bound iteration
+* [ ] text printer
+* [ ] mod int (used for dirs)
+* [ ] `Clock()`
 
 ### Potential ToDo's
 * [x] Make Point an actual class

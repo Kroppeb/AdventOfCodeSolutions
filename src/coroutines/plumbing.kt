@@ -54,4 +54,11 @@ operator fun <T> ReceiveChannel<T>.plus(b: Iterable<T>) =
 				send(i)
 		}
 
+fun <T>Iterable<T>.toChannel():ReceiveChannel<T>{
+	val channel = Channel<T>(Channel.UNLIMITED)
+	for (i in this)
+		channel.offer(i)
+	return channel
+}
+
 

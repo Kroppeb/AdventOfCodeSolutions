@@ -1,6 +1,7 @@
 package helpers
 
 import kotlin.math.abs
+import kotlin.math.atan2
 import kotlin.math.sqrt
 
 infix fun Int.toP(y: Int): Point = Point(this, y)
@@ -34,6 +35,11 @@ interface PointN<T : PointN<T>> {
 	fun sqrDistTo(other: T): Int = (this - other).sqrDist()
 	fun distTo(other: T): Double = (this - other).dist()
 	fun manDistTo(other: T): Int = (this - other).manDist()
+
+	fun discreteAngle(): T
+	fun gcd():Int
+	fun min(other:T):T
+	fun max(other:T):T
 }
 
 data class Point(val x: Int, val y: Int) : PointN<Point> {
@@ -79,6 +85,20 @@ data class Point(val x: Int, val y: Int) : PointN<Point> {
 	override fun sqrDistTo(other: Point): Int = (this - other).sqrDist()
 	override fun distTo(other: Point): Double = (this - other).dist()
 	override fun manDistTo(other: Point): Int = (this - other).manDist()
+
+	fun angle(): Double{
+		return atan2(y.toDouble(),x.toDouble())
+	}
+
+	override fun gcd(): Int = gcd(abs(x),abs(y))
+
+	override fun discreteAngle(): Point {
+		val g = gcd()
+		return this / g
+	}
+
+	override fun min(other: Point): Point = min(this.x, other.x) toP min(this.y, other.y)
+	override fun max(other: Point): Point = max(this.x, other.x) toP max(this.y, other.y)
 }
 
 /**
@@ -150,6 +170,16 @@ data class Point3D(val x: Int, val y: Int, val z: Int) : PointN<Point3D>{
 	override fun sqrDistTo(other: Point3D): Int = (this - other).sqrDist()
 	override fun distTo(other: Point3D): Double = (this - other).dist()
 	override fun manDistTo(other: Point3D): Int = (this - other).manDist()
+
+	override fun gcd(): Int = gcd(abs(x), gcd(abs(y),abs(z)))
+
+	override fun discreteAngle(): Point3D {
+		val g = gcd()
+		return this / g
+	}
+
+	override fun min(other: Point3D): Point3D = min(this.x, other.x) toP min(this.y, other.y) toP min(this.z, other.z)
+	override fun max(other: Point3D): Point3D = max(this.x, other.x) toP max(this.y, other.y) toP max(this.z, other.z)
 }
 
 
@@ -210,3 +240,21 @@ fun <T:PointN<T>>Iterable<T>.sortByClosest() = sortedBy(PointN<T>::sqrDist)
 fun <T:PointN<T>>Iterable<T>.sortByClosestMan() = sortedBy(PointN<T>::manDist)
 fun <T:PointN<T>>Iterable<T>.sortByFurthest() = sortedByDescending(PointN<T>::sqrDist)
 fun <T:PointN<T>>Iterable<T>.sortByFurthestMan() = sortedByDescending(PointN<T>::manDist)
+
+object PointOrdering{
+	object XMayor:Comparator<Point>{
+		override fun compare(o1: Point, o2: Point): Int {
+			if(o1.x == o2.x)
+				return o1.y.compareTo(o2.y)
+			return o1.x.compareTo(o2.x)
+		}
+	}
+
+	object YMayor:Comparator<Point>{
+		override fun compare(o1: Point, o2: Point): Int {
+			if(o1.y == o2.y)
+				return o1.x.compareTo(o2.x)
+			return o1.y.compareTo(o2.y)
+		}
+	}
+}

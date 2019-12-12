@@ -14,6 +14,12 @@ fun <T> Iterator<T>.getNextOrNull(): T? {
 	return null
 }
 
+fun String.e() = map{it}
+@JvmName("e2")
+fun Iterable<String>.e() = map{it.e()}
+@JvmName("e3")
+fun Iterable<Iterable<String>>.e() = map{it.e()}
+
 inline fun <T, R> Iterable<Iterable<T>>.map2(convert: (T) -> R): List<List<R>> = map { it.map(convert) }
 
 inline fun <T, R> Iterable<T>.rleDecode(value: (T) -> R, length: (T) -> Int) = flatMap { listOf(value(it)).repeat(length(it)) }
