@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AOC2019.iml" filepath="$PROJECT_DIR$/AOC2019.iml" />
+      <module fileurl="file://$PROJECT_DIR$/solutions/solutions.iml" filepath="$PROJECT_DIR$/solutions/solutions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/util/util.iml" filepath="$PROJECT_DIR$/util/util.iml" />
     </modules>
   </component>
 </project>

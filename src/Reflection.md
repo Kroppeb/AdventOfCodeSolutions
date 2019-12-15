@@ -97,14 +97,29 @@ Initially I felt like I was gonna need topoSort but wasn't needed
 * GGD and similar
 
 ### Day 11
-* [ ] Clean the template and make the functions runblocking by default
+* [x] Clean the template and make the functions runblocking by default
 * [ ] Grids
 * [ ] directional points
 * [ ] list of points to Bounds
 * [ ] Bound iteration
 * [ ] text printer
-* [ ] mod int (used for dirs)
+* [ ] mod int (used for dirs) (how will this be used?)
 * [ ] `Clock()`
+
+### Day 12
+* Unused `==` is hardly visible
+
+### Day 13
+* Shouldn't have used multiple threads, just ignore player input.
+* Should have used a conflated channel and send updates each change in ball and paddle pos.
+* [ ] grids
+* [ ] better display for grids?
+* [ ] `clock()`
+
+### Day 14
+* Int division rounds to 0, not down. WTF
+* [ ] binary search thingies
+* Maybe start using Long as default
 
 ### Potential ToDo's
 * [x] Make Point an actual class

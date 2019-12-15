@@ -14,11 +14,12 @@ fun <T> Iterator<T>.getNextOrNull(): T? {
 	return null
 }
 
-fun String.e() = map{it}
+fun String.e() = map { it }
 @JvmName("e2")
-fun Iterable<String>.e() = map{it.e()}
+fun Iterable<String>.e() = map { it.e() }
+
 @JvmName("e3")
-fun Iterable<Iterable<String>>.e() = map{it.e()}
+fun Iterable<Iterable<String>>.e() = map { it.e() }
 
 inline fun <T, R> Iterable<Iterable<T>>.map2(convert: (T) -> R): List<List<R>> = map { it.map(convert) }
 
@@ -67,7 +68,7 @@ operator fun <E> List<E>.times(count: Int) = repeat(count)
 /**
  * Seed isn't returned, the retured list has length times
  */
-fun <T>generateTimes(times:Int, seed:T, next: (T)->T) :List<T>{
+fun <T> generateTimes(times: Int, seed: T, next: (T) -> T): List<T> {
 	var acc = seed
 	val ret = mutableListOf<T>()
 	repeat(times) {
@@ -80,11 +81,11 @@ fun <T>generateTimes(times:Int, seed:T, next: (T)->T) :List<T>{
 /**
  * Seed isn't returned, the retured list has length times
  */
-fun <S, T>generateStateTimes(times:Int, seed:S, next: (state:S)->Pair<S,T>) :List<T>{
+fun <S, T> generateStateTimes(times: Int, seed: S, next: (state: S) -> Pair<S, T>): List<T> {
 	var acc = seed
 	val ret = mutableListOf<T>()
 	repeat(times) {
-		val (s,t) = next(acc)
+		val (s, t) = next(acc)
 		acc = s
 		ret.add(t)
 	}
@@ -101,11 +102,11 @@ inline fun <T, R> Iterable<T>.scan(start: R, transform: (R, T) -> R): List<R> {
 	return ret
 }
 
-inline fun <T, S, R> Iterable<T>.stateScan(start: S, transform: (S, T) -> Pair<S,R>): List<R> {
+inline fun <T, S, R> Iterable<T>.stateScan(start: S, transform: (S, T) -> Pair<S, R>): List<R> {
 	var acc = start
 	val ret = mutableListOf<R>()
 	for (i in this) {
-		val(s, r) = transform(acc, i)
+		val (s, r) = transform(acc, i)
 		acc = s
 		ret.add(r)
 	}
@@ -272,18 +273,24 @@ fun <T> Iterable<T>.pairWise(): List<Pair<T, T>> = flatMapIndexed { i, v -> drop
 fun <T> Iterable<T>.orderedPairWise(): List<Pair<T, T>> = flatMapIndexed { i, v ->
 	filterIndexed { i2, _ -> i != i2 }.map { v to it }
 }
+
 fun <T> Iterable<T>.selfPairWise(): List<Pair<T, T>> = flatMapIndexed { i, v -> drop(i).map { v to it } }
 
 fun <T> Iterable<T>.cartesianSquare(): List<Pair<T, T>> = flatMap { v -> map { v to it } }
-fun <T,R> Iterable<T>.cartesianProduct(other: Iterable<R>): List<Pair<T, R>> = flatMap { v -> other.map { v to it } }
+fun <T, R> Iterable<T>.cartesianProduct(other: Iterable<R>): List<Pair<T, R>> = flatMap { v -> other.map { v to it } }
+inline fun <T, R, S> Iterable<T>.cartesianProduct(other: Iterable<R>, transform: (T, R) -> S): List<S> = flatMap { v -> other.map { transform(v, it) } }
+fun <T> Iterable<T>.cartesianPower(count: Int): List<List<T>> = if (count < 1) emptyList() else cartesianPower1(count)
+fun <T> Iterable<T>.cartesianPower1(count: Int): List<List<T>> = if (count == 1) this.map { listOf(it) } else
+	cartesianPower1(count - 1).cartesianProduct(this) { a, b -> a + b }
 
-fun <T> Iterator<T>.powerSet() : List<List<T>>{
+
+fun <T> Iterator<T>.powerSet(): List<List<T>> {
 	val iter = iterator()
 	if (!iter.hasNext())
 		return emptyList()
 	val pre = listOf(iter.getNext())
 	val next = iter.powerSet()
-	return next + next.map{pre + it}
+	return next + next.map { pre + it }
 }
 
 fun Iterable<Int>.cumSum() = scan(Int::plus)

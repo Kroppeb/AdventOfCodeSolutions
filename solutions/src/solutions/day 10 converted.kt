@@ -1,8 +1,8 @@
 package solutions
 
-import Grid.Grid
-import Grid.StrictPointGrid
-import Grid.entityGrid
+import grid.Grid
+import grid.StrictPointGrid
+import grid.entityGrid
 import helpers.*
 import kotlin.math.*
 
