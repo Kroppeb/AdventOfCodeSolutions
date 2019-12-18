@@ -35,3 +35,5 @@ infix fun Point.toB(other: Point): Bounds = Bounds(
 		min(this.x, other.x) toP min(this.y, other.y),
 		max(this.x, other.x) toP max(this.y, other.y)
 )
+
+operator fun Point.rangeTo(other: Point) = this toB other

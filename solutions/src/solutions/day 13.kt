@@ -78,16 +78,7 @@ private fun part1(data: IntCode)= runBlocking(Dispatchers.Default) {
 						error("")
 
 					val q = readLine()?.getInt() ?: 0
-					if (q in -1..1)
 						send(q.toLong())
-					else
-						repeat(q-1) {
-							select<Long>{
-								input!!.onSend(0L){0L}
-								async{delay(10000)}.onAwait{0L}
-							}
-
-						}
 				}
 			}catch (e:Exception){
 

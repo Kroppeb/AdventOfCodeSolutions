@@ -118,8 +118,21 @@ Initially I felt like I was gonna need topoSort but wasn't needed
 
 ### Day 14
 * Int division rounds to 0, not down. WTF
-* [ ] binary search thingies
+* [x] binary search thingies
 * Maybe start using Long as default
+
+### Day 15
+* NICE
+* [ ] maybe even more clock functionality
+    * [ ] a way to convert from point to neighbour id and back 
+
+### Day ~~16~~ 17
+* [ ] list of char/char array to string is hard
+* for part 2 i think I got a more difficult input.
+
+### Day 18
+* [ ] Maze simplifiers
+* [ ] Path algos
 
 ### Potential ToDo's
 * [x] Make Point an actual class
