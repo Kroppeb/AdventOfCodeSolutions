@@ -1,14 +1,37 @@
 package solutions
 
-import com.sun.jmx.remote.internal.ArrayQueue
-import coroutines.parallelMap
 import grid.entityGrid
-import helpers.*
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.asFlow
+import helpers.Point
+import helpers.getLines
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import java.util.*
-import java.util.concurrent.ConcurrentHashMap
-import kotlin.math.*
+import kotlin.collections.List
+import kotlin.collections.MutableSet
+import kotlin.collections.associateWith
+import kotlin.collections.component1
+import kotlin.collections.component2
+import kotlin.collections.component3
+import kotlin.collections.component4
+import kotlin.collections.contains
+import kotlin.collections.count
+import kotlin.collections.emptyList
+import kotlin.collections.emptySet
+import kotlin.collections.filter
+import kotlin.collections.filterValues
+import kotlin.collections.getOrPut
+import kotlin.collections.isNotEmpty
+import kotlin.collections.iterator
+import kotlin.collections.map
+import kotlin.collections.mutableMapOf
+import kotlin.collections.mutableSetOf
+import kotlin.collections.set
+import kotlin.collections.sorted
+import kotlin.collections.toList
+import kotlin.collections.toMutableMap
+import kotlin.collections.toMutableSet
+import kotlin.collections.toSet
 
 data class Step(val pos: Robots, val distance: Int, val keys: Int)
 data class Robots(val a: Point, val b: Point, val c: Point, val d: Point) {
@@ -121,7 +144,10 @@ private fun part1(data: List<List<Char>>) {
 }
 
 private fun part2(data: List<List<Char>>) = runBlocking {
-
+	//test
+	withContext(Dispatchers.Default) {
+		//test
+	}
 }
 
 fun main() {

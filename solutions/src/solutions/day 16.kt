@@ -1,11 +1,7 @@
 package solutions
 
-import coroutines.parallelMap
 import helpers.*
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.asFlow
-import java.util.*
-import java.util.concurrent.ConcurrentHashMap
 import kotlin.math.*
 
 private fun part1(data: Digits) = runBlocking {

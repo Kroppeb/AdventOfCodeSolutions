@@ -150,11 +150,11 @@ inline fun bsFirst(lower:Int? = null, upper:Int? = null, predicate: (Int) -> Boo
 	while(high > low + 1){
 		val mid = (low + high)/2
 		if(predicate(mid))
-			low = mid
-		else
 			high = mid
+		else
+			low = mid
 	}
-	return low
+	return high
 }
 
 inline fun bsLastL(lower:Long? = null, upper:Long? = null, predicate: (Long) -> Boolean):Long{
