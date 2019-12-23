@@ -4,6 +4,7 @@ import coroutines.pipeTo
 import coroutines.toChannel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
+import kotlinx.coroutines.selects.select
 
 typealias DataType = Long
 typealias IntCode = Map<Pointer, DataType>
@@ -21,10 +22,11 @@ fun Number.toParameterMode(): ParameterMode = this.toInt()
 fun Pair<Number, Number>.toParam(): Param = first.toParameterMode() to second.toDataType()
 fun Number.toPointer(): Pointer = this.toDataType()
 
+data class Msg(val x:Long, val y:Long)
 
 class IntComputer(
 		private val data: Data,
-		private val inputChannel: ReceiveChannel<DataType>,
+		private val inputChannel: ReceiveChannel<Msg>,
 		scope: CoroutineScope
 ) : CoroutineScope by scope {
 	private var ip: Pointer = 0.toPointer()
@@ -36,7 +38,7 @@ class IntComputer(
 		return halted
 	}
 
-	var input: SendChannel<DataType>? = null
+	var input: SendChannel<Msg>? = null
 		private set
 
 	private val outputChannel: Channel<DataType> = Channel(Channel.UNLIMITED)
@@ -48,10 +50,10 @@ class IntComputer(
 		job.join()
 	}
 
-	suspend fun send(item:DataType){
+	suspend fun send(item:Msg){
 		input!!.send(item)
 	}
-
+/*
 	suspend fun sendAll(items:Iterable<DataType>){
 		items pipeTo input!!
 	}
@@ -59,11 +61,11 @@ class IntComputer(
 	suspend fun sendAll(items:ReceiveChannel<DataType>): ReceiveChannel<DataType> {
 		return items pipeTo input!!
 	}
-
+*/
 	constructor(
 			data: Data,
-			input: Channel<DataType> = Channel(Channel.UNLIMITED),
-			scope: CoroutineScope) : this(data, input as ReceiveChannel<DataType>, scope){
+			input: Channel<Msg> = Channel(Channel.UNLIMITED),
+			scope: CoroutineScope) : this(data, input as ReceiveChannel<Msg>, scope){
 		this.input = input
 	}
 
@@ -110,6 +112,8 @@ class IntComputer(
 		halted = true
 	}
 
+	var prev : Long? = null
+
 	private suspend fun step() {
 		when (val opId = this[ip].toOpCode() % 100) {
 			// ADD
@@ -117,7 +121,23 @@ class IntComputer(
 			// MUL
 			2 -> !1 * !2 at 3 step 4
 			// INP
-			3 -> inputChannel.receive() at 1 step 2
+			3 ->if(prev == null){
+				if(inputChannel.isEmpty) {
+					idle++
+					yield()
+				}
+				if(inputChannel.isEmpty){
+					idle++
+					-1
+				}else{
+					idle = 0
+					val msg = inputChannel.poll()?:error("channel shouldn't have been empty")
+					prev = msg.y
+					msg.x
+				}
+			} else {
+				prev!!.also{prev = null}
+			} at 1 step 2
 			// OUT
 			4 -> outputChannel.send(!1) step 2
 			// JNZ
@@ -150,8 +170,10 @@ class IntComputer(
 		}.let{}
 	}
 
+	var idle = 0
+
 	init {
-		this.job = launch {
+		this.job = launch(start = CoroutineStart.LAZY) {
 			while (isActive && !halted) {
 				step()
 			}
@@ -169,12 +191,13 @@ class IntComputer(
 fun CoroutineScope.runComputer(data: IntCode) = IntComputer(data.toMutableMap(), scope = this)
 fun CoroutineScope.runComputer(data: List<Number>) = runComputer(data.toIntCode())
 
-fun CoroutineScope.runComputer(data: IntCode, input: Channel<DataType>) = IntComputer(data.toMutableMap(), input, scope = this)
-fun CoroutineScope.runComputer(data: List<Number>, input: Channel<DataType>) = runComputer(data.toIntCode(), input)
+fun CoroutineScope.runComputer(data: IntCode, input: Channel<Msg>) = IntComputer(data.toMutableMap(), input, scope = this)
+fun CoroutineScope.runComputer(data: List<Number>, input: Channel<Msg>) = runComputer(data.toIntCode(), input)
 
-fun CoroutineScope.runComputer(data: IntCode, input: ReceiveChannel<DataType>) = IntComputer(data.toMutableMap(), input, scope = this)
-fun CoroutineScope.runComputer(data: List<Number>, input: ReceiveChannel<DataType>) = runComputer(data.toIntCode(), input)
+fun CoroutineScope.runComputer(data: IntCode, input: ReceiveChannel<Msg>) = IntComputer(data.toMutableMap(), input, scope = this)
+fun CoroutineScope.runComputer(data: List<Number>, input: ReceiveChannel<Msg>) = runComputer(data.toIntCode(), input)
 
-
+/*
 fun CoroutineScope.runComputer(data: IntCode, input: List<Number>) = runComputer(data, input.map(Number::toDataType).toChannel())
 fun CoroutineScope.runComputer(data: List<Number>, input: List<Number>) = runComputer(data.toIntCode(), input)
+*/

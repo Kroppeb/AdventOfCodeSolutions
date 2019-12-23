@@ -134,6 +134,15 @@ Initially I felt like I was gonna need topoSort but wasn't needed
 * [ ] Maze simplifiers
 * [ ] Path algos
 
+### Day 19
+* 
+
+### Day 20
+* So IntelliJ just removed y trailing spaces, which were kinda needed. lost 5 minutes and 17 points due to that. Something to remember for next time
+    * StrictEntityGrid gives me a bounds. I should have used that...
+* [ ] PathFinding algorithms could be useful
+
+
 ### Potential ToDo's
 * [x] Make Point an actual class
 * [x] Convolutions, forEach(unordered/Ordered)Pair/
@@ -157,10 +166,11 @@ Initially I felt like I was gonna need topoSort but wasn't needed
         * [ ] binOp query
 * [ ] Graphs (and grids are graphs)
 * [ ] BracketStack
-* [ ] Bounds
+* [x] Bounds
 * [ ] (stepped) Toposort
 * [ ] eventqueue 
 * [ ] ticking game system // for turnbased combat or similar
 * [ ] add a lot of `...Indexed()`
 * [ ] sequences
-* [ ] python itertools
+* [x] python itertools ish
+* [ ] pure intcomputer

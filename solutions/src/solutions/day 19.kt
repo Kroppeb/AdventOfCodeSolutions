@@ -1,15 +1,8 @@
 package solutions
 
-import coroutines.parallelMap
-import grid.entityGrid
 import helpers.*
+import itertools.count
 import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.consumeEach
-import kotlinx.coroutines.channels.toList
-import kotlinx.coroutines.flow.asFlow
-import java.util.*
-import java.util.concurrent.ConcurrentHashMap
-import kotlin.math.*
 
 private fun part1(data: IntCode) = runBlocking {
 
@@ -31,7 +24,7 @@ private fun part1(data: IntCode) = runBlocking {
 private fun part2(data: IntCode) = runBlocking {
 	var x = bsFirst() { x ->
 		println("trying x=$x")
-		((x/2)..(3*x)/2).find { y ->
+		(0..x*2).find { y ->
 			runComputer(data).run {
 				send(x.toLong())
 				send(y.toLong())
@@ -57,7 +50,7 @@ private fun part2(data: IntCode) = runBlocking {
 		} != null
 	}
 
-	var y = ((x/2)..(3*x)/2).find { y ->
+	var y = count().first() { y ->
 		runComputer(data).run {
 				send(x.toLong())
 				send(y.toLong())

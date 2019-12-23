@@ -12,7 +12,7 @@ fun <T>List<T>.suffixes() = indices.map { this.subList(it,this.size) }
 fun <T>Sequence<T>.suffixes() = mapIndexed { index: Int, _: T -> this.drop(index) }
 
 
-fun <T>Sequence<Sequence<T>>.flatten() = flatMap { it }
+fun <T>Sequence<Sequence<T>>.flatten() = flatMap { it } + emptySequence<T>()
 
 fun <T>Iterable<T>.compressWith(selector: Iterable<Boolean>) = zip(selector).filter(Pair<T,Boolean>::second)
 fun <T>Sequence<T>.compressWith(selector: Sequence<Boolean>) = zip(selector).filter(Pair<T,Boolean>::second)
