@@ -1,12 +1,8 @@
 package solutions
 
 import helpers.*
-import itertools.*
 import kotlinx.coroutines.*
-import java.util.*
 import kotlin.collections.*
-import kotlin.math.*
-import grid.entityGrid
 import kotlinx.coroutines.channels.Channel
 
 
@@ -70,9 +66,40 @@ private fun part2(data: IntCode) = runBlocking {
 
 }
 
+data class Op(val q:Long, val a:Long, val b:Long, val c:Long, val d:Long) : Comparable<Op> {
+	/**
+	 * Compares this object with the specified object for order. Returns zero if this object is equal
+	 * to the specified [other] object, a negative number if it's less than [other], or a positive number
+	 * if it's greater than [other].
+	 */
+	override fun compareTo(other: Op): Int = when(val va = a-other.a){
+		0L -> when(val vb = b-other.b){
+			0L -> when(val vc = c-other.c){
+				0L -> when(val vd = d-other.d){
+					0L -> 0
+					else -> vd.toInt()
+				}
+				else -> vc.toInt()
+			}
+			else -> vb.toInt()
+		}
+		else -> va.toInt()
+	}
+}
+
+private fun test(data: IntCode) = runBlocking {
+	data.entries
+			.map{a->a.value to (0..3).map{data[a.value + it.toLong()]}}
+			.mapNotNull {(a,it)-> if (it.all{it!=null} && (it[0]!! > 0) && (it[0]!!%100L == 99L || it[0]!!%100L in 1L..9L)) Op(a, it[0]!!, it[1]!!, it[2]!!, it[3]!!) else null }
+			.also{println(it.size)}
+			.toSortedSet()
+			.sortedBy { it.q }
+			.forEach(::println)
+}
 
 fun main() {
 	val data: IntCode = getIntCode(23)
-	part1(data)
-	part2(data)
+	//part1(data)
+	//part2(data)
+	test(data)
 }
