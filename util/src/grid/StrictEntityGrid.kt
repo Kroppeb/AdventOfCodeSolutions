@@ -9,6 +9,12 @@ class StrictPointGrid(override val bounds: Bounds, val points: Set<Point>) : Str
 	override fun get(index: Point) = index in bounds && index in points
 }
 
+inline fun <T> SimpleGrid<T>.entityGrid(predicate: (T) -> Boolean): StrictPointGrid {
+	val points = mutableSetOf<Point>()
+	forEachIndexed { point, t -> if(predicate(t)) points.add(point) }
+	return StrictPointGrid(bounds, points);
+}
+
 inline fun <T> Iterable<Iterable<T>>.entityGrid(predicate: (T) -> Boolean): StrictPointGrid {
 	var maxX = Int.MIN_VALUE
 	var maxY = Int.MIN_VALUE

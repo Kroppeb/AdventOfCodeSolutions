@@ -1,6 +1,5 @@
 package helpers
 
-import java.util.*
 import kotlin.collections.ArrayList
 
 fun <T> Iterator<T>.getNext(): T {
@@ -46,7 +45,7 @@ inline fun <K, A> Map<K, A>.merge(other: Map<K, A>, m: (A, A) -> A) = this.keys.
 	this[it]?.let { a -> other[it]?.let { b -> m(a, b) } ?: a } ?: other[it]!!
 }
 
-inline fun <K, A, R> Map<K, A>.mergeMap(other: Map<K, A>, m: (A?, A?) -> R) = this.union(other).mapValues { (_, v) ->
+inline fun <K, A, B, R> Map<K, A>.mergeMap(other: Map<K, B>, m: (A?, B?) -> R) = this.union(other).mapValues { (_, v) ->
 	m(v.first, v.second)
 }
 
@@ -186,7 +185,7 @@ fun <T : Comparable<T>> Iterable<T>.isAscending(): Boolean {
 		return true
 	var acc = iter.next()
 	for (i in iter) {
-		if (acc >= i)
+		if (acc > i)
 			return false
 		acc = i
 	}
@@ -199,19 +198,6 @@ fun <T : Comparable<T>> Iterable<T>.isDescending(): Boolean {
 		return true
 	var acc = iter.next()
 	for (i in iter) {
-		if (acc <= i)
-			return false
-		acc = i
-	}
-	return true
-}
-
-fun <T : Comparable<T>> Iterable<T>.isNonAscending(): Boolean {
-	val iter = iterator()
-	if (!iter.hasNext())
-		return true
-	var acc = iter.next()
-	for (i in iter) {
 		if (acc < i)
 			return false
 		acc = i
@@ -219,13 +205,26 @@ fun <T : Comparable<T>> Iterable<T>.isNonAscending(): Boolean {
 	return true
 }
 
-fun <T : Comparable<T>> Iterable<T>.isNonDescending(): Boolean {
+fun <T : Comparable<T>> Iterable<T>.isStrictAscending(): Boolean {
 	val iter = iterator()
 	if (!iter.hasNext())
 		return true
 	var acc = iter.next()
 	for (i in iter) {
-		if (acc > i)
+		if (acc >= i)
+			return false
+		acc = i
+	}
+	return true
+}
+
+fun <T : Comparable<T>> Iterable<T>.isStrictDescending(): Boolean {
+	val iter = iterator()
+	if (!iter.hasNext())
+		return true
+	var acc = iter.next()
+	for (i in iter) {
+		if (acc <= i)
 			return false
 		acc = i
 	}
@@ -236,27 +235,26 @@ fun <T : Comparable<T>> Iterable<T>.isNonDescending(): Boolean {
  *
  * @param transform called once for each item in the iterable
  */
-fun <T, R> Iterable<T>.blockBy(transform: (T) -> R): List<List<T>> {
+inline fun <T, R> Iterable<T>.blockBy(transform: (T) -> R): List<List<T>> {
 	val iter = iterator()
 	if (!iter.hasNext())
 		return emptyList()
-	var acc = iter.next()
-	var key = transform(acc)
-	var count = mutableListOf<T>(acc)
-	val ret = mutableListOf<List<T>>()
+	val start = iter.next()
+	var key = transform(start)
+	var count = mutableListOf(start)
+	val result = mutableListOf<List<T>>()
 	for (i in iter) {
 		val ikey = transform(i)
 		if (key == ikey)
 			count.add(i)
 		else {
-			ret.add(count)
-			acc = i
+			result.add(count)
 			key = ikey
-			count = mutableListOf<T>(acc)
+			count = mutableListOf(start)
 
 		}
 	}
-	return ret
+	return result
 }
 
 fun Iterable<*>.areDistinct(): Boolean {
@@ -292,6 +290,7 @@ fun <T> Iterator<T>.powerSet(): List<List<T>> {
 	val next = iter.powerSet()
 	return next + next.map { pre + it }
 }
+fun <T> Iterable<T>.powerSet(): List<List<T>> = iterator().powerSet()
 
 fun Iterable<Int>.cumSum() = scan(Int::plus)
 

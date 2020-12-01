@@ -52,10 +52,10 @@ fun getData(day: Int): String =
 		if (day > 100) {
 			val y = day / 100
 			val d = day % 100
-			day::class.java.getResource("$y/$d")
+			day::class.java.getResource("/$y/$d")
 					.readText()
 		} else {
-			day::class.java.getResource("$day")
+			day::class.java.getResource("/$day")
 					.readText()
 		}
 

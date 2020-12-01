@@ -7,7 +7,7 @@ fun get(day: Int): Map<String, Int> {
 }
 
 fun main() {
-	val days = (1..24).map(::get)
+	val days = (1..25).map(::get)
 	val inter = days.fold(mutableListOf<Map<String,Int>>()){o,n->
 		o.add(when(val l = o.lastOrNull()){
 			null -> n

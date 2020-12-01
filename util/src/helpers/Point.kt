@@ -1,5 +1,10 @@
 package helpers
 
+import grid.Clock
+import grid.Clock.down
+import grid.Clock.left
+import grid.Clock.right
+import grid.Clock.up
 import kotlin.math.abs
 import kotlin.math.atan2
 import kotlin.math.sqrt
@@ -37,16 +42,16 @@ interface PointN<T : PointN<T>> {
 	fun manDistTo(other: T): Int = (this - other).manDist()
 
 	fun discreteAngle(): T
-	fun gcd():Int
-	fun min(other:T):T
-	fun max(other:T):T
+	fun gcd(): Int
+	fun min(other: T): T
+	fun max(other: T): T
 }
 
 data class Point(val x: Int, val y: Int) : PointN<Point> {
-	val right by lazy { x + 1 toP y }
-	val down by lazy { x toP y + 1 }
-	val left by lazy { x - 1 toP y }
-	val up by lazy { x toP y - 1 }
+	val right by lazy { x + Clock.eX toP y + Clock.eY }
+	val down by lazy { x - Clock.nX toP y - Clock.nY }
+	val left by lazy { x - Clock.eX toP y - Clock.eY }
+	val up by lazy { x + Clock.nX toP y + Clock.nY }
 
 
 	fun rotateClock() = (-y) toP x
@@ -86,11 +91,11 @@ data class Point(val x: Int, val y: Int) : PointN<Point> {
 	override fun distTo(other: Point): Double = (this - other).dist()
 	override fun manDistTo(other: Point): Int = (this - other).manDist()
 
-	fun angle(): Double{
-		return atan2(y.toDouble(),x.toDouble())
+	fun angle(): Double {
+		return atan2(y.toDouble(), x.toDouble())
 	}
 
-	override fun gcd(): Int = gcd(abs(x),abs(y))
+	override fun gcd(): Int = gcd(abs(x), abs(y))
 
 	override fun discreteAngle(): Point {
 		val g = gcd()
@@ -102,13 +107,13 @@ data class Point(val x: Int, val y: Int) : PointN<Point> {
 }
 
 /**
- * righthanded
+ * righthanded rotations for now
  */
-data class Point3D(val x: Int, val y: Int, val z: Int) : PointN<Point3D>{
-	val right by lazy { x + 1 toP y toP z }
-	val left by lazy { x - 1 toP y toP z }
-	val down by lazy { x toP y + 1 toP z }
-	val up by lazy { x toP y - 1 toP z }
+data class Point3D(val x: Int, val y: Int, val z: Int) : PointN<Point3D> {
+	val right by lazy { x + Clock.eX toP y + Clock.eY toP z }
+	val left by lazy { x - Clock.eX toP y - Clock.eY toP z }
+	val down by lazy { x - Clock.nX toP y - Clock.nY toP z }
+	val up by lazy { x + Clock.nX toP y + Clock.nY toP z }
 	val front by lazy { x toP y toP z + 1 }
 	val back by lazy { x toP y toP z - 1 }
 
@@ -120,15 +125,18 @@ data class Point3D(val x: Int, val y: Int, val z: Int) : PointN<Point3D>{
 	fun rotateAntiClockZ() = y toP -x toP z
 
 	fun getHexNeighbours() = listOf(right, left, up, down, front, back)
+
 	// Ordered by x:y:z
 	fun get2DDiagonalNeighbours() = listOf(
 			left.down, left.back, left.front, left.up,
 			down.back, down.front, up.back, up.front,
 			right.down, right.back, right.front, right.up)
+
 	// Ordered by x:y:z
 	fun get3DDiagonalNeighbours() = listOf(
 			left.down.back, left.down.front, left.up.back, left.up.front,
 			right.down.back, right.down.front, right.up.back, right.up.front)
+
 	// Ordered by x:y:z
 	fun getIcosiHeptaNeighbours() = listOf(
 			left.down.back, left.down, left.down.front,
@@ -171,7 +179,7 @@ data class Point3D(val x: Int, val y: Int, val z: Int) : PointN<Point3D>{
 	override fun distTo(other: Point3D): Double = (this - other).dist()
 	override fun manDistTo(other: Point3D): Int = (this - other).manDist()
 
-	override fun gcd(): Int = gcd(abs(x), gcd(abs(y),abs(z)))
+	override fun gcd(): Int = gcd(abs(x), gcd(abs(y), abs(z)))
 
 	override fun discreteAngle(): Point3D {
 		val g = gcd()
@@ -184,75 +192,75 @@ data class Point3D(val x: Int, val y: Int, val z: Int) : PointN<Point3D>{
 
 
 fun Char.toPoint(): Point = when (this) {
-	'E' -> 1 toP 0
-	'R' -> 1 toP 0
+	'E' -> right
+	'R' -> right
 
-	'S' -> 0 toP 1
-	'D' -> 0 toP 1
+	'S' -> down
+	'D' -> down
 
-	'W' -> -1 toP 0
-	'L' -> -1 toP 0
+	'W' -> left
+	'L' -> left
 
-	'N' -> 0 toP -1
-	'U' -> 0 toP -1
+	'N' -> up
+	'U' -> up
 	else -> error("")
 }
 
 
-fun <T:PointN<T>>abs(v: T) = v.abs()
+fun <T : PointN<T>> abs(v: T) = v.abs()
 
 
-fun <T:PointN<T>>Iterable<T>.getClosest(): T? = this.minBy(PointN<T>::sqrDist)
-fun <T:PointN<T>>Iterable<T>.getClosestMan(): T? = this.minBy(PointN<T>::manDist)
+fun <T : PointN<T>> Iterable<T>.getClosest(): T? = this.minBy(PointN<T>::sqrDist)
+fun <T : PointN<T>> Iterable<T>.getClosestMan(): T? = this.minBy(PointN<T>::manDist)
 
-fun <T:PointN<T>>Iterable<T>.getClosestTo(other: T): T? = this.minBy { it.sqrDistTo(other) }
-fun <T:PointN<T>>Iterable<T>.getClosestManTo(other: T): T? = this.minBy { it.manDistTo(other) }
+fun <T : PointN<T>> Iterable<T>.getClosestTo(other: T): T? = this.minBy { it.sqrDistTo(other) }
+fun <T : PointN<T>> Iterable<T>.getClosestManTo(other: T): T? = this.minBy { it.manDistTo(other) }
 
-fun <T:PointN<T>>Iterable<T>.getFurthest(): T? = this.maxBy(PointN<T>::sqrDist)
-fun <T:PointN<T>>Iterable<T>.getFurthestMan(): T? = this.maxBy(PointN<T>::manDist)
+fun <T : PointN<T>> Iterable<T>.getFurthest(): T? = this.maxBy(PointN<T>::sqrDist)
+fun <T : PointN<T>> Iterable<T>.getFurthestMan(): T? = this.maxBy(PointN<T>::manDist)
 
-fun <T:PointN<T>>Iterable<T>.getFurthestTo(other: T): T? = this.maxBy { it.sqrDistTo(other) }
-fun <T:PointN<T>>Iterable<T>.getFurthestManTo(other: T): T? = this.maxBy { it.manDistTo(other) }
+fun <T : PointN<T>> Iterable<T>.getFurthestTo(other: T): T? = this.maxBy { it.sqrDistTo(other) }
+fun <T : PointN<T>> Iterable<T>.getFurthestManTo(other: T): T? = this.maxBy { it.manDistTo(other) }
 
-fun <T:PointN<T>>Iterable<T>.getClosestSqrDist(): Int? = this.map(PointN<T>::sqrDist).min()
-fun <T:PointN<T>>Iterable<T>.getClosestDist(): Double? = getClosestSqrDist()?.let { sqrt(it.toDouble()) }
-fun <T:PointN<T>>Iterable<T>.getClosestManDist(): Int? = this.map(PointN<T>::manDist).min()
+fun <T : PointN<T>> Iterable<T>.getClosestSqrDist(): Int? = this.map(PointN<T>::sqrDist).min()
+fun <T : PointN<T>> Iterable<T>.getClosestDist(): Double? = getClosestSqrDist()?.let { sqrt(it.toDouble()) }
+fun <T : PointN<T>> Iterable<T>.getClosestManDist(): Int? = this.map(PointN<T>::manDist).min()
 
-fun <T:PointN<T>>Iterable<T>.getClosestSqrDistTo(other: T): Int? = this.map { it.sqrDistTo(other) }.min()
-fun <T:PointN<T>>Iterable<T>.getClosestDistTo(other: T): Double? = getClosestSqrDistTo(other)?.let { sqrt(it.toDouble()) }
-fun <T:PointN<T>>Iterable<T>.getClosestManDistTo(other: T): Int? = this.map { it.manDistTo(other) }.min()
+fun <T : PointN<T>> Iterable<T>.getClosestSqrDistTo(other: T): Int? = this.map { it.sqrDistTo(other) }.min()
+fun <T : PointN<T>> Iterable<T>.getClosestDistTo(other: T): Double? = getClosestSqrDistTo(other)?.let { sqrt(it.toDouble()) }
+fun <T : PointN<T>> Iterable<T>.getClosestManDistTo(other: T): Int? = this.map { it.manDistTo(other) }.min()
 
-fun <T:PointN<T>>Iterable<T>.getFurthestSqrDist(): Int? = this.map(PointN<T>::sqrDist).max()
-fun <T:PointN<T>>Iterable<T>.getFurthestDist(): Double? = getFurthestSqrDist()?.let { sqrt(it.toDouble()) }
-fun <T:PointN<T>>Iterable<T>.getFurthestManDist(): Int? = this.map(PointN<T>::manDist).max()
+fun <T : PointN<T>> Iterable<T>.getFurthestSqrDist(): Int? = this.map(PointN<T>::sqrDist).max()
+fun <T : PointN<T>> Iterable<T>.getFurthestDist(): Double? = getFurthestSqrDist()?.let { sqrt(it.toDouble()) }
+fun <T : PointN<T>> Iterable<T>.getFurthestManDist(): Int? = this.map(PointN<T>::manDist).max()
 
-fun <T:PointN<T>>Iterable<T>.getFurthestSqrDistTo(other: T): Int? = this.map { it.sqrDistTo(other) }.max()
-fun <T:PointN<T>>Iterable<T>.getFurthestDistTo(other: T): Double? = getFurthestSqrDistTo(other)?.let { sqrt(it.toDouble()) }
-fun <T:PointN<T>>Iterable<T>.getFurthestManDistTo(other: T): Int? = this.map { it.manDistTo(other) }.max()
+fun <T : PointN<T>> Iterable<T>.getFurthestSqrDistTo(other: T): Int? = this.map { it.sqrDistTo(other) }.max()
+fun <T : PointN<T>> Iterable<T>.getFurthestDistTo(other: T): Double? = getFurthestSqrDistTo(other)?.let { sqrt(it.toDouble()) }
+fun <T : PointN<T>> Iterable<T>.getFurthestManDistTo(other: T): Int? = this.map { it.manDistTo(other) }.max()
 
 
-fun <T:PointN<T>>Iterable<T>.sortByClosestTo(other: T) = sortedBy {it.sqrDistTo(other)}
-fun <T:PointN<T>>Iterable<T>.sortByClosestManTo(other: T) = sortedBy {it.sqrDistTo(other)}
-fun <T:PointN<T>>Iterable<T>.sortByFurthestTo(other: T) = sortedByDescending {it.manDistTo(other)}
-fun <T:PointN<T>>Iterable<T>.sortByFurthestManTo(other: T) = sortedByDescending {it.manDistTo(other)}
+fun <T : PointN<T>> Iterable<T>.sortByClosestTo(other: T) = sortedBy { it.sqrDistTo(other) }
+fun <T : PointN<T>> Iterable<T>.sortByClosestManTo(other: T) = sortedBy { it.sqrDistTo(other) }
+fun <T : PointN<T>> Iterable<T>.sortByFurthestTo(other: T) = sortedByDescending { it.manDistTo(other) }
+fun <T : PointN<T>> Iterable<T>.sortByFurthestManTo(other: T) = sortedByDescending { it.manDistTo(other) }
 
-fun <T:PointN<T>>Iterable<T>.sortByClosest() = sortedBy(PointN<T>::sqrDist)
-fun <T:PointN<T>>Iterable<T>.sortByClosestMan() = sortedBy(PointN<T>::manDist)
-fun <T:PointN<T>>Iterable<T>.sortByFurthest() = sortedByDescending(PointN<T>::sqrDist)
-fun <T:PointN<T>>Iterable<T>.sortByFurthestMan() = sortedByDescending(PointN<T>::manDist)
+fun <T : PointN<T>> Iterable<T>.sortByClosest() = sortedBy(PointN<T>::sqrDist)
+fun <T : PointN<T>> Iterable<T>.sortByClosestMan() = sortedBy(PointN<T>::manDist)
+fun <T : PointN<T>> Iterable<T>.sortByFurthest() = sortedByDescending(PointN<T>::sqrDist)
+fun <T : PointN<T>> Iterable<T>.sortByFurthestMan() = sortedByDescending(PointN<T>::manDist)
 
-object PointOrdering{
-	object XMayor:Comparator<Point>{
+object PointOrdering {
+	object XMayor : Comparator<Point> {
 		override fun compare(o1: Point, o2: Point): Int {
-			if(o1.x == o2.x)
+			if (o1.x == o2.x)
 				return o1.y.compareTo(o2.y)
 			return o1.x.compareTo(o2.x)
 		}
 	}
 
-	object YMayor:Comparator<Point>{
+	object YMayor : Comparator<Point> {
 		override fun compare(o1: Point, o2: Point): Int {
-			if(o1.y == o2.y)
+			if (o1.y == o2.y)
 				return o1.x.compareTo(o2.x)
 			return o1.y.compareTo(o2.y)
 		}

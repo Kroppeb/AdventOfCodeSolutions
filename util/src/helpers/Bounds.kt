@@ -1,11 +1,12 @@
 package helpers
 
+import grid.Clock
 import kotlin.math.*
 
 /**
  * lower and higher are inclusive
  */
-data class Bounds(val lower: Point, val higher: Point) {
+data class Bounds(val lower: Point, val higher: Point) : Iterable<Point>{
 	operator fun contains(point: Point): Boolean = point.x in lower.x..higher.x && point.y in lower.y..higher.y
 
 	/**
@@ -26,9 +27,44 @@ data class Bounds(val lower: Point, val higher: Point) {
 			min(this.lower.x, other.lower.x) toP min(this.lower.y, other.lower.y),
 			max(this.higher.x, other.higher.x) toP max(this.higher.y, other.higher.y))
 
-	companion object{
+	companion object {
+		/**
+		∀x Point: x in INFINITE
+		∀x Bound: x.intersect(INFINITE) == x
+		∀x Bound: x.merge(INFINITE) == INFINITE
+		 */
 		val INFINITE = (Int.MIN_VALUE toP Int.MIN_VALUE) toB (Int.MAX_VALUE toP Int.MAX_VALUE)
 	}
+
+	val ne by lazy {
+		when (Clock.nX + Clock.eX) {
+			1 -> higher.x
+			-1 -> lower.x
+			else -> error("")
+		} toP when (Clock.nY + Clock.eY) {
+			1 -> higher.y
+			-1 -> lower.y
+			else -> error("")
+		}
+	}
+	val nw by lazy {
+		when (Clock.nX - Clock.eX) {
+			1 -> higher.x
+			-1 -> lower.x
+			else -> error("")
+		} toP when (Clock.nY - Clock.eY) {
+			1 -> higher.y
+			-1 -> lower.y
+			else -> error("")
+		}
+	}
+	val se by lazy { higher + lower - nw }
+	val sw by lazy { higher + lower - ne }
+
+	override operator fun iterator() =
+			(this.lower.x..this.higher.x).flatMap { x ->
+				(this.lower.y..this.higher.y).map {y -> x toP y}
+			}.iterator()
 }
 
 infix fun Point.toB(other: Point): Bounds = Bounds(

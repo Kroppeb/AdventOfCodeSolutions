@@ -1,7 +1,6 @@
 package itertools
 
 import helpers.scan
-import iterators.ConcatIterator
 
 fun <T>List<T>.prefixes() = indices.map { this.subList(0,it+1) }
 fun <T>Sequence<T>.prefixes() = mapIndexed { index: Int, _: T -> this.take(index+1) }
