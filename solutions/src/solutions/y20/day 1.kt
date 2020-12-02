@@ -25,7 +25,7 @@ private fun part2(data: Data) {
 private typealias Data = List<Int>
 
 fun main() {
-	val data: Data = getInts(2020_1)
+	val data: Data = getInts(2020_01)
 	part1(data)
 	part2(data)
 }

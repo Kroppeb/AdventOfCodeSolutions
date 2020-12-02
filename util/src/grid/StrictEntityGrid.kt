@@ -15,28 +15,7 @@ inline fun <T> SimpleGrid<T>.entityGrid(predicate: (T) -> Boolean): StrictPointG
 	return StrictPointGrid(bounds, points);
 }
 
-inline fun <T> Iterable<Iterable<T>>.entityGrid(predicate: (T) -> Boolean): StrictPointGrid {
-	var maxX = Int.MIN_VALUE
-	var maxY = Int.MIN_VALUE
-	var minX = Int.MAX_VALUE
-	var minY = Int.MAX_VALUE
-	val points = mutableSetOf<Point>()
-	this.forEachIndexed { x: Int, iterable: Iterable<T> ->
-		if (x > maxX)
-			maxX = x
-		if (x < minX)
-			minX = x
-		iterable.forEachIndexed { y, t ->
-			if (y > maxY)
-				maxY = y
-			if (y < minY)
-				minY = y
-			if (predicate(t))
-				points += x toP y
-		}
-	}
-	return StrictPointGrid((minX toP minY) toB (maxX toP maxY), points)
-}
+inline fun <T> List<List<T>>.entityGrid(predicate: (T) -> Boolean): StrictPointGrid = grid().entityGrid(predicate)
 
 fun Iterable<Point>.entityGrid(): StrictPointGrid {
 	var maxX = Int.MIN_VALUE
