@@ -1,5 +1,8 @@
 package helpers
 
+import grid.Grid
+import grid.grid
+
 private val regexInt = Regex("""-?\d+""")
 private val regexPosInt = Regex("""\d+""")
 private val regexDigit = Regex("""\d""")
@@ -100,6 +103,8 @@ fun getLines(day: Int): List<String> {
 	return lines
 }
 
+fun getCGrid(day: Int): CGrid = getLines(day).e().grid()
+
 /**
  * Read in Comma (',') Separated Values
  */
@@ -177,7 +182,7 @@ typealias Words = List<String>
 typealias AlphaNums = List<String>
 
 typealias Lines = List<String>
-
+typealias CGrid = Grid<Char>
 
 typealias IntLines = List<List<Int>>
 typealias PosIntLines = List<List<Int>>

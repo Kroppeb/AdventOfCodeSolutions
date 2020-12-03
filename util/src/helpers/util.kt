@@ -239,3 +239,5 @@ inline fun bsFirstL(lower:Long? = null, upper:Long? = null, predicate: (Long) ->
 	return high
 }
 // endregion
+
+operator fun Int.rem(range: IntRange) = range.first + (this - range.first) % (range.last - range.first + 1)

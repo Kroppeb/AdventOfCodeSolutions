@@ -65,6 +65,14 @@ data class Bounds(val lower: Point, val higher: Point) : Iterable<Point>{
 			(this.lower.x..this.higher.x).flatMap { x ->
 				(this.lower.y..this.higher.y).map {y -> x toP y}
 			}.iterator()
+
+	val xs get() = this.lower.x .. this.higher.x
+	val ys get() = this.lower.y .. this.higher.y
+
+	val xSize get() = (this.higher.x - this.lower.x + 1)
+	val ySize get() = (this.higher.y - this.lower.y + 1)
+	val size get() = xSize toP ySize
+	val area get() = xSize * ySize
 }
 
 infix fun Point.toB(other: Point): Bounds = Bounds(
@@ -73,3 +81,4 @@ infix fun Point.toB(other: Point): Bounds = Bounds(
 )
 
 operator fun Point.rangeTo(other: Point) = this toB other
+operator fun Point.rem(bounds: Bounds) = (x % bounds.xs) toP (y % bounds.ys)
