@@ -9,3 +9,6 @@
 ## Day 2
 * [x] Missing `Lines` type
 * [x] getLines doesn't remove final empty line. That only happens in the `grid` function
+
+## Day 3
+* [x] Add the ability to do Int % IntRange and Point % Bounds 
