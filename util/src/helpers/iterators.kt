@@ -1,5 +1,6 @@
 package helpers
 
+import java.util.function.Predicate
 import kotlin.collections.ArrayList
 
 fun <T> Iterator<T>.getNext(): T {
@@ -296,6 +297,21 @@ fun Iterable<Int>.cumSum() = scan(Int::plus)
 
 val <T>Iterable<Pair<T, *>>.firsts get() = map { it.first }
 val <T>Iterable<Pair<*, T>>.seconds get() = map { it.second }
+
+inline fun <T>Iterable<T>.splitOn(predicate: (T) -> Boolean): List<List<T>>{
+	val d = mutableListOf<List<T>>()
+	var u = mutableListOf<T>()
+	for(i in this){
+		if(predicate(i)){
+			d += u
+			u = mutableListOf()
+		}else{
+			u.add(i)
+		}
+	}
+	d += u
+	return d;
+}
 
 
 //region list components

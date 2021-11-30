@@ -1,3 +1,4 @@
+
 val reg = Regex("""^\s*(\d+)\)\sDec\s\d+\s+[0-9:]+\s+(.+?)(\s*\(AoC\+\+\))?(\s*\(Sponsor\))?\s*$""",RegexOption.MULTILINE)
 
 fun get(day: Int): Map<String, Int> {
@@ -7,16 +8,15 @@ fun get(day: Int): Map<String, Int> {
 }
 
 fun main() {
-	val days = (1..25).map(::get)
-	val inter = days.fold(mutableListOf<Map<String,Int>>()){o,n->
-		o.add(when(val l = o.lastOrNull()){
+	val days = (2..25).map(::get)
+	val inter = days.fold(mutableListOf<Map<String, Int>>()) { o, n ->
+		o.add(when (val l = o.lastOrNull()) {
 			null -> n
-			else -> l.toMutableMap().also{
-				for((k,v) in n.entries)
-					it.merge(k,v,Int::plus)
+			else -> l.toMutableMap().also {
+				for ((k, v) in n.entries)
+					it.merge(k, v, Int::plus)
 			}
-		}
-		)
+		})
 		o
 	}
 

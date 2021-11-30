@@ -12,3 +12,15 @@
 
 ## Day 3
 * [x] Add the ability to do Int % IntRange and Point % Bounds 
+
+## Day 4
+- Today was just data parsing. Wasn't really fun.
+
+## Day 6
+- It's called `.reduce` FYI, don't forget
+* [x] `.splitOn{}`. Should have done this 2 days ago honestly.
+
+## Day 7
+* [ ] `.log` short for `.also{println(it)}`
+* [ ] `mmof<>()` short for `mutableMapOf<>()` and family
+* [ ] `cached` kinda like pythons `@lru_cache`

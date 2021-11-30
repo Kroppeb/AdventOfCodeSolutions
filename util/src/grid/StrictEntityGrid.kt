@@ -5,7 +5,7 @@ import helpers.Point
 import helpers.toB
 import helpers.toP
 
-class StrictPointGrid(override val bounds: Bounds, val points: Set<Point>) : StrictGrid<Boolean> {
+class StrictPointGrid(override val bounds: Bounds, var points: Set<Point>) : StrictGrid<Boolean> {
 	override fun get(index: Point) = index in bounds && index in points
 }
 

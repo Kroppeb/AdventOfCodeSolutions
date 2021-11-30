@@ -1,6 +1,7 @@
 package helpers
 
 import grid.Grid
+import grid.SimpleGrid
 import grid.grid
 
 private val regexInt = Regex("""-?\d+""")
@@ -182,7 +183,7 @@ typealias Words = List<String>
 typealias AlphaNums = List<String>
 
 typealias Lines = List<String>
-typealias CGrid = Grid<Char>
+typealias CGrid = SimpleGrid<Char>
 
 typealias IntLines = List<List<Int>>
 typealias PosIntLines = List<List<Int>>

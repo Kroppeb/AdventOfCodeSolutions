@@ -45,6 +45,8 @@ interface PointN<T : PointN<T>> {
 	fun gcd(): Int
 	fun min(other: T): T
 	fun max(other: T): T
+
+	fun dot(other: T): Int
 }
 
 data class Point(val x: Int, val y: Int) : PointN<Point> {
@@ -53,9 +55,15 @@ data class Point(val x: Int, val y: Int) : PointN<Point> {
 	val left by lazy { x - Clock.eX toP y - Clock.eY }
 	val up by lazy { x + Clock.nX toP y + Clock.nY }
 
+	val north get() = up
+	val east get() = right
+	val south get() = down
+	val west get() = left
 
-	fun rotateClock() = (-y) toP x
-	fun rotateAntiClock() = y toP (-x)
+
+
+	fun rotateClock() = Clock.right * dot(Clock.up) + Clock.up * dot(Clock.left)
+	fun rotateAntiClock() = -rotateClock()
 
 	fun getQuadNeighbours() = listOf(right, down, left, up)
 	fun getDiagonalNeighbours() = listOf(right.down, left.down, left.up, right.up)
@@ -104,6 +112,8 @@ data class Point(val x: Int, val y: Int) : PointN<Point> {
 
 	override fun min(other: Point): Point = min(this.x, other.x) toP min(this.y, other.y)
 	override fun max(other: Point): Point = max(this.x, other.x) toP max(this.y, other.y)
+
+	override fun dot(other: Point) = this.x * other.x + this.y * other.y
 }
 
 /**
@@ -188,6 +198,8 @@ data class Point3D(val x: Int, val y: Int, val z: Int) : PointN<Point3D> {
 
 	override fun min(other: Point3D): Point3D = min(this.x, other.x) toP min(this.y, other.y) toP min(this.z, other.z)
 	override fun max(other: Point3D): Point3D = max(this.x, other.x) toP max(this.y, other.y) toP max(this.z, other.z)
+
+	override fun dot(other: Point3D) = this.x * other.x + this.y * other.y + this.z * other.z
 }
 
 

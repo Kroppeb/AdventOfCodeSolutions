@@ -39,5 +39,16 @@ fun <T> List<List<T>>.grid(): SimpleGrid<T> {
 	return SimpleGrid(this)
 }
 inline fun <T, R> SimpleGrid<T>.map(block: (T) -> R) = this.items.map2(block).grid()
-inline fun <T, R> SimpleGrid<T>.mapIndexed(block: (Point, T) -> R) = this.bounds.map { block(it, get(it)) }
+inline fun <T, R> SimpleGrid<T>.mapIndexed(block: (Point, T) -> R) = this.items.mapIndexed { i, a ->
+	a.mapIndexed{ j,b ->
+		val p = if (Clock.nX != 0) {
+			// x is first index
+			i toP j
+		} else {
+			// y is first index
+			j toP i
+		}
+		block(p, b)
+	}
+}
 inline fun <T, R> SimpleGrid<T>.forEachIndexed(block: (Point, T) -> R) = this.bounds.forEach { block(it, get(it)) }

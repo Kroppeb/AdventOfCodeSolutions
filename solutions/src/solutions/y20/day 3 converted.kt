@@ -21,8 +21,8 @@ private fun check(data: Data, q: Int, d: Int): Int {
 	return s
 }
 
-private fun part1(data:Data) {
-	println(check(data, 3,1))
+private fun part1(data: Data) {
+	println(check(data, 3, 1))
 }
 
 private fun part2(data: Data) {
