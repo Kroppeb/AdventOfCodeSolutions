@@ -12,7 +12,7 @@ import kotlin.math.pow
 val xxxxx = Clock(3, 6);
 
 private fun part1(data: Data) {
-	val d = (data + (data.max()!! + 3)) .sorted()
+	val d = (data + (data.maxOrNull()!! + 3)) .sorted()
 	var u = 0
 	var u1 = 0
 	var u2 = 0
@@ -33,7 +33,7 @@ private fun part1(data: Data) {
 }
 
 private fun part2(data: Data) {
-	val end = data.max()!! + 3
+	val end = data.maxOrNull()!! + 3
 	val d = (data + end) .sorted()
 	var u = 0
 	var u1 = 0

@@ -31,7 +31,7 @@ private fun part2(data: Data) {
 		}
 	}
 	val p = data.subList(start, end +1)
-	println(p.min()!! + p.max()!!)
+	println(p.minOrNull()!! + p.maxOrNull()!!)
 }
 
 private typealias Data = Longs

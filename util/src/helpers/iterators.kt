@@ -1,20 +1,18 @@
 package helpers
 
-import java.util.function.Predicate
-import kotlin.collections.ArrayList
-
 fun <T> Iterator<T>.getNext(): T {
-	hasNext()
-	return next()
+    hasNext()
+    return next()
 }
 
 fun <T> Iterator<T>.getNextOrNull(): T? {
-	if (hasNext())
-		return next()
-	return null
+    if (hasNext())
+        return next()
+    return null
 }
 
 fun String.e() = map { it }
+
 @JvmName("e2")
 fun Iterable<String>.e() = map { it.e() }
 
@@ -27,13 +25,13 @@ inline fun <T, R> Iterable<T>.rleDecode(value: (T) -> R, length: (T) -> Int) = f
 inline fun <T, R> Iterable<T>.rleEncode(convert: (T, Int) -> R) = groupBy { it }.map { convert(it.key, it.value.size) }
 
 fun <E> List<E>.repeat(length: Int): List<E> {
-	if (size == 0 || length == 0)
-		return emptyList()
-	val list = ArrayList<E>(size * length)
-	repeat(length) {
-		list.addAll(this)
-	}
-	return list
+    if (size == 0 || length == 0)
+        return emptyList()
+    val list = ArrayList<E>(size * length)
+    repeat(length) {
+        list.addAll(this)
+    }
+    return list
 }
 
 operator fun <T> Set<T>.times(other: Set<T>): Set<T> = intersect(other)
@@ -43,25 +41,25 @@ fun <K, A> Map<K, A>.intersect(other: Iterable<K>) = this.keys.intersect(other).
 
 fun <K, A, B> Map<K, A>.union(other: Map<K, B>) = this.keys.union(other.keys).associateWith { this[it] to other[it] }
 inline fun <K, A> Map<K, A>.merge(other: Map<K, A>, m: (A, A) -> A) = this.keys.union(other.keys).associateWith {
-	this[it]?.let { a -> other[it]?.let { b -> m(a, b) } ?: a } ?: other[it]!!
+    this[it]?.let { a -> other[it]?.let { b -> m(a, b) } ?: a } ?: other[it]!!
 }
 
 inline fun <K, A, B, R> Map<K, A>.mergeMap(other: Map<K, B>, m: (A?, B?) -> R) = this.union(other).mapValues { (_, v) ->
-	m(v.first, v.second)
+    m(v.first, v.second)
 }
 
 fun <K, A, B> Map<K, A>.intersect(other: Map<K, B>): Map<K, Pair<A, B>> = this.entries.mapNotNull { (key, value) ->
-	if (key in other) key to (value to other[key]!!)
-	else null
+    if (key in other) key to (value to other[key]!!)
+    else null
 }.toMap()
 
 inline fun <K, A, B, R> Map<K, A>.intersectMap(other: Map<K, B>, m: (A, B) -> R): Map<K, R> = this.entries.mapNotNull { (key, value) ->
-	if (key in other) key to m(value, other[key]!!)
-	else null
+    if (key in other) key to m(value, other[key]!!)
+    else null
 }.toMap()
 
-fun <K, V : Comparable<V>> Map<K, V>.minByValue() = minBy { it.value }!!.key
-fun <K : Comparable<K>, V> Map<K, V>.minByKey() = minBy { it.key }!!.value
+fun <K, V : Comparable<V>> Map<K, V>.minByValue() = minByOrNull { it.value }!!.key
+fun <K : Comparable<K>, V> Map<K, V>.minByKey() = minByOrNull { it.key }!!.value
 
 operator fun <E> List<E>.times(count: Int) = repeat(count)
 
@@ -69,110 +67,110 @@ operator fun <E> List<E>.times(count: Int) = repeat(count)
  * Seed isn't returned, the retured list has length times
  */
 fun <T> generateTimes(times: Int, seed: T, next: (T) -> T): List<T> {
-	var acc = seed
-	val ret = mutableListOf<T>()
-	repeat(times) {
-		acc = next(acc)
-		ret.add(acc)
-	}
-	return ret
+    var acc = seed
+    val ret = mutableListOf<T>()
+    repeat(times) {
+        acc = next(acc)
+        ret.add(acc)
+    }
+    return ret
 }
 
 /**
  * Seed isn't returned, the retured list has length times
  */
 fun <S, T> generateStateTimes(times: Int, seed: S, next: (state: S) -> Pair<S, T>): List<T> {
-	var acc = seed
-	val ret = mutableListOf<T>()
-	repeat(times) {
-		val (s, t) = next(acc)
-		acc = s
-		ret.add(t)
-	}
-	return ret
+    var acc = seed
+    val ret = mutableListOf<T>()
+    repeat(times) {
+        val (s, t) = next(acc)
+        acc = s
+        ret.add(t)
+    }
+    return ret
 }
 
 inline fun <T, R> Iterable<T>.scan(start: R, transform: (R, T) -> R): List<R> {
-	var acc = start
-	val ret = mutableListOf<R>()
-	for (i in this) {
-		acc = transform(acc, i)
-		ret.add(acc)
-	}
-	return ret
+    var acc = start
+    val ret = mutableListOf<R>()
+    for (i in this) {
+        acc = transform(acc, i)
+        ret.add(acc)
+    }
+    return ret
 }
 
 inline fun <T, S, R> Iterable<T>.stateScan(start: S, transform: (S, T) -> Pair<S, R>): List<R> {
-	var acc = start
-	val ret = mutableListOf<R>()
-	for (i in this) {
-		val (s, r) = transform(acc, i)
-		acc = s
-		ret.add(r)
-	}
-	return ret
+    var acc = start
+    val ret = mutableListOf<R>()
+    for (i in this) {
+        val (s, r) = transform(acc, i)
+        acc = s
+        ret.add(r)
+    }
+    return ret
 }
 
 inline fun <T> Iterable<T>.scan(transform: (T, T) -> T): List<T> {
-	val iter = iterator()
-	if (!iter.hasNext())
-		return emptyList()
-	var acc = iter.next()
-	val ret = mutableListOf<T>(acc)
-	for (i in iter) {
-		acc = transform(acc, i)
-		ret.add(acc)
-	}
-	return ret
+    val iter = iterator()
+    if (!iter.hasNext())
+        return emptyList()
+    var acc = iter.next()
+    val ret = mutableListOf<T>(acc)
+    for (i in iter) {
+        acc = transform(acc, i)
+        ret.add(acc)
+    }
+    return ret
 }
 
 fun <T> Iterable<T>.countEach(): Map<T, Int> {
-	val counts = mutableMapOf<T, Int>()
-	for (element in this)
-		counts.merge(element, 1, Int::plus)
-	return counts
+    val counts = mutableMapOf<T, Int>()
+    for (element in this)
+        counts.merge(element, 1, Int::plus)
+    return counts
 }
 
 fun <T> Iterable<T>.blockCounts(): List<Pair<T, Int>> {
-	val iter = iterator()
-	if (!iter.hasNext())
-		return emptyList()
-	var acc = iter.next()
-	var count = 1
-	val ret = mutableListOf<Pair<T, Int>>()
-	for (i in iter) {
-		if (acc == i)
-			count++
-		else {
-			ret.add(acc to count)
-			acc = i
-			count = 1
+    val iter = iterator()
+    if (!iter.hasNext())
+        return emptyList()
+    var acc = iter.next()
+    var count = 1
+    val ret = mutableListOf<Pair<T, Int>>()
+    for (i in iter) {
+        if (acc == i)
+            count++
+        else {
+            ret.add(acc to count)
+            acc = i
+            count = 1
 
-		}
-	}
-	ret.add(acc to count)
-	return ret
+        }
+    }
+    ret.add(acc to count)
+    return ret
 }
 
 fun <T> Iterable<T>.blocks(): List<List<T>> {
-	val iter = iterator()
-	if (!iter.hasNext())
-		return emptyList()
-	var acc = iter.next()
-	var count = mutableListOf<T>(acc)
-	val ret = mutableListOf<List<T>>()
-	for (i in iter) {
-		if (acc == i)
-			count.add(i)
-		else {
-			ret.add(count)
-			acc = i
-			count = mutableListOf<T>(acc)
+    val iter = iterator()
+    if (!iter.hasNext())
+        return emptyList()
+    var acc = iter.next()
+    var count = mutableListOf<T>(acc)
+    val ret = mutableListOf<List<T>>()
+    for (i in iter) {
+        if (acc == i)
+            count.add(i)
+        else {
+            ret.add(count)
+            acc = i
+            count = mutableListOf<T>(acc)
 
-		}
-	}
-	ret.add(count)
-	return ret
+        }
+    }
+    ret.add(count)
+    return ret
 }
 
 /**
@@ -181,55 +179,55 @@ fun <T> Iterable<T>.blocks(): List<List<T>> {
 fun <T : Comparable<T>> Iterable<T>.isSorted(): Boolean = this.sorted() == this.toList()
 
 fun <T : Comparable<T>> Iterable<T>.isAscending(): Boolean {
-	val iter = iterator()
-	if (!iter.hasNext())
-		return true
-	var acc = iter.next()
-	for (i in iter) {
-		if (acc > i)
-			return false
-		acc = i
-	}
-	return true
+    val iter = iterator()
+    if (!iter.hasNext())
+        return true
+    var acc = iter.next()
+    for (i in iter) {
+        if (acc > i)
+            return false
+        acc = i
+    }
+    return true
 }
 
 fun <T : Comparable<T>> Iterable<T>.isDescending(): Boolean {
-	val iter = iterator()
-	if (!iter.hasNext())
-		return true
-	var acc = iter.next()
-	for (i in iter) {
-		if (acc < i)
-			return false
-		acc = i
-	}
-	return true
+    val iter = iterator()
+    if (!iter.hasNext())
+        return true
+    var acc = iter.next()
+    for (i in iter) {
+        if (acc < i)
+            return false
+        acc = i
+    }
+    return true
 }
 
 fun <T : Comparable<T>> Iterable<T>.isStrictAscending(): Boolean {
-	val iter = iterator()
-	if (!iter.hasNext())
-		return true
-	var acc = iter.next()
-	for (i in iter) {
-		if (acc >= i)
-			return false
-		acc = i
-	}
-	return true
+    val iter = iterator()
+    if (!iter.hasNext())
+        return true
+    var acc = iter.next()
+    for (i in iter) {
+        if (acc >= i)
+            return false
+        acc = i
+    }
+    return true
 }
 
 fun <T : Comparable<T>> Iterable<T>.isStrictDescending(): Boolean {
-	val iter = iterator()
-	if (!iter.hasNext())
-		return true
-	var acc = iter.next()
-	for (i in iter) {
-		if (acc <= i)
-			return false
-		acc = i
-	}
-	return true
+    val iter = iterator()
+    if (!iter.hasNext())
+        return true
+    var acc = iter.next()
+    for (i in iter) {
+        if (acc <= i)
+            return false
+        acc = i
+    }
+    return true
 }
 
 /**
@@ -237,40 +235,40 @@ fun <T : Comparable<T>> Iterable<T>.isStrictDescending(): Boolean {
  * @param transform called once for each item in the iterable
  */
 inline fun <T, R> Iterable<T>.blockBy(transform: (T) -> R): List<List<T>> {
-	val iter = iterator()
-	if (!iter.hasNext())
-		return emptyList()
-	val start = iter.next()
-	var key = transform(start)
-	var count = mutableListOf(start)
-	val result = mutableListOf<List<T>>()
-	for (i in iter) {
-		val ikey = transform(i)
-		if (key == ikey)
-			count.add(i)
-		else {
-			result.add(count)
-			key = ikey
-			count = mutableListOf(start)
+    val iter = iterator()
+    if (!iter.hasNext())
+        return emptyList()
+    val start = iter.next()
+    var key = transform(start)
+    var count = mutableListOf(start)
+    val result = mutableListOf<List<T>>()
+    for (i in iter) {
+        val ikey = transform(i)
+        if (key == ikey)
+            count.add(i)
+        else {
+            result.add(count)
+            key = ikey
+            count = mutableListOf(start)
 
-		}
-	}
-	return result
+        }
+    }
+    return result
 }
 
 fun Iterable<*>.areDistinct(): Boolean {
-	val seen = mutableSetOf<Any?>()
-	for (i in this)
-		if (!seen.add(i))
-			return false
-	return true
+    val seen = mutableSetOf<Any?>()
+    for (i in this)
+        if (!seen.add(i))
+            return false
+    return true
 }
 
 inline fun <T, R> Iterable<T>.flatMapIndexed(transform: (Int, T) -> Iterable<R>): List<R> = mapIndexed(transform).flatten()
 
 fun <T> Iterable<T>.pairWise(): List<Pair<T, T>> = flatMapIndexed { i, v -> drop(i + 1).map { v to it } }
 fun <T> Iterable<T>.orderedPairWise(): List<Pair<T, T>> = flatMapIndexed { i, v ->
-	filterIndexed { i2, _ -> i != i2 }.map { v to it }
+    filterIndexed { i2, _ -> i != i2 }.map { v to it }
 }
 
 fun <T> Iterable<T>.selfPairWise(): List<Pair<T, T>> = flatMapIndexed { i, v -> drop(i).map { v to it } }
@@ -280,17 +278,18 @@ fun <T, R> Iterable<T>.cartesianProduct(other: Iterable<R>): List<Pair<T, R>> = 
 inline fun <T, R, S> Iterable<T>.cartesianProduct(other: Iterable<R>, transform: (T, R) -> S): List<S> = flatMap { v -> other.map { transform(v, it) } }
 fun <T> Iterable<T>.cartesianPower(count: Int): List<List<T>> = if (count < 1) emptyList() else cartesianPower1(count)
 fun <T> Iterable<T>.cartesianPower1(count: Int): List<List<T>> = if (count == 1) this.map { listOf(it) } else
-	cartesianPower1(count - 1).cartesianProduct(this) { a, b -> a + b }
+    cartesianPower1(count - 1).cartesianProduct(this) { a, b -> a + b }
 
 
 fun <T> Iterator<T>.powerSet(): List<List<T>> {
-	val iter = iterator()
-	if (!iter.hasNext())
-		return emptyList()
-	val pre = listOf(iter.getNext())
-	val next = iter.powerSet()
-	return next + next.map { pre + it }
+    val iter = iterator()
+    if (!iter.hasNext())
+        return emptyList()
+    val pre = listOf(iter.getNext())
+    val next = iter.powerSet()
+    return next + next.map { pre + it }
 }
+
 fun <T> Iterable<T>.powerSet(): List<List<T>> = iterator().powerSet()
 
 fun Iterable<Int>.cumSum() = scan(Int::plus)
@@ -298,19 +297,72 @@ fun Iterable<Int>.cumSum() = scan(Int::plus)
 val <T>Iterable<Pair<T, *>>.firsts get() = map { it.first }
 val <T>Iterable<Pair<*, T>>.seconds get() = map { it.second }
 
-inline fun <T>Iterable<T>.splitOn(predicate: (T) -> Boolean): List<List<T>>{
-	val d = mutableListOf<List<T>>()
-	var u = mutableListOf<T>()
-	for(i in this){
-		if(predicate(i)){
-			d += u
-			u = mutableListOf()
-		}else{
-			u.add(i)
-		}
-	}
-	d += u
-	return d;
+inline fun <T> Iterable<T>.splitOn(predicate: (T) -> Boolean): List<List<T>> {
+    val d = mutableListOf<List<T>>()
+    var u = mutableListOf<T>()
+    for (i in this) {
+        if (predicate(i)) {
+            d += u
+            u = mutableListOf()
+        } else {
+            u.add(i)
+        }
+    }
+    d += u
+    return d;
+}
+
+
+// transpose
+fun <T> Iterable<Iterable<T>>.transpose(): List<List<T>> {
+    val iter = iterator()
+    if (!iter.hasNext())
+        return emptyList()
+
+    val ret = mutableListOf<List<T>>()
+    val iters = this.map { it.iterator() }
+
+    while (iters.all { it.hasNext() }) {
+        ret.add(iters.map { it.next() })
+    }
+
+    // check if any has items left
+    if (iters.any { it.hasNext() })
+        throw IllegalArgumentException("Not all iterators have been exhausted")
+
+    return ret
+}
+
+// transpose, but no throw
+fun <T> Iterable<Iterable<T>>.transposeOrStop(): List<List<T>> {
+    val iter = iterator()
+    if (!iter.hasNext())
+        return emptyList()
+
+    val ret = mutableListOf<List<T>>()
+    val iters = this.map { it.iterator() }
+
+    while (iters.all { it.hasNext() }) {
+        ret.add(iters.map { it.next() })
+    }
+
+    return ret
+}
+
+//transpose or nulls
+fun <T> Iterable<Iterable<T>>.transposeOrNulls(): List<List<T?>> {
+    val iter = iterator()
+    if (!iter.hasNext())
+        return emptyList()
+
+    val ret = mutableListOf<List<T?>>()
+    val iters = this.map { it.iterator() }
+
+    while (iters.any { it.hasNext() }) {
+        ret.add(iters.map { if (it.hasNext()) it.next() else null })
+    }
+
+    return ret
 }
 
 

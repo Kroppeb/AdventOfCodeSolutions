@@ -15,7 +15,7 @@ val xxxxx = Clock(3, 6);
 private fun part1(data: Data) {
 	data.map {
 		it.mapIndexed { a, b -> if (b == 'B' || b == 'R') 1 shl 9 - a else 0 }.sum()
-	}.max().let { println(it) }
+	}.maxOrNull().let { println(it) }
 }
 
 private fun part2(data: Data) {

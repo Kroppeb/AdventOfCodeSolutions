@@ -7,7 +7,7 @@ import kotlinx.coroutines.*
 private val xxxxx = Clock(3,6);
 
 private fun part1(data: Data) = runBlocking {
-	println(data.sumBy { it.max()!! - it.min()!!})
+	println(data.sumBy { it.maxOrNull()!! - it.minOrNull()!!})
 }
 
 private fun part2(data: Data) = runBlocking {

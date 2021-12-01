@@ -37,8 +37,8 @@ fun editDistance(a: Iterable<*>, b: Iterable<*>): Int {
 
 private fun Boolean.toInt() = if(this) 1 else 0
 
-fun <C:Comparable<C>> min(first:C, vararg elements:C) = elements.min()?.let{if(it < first) it else first}?:first
-fun <C:Comparable<C>> max(first:C, vararg elements:C) = elements.max()?.let{if(it > first) it else first}?:first
+fun <C:Comparable<C>> min(first:C, vararg elements:C) = elements.minOrNull()?.let{if(it < first) it else first}?:first
+fun <C:Comparable<C>> max(first:C, vararg elements:C) = elements.maxOrNull()?.let{if(it > first) it else first}?:first
 
 fun len(lst: Collection<*>) = lst.size
 

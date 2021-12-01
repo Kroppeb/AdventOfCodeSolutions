@@ -18,7 +18,7 @@ private fun part1(data: StrictPointGrid) =
 			}
 			q
 		} to a
-	}.also{/*it.forEach(::println)*/}.maxBy { it.first }!!.also { println("${it.second}: ${it.first}") }.second
+	}.also{/*it.forEach(::println)*/}.maxByOrNull { it.first }!!.also { println("${it.second}: ${it.first}") }.second
 
 
 private fun fix(i: Double) = if (i < 0) i + 100 else i
