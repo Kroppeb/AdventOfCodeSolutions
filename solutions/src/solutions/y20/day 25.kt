@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch")
 
-package solutions.y20.d21
+package solutions.y20.d25
 
 import collections.counter
 import grid.Clock
@@ -30,7 +30,7 @@ private fun part2(data: Data) {
 private typealias Data = IntLines
 
 fun main() {
-	val data: Data = getIntLines(25)
+	val data: Data = getIntLines(2020_25)
 	part1(data)
 	part2(data)
 }

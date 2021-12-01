@@ -56,10 +56,12 @@ fun getData(day: Int): String =
 		if (day > 100) {
 			val y = day / 100
 			val d = day % 100
-			Ugh::class.java.getResource("/$y/$d")
+			(Ugh::class.java.getResource("/$y/$d")
+					?:Ugh::class.java.getResource("/$y/$d.txt"))
 					.readText()
 		} else {
-			Ugh::class.java.getResource("/$day")
+			(Ugh::class.java.getResource("/$day")
+					?:Ugh::class.java.getResource("/$day.txt"))
 					.readText()
 		}
 
