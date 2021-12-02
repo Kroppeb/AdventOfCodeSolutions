@@ -1,29 +1,37 @@
+val year = "2021"
+val user = "Kroppeb"
 
-val reg = Regex("""^\s*(\d+)\)\sDec\s\d+\s+[0-9:]+\s+(.+?)(\s*\(AoC\+\+\))?(\s*\(Sponsor\))?\s*$""",RegexOption.MULTILINE)
 
-fun get(day: Int): Map<String, Int> {
-	val p = reg.findAll(object{}.javaClass.getResource("$day").readText()).toList().map { it.groupValues[2] to 101 - it.groupValues[1].toInt() }
-	//check(p.size == 200) { "day $day contained ${p.size} entries"}
-	return p.groupBy(Pair<String, Int>::first) { it.second }.mapValues { it.value.sum() }
+val reg = Regex("""^\s*(\d+)\)\sDec\s\d+\s+[0-9:]+\s+(.+?)(\s*\(AoC\+\+\))?(\s*\(Sponsor\))?\s*$""", RegexOption.MULTILINE)
+
+fun get(day: Int): Map<String, Int>? {
+    val resource = object {}.javaClass.getResource("$year/$day")
+            ?: object {}.javaClass.getResource("$year/$day.txt")
+            ?: return null;
+    val p = reg.findAll(resource.readText()).toList().map { it.groupValues[2] to 101 - it.groupValues[1].toInt() }
+    //check(p.size == 200) { "day $day contained ${p.size} entries"}
+    return p.groupBy(Pair<String, Int>::first) { it.second }.mapValues { it.value.sum() }
 }
 
 fun main() {
-	val days = (2..25).map(::get)
-	val inter = days.fold(mutableListOf<Map<String, Int>>()) { o, n ->
-		o.add(when (val l = o.lastOrNull()) {
-			null -> n
-			else -> l.toMutableMap().also {
-				for ((k, v) in n.entries)
-					it.merge(k, v, Int::plus)
-			}
-		})
-		o
-	}
+    val days = (1..25).mapNotNull { it to (get(it) ?: return@mapNotNull null) }
+    val inter = days.fold(mutableListOf<Pair<Int, Map<String, Int>>>()) { o, (i, n) ->
+        o.add(i to when (val l = o.lastOrNull()) {
+            null -> n
+            else -> l.second.toMutableMap().also {
+                for ((k, v) in n.entries)
+                    it.merge(k, v, Int::plus)
+            }
+        })
+        o
+    }
 
-	for((i,map) in inter.withIndex()){
-		println("${if (i < 9)" " else ""}${i+1}: ${when(val you = map["Kroppeb"]){
-			null -> "NA"
-			else -> "${map.count{it.value > you} + 1}"
-		}} / ${map.size}")
-	}
+    for ((i, map) in inter) {
+        println("${if (i < 9) " " else ""}${i}: ${
+            when (val you = map[user]) {
+                null -> "NA"
+                else -> "${map.count { it.value > you } + 1}"
+            }
+        } / ${map.size}")
+    }
 }
