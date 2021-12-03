@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y1.d1c
+package solutions.y21.d1c
 
 import grid.Clock
 import helpers.Ints
