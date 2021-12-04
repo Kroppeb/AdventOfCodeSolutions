@@ -25,3 +25,4 @@ year still being in the output directory. They have been cleared
 ## Day 4
 YYYEEEEEESSS, Got some point =p 
 * Accidentally opened the question in a new tab, caused me some issues
+* So I kenw I had a `getInts` function, but it was not working.
