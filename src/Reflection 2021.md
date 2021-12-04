@@ -15,3 +15,9 @@ notice the file had been changed.
     so that I don't have to alt tab to bash to run it 
 * [ ] The current way of io and stuff hurts Copilot, look into a better
   way of io.
+
+## Day 3
+Intellij managed to hurt a lot today again, due to the input files of last 
+year still being in the output directory. They have been cleared
+* Should've used `getDigitLines()` instead of `getLines()`
+* [ ] make checklist for things to do before the contest
