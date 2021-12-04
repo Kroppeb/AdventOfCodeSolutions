@@ -21,3 +21,7 @@ Intellij managed to hurt a lot today again, due to the input files of last
 year still being in the output directory. They have been cleared
 * Should've used `getDigitLines()` instead of `getLines()`
 * [ ] make checklist for things to do before the contest
+
+## Day 4
+YYYEEEEEESSS, Got some point =p 
+* Accidentally opened the question in a new tab, caused me some issues
