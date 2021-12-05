@@ -23,6 +23,10 @@ year still being in the output directory. They have been cleared
 * [ ] make checklist for things to do before the contest
 
 ## Day 4
-YYYEEEEEESSS, Got some point =p 
+YYYEEEEEESSS, Got some point (19) =p 
 * Accidentally opened the question in a new tab, caused me some issues
-* So I kenw I had a `getInts` function, but it was not working.
+* So I knew I had a `getInts` function, but it was not working.
+
+## Day 5
+Points (59), 184th place
+* [ ] add `getPoint` like `getInts`

@@ -5,11 +5,14 @@ package solutions.y21.d4
 /*
 import grid.Clock
 import helpers.*
+import itertools.*
 import kotlin.math.*
  */
 
 import grid.Clock
 import helpers.*
+import itertools.*
+import kotlin.math.*
 
 val xxxxx = Clock(6, 3);
 
@@ -28,8 +31,8 @@ private fun part2(data: Data) {
 private typealias Data = Lines
 
 fun main() {
-    println("Day 5: ")
-    val data: Data = getLines(5)
+    println("Day 6: ")
+    val data: Data = getLines(6)
     part1(data)
     part2(data)
 }
