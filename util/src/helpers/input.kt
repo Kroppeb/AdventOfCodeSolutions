@@ -159,6 +159,67 @@ fun String.getPosDoubles() = regexPosFloat.findAll(this).map { it.value.toDouble
 fun String.getWords() = regexWord.findAll(this).map { it.value }.toList()
 fun String.getAlphaNums() = regexAlphaNum.findAll(this).map { it.value }.toList()
 
+fun String.int(): Int = getInt()!!
+fun String.posInt(): Int = getPosInt()!!
+fun String.long(): Long = getLong()!!
+fun String.posLong(): Long = getPosLong()!!
+fun String.digit(): Int = getDigit()!!
+fun String.double(): Double = getDouble()!!
+fun String.posDouble(): Double = getPosDouble()!!
+fun String.word(): String = getWord()!!
+fun String.alphaNum(): String = getAlphaNum()!!
+
+fun String.ints(): List<Int> = getInts()
+fun String.posInts(): List<Int> = getPosInts()
+fun String.longs(): List<Long> = getLongs()
+fun String.posLongs(): List<Long> = getPosLongs()
+fun String.digits(): List<Int> = getDigits()
+fun String.doubles(): List<Double> = getDoubles()
+fun String.posDoubles(): List<Double> = getPosDoubles()
+fun String.words(): List<String> = getWords()
+fun String.alphaNums(): List<String> = getAlphaNums()
+
+fun Iterable<String>.int():List<Int> = map{it.int()}
+fun Iterable<String>.posInt():List<Int> = map{it.posInt()}
+fun Iterable<String>.long():List<Long> = map{it.long()}
+fun Iterable<String>.posLong():List<Long> = map{it.posLong()}
+fun Iterable<String>.digit():List<Int> = map{it.digit()}
+fun Iterable<String>.double():List<Double> = map{it.double()}
+fun Iterable<String>.posDouble():List<Double> = map{it.posDouble()}
+fun Iterable<String>.word():List<String> = map{it.word()}
+fun Iterable<String>.alphaNum():List<String> = map{it.alphaNum()}
+
+fun Iterable<String>.ints(): List<List<Int>> = map{it.ints()}
+fun Iterable<String>.posInts(): List<List<Int>> = map{it.posInts()}
+fun Iterable<String>.longs(): List<List<Long>> = map{it.longs()}
+fun Iterable<String>.posLongs(): List<List<Long>> = map{it.posLongs()}
+fun Iterable<String>.digits(): List<List<Int>> = map{it.digits()}
+fun Iterable<String>.doubles(): List<List<Double>> = map{it.doubles()}
+fun Iterable<String>.posDoubles(): List<List<Double>> = map{it.posDoubles()}
+fun Iterable<String>.words(): List<List<String>> = map{it.words()}
+fun Iterable<String>.alphaNums(): List<List<String>> = map{it.alphaNums()}
+
+
+@JvmName("int2") fun Iterable<Iterable<String>>.int():List<List<Int>> = map{it.int()}
+@JvmName("posInt2") fun Iterable<Iterable<String>>.posInt():List<List<Int>> = map{it.posInt()}
+@JvmName("long2") fun Iterable<Iterable<String>>.long():List<List<Long>> = map{it.long()}
+@JvmName("posLong2") fun Iterable<Iterable<String>>.posLong():List<List<Long>> = map{it.posLong()}
+@JvmName("digit2") fun Iterable<Iterable<String>>.digit():List<List<Int>> = map{it.digit()}
+@JvmName("double2") fun Iterable<Iterable<String>>.double():List<List<Double>> = map{it.double()}
+@JvmName("posDouble2") fun Iterable<Iterable<String>>.posDouble():List<List<Double>> = map{it.posDouble()}
+@JvmName("word2") fun Iterable<Iterable<String>>.word():List<List<String>> = map{it.word()}
+@JvmName("alphaNum2") fun Iterable<Iterable<String>>.alphaNum():List<List<String>> = map{it.alphaNum()}
+
+@JvmName("ints2") fun Iterable<Iterable<String>>.ints():List<List<List<Int>>> = map{it.ints()}
+@JvmName("posInts2") fun Iterable<Iterable<String>>.posInts():List<List<List<Int>>> = map{it.posInts()}
+@JvmName("longs2") fun Iterable<Iterable<String>>.longs():List<List<List<Long>>> = map{it.longs()}
+@JvmName("posLongs2") fun Iterable<Iterable<String>>.posLongs():List<List<List<Long>>> = map{it.posLongs()}
+@JvmName("digits2") fun Iterable<Iterable<String>>.digits():List<List<List<Int>>> = map{it.digits()}
+@JvmName("doubles2") fun Iterable<Iterable<String>>.doubles():List<List<List<Double>>> = map{it.doubles()}
+@JvmName("posDoubles2") fun Iterable<Iterable<String>>.posDoubles():List<List<List<Double>>> = map{it.posDoubles()}
+@JvmName("words2") fun Iterable<Iterable<String>>.words():List<List<List<String>>> = map{it.words()}
+@JvmName("alphaNums2") fun Iterable<Iterable<String>>.alphaNums():List<List<List<String>>> = map{it.alphaNums()}
+
 fun getIntLines(day:Int) = getLines(day).map{it.getInts()}
 fun getPosIntLines(day:Int) = getLines(day).map{it.getPosInts()}
 fun getLongLines(day:Int) = getLines(day).map{it.getLongs()}

@@ -29,4 +29,8 @@ YYYEEEEEESSS, Got some point (19) =p
 
 ## Day 5
 Points (59), 184th place
-* [ ] add `getPoint` like `getInts`
+* [ ] add `getPoint` like `getInts`?
+* [ ] add short `splitOnEmpty`
+* [x] add short form for creating sets and maps
+* [ ] add short for `first()` and `last()`
+* [ ] add `Line` (and `SteppedLine`) class which is iterable

@@ -24,6 +24,7 @@ private fun finish(grid: List<List<Int>>, seen: Set<Int>, i: Int){
 }
 
 private fun part1(data: Data) {
+    data.splitOn { it.isEmpty() }
     var dd = data.splitOn { it.isEmpty() }
     val items = dd.first().first().split(',').map{it.toInt()}
     dd = dd.subList(1, dd.size);

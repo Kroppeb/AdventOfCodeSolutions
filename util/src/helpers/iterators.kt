@@ -1,5 +1,7 @@
 package helpers
 
+import kotlin.contracts.contract
+
 fun <T> Iterator<T>.getNext(): T {
     hasNext()
     return next()

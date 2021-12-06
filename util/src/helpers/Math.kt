@@ -20,4 +20,47 @@ fun Iterable<Int>.lcm():Int = reduce<Int, Int>(::lcm)
 @Suppress("RemoveExplicitTypeArguments")
 fun Iterable<Long>.lcm():Long = reduce<Long, Long>(::lcm)
 
+fun <T : Comparable<T>>Iterable<T>.min():T = minOrNull()!!
+fun <T : Comparable<T>>Iterable<T>.max():T = maxOrNull()!!
+
+fun <T : Comparable<T>>Array<T>.min():T = minOrNull()!!
+fun <T : Comparable<T>>Array<T>.max():T = maxOrNull()!!
+
+fun IntArray.min():Int = minOrNull()!!
+fun IntArray.max():Int = maxOrNull()!!
+
+fun LongArray.min():Long = minOrNull()!!
+fun LongArray.max():Long = maxOrNull()!!
+
+fun DoubleArray.min():Double = minOrNull()!!
+fun DoubleArray.max():Double = maxOrNull()!!
+
+@JvmName("minMaxVararg")
+fun <T : Comparable<T>>minMax(vararg e:T):Pair<T, T> = e.min() to e.max()
+fun <T : Comparable<T>>Iterable<T>.minMax():Pair<T, T> = min() to max()
+fun <T : Comparable<T>>Array<T>.minMax():Pair<T, T> = min() to max()
+fun IntArray.minMax():Pair<Int, Int> = min() to max()
+fun LongArray.minMax():Pair<Long, Long> = min() to max()
+fun DoubleArray.minMax():Pair<Double, Double> = min() to max()
+
+@JvmName("minMaxIRIntsVararg")
+fun minMaxIR(vararg e:Int):IntRange = e.min() .. e.max()
+@JvmName("minMaxIRInts")
+fun Iterable<Int>.minMaxIR():IntRange = min() .. max()
+@JvmName("minMaxIRInts")
+fun Array<Int>.minMaxIR():IntRange = min() .. max()
+@JvmName("minMaxIRInts")
+fun IntArray.minMaxIR():IntRange = min() .. max()
+
+@JvmName("minMaxIRLongsVararg")
+fun minMaxIR(vararg e:Long):LongRange = e.min() .. e.max()
+@JvmName("minMaxIRLongs")
+fun Iterable<Long>.minMaxIR():LongRange = min() .. max()
+@JvmName("minMaxIRLongs")
+fun Array<Long>.minMaxIR():LongRange = min() .. max()
+@JvmName("minMaxIRLongs")
+fun LongArray.minMaxIR():LongRange = min() .. max()
+
+
+
 
