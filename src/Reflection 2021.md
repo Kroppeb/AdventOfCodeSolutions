@@ -34,3 +34,7 @@ Points (59), 184th place
 * [x] add short form for creating sets and maps
 * [ ] add short for `first()` and `last()`
 * [ ] add `Line` (and `SteppedLine`) class which is iterable
+
+## Day 6
+Points (76), 122nd place
+* shorts for IntArray/LongArray?

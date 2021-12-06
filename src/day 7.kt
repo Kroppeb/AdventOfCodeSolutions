@@ -11,7 +11,6 @@ import kotlin.math.*
 
 import grid.Clock
 import helpers.*
-import itertools.*
 import kotlin.math.*
 
 val xxxxx = Clock(6, 3);
@@ -21,11 +20,11 @@ val xxxxx = Clock(6, 3);
 */
 
 private fun part1() {
-    var data = getLines(6);
+    var data = getLines(7);
 }
 
 fun main() {
-    println("Day 6: ")
+    println("Day 7: ")
     part1()
 }
 

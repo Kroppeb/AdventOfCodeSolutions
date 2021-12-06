@@ -6,17 +6,17 @@
 
 ## Early
 * [ ] Reflection of previous day
-* [x] Git commit previous day
-* [x] Validate that any changes in utils do not cause the building to fail
-* [x] Make sure we have a file to work in
-* [x] Test download command
-* [x] Open obs
+* [ ] Git commit previous day
+* [ ] Validate that any changes in utils do not cause the building to fail
+* [ ] Make sure we have a file to work in
+* [ ] Test download command
+* [ ] Open obs
  
 
 # Middle
-* [x] Start the kotlin daemon (by running the empty day script)
-* [x] Validate that shortcut runs the correct file 
-* [x] Close unneeded files
+* [ ] Start the kotlin daemon (by running the empty day script)
+* [ ] Validate that shortcut runs the correct file 
+* [ ] Close unneeded files
 
 # Final
 * Pick good start song
@@ -24,3 +24,6 @@
 * Verify download command
 * Order tabs
 * Leave Discord
+
+
+**Remember, sometimes you need longs**
