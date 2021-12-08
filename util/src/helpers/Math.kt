@@ -35,6 +35,21 @@ fun LongArray.max():Long = maxOrNull()!!
 fun DoubleArray.min():Double = minOrNull()!!
 fun DoubleArray.max():Double = maxOrNull()!!
 
+inline fun <C, T : Comparable<T>>Iterable<C>.minBy(b:(C) -> T):C = minByOrNull(b)!!
+inline fun <C, T : Comparable<T>>Iterable<C>.maxBy(b:(C) -> T):C = maxByOrNull(b)!!
+
+inline fun <C, T : Comparable<T>>Array<C>.minBy(b:(C) -> T):C = minByOrNull(b)!!
+inline fun <C, T : Comparable<T>>Array<C>.maxBy(b:(C) -> T):C = maxByOrNull(b)!!
+
+inline fun <C : Comparable<C>>IntArray.minBy(b:(Int) -> C):Int = minByOrNull(b)!!
+inline fun <C : Comparable<C>>IntArray.maxBy(b:(Int) -> C):Int = maxByOrNull(b)!!
+
+inline fun <C : Comparable<C>>LongArray.minBy(b:(Long) -> C):Long = minByOrNull(b)!!
+inline fun <C : Comparable<C>>LongArray.maxBy(b:(Long) -> C):Long = maxByOrNull(b)!!
+
+inline fun <C : Comparable<C>>DoubleArray.minBy(b: (Double) -> C):Double = minByOrNull(b)!!
+inline fun <C : Comparable<C>>DoubleArray.maxBy(b: (Double) -> C):Double = maxByOrNull(b)!!
+
 @JvmName("minMaxVararg")
 fun <T : Comparable<T>>minMax(vararg e:T):Pair<T, T> = e.min() to e.max()
 fun <T : Comparable<T>>Iterable<T>.minMax():Pair<T, T> = min() to max()

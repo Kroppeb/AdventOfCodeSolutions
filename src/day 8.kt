@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y21.d6.v2
+package solutions.y21.d7
 
 /*
 import grid.Clock
@@ -20,11 +20,12 @@ val xxxxx = Clock(6, 3);
 */
 
 private fun part1() {
-    var data = getLines(7);
+    var data = getLines(7).first().ints()
 }
 
+
 fun main() {
-    println("Day 7: ")
+    println("Day  7: ")
     part1()
 }
 

@@ -32,6 +32,6 @@ fun main() {
                 null -> "NA"
                 else -> "${map.count { it.value > you } + 1}"
             }
-        } / ${map.size}")
+        } / ${map.size} (${map[user]?:0})")
     }
 }

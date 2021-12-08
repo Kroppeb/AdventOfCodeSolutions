@@ -19,11 +19,14 @@
 * [ ] Close unneeded files
 
 # Final
+* Verify download command
 * Pick good start song
 * Start obs
-* Verify download command
-* Order tabs
 * Leave Discord
+* Pre-order tabs
+* Run download command
+* Order tabs
+* Go fast
 
 
 **Remember, sometimes you need longs**
