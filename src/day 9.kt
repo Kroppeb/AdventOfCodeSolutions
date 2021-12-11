@@ -10,10 +10,7 @@ import kotlin.math.*
  */
 
 import grid.Clock
-import helpers.digits
-import helpers.getLines
-import helpers.map2
-import helpers.transpose
+import helpers.*
 
 val xxxxx = Clock(6, 3);
 
@@ -21,87 +18,94 @@ val xxxxx = Clock(6, 3);
 
 */
 
+val points = mapOf(')' to 3, ']' to 57, '}' to 1197, '>' to 25137)
+val points2 = mapOf('(' to 1, '[' to 2, '{' to 3, '<' to 4)
+
 private fun part1() {
-    var data = getLines(9).digits().log()
+    var data = getLines(10)
 
-    var count = 0
+    var coo = 0
+    var xx = mutableListOf<Long>()
+    for (datum in data) {
+        val deque = ArrayDeque<Char>()
 
-    var pre = data.first().map { 9 }
-    data = listOf(listOf(pre), data, listOf(pre)).flatten().transpose()
-    pre = data.first().map { 10 }
-    data = listOf(listOf(pre), data, listOf(pre)).flatten().transpose()
-
-    data.windowed(3) {
-        it.transpose().windowed(3) { (a, b, c) ->
-            if (a[1] > b[1] && b[1] < c[1] && b[0] > b[1] && b[1] < b[2]) count += b[1] + 1;
-        }
-    }
-
-
-    count.log()
-
-
-    count.log()
-}
-
-
-private fun part2() {
-    var data = getLines(9).digits()
-
-    var count = 0
-
-    var pre = data.first().map { 9 }
-    data = listOf(listOf(pre), data, listOf(pre)).flatten().transpose()
-    pre = data.first().map { 10 }
-    data = listOf(listOf(pre), data, listOf(pre)).flatten().transpose()
-
-    var x = true;
-        var uuu = data.map2 { mutableListOf(it, (if (it < 9) 1 else 0)) }
-    while (x) {
-        x = false
-        uuu.log()
-        uuu.forEach {
-            it.windowed(2) { (a, b) ->
-                if(a[1] != 0 || b[1] != 0){
-                    if(a[0] < b[0]){
-                        x = x || (b[1] != 0)
-                        a[1] += b[1]
-                        b[1] = 0
+        var fail = false
+        for (c in datum) {
+            when(c) {
+                ')' -> {
+                    if (deque.first() == '(') {
+                        deque.removeFirst()
                     } else {
-                        x = x || (a[1] != 0)
-                        b[1] += a[1]
-                        a[1] = 0
+                        coo += points[')']!!
+                        fail = true
+                        break;
                     }
+                }
+                ']' -> {
+                    if (deque.first() == '[') {
+                        deque.removeFirst()
+                    } else {
+                        coo += points[']']!!
+                        fail = true
+                        break;
+                    }
+                }
+                '}' -> {
+                    if (deque.first() == '{') {
+                        deque.removeFirst()
+                    } else {
+                        coo += points['}']!!
+                        fail = true
+                        break;
+                    }
+                }
+                '>' -> {
+                    if (deque.first() == '<') {
+                        deque.removeFirst()
+                    } else {
+                        coo += points['>']!!
+                        fail = true
+                        break;
+                    }
+                }
+                else -> {
+                    deque.addFirst(c)
                 }
             }
         }
-        uuu.transpose().forEach {
-            it.windowed(2) { (a, b) ->
-                if(a[1] != 0 || b[1] != 0){
-                    if(a[0] < b[0]){
-                        x = x || (b[1] != 0)
-                        a[1] += b[1]
-                        b[1] = 0
-                    } else {
-                        x = x || (a[1] != 0)
-                        b[1] += a[1]
-                        a[1] = 0
-                    }
-                }
+        fail.log()
+        if(fail)
+            continue
+        deque.log()
+        var pp = 0L
+        while(!deque.isEmpty()) {
+            var cur = deque.removeFirst()
+            pp *= 5
+            // NOTE: the following was suggested by copilot, not my code
+            if (cur == '(') {
+                pp += points2['(']!!
+            } else if (cur == '[') {
+                pp += points2['[']!!
+            } else if (cur == '{') {
+                pp += points2['{']!!
+            } else if (cur == '<') {
+                pp += points2['<']!!
             }
         }
+
+
+        xx += pp.log();
     }
 
-    uuu.map2 { it[1] }.flatten().filter { it != 0 }.sorted().log()
-    var (a,b,c) = uuu.map2 { it[1] }.flatten().filter { it != 0 }.sorted().reversed()
-    println(a * b * c)
+    coo.log()
+    xx.sort()
+    xx[xx.size / 2].log()
 }
 
 
 fun main() {
     println("Day  9: ")
     part1()
-    part2()
 }
 
 
