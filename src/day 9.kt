@@ -18,93 +18,60 @@ val xxxxx = Clock(6, 3);
 
 */
 
-val points = mapOf(')' to 3, ']' to 57, '}' to 1197, '>' to 25137)
-val points2 = mapOf('(' to 1, '[' to 2, '{' to 3, '<' to 4)
-
 private fun part1() {
-    var data = getLines(10)
+    var data = getLines(11).digits().map{it.toMutableList()}.toMutableList()
 
-    var coo = 0
-    var xx = mutableListOf<Long>()
-    for (datum in data) {
-        val deque = ArrayDeque<Char>()
 
-        var fail = false
-        for (c in datum) {
-            when(c) {
-                ')' -> {
-                    if (deque.first() == '(') {
-                        deque.removeFirst()
-                    } else {
-                        coo += points[')']!!
-                        fail = true
-                        break;
+    var count = 0L;
+    repeat(100000){
+        var mutate = true;
+        var points = mutableSetOf<Pair<Int,Int>>()
+        for(l in data) for(i in data.indices)
+            l[i]++
+
+        while(mutate){
+            mutate = false;
+
+            for((x,l) in data.withIndex()){
+                for((y, i) in l.withIndex()){
+                    if(i > 9 && points.add(x to y)){
+                        mutate = true;
+
+                        for(dx in -1..1)
+                            for(dy in -1..1)
+                                if(x+dx in data.indices && y+dy in data[x+dx].indices && !(dx == 0 && dy == 0) ){
+                                    data[x+dx][y+dy]++
+                                }
                     }
-                }
-                ']' -> {
-                    if (deque.first() == '[') {
-                        deque.removeFirst()
-                    } else {
-                        coo += points[']']!!
-                        fail = true
-                        break;
-                    }
-                }
-                '}' -> {
-                    if (deque.first() == '{') {
-                        deque.removeFirst()
-                    } else {
-                        coo += points['}']!!
-                        fail = true
-                        break;
-                    }
-                }
-                '>' -> {
-                    if (deque.first() == '<') {
-                        deque.removeFirst()
-                    } else {
-                        coo += points['>']!!
-                        fail = true
-                        break;
-                    }
-                }
-                else -> {
-                    deque.addFirst(c)
                 }
             }
-        }
-        fail.log()
-        if(fail)
-            continue
-        deque.log()
-        var pp = 0L
-        while(!deque.isEmpty()) {
-            var cur = deque.removeFirst()
-            pp *= 5
-            // NOTE: the following was suggested by copilot, not my code
-            if (cur == '(') {
-                pp += points2['(']!!
-            } else if (cur == '[') {
-                pp += points2['[']!!
-            } else if (cur == '{') {
-                pp += points2['{']!!
-            } else if (cur == '<') {
-                pp += points2['<']!!
-            }
+
+            data.map{it.log()}
+            "".log()
         }
 
+        for((x,y) in points){
+            data[x][y] = 0
+        }
 
-        xx += pp.log();
+        count += points.size;
+
+        if(points.size == 100) error("" + (it + 1))
     }
 
-    coo.log()
-    xx.sort()
-    xx[xx.size / 2].log()
+    for (datum in data) {
+        println(datum)
+    }
+
+
+    count.log()
+
+
 }
 
 
 fun main() {
-    println("Day  9: ")
+    println("Day 11: ")
     part1()
 }
 
