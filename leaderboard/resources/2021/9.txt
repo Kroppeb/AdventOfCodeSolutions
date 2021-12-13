@@ -1,0 +1,210 @@
+Advent of Code[About][Events][Shop][Settings][Log Out]Kroppeb (AoC++) 24*
+  0.0.0.0:2021[Calendar][AoC++][Sponsors][Leaderboard][Stats]
+Our sponsors help make Advent of Code possible:
+Riot Games - Unleash play and level up your career with Riot Games!
+Per Day: 1 2 3 4 5 6 7 8 9 10 11 12
+
+First hundred users to get both stars on Day 9:
+
+  1) Dec 09  00:05:00  goffrie
+  2) Dec 09  00:05:06  mserrano
+  3) Dec 09  00:05:20  ecnerwala
+  4) Dec 09  00:05:46  dan-simon
+  5) Dec 09  00:05:53  Tom Holmes
+  6) Dec 09  00:06:05  betaveros (AoC++)
+  7) Dec 09  00:06:07  Jimmy Mårdell (AoC++) (Sponsor)
+  8) Dec 09  00:06:16  Oskar Haarklou Veileborg (AoC++)
+  9) Dec 09  00:06:17  Nick Gavalas (AoC++)
+ 10) Dec 09  00:06:22  (anonymous user #681412)
+ 11) Dec 09  00:06:26  connorjayr (AoC++)
+ 12) Dec 09  00:06:40  Lewin Gan
+ 13) Dec 09  00:06:52  Nathan Fenner (AoC++)
+ 14) Dec 09  00:06:55  peter50216
+ 15) Dec 09  00:06:55  Kevin Sun
+ 16) Dec 09  00:06:59  hyper-neutrino (AoC++)
+ 17) Dec 09  00:07:08  Balint R
+ 18) Dec 09  00:07:11  Dustin Miao
+ 19) Dec 09  00:07:13  ZED.Charley William Thairo
+ 20) Dec 09  00:07:13  alcatrazEscapee
+ 21) Dec 09  00:07:27  D. Salgado
+ 22) Dec 09  00:07:42  Zeyu Chen (AoC++)
+ 23) Dec 09  00:07:43  Bandhi
+ 24) Dec 09  00:07:44  Carl Schildkraut
+ 25) Dec 09  00:07:44  jonathanpaulson (AoC++)
+ 26) Dec 09  00:07:48  Yosuke Sameshima
+ 27) Dec 09  00:07:50  leijurv (AoC++)
+ 28) Dec 09  00:07:50  xnkvbo
+ 29) Dec 09  00:07:54  PikMike
+ 30) Dec 09  00:07:57  josh chen
+ 31) Dec 09  00:07:59  (anonymous user #1510407) (AoC++)
+ 32) Dec 09  00:08:04  Bosco Wang
+ 33) Dec 09  00:08:04  Robert Xiao
+ 34) Dec 09  00:08:04  Tris Emmy Wilson (AoC++)
+ 35) Dec 09  00:08:05  Murray Edwards
+ 36) Dec 09  00:08:07  Tim Vermeulen (AoC++)
+ 37) Dec 09  00:08:09  Xavier Cooney
+ 38) Dec 09  00:08:12  Defelo (AoC++)
+ 39) Dec 09  00:08:14  Max Murin
+ 40) Dec 09  00:08:14  jebouin (AoC++)
+ 41) Dec 09  00:08:18  Kyle Franke (AoC++)
+ 42) Dec 09  00:08:28  cup2of2tea
+ 43) Dec 09  00:08:47  lucifer1004 (AoC++)
+ 44) Dec 09  00:08:48  drougge (AoC++)
+ 45) Dec 09  00:08:49  Oleg Rudenko
+ 46) Dec 09  00:08:50  ruuddotorg
+ 47) Dec 09  00:08:51  Olle Lapidus
+ 48) Dec 09  00:08:52  hughcoleman
+ 49) Dec 09  00:08:52  bcc32 (AoC++)
+ 50) Dec 09  00:08:53  Pedro Osório
+ 51) Dec 09  00:08:57  nthistle
+ 52) Dec 09  00:09:02  Greg Zborovsky (AoC++)
+ 53) Dec 09  00:09:05  qpwoeirut
+ 54) Dec 09  00:09:06  Kevin Sheng
+ 55) Dec 09  00:09:06  Thai Pangsakulyanont (AoC++)
+ 56) Dec 09  00:09:07  slycelote
+ 57) Dec 09  00:09:08  Edward Xiao
+ 58) Dec 09  00:09:09  Zack Lee
+ 59) Dec 09  00:09:12  Martin Štefček (AoC++)
+ 60) Dec 09  00:09:12  Antonio Molina
+ 61) Dec 09  00:09:17  Omkar Bhalerao
+ 62) Dec 09  00:09:21  Christophe Papazian
+ 63) Dec 09  00:09:23  SheepTester
+ 64) Dec 09  00:09:24  boboquack
+ 65) Dec 09  00:09:27  (anonymous user #1539845)
+ 66) Dec 09  00:09:28  Superluminal Lag
+ 67) Dec 09  00:09:32  aleksejspopovs
+ 68) Dec 09  00:09:34  Tylan McKinney
+ 69) Dec 09  00:09:34  Craig Gidney (AoC++)
+ 70) Dec 09  00:09:36  Joseph Durie
+ 71) Dec 09  00:09:40  S. Teikn Smith
+ 72) Dec 09  00:09:40  scanhex
+ 73) Dec 09  00:09:41  George Hotz (AoC++)
+ 74) Dec 09  00:09:42  Eagle Diao
+ 75) Dec 09  00:09:42  Roman Elizarov (Sponsor)
+ 76) Dec 09  00:09:43  (anonymous user #975121)
+ 77) Dec 09  00:09:47  Lucas M.
+ 78) Dec 09  00:09:48  etotheipi1
+ 79) Dec 09  00:09:48  mjh316
+ 80) Dec 09  00:09:49  (anonymous user #815608)
+ 81) Dec 09  00:09:49  kg
+ 82) Dec 09  00:09:51  (anonymous user #1760732)
+ 83) Dec 09  00:09:54  lunixbochs
+ 84) Dec 09  00:09:59  Joel Gibson
+ 85) Dec 09  00:09:59  Matthew Misiaszek
+ 86) Dec 09  00:10:00  Benedikt Werner
+ 87) Dec 09  00:10:04  Aryaman Arora
+ 88) Dec 09  00:10:05  KevinL10
+ 89) Dec 09  00:10:06  Brandon Lin
+ 90) Dec 09  00:10:07  Ivan Galakhov (AoC++)
+ 91) Dec 09  00:10:07  Andrey Akhmetov
+ 92) Dec 09  00:10:10  Tanner Hoke
+ 93) Dec 09  00:10:16  Alexander Haupt
+ 94) Dec 09  00:10:20  Paul Martinez
+ 95) Dec 09  00:10:20  vstrimaitis
+ 96) Dec 09  00:10:22  skittles1412
+ 97) Dec 09  00:10:22  negative-seven
+ 98) Dec 09  00:10:24  Shiven Sinha
+ 99) Dec 09  00:10:28  mayoff (AoC++)
+100) Dec 09  00:10:31  rHermes (AoC++) (Sponsor)
+First hundred users to get the first star on Day 9:
+
+  1) Dec 09  00:01:28  goffrie
+  2) Dec 09  00:01:52  (anonymous user #1510407) (AoC++)
+  3) Dec 09  00:01:54  ZED.Charley William Thairo
+  4) Dec 09  00:01:56  hyper-neutrino (AoC++)
+  5) Dec 09  00:01:59  Antonio Molina
+  6) Dec 09  00:02:00  Kevin Sheng
+  7) Dec 09  00:02:00  Oliver Ni (AoC++)
+  8) Dec 09  00:02:02  Maxwell Zen
+  9) Dec 09  00:02:02  Thomas Steinke (AoC++)
+ 10) Dec 09  00:02:05  Tim Vermeulen (AoC++)
+ 11) Dec 09  00:02:07  Anish Singhani
+ 12) Dec 09  00:02:16  ecnerwala
+ 13) Dec 09  00:02:16  Jimmy Mårdell (AoC++) (Sponsor)
+ 14) Dec 09  00:02:23  Steven Hao (AoC++)
+ 15) Dec 09  00:02:23  Tom Holmes
+ 16) Dec 09  00:02:24  Nick Gavalas (AoC++)
+ 17) Dec 09  00:02:24  LegionMammal978
+ 18) Dec 09  00:02:27  Tristan Lee
+ 19) Dec 09  00:02:30  Robert Xiao
+ 20) Dec 09  00:02:32  Carl Schildkraut
+ 21) Dec 09  00:02:33  Clancy Woodburn
+ 22) Dec 09  00:02:34  Nathan Fenner (AoC++)
+ 23) Dec 09  00:02:37  mjh316
+ 24) Dec 09  00:02:37  Artemis
+ 25) Dec 09  00:02:37  bucketpotato01
+ 26) Dec 09  00:02:39  mserrano
+ 27) Dec 09  00:02:42  Benedikt Werner
+ 28) Dec 09  00:02:45  Joel Gibson
+ 29) Dec 09  00:02:45  D. Salgado
+ 30) Dec 09  00:02:45  S. Teikn Smith
+ 31) Dec 09  00:02:45  betaveros (AoC++)
+ 32) Dec 09  00:02:45  Kevin Sun
+ 33) Dec 09  00:02:46  todaybrian
+ 34) Dec 09  00:02:47  mayoff (AoC++)
+ 35) Dec 09  00:02:47  Zeyu Chen (AoC++)
+ 36) Dec 09  00:02:47  (anonymous user #975121)
+ 37) Dec 09  00:02:48  xnkvbo
+ 38) Dec 09  00:02:48  SheepTester
+ 39) Dec 09  00:02:49  Matt Gruskin (AoC++)
+ 40) Dec 09  00:02:50  (anonymous user #681412)
+ 41) Dec 09  00:02:51  Ryan Fitzgerald
+ 42) Dec 09  00:02:51  (anonymous user #198392)
+ 43) Dec 09  00:02:53  Lewin Gan
+ 44) Dec 09  00:02:54  bcc32 (AoC++)
+ 45) Dec 09  00:02:55  Waffle 3z
+ 46) Dec 09  00:02:56  vstrimaitis
+ 47) Dec 09  00:02:56  (anonymous user #1565212)
+ 48) Dec 09  00:02:58  Dustin Miao
+ 49) Dec 09  00:02:58  dan-simon
+ 50) Dec 09  00:02:58  Tanner Hoke
+ 51) Dec 09  00:03:00  Bosco Wang
+ 52) Dec 09  00:03:00  lucifer1004 (AoC++)
+ 53) Dec 09  00:03:03  Zack Lee
+ 54) Dec 09  00:03:03  hughcoleman
+ 55) Dec 09  00:03:07  Harry Slatyer
+ 56) Dec 09  00:03:07  Pedro Osório
+ 57) Dec 09  00:03:07  Tris Emmy Wilson (AoC++)
+ 58) Dec 09  00:03:08  (anonymous user #1539845)
+ 59) Dec 09  00:03:08  Yosuke Sameshima
+ 60) Dec 09  00:03:08  alcatrazEscapee
+ 61) Dec 09  00:03:09  Oskar Haarklou Veileborg (AoC++)
+ 62) Dec 09  00:03:11  Brandon Lin
+ 63) Dec 09  00:03:12  Tristan Rasmussen
+ 64) Dec 09  00:03:14  jakzo
+ 65) Dec 09  00:03:14  Xavier Cooney
+ 66) Dec 09  00:03:15  Murray Edwards
+ 67) Dec 09  00:03:15  Thai Pangsakulyanont (AoC++)
+ 68) Dec 09  00:03:15  leijurv (AoC++)
+ 69) Dec 09  00:03:16  Tom Sirgedas
+ 70) Dec 09  00:03:16  elu00
+ 71) Dec 09  00:03:17  Omkar Bhalerao
+ 72) Dec 09  00:03:18  Roderic Day
+ 73) Dec 09  00:03:19  LUKILUKILITERATURE
+ 74) Dec 09  00:03:19  (anonymous user #1760732)
+ 75) Dec 09  00:03:20  Tomas Rokicki
+ 76) Dec 09  00:03:20  connorjayr (AoC++)
+ 77) Dec 09  00:03:21  tctree333
+ 78) Dec 09  00:03:22  Balint R
+ 79) Dec 09  00:03:23  etotheipi1
+ 80) Dec 09  00:03:27  Craig Gidney (AoC++)
+ 81) Dec 09  00:03:27  slycelote
+ 82) Dec 09  00:03:30  Defelo (AoC++)
+ 83) Dec 09  00:03:31  Ian DeHaan
+ 84) Dec 09  00:03:31  Sam Wang
+ 85) Dec 09  00:03:31  val tron
+ 86) Dec 09  00:03:32  peter50216
+ 87) Dec 09  00:03:33  PikMike
+ 88) Dec 09  00:03:33  pfg
+ 89) Dec 09  00:03:33  twattanawaroon
+ 90) Dec 09  00:03:33  Neal Wu
+ 91) Dec 09  00:03:35  KevinL10
+ 92) Dec 09  00:03:35  Aryaman Arora
+ 93) Dec 09  00:03:35  Dan Wood (AoC++)
+ 94) Dec 09  00:03:36  josh chen
+ 95) Dec 09  00:03:37  Kyle Franke (AoC++)
+ 96) Dec 09  00:03:38  Olle Lapidus
+ 97) Dec 09  00:03:38  Greg Zborovsky (AoC++)
+ 98) Dec 09  00:03:38  LX
+ 99) Dec 09  00:03:38  nim-ka
+100) Dec 09  00:03:38  Lur
