@@ -10,7 +10,7 @@
 * [x] Validate that any changes in utils do not cause the building to fail
 * [x] Make sure we have a file to work in
 * [x] Test download command
-* [ ] Open obs
+* [x] Open obs
  
 
 # Middle
