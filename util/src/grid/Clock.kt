@@ -46,4 +46,24 @@ object Clock {
 		left = -right
 		down = -up
 	}
+
+	fun firstRange(size:Int): IntProgression {
+		return if(down.x + down.y > 0){
+			0 until size
+		} else {
+			size-1 downTo 0
+		}
+	}
+
+	fun secondRange(size:Int): IntProgression {
+		return if(right.x + right.y > 0){
+			0 until size
+		} else {
+			size-1 downTo 0
+		}
+	}
+
+	fun fromIndices(first:Int, second:Int):Point {
+		return down * first + right * second
+	}
 }
