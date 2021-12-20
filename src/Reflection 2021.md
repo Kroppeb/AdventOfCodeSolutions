@@ -79,3 +79,11 @@ no points, 168th place
 
 ## Day 13
 no points, 181st place
+
+
+
+
+
+
+## Day 18
+WTF

@@ -1,5 +1,6 @@
-val year = "2021"
+val year = "2019"
 val user = "Kroppeb"
+val target = 100
 
 
 val reg = Regex("""^\s*(\d+)\)\sDec\s\d+\s+[0-9:]+\s+(.+?)(\s*\(AoC\+\+\))?(\s*\(Sponsor\))?\s*$""", RegexOption.MULTILINE)
@@ -27,11 +28,11 @@ fun main() {
     }
 
     for ((i, map) in inter) {
-        println("${if (i < 9) " " else ""}${i}: ${
+        println("${if (i <= 9) " " else ""}${i}: ${
             when (val you = map[user]) {
                 null -> "NA"
                 else -> "${map.count { it.value > you } + 1}"
             }
-        } / ${map.size} (${map[user]?:0})")
+        } / ${map.size} (${map[user]?:0} / ${map.values.sortedDescending().take(target).last()})")
     }
 }
