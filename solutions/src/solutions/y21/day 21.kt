@@ -21,7 +21,7 @@ val xxxxx = Clock(6, 3);
 */
 
 private fun part1() {
-    var (p1, p2) = getLines(21).ints().map { it.last() }
+    var (p1, p2) = getLines(2021_21).ints().map { it.last() }
 
     var die = 0
     var rolls = 0
@@ -71,7 +71,7 @@ private fun part1() {
 data class State(val p1: Int, val p2: Int, val scoreP1: Int, val scoreP2: Int)
 
 fun part2() {
-    var (op1, op2) = getLines(21).ints().map { it.last() }
+    var (op1, op2) = getLines(2021_21).ints().map { it.last() }
 
 
     var counter = mutableMapOf(State(op1, op2, 0, 0) to 1L)
