@@ -79,6 +79,24 @@ no points, 168th place
 
 ## Day 13
 no points, 181st place
+* Should have worked on the coordinates instead of an actual grid
+
+## Day 14
+* [ ] add `splitOnEmpty`, short for `splitOn{it.isEmpty()}`
+* check the **full** checklist before the day
+* Thinking that all I had to do was switch from ints to longs was dumb as
+  you can never need to have a long for the count of items in a list, cause
+  that would imply you had an oom error.
+
+
+## Day 15
+* Look into the current path stuff/add quick and easy path helpers
+
+## Day 16
+/shrug
+
+## Day 17
+
 
 
 

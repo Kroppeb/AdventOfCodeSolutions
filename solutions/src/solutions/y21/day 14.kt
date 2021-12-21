@@ -11,8 +11,23 @@ import kotlin.math.*
 
 import collections.counter
 import grid.Clock
-import helpers.*
-import itertools.count
+import helpers.getLines
+import helpers.max
+import helpers.min
+import helpers.splitOn
+import kotlin.collections.component1
+import kotlin.collections.component2
+import kotlin.collections.drop
+import kotlin.collections.forEach
+import kotlin.collections.iterator
+import kotlin.collections.joinToString
+import kotlin.collections.map
+import kotlin.collections.mutableListOf
+import kotlin.collections.mutableMapOf
+import kotlin.collections.set
+import kotlin.collections.toList
+import kotlin.collections.toMap
+import kotlin.collections.zipWithNext
 
 val xxxxx = Clock(6, 3);
 
@@ -21,11 +36,11 @@ val xxxxx = Clock(6, 3);
 */
 
 private fun part1() {
-    var data = getLines(14).splitOn { it.isEmpty() }
+    var data = getLines(2021_14).splitOn { it.isEmpty() }
 
     var poly = data[0][0].toCharArray().toList()
 
-    var rules = data[1].map{(it[0] to it[1]) to it[6]}.toMap()
+    var rules = data[1].map { (it[0] to it[1]) to it[6] }.toMap()
 
     repeat(10) {
         var newPoly = mutableListOf<Char>()
@@ -44,32 +59,28 @@ private fun part1() {
         poly = newPoly
     }
 
-    println(poly.joinToString(""))
-    var counts = mutableMapOf<Char, Long>()
+    // println(poly.joinToString(""))
+    var counts = poly.counter().counts
 
-    poly.forEach { c ->
-        counts[c] = counts.getOrDefault(c, 0) + 1
-    }
-
-    println(counts.map{it.value}.max() - counts.map{it.value}.min())
+    println(counts.map { it.value }.max() - counts.map { it.value }.min())
 
 }
 
 
 private fun part2() {
-    var data = getLines(14).splitOn { it.isEmpty() }
+    var data = getLines(2021_14).splitOn { it.isEmpty() }
 
     var polyx = data[0][0].toCharArray().toList()
 
     var poly = polyx.zipWithNext().counter().counts.map { it.key to it.value.toLong() }.toMap()
 
-    var rules = data[1].map{(it[0] to it[1]) to it[6]}.toMap()
+    var rules = data[1].map { (it[0] to it[1]) to it[6] }.toMap()
 
     repeat(40) {
-        var newPoly = mutableMapOf<Pair<Char,Char>, Long>()
+        var newPoly = mutableMapOf<Pair<Char, Char>, Long>()
 
         for ((pair, count) in poly) {
-            if(rules.containsKey(pair)) {
+            if (rules.containsKey(pair)) {
                 newPoly[pair.first to rules[pair]!!] = newPoly.getOrDefault(pair.first to rules[pair]!!, 0) + count
                 newPoly[rules[pair]!! to pair.second] = newPoly.getOrDefault(rules[pair]!! to pair.second, 0) + count
             } else {
@@ -90,13 +101,14 @@ private fun part2() {
     counts[polyx[0]] = counts.getOrDefault(polyx[0], 0) + 1
     counts[polyx[polyx.size - 1]] = counts.getOrDefault(polyx[polyx.size - 1], 0) + 1
 
-    println(counts.map{it.value}.max()/2 - counts.map{it.value}.min()/2)
+    println(counts.map { it.value }.max() / 2 - counts.map { it.value }.min() / 2)
 
 }
 
 
 fun main() {
     println("Day 14: ")
+    part1()
     part2()
 }
 

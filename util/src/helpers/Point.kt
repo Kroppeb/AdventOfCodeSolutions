@@ -69,6 +69,10 @@ data class Point(val x: Int, val y: Int) : PointN<Point> {
 	fun getDiagonalNeighbours() = listOf(right.down, left.down, left.up, right.up)
 	fun getOctNeighbours() = listOf(right, right.down, down, left.down, left, left.up, up, right.up)
 
+	fun getQuadNeighbourHood() = listOf(this, right, down, left, up)
+	fun getDiagonalNeighbourHood() = listOf(this, right.down, left.down, left.up, right.up)
+	fun getOctNeighbourHood() = listOf(this, right, right.down, down, left.down, left, left.up, up, right.up)
+
 	override fun getMooreNeighbours() = getOctNeighbours()
 	override fun getVonNeumannNeighbours() = getQuadNeighbours()
 
