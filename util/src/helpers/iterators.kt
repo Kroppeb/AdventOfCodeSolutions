@@ -371,7 +371,7 @@ fun <T> Iterable<Iterable<T>>.transposeOrNulls(): List<List<T?>> {
 //region list components
 operator fun <T> List<T>.get(indexes: IntRange) = subList(indexes.first, indexes.last + 1)
 
-operator fun <E> List<E>.component6(): E = this[6]
+operator fun <E> List<E>.component6(): E = this[5]
 operator fun <E> List<E>.component7(): E = this[7]
 operator fun <E> List<E>.component8(): E = this[8]
 operator fun <E> List<E>.component9(): E = this[9]
