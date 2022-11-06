@@ -21,7 +21,7 @@ val xxxxx = Clock(6, 3);
 */
 
 private fun part1() {
-    var data = getLines(25).e()
+    var data = getLines(2021_25).e()
 
     var itteration = 0
     while (true) {

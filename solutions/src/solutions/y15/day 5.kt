@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y15.d03
+package solutions.y15.d05
 
 /*
 import grid.Clock
@@ -28,7 +28,7 @@ val vowels = "aeiou".e().toSet()
 val bad = setOf("ab", "cd", "pq", "xy")
 
 private fun part1() {
-    val data = getLines(1)
+    val data = getLines(2015_05)
 
     data.count {
         it.count{it in vowels} >= 3 && it.zipWithNext().none{(a,b) -> "" + a + b in bad} && it.zipWithNext().any{(a,b) -> a == b}
@@ -36,7 +36,7 @@ private fun part1() {
 }
 
 private fun part2() {
-    val data = getLines(1)
+    val data = getLines(2015_05)
 
     data.count {
         it.zipWithNext().zipWithNext().any{(a,b) -> a.first== b.second} &&
@@ -52,7 +52,7 @@ private fun part2() {
 
 fun main() {
     println("Day 5: ")
-    // part1()
+    part1()
     part2()
 }
 

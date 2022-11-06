@@ -7,17 +7,17 @@
 ## Early
 * [ ] Reflection of previous day
 * [ ] Git commit previous day
-* [x] Validate that any changes in utils do not cause the building to fail
-* [x] Make sure we have a file to work in
-* [x] Add imports
-* [x] Test download command
-* [x] Open obs
+* [ ] Validate that any changes in utils do not cause the building to fail
+* [ ] Make sure we have a file to work in
+* [ ] Add imports
+* [ ] Test download command
+* [ ] Open obs
  
 
 # Middle
-* [x] Start the kotlin daemon (by running the empty day script)
-* [x] Validate that shortcut runs the correct file 
-* [x] Close unneeded files & programs
+* [ ] Start the kotlin daemon (by running the empty day script)
+* [ ] Validate that shortcut runs the correct file 
+* [ ] Close unneeded files & programs
 
 # Final
 * Verify imports again
