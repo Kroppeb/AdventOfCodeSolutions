@@ -172,7 +172,7 @@ private fun part2() {
 }
 
 fun main() {
-    println("Day 22: ")
+    println("Day 23: ")
     part2()
 }
 
