@@ -21,7 +21,7 @@ private fun part1(data: List<Int>) = runBlocking {
 			send(i)
 			output.receive()
 		} }
-	}.maxOrNull()
+	}.max()
 	println(r)
 }
 
@@ -43,7 +43,7 @@ private fun part2(data: List<Int>) = runBlocking(Dispatchers.Default) {
 		}
 		input.send(0)
 		(computers pipeTo input).receive()
-	}.maxOrNull()
+	}.max()
 	println(r)
 }
 

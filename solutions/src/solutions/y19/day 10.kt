@@ -24,8 +24,8 @@ private fun part1(data: List<List<Boolean>>) {
 			}.sum() to y
 
 			pp
-		}.maxByOrNull{it.first}!! to x
-	}.maxByOrNull{it.first.first}!!.let{println("${it.second}, ${it.first.second}: ${it.first.first}")}
+		}.maxBy{it.first} to x
+	}.maxBy{it.first.first}.let{println("${it.second}, ${it.first.second}: ${it.first.first}")}
 }
 
 private fun fix(i:Double) = if(i < 0) i +100 else i

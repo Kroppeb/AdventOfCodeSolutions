@@ -18,10 +18,10 @@ val xxxxx = Clock(6, 3);
 */
 
 private fun part1() {
-    var lines = getLines(2021_05).ints().map { (a, b, c, d) -> (a toP b) lineInc (c toP d) }
+    var lines = getLines(2021_05).ints().map { (a, b, c, d) -> (a toP b) toL (c toP d) }
 
-    var single = msa()
-    var double = msa()
+    var single = msoa()
+    var double = msoa()
 
     for (line in lines) {
         if (line.diff.x == 0 || line.diff.y == 0) {
@@ -36,10 +36,10 @@ private fun part1() {
 }
 
 private fun part2() {
-    var lines = getLines(2021_05).ints().map { (a, b, c, d) -> (a toP b) lineInc (c toP d) }
+    var lines = getLines(2021_05).ints().map { (a, b, c, d) -> (a toP b) toL (c toP d) }
 
-    var single = msa()
-    var double = msa()
+    var single = msoa()
+    var double = msoa()
 
     for (line in lines) {
         for (p in line)

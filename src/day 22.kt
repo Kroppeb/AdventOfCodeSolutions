@@ -1,59 +1,77 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y15.d03
+package solutions.y21.d4c
 
 /*
 import grid.Clock
 import helpers.*
-import itertools.*
 import kotlin.math.*
  */
 
 import grid.Clock
+import grid.grid
+import grid.grids
 import helpers.*
-import itertools.*
-import kotlin.math.*
-
-import java.math.BigInteger
-import java.security.MessageDigest
-
 
 val xxxxx = Clock(6, 3);
 
-/*
-
-*/
-
-val vowels = "aeiou".e().toSet()
-val bad = setOf("ab", "cd", "pq", "xy")
-
 private fun part1() {
-    val data = getLines(1)
+	var data = getLines(1)
+	var dd = data.splitOnEmpty()
+	val items = dd.first().first().getInts()
+	var grids = dd.drop(1).ints().grids()
 
-    data.count {
-        it.count{it in vowels} >= 3 && it.zipWithNext().none{(a,b) -> "" + a + b in bad} && it.zipWithNext().any{(a,b) -> a == b}
-    }.log()
+
+	val seen = mutableSetOf<Int>()
+	for (i in items) {
+		seen.add(i)
+
+		// check bingo
+		for (grid in grids) {
+			for (row in grid.rowsCols()) {
+				if (row.all { it in seen }) {
+					(grid.allItems().filter { it !in seen }.sum() * i).log()
+					return;
+				}
+			}
+		}
+	}
 }
 
 private fun part2() {
-    val data = getLines(1)
+	var data = getLines(1)
+	var dd = data.splitOnEmpty()
+	val items = dd.first().first().getInts()
+	var grids = dd.drop(1).ints().grids()
 
-    data.count {
-        it.zipWithNext().zipWithNext().any{(a,b) -> a.first== b.second} &&
-                it.indices.drop(1).any{i ->
-                    val a = it[i - 1]
-                    val b = it[i]
 
-                    it.drop(i + 1).zipWithNext().any { (x,y) -> x == a && y == b }
-                }
-    }.log()
+	val seen = mutableSetOf<Int>()
+	val won = mutableSetOf<Any>()
+	for (i in items) {
+		seen.add(i)
+
+		// check bingo
+		for (grid in grids) {
+			if (grid in won)
+				continue;
+
+			for (row in grid.rowsCols()) {
+				if (row.all { it in seen }) {
+					won.add(grid)
+					if (won.size == grids.size) {
+						(grid.allItems().filter { it !in seen }.sum() * i).log()
+						return;
+					}
+				}
+			}
+		}
+	}
 }
 
-
 fun main() {
-    println("Day 5: ")
-    // part1()
-    part2()
+	println("Day 4: ")
+	part1()
+	part2()
 }
 
 

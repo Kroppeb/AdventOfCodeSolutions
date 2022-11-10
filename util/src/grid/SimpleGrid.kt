@@ -23,6 +23,26 @@ class SimpleGrid<out T>(val items: List<List<T>>) : StrictGrid<T> {
 			else -> items[items.size - 1 - index.y][index.x]
 		}
 	}
+
+	fun rows(): Iterable<List<T>> = items
+	fun cols(): Iterable<List<T>> = items.transpose()
+	fun rowsCols(): Iterable<List<T>> = items + items.transpose()
+	fun diag1(): List<T> {
+		assert(bounds.isSquare)
+		return items.mapIndexed { i, row -> row[i] }
+	}
+	fun diag2(): List<T> {
+		assert(bounds.isSquare)
+		return items.mapIndexed { i, row -> row[items.size - 1 - i] }
+	}
+	fun diagonals(): Iterable<List<T>> = listOf(diag1(), diag2())
+	fun rowsColsDiagonals(): Iterable<List<T>> = rowsCols() + diagonals()
+
+	fun allItems(): Iterable<T> = items.flatten()
+
+	override fun toString(): String {
+		return items.joinToString("\n") { it.joinToString(" ") }
+	}
 }
 
 
@@ -38,6 +58,9 @@ fun <T> List<List<T>>.grid(): SimpleGrid<T> {
 		error("non consistent length")
 	return SimpleGrid(this)
 }
+
+fun <T> Iterable<List<List<T>>>.grids(): List<SimpleGrid<T>> = map{it.grid()}
+
 inline fun <T, R> SimpleGrid<T>.map(block: (T) -> R) = this.items.map2(block).grid()
 inline fun <T, R> SimpleGrid<T>.mapIndexed(block: (Point, T) -> R) = this.items.mapIndexed { i, a ->
 	a.mapIndexed{ j,b ->

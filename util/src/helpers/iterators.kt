@@ -466,3 +466,17 @@ operator fun <E> List<E>.component97(): E = this[97]
 operator fun <E> List<E>.component98(): E = this[98]
 operator fun <E> List<E>.component99(): E = this[99]
 // endregion
+
+
+
+inline fun <T, R> Iterable<T>.repeatMap(count: Int, mapping: (Int, T) -> R): List<R> =
+	(0 until count).flatMap { i -> map { mapping(i, it) } }
+
+fun Iterable<String>.splitOnEmpty(): List<List<String>> = this.splitOn { it.isEmpty() }
+
+fun Iterable<Int>.product(): Long = this.fold(1L) { acc, i -> acc * i }
+
+fun Iterable<Double>.product(): Double = this.fold(1.0) { acc, i -> acc * i }
+
+fun <T : Comparable<T>>Iterable<T>.medianOdd():T = this.sorted()[this.count() / 2]
+fun <T : Comparable<T>>Iterable<T>.medianEven():Pair<T,T> = this.sorted().let{ it[it.count() / 2] to it[it.count() / 2 - 1] }

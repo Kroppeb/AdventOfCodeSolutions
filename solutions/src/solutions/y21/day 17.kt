@@ -11,7 +11,6 @@ import kotlin.math.*
 
 import grid.Clock
 import helpers.*
-import itertools.*
 import kotlin.math.*
 
 val xxxxx = Clock(6, 3);
@@ -59,7 +58,7 @@ fun part2(){
 
     var count = 0;
 
-    var set = msa()
+    var set = msoa()
 
     var startDy = -200;
     while (startDy < 1000) {

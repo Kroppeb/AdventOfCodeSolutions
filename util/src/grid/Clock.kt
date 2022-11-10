@@ -1,5 +1,7 @@
 package grid
 
+import grid.Clock.down
+import grid.Clock.right
 import helpers.Point
 import helpers.toP
 
@@ -45,25 +47,73 @@ object Clock {
 		right = eX toP eY
 		left = -right
 		down = -up
+
+		this.print()
 	}
 
-	fun firstRange(size:Int): IntProgression {
-		return if(down.x + down.y > 0){
+	fun print() {
+		// eg 6,3: (nX = -1, eY = 1
+		//     ---
+		//    /   \
+		//   /     \
+		//   |  o> |
+		//   \  |  /
+		//    \ v /
+		//     ---
+		println("  /---\\  ")
+
+		if (nX == 1) {
+			println(" /  ^  \\ ")
+			println(" |  |  | ")
+		} else {
+			println(" /     \\ ")
+			if (nY == 1)
+				println(" |  ^  | ")
+			else
+				println(" |     | ")
+		}
+
+		if (eX == 1) {
+			println(" |  o->| ")
+		} else if (eX == -1) {
+			println(" |<-o  | ")
+		} else if (eY == 1) {
+			println(" |  o> | ")
+		} else {
+			println(" | <o  | ")
+		}
+
+		if (nX == -1) {
+			println(" |  |  | ")
+			println(" \\  v  / ")
+		} else {
+			if (nY == 1)
+				println(" |  v  | ")
+			else
+				println(" |     | ")
+			println(" \\     / ")
+		}
+
+		println("  \\---/  ")
+	}
+
+	fun firstRange(size: Int): IntProgression {
+		return if (down.x + down.y > 0) {
 			0 until size
 		} else {
-			size-1 downTo 0
+			size - 1 downTo 0
 		}
 	}
 
-	fun secondRange(size:Int): IntProgression {
-		return if(right.x + right.y > 0){
+	fun secondRange(size: Int): IntProgression {
+		return if (right.x + right.y > 0) {
 			0 until size
 		} else {
-			size-1 downTo 0
+			size - 1 downTo 0
 		}
 	}
 
-	fun fromIndices(first:Int, second:Int):Point {
+	fun fromIndices(first: Int, second: Int): Point {
 		return down * first + right * second
 	}
 }

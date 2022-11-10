@@ -10,7 +10,7 @@ import kotlin.math.*
  */
 
 import grid.Clock
-import helpers.getLines
+import helpers.*
 
 val xxxxx = Clock(6, 3);
 
@@ -59,9 +59,9 @@ fun parse(data: List<Int>): Parsed<Long> {
         1 ->
             return parseSub(data.subList(6, data.size)).map { it.fold(1L, Long::times) }
         2 ->
-            return parseSub(data.subList(6, data.size)).map { it.minOrNull()!! }
+            return parseSub(data.subList(6, data.size)).map { it.min() }
         3 ->
-            return parseSub(data.subList(6, data.size)).map { it.maxOrNull()!! }
+            return parseSub(data.subList(6, data.size)).map { it.max() }
         5 ->
             return parseSub(data.subList(6, data.size)).map { (a, b) -> if (a > b) 1 else 0 }
         6 ->

@@ -3,11 +3,6 @@
 package solutions.solutions.y20.d01c
 
 import helpers.*
-import collections.*
-import grid.*
-import graph.BFS
-import itertools.count
-import kotlinx.coroutines.*
 
 
 private fun part1(data: Data) {

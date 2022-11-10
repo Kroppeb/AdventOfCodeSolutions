@@ -3,11 +3,7 @@
 package solutions.solutions.y20.d03
 
 import helpers.*
-import collections.*
 import grid.*
-import graph.BFS
-import itertools.count
-import kotlinx.coroutines.*
 
 val xxxxx = Clock(3, 6);
 

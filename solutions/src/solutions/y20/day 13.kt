@@ -15,7 +15,7 @@ private fun part1(data: Data) {
 	val ll = data[1].getInts()
 	ll.map {
 		it to start + it - (start % it) - start
-	}.minByOrNull { it.second }!!.let {
+	}.minBy { it.second }!!.let {
 		it.log();
 		println(it.first * it.second)
 	}

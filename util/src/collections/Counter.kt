@@ -62,7 +62,7 @@ class Counter<T> : MutableCollection<T> {
 	 */
 	override fun remove(element: T): Boolean {
 		val n = counts.computeIfPresent(element) { _, b -> b - 1 }
-		counts.remove(element, -1)
+		counts.remove(element, 0)
 		return n != null
 	}
 

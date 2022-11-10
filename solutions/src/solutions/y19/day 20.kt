@@ -6,7 +6,6 @@ import helpers.*
 import kotlinx.coroutines.runBlocking
 import java.util.*
 import java.util.ArrayDeque
-import kotlin.collections.*
 
 
 private fun part1(data: Data) = runBlocking {
@@ -76,7 +75,7 @@ private fun part1(data: Data) = runBlocking {
 private data class State(val p: Point, val d: Int, val depth: Int)
 
 private fun part2(data: Data) = runBlocking {
-	val w = data.map { it.size }.maxOrNull()!!
+	val w = data.map { it.size }.max()
 	val grid = data.entityGrid { it == '.' }
 	val portalP = data.entityGrid { it.isLetter() }
 
@@ -127,7 +126,7 @@ private fun part2(data: Data) = runBlocking {
 		if (l == 0 && p == end) {
 			println(d)
 			val seq = generateSequence(state, back::get)
-			println(seq.map{it.depth}.maxOrNull())
+			println(seq.map{it.depth}.max())
 			println(deepest)
 			return@runBlocking
 		}

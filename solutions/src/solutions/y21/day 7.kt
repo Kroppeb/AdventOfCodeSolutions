@@ -22,7 +22,7 @@ val xxxxx = Clock(6, 3);
 private fun part1() {
     var data = getLines(7).first().ints()
 
-    var x = data.minMaxIR().minByOrNull { data.sumBy { a -> abs(it - a) } }!!
+    var x = data.minMaxIR().minBy { data.sumBy { a -> abs(it - a) } }
 
     println(data.sumBy { abs(it - x)  })
 }
@@ -30,7 +30,7 @@ private fun part1() {
 private fun part2() {
     var data = getLines(7).first().ints()
 
-    var x = data.minMaxIR().minByOrNull { data.sumBy { a -> abs(it - a) * (abs(it - a) + 1)/2 } }!!
+    var x = data.minMaxIR().minBy { data.sumBy { a -> abs(it - a) * (abs(it - a) + 1)/2 } }
 
     println(data.map{ abs(it - x) * (abs(it - x) + 1)/2}.sum())
 }

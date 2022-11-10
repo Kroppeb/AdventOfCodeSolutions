@@ -11,8 +11,8 @@ import kotlin.math.*
 
 import grid.Clock
 import helpers.getLines
-import helpers.mlt
-import helpers.mmat
+import helpers.mlot
+import helpers.mmoat
 
 val xxxxx = Clock(6, 3);
 
@@ -24,16 +24,16 @@ private fun part1() {
     var data = getLines(2021_12)
 
 
-    var conn = mmat<MutableList<String>>()
+    var conn = mmoat<MutableList<String>>()
 
     for ((a, b) in data.map { it.split('-') }) {
-        conn.getOrPut(a) { mlt() }.add(b)
-        conn.getOrPut(b) { mlt() }.add(a)
+        conn.getOrPut(a) { mlot() }.add(b)
+        conn.getOrPut(b) { mlot() }.add(a)
     }
 
     val seen = setOf<String>("start")
     var paths = 0
-    var queue = mlt<Pair<String, Set<String>>>()
+    var queue = mlot<Pair<String, Set<String>>>()
     queue.add("start" to seen)
 
     while (queue.isNotEmpty()) {
@@ -59,16 +59,16 @@ private fun part2() {
     var data = getLines(2021_12)
 
 
-    var conn = mmat<MutableList<String>>()
+    var conn = mmoat<MutableList<String>>()
 
     for ((a, b) in data.map { it.split('-') }) {
-        conn.getOrPut(a) { mlt() }.add(b)
-        conn.getOrPut(b) { mlt() }.add(a)
+        conn.getOrPut(a) { mlot() }.add(b)
+        conn.getOrPut(b) { mlot() }.add(a)
     }
 
     val seen = setOf<String>("start")
     var paths = 0
-    var queue = mlt<Pair<String, Set<String>>>()
+    var queue = mlot<Pair<String, Set<String>>>()
     queue.add("start" to seen)
 
     while (queue.isNotEmpty()) {

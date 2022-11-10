@@ -118,6 +118,13 @@ data class Point(val x: Int, val y: Int) : PointN<Point> {
 	override fun max(other: Point): Point = max(this.x, other.x) toP max(this.y, other.y)
 
 	override fun dot(other: Point) = this.x * other.x + this.y * other.y
+
+	fun isLeftOf(other: Point) = Clock.left.dot(this) > Clock.left.dot(other)
+	fun isRightOf(other: Point) = Clock.right.dot(this) > Clock.right.dot(other)
+	fun isAbove(other: Point) = Clock.up.dot(this) > Clock.up.dot(other)
+	fun isBelow(other: Point) = Clock.down.dot(this) > Clock.down.dot(other)
+	fun sameLeftRight(other: Point) = Clock.left.dot(this) == Clock.left.dot(other)
+	fun sameUpDown(other: Point) = Clock.up.dot(this) == Clock.up.dot(other)
 }
 
 /**

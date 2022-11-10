@@ -5,10 +5,7 @@ package solutions.y20
 import helpers.*
 import collections.*
 import grid.*
-import graph.BFS
-import itertools.count
 import kotlinx.coroutines.*
-import kotlin.math.pow
 
 val xxxxx = Clock(3, 6);
 
@@ -31,7 +28,7 @@ private fun part2(data: Data) {
 		}
 	}
 	val p = data.subList(start, end +1)
-	println(p.minOrNull()!! + p.maxOrNull()!!)
+	println(p.min() + p.max())
 }
 
 private typealias Data = Longs

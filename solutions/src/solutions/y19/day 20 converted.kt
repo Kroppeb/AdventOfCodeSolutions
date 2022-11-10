@@ -2,7 +2,7 @@
 package solutions.solutions.y19.d20c
 
 import collections.defaultMapOf
-import graph.BFS
+import graph.bfs
 import grid.*
 import helpers.*
 import kotlin.collections.*
@@ -45,7 +45,7 @@ private fun part1(data: Data) {
 	val gportals: Map<Point, String> = portals.flatMap { (k, v) -> v.map { it to k } }.toMap()
 
 	val end = portals["ZZ"].first()
-	val (p, d) = BFS(portals["AA"].first(), { it == end }, {
+	val (p, d) = bfs(portals["AA"].first(), { it == end }, {
 		buildList {
 			val q = gportals[it]
 			if (q != null) {
@@ -102,7 +102,7 @@ private fun part2(data: Data) {
 
 
 	val end = portals["ZZ"].first() to 0
-	val (p, d) = BFS(portals["AA"].first() to 0, { it == end }) { (p, l) ->
+	val (p, d) = bfs(portals["AA"].first() to 0, { it == end }) { (p, l) ->
 		buildList {
 			val q = gportals[p]
 			if (q != null) {

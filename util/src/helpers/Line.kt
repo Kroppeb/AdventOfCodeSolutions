@@ -1,5 +1,7 @@
 package helpers
 
+import grid.Clock
+
 typealias Line = LineN<Point>
 typealias Line3D = LineN<Point3D>
 
@@ -20,4 +22,11 @@ data class LineN<P : PointN<P>>(val start: P, val end: P) : Iterable<P> {
 
 }
 
-infix fun <P : PointN<P>> P.lineInc(other: P) = LineN(this, other)
+infix fun <P : PointN<P>> P.toL(other: P) = LineN(this, other)
+
+fun Line.isHorizontal() = if (Clock.eX != 0) diff.y == 0 else diff.x == 0
+fun Line.isVertical() = if (Clock.nX != 0) diff.y == 0 else diff.x == 0
+fun Line.isAxisAligned() = diff.x == 0 || diff.y == 0
+@JvmName("isAxisAligned3D")
+fun Line3D.isAxisAligned() = diff.x == 0 || diff.y == 0 || diff.z == 0
+
