@@ -53,48 +53,48 @@ object Clock {
 
 	fun print() {
 		// eg 6,3: (nX = -1, eY = 1
-		//     ---
-		//    /   \
-		//   /     \
-		//   |  o> |
-		//   \  |  /
-		//    \ v /
-		//     ---
-		println("  /---\\  ")
+		//      -----
+		//     /     \
+		//    /       \
+		//   |    o->  |
+		//    \   |   /
+		//     \  v  /
+		//      -----
+		println("    -----    ")
 
 		if (nX == 1) {
-			println(" /  ^  \\ ")
-			println(" |  |  | ")
+			println("   /  ^  \\   ")
+			println("  /   |   \\  ")
 		} else {
-			println(" /     \\ ")
+			println("   /     \\   ")
 			if (nY == 1)
-				println(" |  ^  | ")
+				println("  /   ^   \\  ")
 			else
-				println(" |     | ")
+				println("  /       \\  ")
 		}
 
 		if (eX == 1) {
-			println(" |  o->| ")
+			println(" |    o--->| ")
 		} else if (eX == -1) {
-			println(" |<-o  | ")
+			println(" |<---o    | ")
 		} else if (eY == 1) {
-			println(" |  o> | ")
+			println(" |    o->  | ")
 		} else {
-			println(" | <o  | ")
+			println(" |  <-o    | ")
 		}
 
 		if (nX == -1) {
-			println(" |  |  | ")
-			println(" \\  v  / ")
+			println("  \\   |   /  ")
+			println("   \\  v  /   ")
 		} else {
-			if (nY == 1)
-				println(" |  v  | ")
+			if (nY == -1)
+				println("  \\   v   /  ")
 			else
-				println(" |     | ")
-			println(" \\     / ")
+				println("  \\       /  ")
+			println("   \\     /   ")
 		}
 
-		println("  \\---/  ")
+		println("    -----    ")
 	}
 
 	fun firstRange(size: Int): IntProgression {

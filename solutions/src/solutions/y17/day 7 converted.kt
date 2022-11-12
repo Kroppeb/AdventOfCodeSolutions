@@ -1,17 +1,17 @@
-package trainings.`2017`
+package solutions.y17.d07c
 
 
 import helpers.*
 
-private fun part1(data: List<List<Any?>>){
+private fun part1(data: List<List<String>>){
 	val ps = data.map{it[0]}.toSet()
 	val pps = data.flatMap { it.drop(2) }.toSet()
 	println(ps - pps)
 }
 
-private fun part2(data:List<List<Any?>>){
-	val w = data.map { it[0].toString() to it[1] as Int }.toMap()
-	val c = data.map { it[0].toString() to it.drop(3).map{it.toString()} }.toMap()
+private fun part2(data:List<List<String>>){
+	val w = data.map { it[0] to it[1].getInt()!! }.toMap()
+	val c = data.map { it[0] to it.drop(2) }.toMap()
 
 	fun check(cur:String) : Int{
 		if (c[cur]!!.isEmpty())
@@ -36,8 +36,9 @@ private fun part2(data:List<List<Any?>>){
 
 
 fun main(){
-	val data = getWSV(2017_07).map2{it.getWord()?:it.getInt()}
+	val data = getAlphaNumLines(2017_07)
 	part1(data)
+	part2(data)
 
 
 

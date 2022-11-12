@@ -1,5 +1,5 @@
 @file:Suppress("PackageDirectoryMismatch", "PackageName")
-package trainings.`2017`.`03`
+package solutions.y17.d03
 import helpers.*
 import grid.*
 import kotlinx.coroutines.*

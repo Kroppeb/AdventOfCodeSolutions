@@ -42,7 +42,7 @@ fun editDistance(a: Iterable<*>, b: Iterable<*>): Int {
 	return aux(0, 0)
 }
 
-private fun Boolean.toInt() = if (this) 1 else 0
+fun Boolean.toInt() = if (this) 1 else 0
 
 fun <C : Comparable<C>> min(first: C, vararg elements: C) = elements.minOrNull()?.let { if (it < first) it else first }
 	?: first

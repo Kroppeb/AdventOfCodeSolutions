@@ -1,9 +1,7 @@
 @file:Suppress("PackageDirectoryMismatch", "PackageName")
-package trainings.`2017`.`05`
+package solutions.y17.d05
 import helpers.*
 import grid.*
-import kotlinx.coroutines.*
-import kotlin.math.abs
 
 private val xxxxx = Clock(3,6);
 
