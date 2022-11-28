@@ -61,7 +61,6 @@ data class Point(val x: Int, val y: Int) : PointN<Point> {
 	val west get() = left
 
 
-
 	fun rotateClock() = Clock.right * dot(Clock.up) + Clock.up * dot(Clock.left)
 	fun rotateAntiClock() = -rotateClock()
 
@@ -149,28 +148,31 @@ data class Point3D(val x: Int, val y: Int, val z: Int) : PointN<Point3D> {
 
 	// Ordered by x:y:z
 	fun get2DDiagonalNeighbours() = listOf(
-			left.down, left.back, left.front, left.up,
-			down.back, down.front, up.back, up.front,
-			right.down, right.back, right.front, right.up)
+		left.down, left.back, left.front, left.up,
+		down.back, down.front, up.back, up.front,
+		right.down, right.back, right.front, right.up
+	)
 
 	// Ordered by x:y:z
 	fun get3DDiagonalNeighbours() = listOf(
-			left.down.back, left.down.front, left.up.back, left.up.front,
-			right.down.back, right.down.front, right.up.back, right.up.front)
+		left.down.back, left.down.front, left.up.back, left.up.front,
+		right.down.back, right.down.front, right.up.back, right.up.front
+	)
 
 	// Ordered by x:y:z
 	fun getIcosiHeptaNeighbours() = listOf(
-			left.down.back, left.down, left.down.front,
-			left.back, left, left.front,
-			left.up.back, left.up, left.up.front,
+		left.down.back, left.down, left.down.front,
+		left.back, left, left.front,
+		left.up.back, left.up, left.up.front,
 
-			down.back, down, down.front,
-			back, /*this,*/ front,
-			up.back, up, up.front,
+		down.back, down, down.front,
+		back, /*this,*/ front,
+		up.back, up, up.front,
 
-			right.down.back, right.down, right.down.front,
-			right.back, right, right.front,
-			right.up.back, right.up, right.up.front)
+		right.down.back, right.down, right.down.front,
+		right.back, right, right.front,
+		right.up.back, right.up, right.up.front
+	)
 
 
 	override fun getMooreNeighbours() = getIcosiHeptaNeighbours()
@@ -229,6 +231,96 @@ fun Char.toPoint(): Point = when (this) {
 	else -> error("")
 }
 
+data class Point3DL(val x: Long, val y: Long, val z: Long) : PointN<Point3DL> {
+	val right by lazy { x + Clock.eX toP y + Clock.eY toP z }
+	val left by lazy { x - Clock.eX toP y - Clock.eY toP z }
+	val down by lazy { x - Clock.nX toP y - Clock.nY toP z }
+	val up by lazy { x + Clock.nX toP y + Clock.nY toP z }
+	val front by lazy { x toP y toP z + 1 }
+	val back by lazy { x toP y toP z - 1 }
+
+	fun rotateClockX() = x toP -z toP y
+	fun rotateAntiClockX() = x toP z toP -y
+	fun rotateClockY() = z toP y toP -x
+	fun rotateAntiClockY() = -z toP y toP x
+	fun rotateClockZ() = -y toP x toP z
+	fun rotateAntiClockZ() = y toP -x toP z
+
+	fun getHexNeighbours() = listOf(right, left, up, down, front, back)
+
+	// Ordered by x:y:z
+	fun get2DDiagonalNeighbours() = listOf(
+		left.down, left.back, left.front, left.up,
+		down.back, down.front, up.back, up.front,
+		right.down, right.back, right.front, right.up
+	)
+
+	// Ordered by x:y:z
+	fun get3DDiagonalNeighbours() = listOf(
+		left.down.back, left.down.front, left.up.back, left.up.front,
+		right.down.back, right.down.front, right.up.back, right.up.front
+	)
+
+	// Ordered by x:y:z
+	fun getIcosiHeptaNeighbours() = listOf(
+		left.down.back, left.down, left.down.front,
+		left.back, left, left.front,
+		left.up.back, left.up, left.up.front,
+
+		down.back, down, down.front,
+		back, /*this,*/ front,
+		up.back, up, up.front,
+
+		right.down.back, right.down, right.down.front,
+		right.back, right, right.front,
+		right.up.back, right.up, right.up.front
+	)
+
+
+	override fun getMooreNeighbours() = getIcosiHeptaNeighbours()
+	override fun getVonNeumannNeighbours() = getHexNeighbours()
+
+
+	override operator fun unaryMinus(): Point3DL = -x toP -y toP -z
+
+	override operator fun minus(other: Point3DL): Point3DL = x - other.x toP y - other.y toP z - other.z
+	override operator fun plus(other: Point3DL): Point3DL = x + other.x toP y + other.y toP z + other.z
+
+	override operator fun times(other: Point3DL): Point3DL = x * other.x toP y * other.y toP z * other.z
+	override operator fun div(other: Point3DL): Point3DL = x / other.x toP y / other.y toP z / other.z
+	override operator fun rem(other: Point3DL): Point3DL = x % other.x toP y % other.y toP z % other.z
+
+	override operator fun times(other: Int): Point3DL = x * other toP y * other toP z * other
+	override operator fun div(other: Int): Point3DL = x / other toP y / other toP z / other
+	override operator fun rem(other: Int): Point3DL = x % other toP y % other toP z % other
+
+	override fun abs(): Point3DL = abs(x) toP abs(y) toP abs(z)
+
+	override fun sqrDist(): Int = TODO()
+	override fun dist(): Double = sqrt(sqrDist().toDouble())
+	fun manDistL(): Long = abs(x) + abs(y) + abs(z)
+	override fun manDist(): Int = TODO()
+
+	override fun sqrDistTo(other: Point3DL): Int = (this - other).sqrDist()
+	override fun distTo(other: Point3DL): Double = (this - other).dist()
+	override fun manDistTo(other: Point3DL): Int = (this - other).manDist()
+
+	override fun gcd(): Int = gcd(abs(x), gcd(abs(y), abs(z))).toInt()
+
+	override fun discreteAngle(): Point3DL {
+		val g = gcd()
+		return this / g
+	}
+
+	override fun min(other: Point3DL): Point3DL = min(this.x, other.x) toP min(this.y, other.y) toP min(this.z, other.z)
+	override fun max(other: Point3DL): Point3DL = max(this.x, other.x) toP max(this.y, other.y) toP max(this.z, other.z)
+
+	override fun dot(other: Point3DL) = (this.x * other.x + this.y * other.y + this.z * other.z).toInt() // FIXME
+}
+
+
+infix fun Long.toP(o: Long) = this to o
+infix fun Pair<Long, Long>.toP (o: Long) = Point3DL(this.first, this.second, o)
 
 fun <T : PointN<T>> abs(v: T) = v.abs()
 
@@ -250,7 +342,9 @@ fun <T : PointN<T>> Iterable<T>.getClosestDist(): Double? = getClosestSqrDist()?
 fun <T : PointN<T>> Iterable<T>.getClosestManDist(): Int? = this.map(PointN<T>::manDist).minOrNull()
 
 fun <T : PointN<T>> Iterable<T>.getClosestSqrDistTo(other: T): Int? = this.map { it.sqrDistTo(other) }.minOrNull()
-fun <T : PointN<T>> Iterable<T>.getClosestDistTo(other: T): Double? = getClosestSqrDistTo(other)?.let { sqrt(it.toDouble()) }
+fun <T : PointN<T>> Iterable<T>.getClosestDistTo(other: T): Double? =
+	getClosestSqrDistTo(other)?.let { sqrt(it.toDouble()) }
+
 fun <T : PointN<T>> Iterable<T>.getClosestManDistTo(other: T): Int? = this.map { it.manDistTo(other) }.minOrNull()
 
 fun <T : PointN<T>> Iterable<T>.getFurthestSqrDist(): Int? = this.map(PointN<T>::sqrDist).maxOrNull()
@@ -258,7 +352,9 @@ fun <T : PointN<T>> Iterable<T>.getFurthestDist(): Double? = getFurthestSqrDist(
 fun <T : PointN<T>> Iterable<T>.getFurthestManDist(): Int? = this.map(PointN<T>::manDist).maxOrNull()
 
 fun <T : PointN<T>> Iterable<T>.getFurthestSqrDistTo(other: T): Int? = this.map { it.sqrDistTo(other) }.maxOrNull()
-fun <T : PointN<T>> Iterable<T>.getFurthestDistTo(other: T): Double? = getFurthestSqrDistTo(other)?.let { sqrt(it.toDouble()) }
+fun <T : PointN<T>> Iterable<T>.getFurthestDistTo(other: T): Double? =
+	getFurthestSqrDistTo(other)?.let { sqrt(it.toDouble()) }
+
 fun <T : PointN<T>> Iterable<T>.getFurthestManDistTo(other: T): Int? = this.map { it.manDistTo(other) }.maxOrNull()
 
 

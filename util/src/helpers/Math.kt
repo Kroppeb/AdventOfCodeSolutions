@@ -38,17 +38,65 @@ fun DoubleArray.max():Double = maxOrNull()!!
 inline fun <C, T : Comparable<T>>Iterable<C>.minBy(b:(C) -> T):C = minByOrNull(b)!!
 inline fun <C, T : Comparable<T>>Iterable<C>.maxBy(b:(C) -> T):C = maxByOrNull(b)!!
 
+inline fun <C, T : Comparable<T>>Iterable<C>.allMinBy(b:(C) -> T):List<C> {
+	val min = minBy(b)
+	return filter { b(it) == b(min) }
+}
+inline fun <C, T : Comparable<T>>Iterable<C>.allMaxBy(b:(C) -> T):List<C> {
+	val max = maxBy(b)
+	return filter { b(it) == b(max) }
+}
+
 inline fun <C, T : Comparable<T>>Array<C>.minBy(b:(C) -> T):C = minByOrNull(b)!!
 inline fun <C, T : Comparable<T>>Array<C>.maxBy(b:(C) -> T):C = maxByOrNull(b)!!
+
+inline fun <C, T : Comparable<T>>Array<C>.allMinBy(b:(C) -> T):List<C> {
+	val min = minBy(b)
+	return filter { b(it) == b(min) }
+}
+
+inline fun <C, T : Comparable<T>>Array<C>.allMaxBy(b:(C) -> T):List<C> {
+	val max = maxBy(b)
+	return filter { b(it) == b(max) }
+}
 
 inline fun <C : Comparable<C>>IntArray.minBy(b:(Int) -> C):Int = minByOrNull(b)!!
 inline fun <C : Comparable<C>>IntArray.maxBy(b:(Int) -> C):Int = maxByOrNull(b)!!
 
+inline fun <C : Comparable<C>>IntArray.allMinBy(b:(Int) -> C):List<Int> {
+	val min = minBy(b)
+	return filter { b(it) == b(min) }
+}
+
+inline fun <C : Comparable<C>>IntArray.allMaxBy(b:(Int) -> C):List<Int> {
+	val max = maxBy(b)
+	return filter { b(it) == b(max) }
+}
+
 inline fun <C : Comparable<C>>LongArray.minBy(b:(Long) -> C):Long = minByOrNull(b)!!
 inline fun <C : Comparable<C>>LongArray.maxBy(b:(Long) -> C):Long = maxByOrNull(b)!!
 
+inline fun <C : Comparable<C>>LongArray.allMinBy(b:(Long) -> C):List<Long> {
+	val min = minBy(b)
+	return filter { b(it) == b(min) }
+}
+
+inline fun <C : Comparable<C>>LongArray.allMaxBy(b:(Long) -> C):List<Long> {
+	val max = maxBy(b)
+	return filter { b(it) == b(max) }
+}
+
 inline fun <C : Comparable<C>>DoubleArray.minBy(b: (Double) -> C):Double = minByOrNull(b)!!
 inline fun <C : Comparable<C>>DoubleArray.maxBy(b: (Double) -> C):Double = maxByOrNull(b)!!
+
+inline fun <C : Comparable<C>>DoubleArray.allMinBy(b: (Double) -> C):List<Double> {
+	val min = minBy(b)
+	return filter { b(it) == b(min) }
+}
+inline fun <C : Comparable<C>>DoubleArray.allMaxBy(b: (Double) -> C):List<Double> {
+	val max = maxBy(b)
+	return filter { b(it) == b(max) }
+}
 
 @JvmName("minMaxVararg")
 fun <T : Comparable<T>>minMax(vararg e:T):Pair<T, T> = e.min() to e.max()

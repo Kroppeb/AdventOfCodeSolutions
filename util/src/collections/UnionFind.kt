@@ -1,17 +1,16 @@
 package collections
 
 class UnionFind {
-	private val parents = mutableMapOf<Any, Element>()
+	val parents = mutableMapOf<Any, Element>()
 
-	private fun getRoot(a: Any): Element {
-		val parent = parents.getOrPut(a) { Element(0, null) }
+	fun getRoot(a: Any): Element {
+		val parent = parents.getOrPut(a) { Element(0, null, a) }
 		return parent.getRoot()
 	}
 
 	fun areJoined(a: Any, b: Any) = getRoot(a) === getRoot(b)
 
 	fun join(a: Any, b: Any): Boolean {
-		if (a == b) return true
 		val pa = getRoot(a)
 		val pb = getRoot(b)
 		if (pa === pb) return true
@@ -26,7 +25,11 @@ class UnionFind {
 		return false
 	}
 
-	class Element(var rank: Int, var parent: Element?) {
+	fun getAllRoots() = this.parents.entries.filter{it.value.parent == null}.map{it.key}
+
+	fun getAllGroups() = this.parents.keys.groupBy { this.getRoot(it) }
+
+	class Element(var rank: Int, var parent: Element?, var item:Any) {
 		fun getRoot(): Element = parent?.getRoot()?.also{parent = it} ?: this
 	}
 }

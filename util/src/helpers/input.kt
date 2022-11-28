@@ -1,6 +1,5 @@
 package helpers
 
-import grid.Grid
 import grid.SimpleGrid
 import grid.grid
 
@@ -138,6 +137,27 @@ fun getIntCode(day: Int): IntCode{
 	return getLongs(day).withIndex().associate { (i,v) -> i.toLong() to v }
 }
 
+fun Iterable<Int>.getPoint(): Point? {
+	val iterator = this.iterator()
+	if (!iterator.hasNext()) return null
+	val a = iterator.next()
+	if (!iterator.hasNext()) return null
+	return a toP iterator.next()
+}
+
+fun Iterable<Int>.getPoint3D(): Point3D? {
+	val iterator = this.iterator()
+	if (!iterator.hasNext()) return null
+	val a = iterator.next()
+	if (!iterator.hasNext()) return null
+	val b = iterator.next()
+	if (!iterator.hasNext()) return null
+	return a toP b toP iterator.next()
+}
+
+fun Iterable<Int>.point() = this.getPoint()!!
+fun Iterable<Int>.point3D() = this.getPoint3D()!!
+
 
 fun String.getInt() = regexInt.find(this)?.value?.toInt()
 fun String.getPosInt() = regexPosInt.find(this)?.value?.toInt()
@@ -148,6 +168,8 @@ fun String.getDouble() = regexFloat.find(this)?.value?.toDouble()
 fun String.getPosDouble() = regexPosFloat.find(this)?.value?.toDouble()
 fun String.getWord() = regexWord.find(this)?.value
 fun String.getAlphaNum() = regexAlphaNum.find(this)?.value
+fun String.getPoint() = getInts().getPoint()
+fun String.getPoint3D() = getInts().getPoint3D()
 
 fun String.getInts() = regexInt.findAll(this).map { it.value.toInt() }.toList()
 fun String.getPosInts() = regexPosInt.findAll(this).map { it.value.toInt() }.toList()
@@ -158,6 +180,8 @@ fun String.getDoubles() = regexFloat.findAll(this).map { it.value.toDouble() }.t
 fun String.getPosDoubles() = regexPosFloat.findAll(this).map { it.value.toDouble() }.toList()
 fun String.getWords() = regexWord.findAll(this).map { it.value }.toList()
 fun String.getAlphaNums() = regexAlphaNum.findAll(this).map { it.value }.toList()
+fun String.getPoints() = getInts().chunked(2).filter{it.size == 2}.map{it.point()}
+fun String.getPoints3D() = getInts().chunked(3).filter{it.size == 3}.map{it.point3D()}
 
 fun String.int(): Int = getInt()!!
 fun String.posInt(): Int = getPosInt()!!
@@ -168,6 +192,8 @@ fun String.double(): Double = getDouble()!!
 fun String.posDouble(): Double = getPosDouble()!!
 fun String.word(): String = getWord()!!
 fun String.alphaNum(): String = getAlphaNum()!!
+fun String.point(): Point = getPoint()!!
+fun String.point3D(): Point3D = getPoint3D()!!
 
 fun String.ints(): List<Int> = getInts()
 fun String.posInts(): List<Int> = getPosInts()
@@ -178,6 +204,8 @@ fun String.doubles(): List<Double> = getDoubles()
 fun String.posDoubles(): List<Double> = getPosDoubles()
 fun String.words(): List<String> = getWords()
 fun String.alphaNums(): List<String> = getAlphaNums()
+fun String.points(): List<Point> = getPoints()
+fun String.points3D(): List<Point3D> = getPoints3D()
 
 fun Iterable<String>.int():List<Int> = map{it.int()}
 fun Iterable<String>.posInt():List<Int> = map{it.posInt()}
@@ -188,6 +216,8 @@ fun Iterable<String>.double():List<Double> = map{it.double()}
 fun Iterable<String>.posDouble():List<Double> = map{it.posDouble()}
 fun Iterable<String>.word():List<String> = map{it.word()}
 fun Iterable<String>.alphaNum():List<String> = map{it.alphaNum()}
+fun Iterable<String>.point():List<Point> = map{it.point()}
+fun Iterable<String>.point3D():List<Point3D> = map{it.point3D()}
 
 fun Iterable<String>.ints(): List<List<Int>> = map{it.ints()}
 fun Iterable<String>.posInts(): List<List<Int>> = map{it.posInts()}
@@ -198,6 +228,8 @@ fun Iterable<String>.doubles(): List<List<Double>> = map{it.doubles()}
 fun Iterable<String>.posDoubles(): List<List<Double>> = map{it.posDoubles()}
 fun Iterable<String>.words(): List<List<String>> = map{it.words()}
 fun Iterable<String>.alphaNums(): List<List<String>> = map{it.alphaNums()}
+fun Iterable<String>.points(): List<List<Point>> = map{it.points()}
+fun Iterable<String>.points3D(): List<List<Point3D>> = map{it.points3D()}
 
 
 @JvmName("int2") fun Iterable<Iterable<String>>.int():List<List<Int>> = map{it.int()}
@@ -209,6 +241,8 @@ fun Iterable<String>.alphaNums(): List<List<String>> = map{it.alphaNums()}
 @JvmName("posDouble2") fun Iterable<Iterable<String>>.posDouble():List<List<Double>> = map{it.posDouble()}
 @JvmName("word2") fun Iterable<Iterable<String>>.word():List<List<String>> = map{it.word()}
 @JvmName("alphaNum2") fun Iterable<Iterable<String>>.alphaNum():List<List<String>> = map{it.alphaNum()}
+@JvmName("point2") fun Iterable<Iterable<String>>.point():List<List<Point>> = map{it.point()}
+@JvmName("point3D2") fun Iterable<Iterable<String>>.point3D():List<List<Point3D>> = map{it.point3D()}
 
 @JvmName("ints2") fun Iterable<Iterable<String>>.ints():List<List<List<Int>>> = map{it.ints()}
 @JvmName("posInts2") fun Iterable<Iterable<String>>.posInts():List<List<List<Int>>> = map{it.posInts()}
@@ -219,6 +253,8 @@ fun Iterable<String>.alphaNums(): List<List<String>> = map{it.alphaNums()}
 @JvmName("posDoubles2") fun Iterable<Iterable<String>>.posDoubles():List<List<List<Double>>> = map{it.posDoubles()}
 @JvmName("words2") fun Iterable<Iterable<String>>.words():List<List<List<String>>> = map{it.words()}
 @JvmName("alphaNums2") fun Iterable<Iterable<String>>.alphaNums():List<List<List<String>>> = map{it.alphaNums()}
+@JvmName("points2") fun Iterable<Iterable<String>>.points():List<List<List<Point>>> = map{it.points()}
+@JvmName("points3D2") fun Iterable<Iterable<String>>.points3D():List<List<List<Point3D>>> = map{it.points3D()}
 
 fun getIntLines(day:Int) = getLines(day).map{it.getInts()}
 fun getPosIntLines(day:Int) = getLines(day).map{it.getPosInts()}
