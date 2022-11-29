@@ -5,7 +5,7 @@ package solutions.y20.d04c
 import helpers.*
 import grid.*
 
-val xxxxx = Clock(3, 6);
+private val xxxxx = Clock(3, 6);
 
 private fun part1(data: Data) {
 	val m = mutableListOf<Map<String, String>>()

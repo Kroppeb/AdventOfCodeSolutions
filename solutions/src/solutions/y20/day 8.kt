@@ -5,7 +5,7 @@ package solutions.solutions.y20.d08
 import helpers.*
 import grid.*
 
-val xxxxx = Clock(3, 6);
+private val xxxxx = Clock(3, 6);
 
 private fun part1(data: Data) {
 	val d = data.map{

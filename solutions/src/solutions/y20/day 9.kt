@@ -7,7 +7,7 @@ import collections.*
 import grid.*
 import kotlinx.coroutines.*
 
-val xxxxx = Clock(3, 6);
+private val xxxxx = Clock(3, 6);
 
 private fun part1(data: Data) {
 	data.windowed(26).find{

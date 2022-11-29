@@ -5,7 +5,7 @@ package solutions.y20.d20
 import grid.Clock
 import helpers.*
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 private fun part1(data: Data) {
 	val tiles = data.splitOn { it.isBlank() }.filter { it.isNotEmpty() }.map {
@@ -293,4 +293,4 @@ fun main() {
 }
 
 
-fun <T> T.log(): T = also { println(this) }
+private fun <T> T.log(): T = also { println(this) }

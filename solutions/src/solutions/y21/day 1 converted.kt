@@ -7,7 +7,7 @@ import helpers.Ints
 import helpers.getInts
 import helpers.isSorted
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 private fun part1(data: Data) {
 	data.windowed(2).count { (a, b) -> a < b }.log()
@@ -31,4 +31,4 @@ fun main() {
 }
 
 
-fun <T> T.log(): T = also { println(this) }
+private fun <T> T.log(): T = also { println(this) }

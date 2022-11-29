@@ -7,7 +7,7 @@ import graph.BFS
 import itertools.count
 import kotlinx.coroutines.*
 
-val xxxxx = Clock(3,6);
+private val xxxxx = Clock(3,6);
 
 private fun part1(data: Data) = runBlocking {
 	val clay = data.flatMap{

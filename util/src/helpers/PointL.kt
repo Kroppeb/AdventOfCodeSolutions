@@ -1,0 +1,83 @@
+package helpers
+
+import grid.Clock
+import kotlin.math.atan2
+import kotlin.math.sqrt
+
+data class PointL(val x: Long, val y: Long) : PointNL<PointL> {
+	// TODO: evaluate whether having these as lazy actually helps or hurts
+	val right by lazy { x + Clock.eX toP y + Clock.eY }
+	val down by lazy { x - Clock.nX toP y - Clock.nY }
+	val left by lazy { x - Clock.eX toP y - Clock.eY }
+	val up by lazy { x + Clock.nX toP y + Clock.nY }
+
+	val north get() = up
+	val east get() = right
+	val south get() = down
+	val west get() = left
+
+
+	fun rotateClock() = Clock.right.toPointL() * Clock.up.dot(this) + Clock.up.toPointL() * Clock.left.dot(this)
+	fun rotateAntiClock() = -rotateClock()
+
+	fun getQuadNeighbours() = listOf(right, down, left, up)
+	fun getDiagonalNeighbours() = listOf(right.down, left.down, left.up, right.up)
+	fun getOctNeighbours() = listOf(right, right.down, down, left.down, left, left.up, up, right.up)
+
+	fun getQuadNeighbourHood() = listOf(this, right, down, left, up)
+	fun getDiagonalNeighbourHood() = listOf(this, right.down, left.down, left.up, right.up)
+	fun getOctNeighbourHood() = listOf(this, right, right.down, down, left.down, left, left.up, up, right.up)
+
+	override fun getMooreNeighbours() = getOctNeighbours()
+	override fun getVonNeumannNeighbours() = getQuadNeighbours()
+
+	override operator fun unaryMinus(): PointL = -x toP -y
+
+	override operator fun minus(other: PointL): PointL = x - other.x toP y - other.y
+	override operator fun plus(other: PointL): PointL = x + other.x toP y + other.y
+
+	operator fun minus(other: Char): PointL = this - other.toPoint()
+	operator fun plus(other: Char): PointL = this + other.toPoint()
+
+
+	override operator fun times(other: PointL): PointL = x * other.x toP y * other.y
+	override operator fun div(other: PointL): PointL = x / other.x toP y / other.y
+	override operator fun rem(other: PointL): PointL = x % other.x toP y % other.y
+
+	override operator fun times(other: Long): PointL = x * other toP y * other
+	override operator fun div(other: Long): PointL = x / other toP y / other
+	override operator fun rem(other: Long): PointL = x % other toP y % other
+
+	override fun abs() = kotlin.math.abs(x) toP kotlin.math.abs(y)
+
+	override fun sqrDist(): Long = x * x + y * y
+	override fun dist(): Double = sqrt(sqrDist().toDouble())
+	override fun manDist(): Long = kotlin.math.abs(x) + kotlin.math.abs(y)
+
+	override fun sqrDistTo(other: PointL): Long = (this - other).sqrDist()
+	override fun distTo(other: PointL): Double = (this - other).dist()
+	override fun manDistTo(other: PointL): Long = (this - other).manDist()
+
+	fun angle(): Double {
+		return atan2(y.toDouble(), x.toDouble())
+	}
+
+	override fun gcd(): Long = gcd(kotlin.math.abs(x), kotlin.math.abs(y))
+
+	override fun discreteAngle(): PointL {
+		val g = gcd()
+		return this / g
+	}
+
+	override fun min(other: PointL): PointL = min(this.x, other.x) toP min(this.y, other.y)
+	override fun max(other: PointL): PointL = max(this.x, other.x) toP max(this.y, other.y)
+
+	override fun dot(other: PointL) = this.x * other.x + this.y * other.y
+
+	fun isLeftOf(other: PointL) = Clock.left.dot(this) > Clock.left.dot(other)
+	fun isRightOf(other: PointL) = Clock.right.dot(this) > Clock.right.dot(other)
+	fun isAbove(other: PointL) = Clock.up.dot(this) > Clock.up.dot(other)
+	fun isBelow(other: PointL) = Clock.down.dot(this) > Clock.down.dot(other)
+	fun sameLeftRight(other: PointL) = Clock.left.dot(this) == Clock.left.dot(other)
+	fun sameUpDown(other: PointL) = Clock.up.dot(this) == Clock.up.dot(other)
+}

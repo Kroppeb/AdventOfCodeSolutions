@@ -5,7 +5,7 @@ package solutions.y20.d15
 import grid.Clock
 import helpers.*
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 private fun part1(data: Data) {
 	val hist = mutableMapOf<Int,Int>()

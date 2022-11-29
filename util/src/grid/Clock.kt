@@ -1,10 +1,10 @@
 package grid
 
-import grid.Clock.down
-import grid.Clock.right
+
 import helpers.Point
 import helpers.toP
 
+// TODO: make this into a class and use it as a context instead
 object Clock {
 	lateinit var left: Point
 		private set;

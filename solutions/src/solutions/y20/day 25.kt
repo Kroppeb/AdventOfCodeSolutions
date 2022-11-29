@@ -6,7 +6,7 @@ import collections.counter
 import grid.Clock
 import helpers.*
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 private fun part1(data: Data) {
 	val (a,b) = data.flatten()
@@ -36,4 +36,4 @@ fun main() {
 }
 
 
-fun <T> T.log(): T = also { println(this) }
+private fun <T> T.log(): T = also { println(this) }

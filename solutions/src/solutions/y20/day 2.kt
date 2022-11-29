@@ -5,7 +5,7 @@ package solutions.solutions.y20.d02
 import helpers.*
 import grid.*
 
-val xxxxx = Clock(3, 6);
+private val xxxxx = Clock(3, 6);
 
 private fun part1(data: Data) {
 	data.filter { it.isNotBlank() }.map { it.split(' ') }.map { (a, b, c) ->

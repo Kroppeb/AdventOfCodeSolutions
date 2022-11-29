@@ -16,7 +16,7 @@ import java.util.function.IntBinaryOperator
 import kotlin.math.*
 import kotlin.text.Typography.times
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 /*
 
@@ -59,4 +59,4 @@ fun main() {
 }
 
 
-fun <T> T.log(): T = also { println(this) }
+private fun <T> T.log(): T = also { println(this) }

@@ -12,7 +12,7 @@ import kotlin.math.*
 import grid.Clock
 import helpers.*
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 /*
 
@@ -162,4 +162,4 @@ fun main() {
 }
 
 
-fun <T> T.log(): T = also { println(this) }
+private fun <T> T.log(): T = also { println(this) }

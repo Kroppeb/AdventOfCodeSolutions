@@ -11,7 +11,7 @@ import kotlinx.coroutines.*
 import kotlin.math.pow
 import it.unimi.dsi.fastutil.longs.*
 
-val xxxxx = Clock(3, 6);
+private val xxxxx = Clock(3, 6);
 
 private fun part1(data: Data): Long {
 	val m = Long2IntOpenHashMap(60000,0.2f)

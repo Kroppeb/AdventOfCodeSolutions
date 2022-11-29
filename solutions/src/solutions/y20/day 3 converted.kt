@@ -5,7 +5,7 @@ package solutions.solutions.y20.d03c
 import helpers.*
 import grid.*
 
-val xxxxx = Clock(3, 6);
+private val xxxxx = Clock(3, 6);
 
 private fun check(data: Data, q: Int, d: Int): Int {
 	var s = 0

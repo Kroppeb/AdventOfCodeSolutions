@@ -13,11 +13,10 @@ import graph.*
 import grid.*
 import helpers.*
 import itertools.*
-import solutions.y18.d19.log
 import kotlin.math.*
 
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
@@ -111,5 +110,5 @@ inline fun decompile(call: (Int) -> Unit) {
 	}
 }
 
-var _logIndex = 0
-fun <T> T.log(): T = also { println("%03d %03d:\t\t%s".format(_logIndex / 1000, _logIndex++ % 1000, this)) }
+private var _logIndex = 0
+private fun <T> T.log(): T = also { println("%03d %03d:\t\t%s".format(_logIndex / 1000, _logIndex++ % 1000, this)) }

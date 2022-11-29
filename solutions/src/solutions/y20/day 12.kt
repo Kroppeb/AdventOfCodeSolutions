@@ -7,7 +7,7 @@ import grid.*
 import helpers.*
 import kotlinx.coroutines.*
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 private fun part1(data: Data) {
 	var ours = 0 toP 0

@@ -6,7 +6,7 @@ import helpers.*
 import grid.*
 import kotlin.math.pow
 
-val xxxxx = Clock(3, 6);
+private val xxxxx = Clock(3, 6);
 
 private fun part1(data: Data) {
 	data.map {

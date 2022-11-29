@@ -74,7 +74,7 @@ private fun part1() {
 			data.first().log()
 		}
 		if (bal.isNotEmpty()) {
-			val closest = bal.minBy { it.p.manDistL() }
+			val closest = bal.minBy { it.p.manDist() }
 			if (x % 1000 == 0) {
 
 				closest.log()
@@ -82,9 +82,9 @@ private fun part1() {
 
 			data.removeIf {
 				it != closest &&
-						it.p.manDistL() >= closest.p.manDistL() &&
-						it.v.manDistL() >= closest.v.manDistL() &&
-						it.a.manDistL() >= closest.a.manDistL()
+						it.p.manDist() >= closest.p.manDist() &&
+						it.v.manDist() >= closest.v.manDist() &&
+						it.a.manDist() >= closest.a.manDist()
 			}
 		}
 	}

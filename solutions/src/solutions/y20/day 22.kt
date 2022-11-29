@@ -6,7 +6,7 @@ import grid.Clock
 import helpers.*
 import java.util.ArrayDeque
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 private fun part1(data: Data) {
 	val (a, b) = data.splitOn { it.isBlank() }.map{ArrayDeque(it.drop(1).map{it.toInt()})}
@@ -121,4 +121,4 @@ fun main() {
 }
 
 
-fun <T> T.log(): T = also { println(this) }
+private fun <T> T.log(): T = also { println(this) }

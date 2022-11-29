@@ -5,7 +5,7 @@ package solutions.y20.d06c
 import helpers.*
 import grid.*
 
-val xxxxx = Clock(3, 6);
+private val xxxxx = Clock(3, 6);
 
 private fun part1(data: Data) {
 	println(data.splitOn { it.isBlank() }.sumBy {

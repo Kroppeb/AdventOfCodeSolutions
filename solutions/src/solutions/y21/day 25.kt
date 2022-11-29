@@ -14,7 +14,7 @@ import helpers.e
 import helpers.getLines
 import helpers.transpose
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 /*
 
@@ -71,5 +71,5 @@ fun main() {
 }
 
 
-var _logIndex = 0
-fun <T> T.log(): T = also { println("%03d %03d:\t\t%s".format(_logIndex / 1000, _logIndex++ % 1000, this)) }
+private var _logIndex = 0
+private fun <T> T.log(): T = also { println("%03d %03d:\t\t%s".format(_logIndex / 1000, _logIndex++ % 1000, this)) }

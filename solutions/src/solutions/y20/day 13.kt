@@ -8,7 +8,7 @@ import helpers.gcd
 import helpers.getInts
 import helpers.getLines
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 private fun part1(data: Data) {
 	val start = data[0].toInt()

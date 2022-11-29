@@ -6,7 +6,7 @@ import helpers.*
 import grid.*
 import java.util.ArrayDeque
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 fun solve1(l:String){
 

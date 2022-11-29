@@ -6,7 +6,7 @@ import collections.*
 import grid.*
 import kotlinx.coroutines.*
 
-val xxxxx = Clock(3, 6);
+private val xxxxx = Clock(3, 6);
 
 private fun part1(data: Data) {
 	val d = (data + (data.max() + 3)) .sorted()

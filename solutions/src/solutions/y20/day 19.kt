@@ -5,7 +5,7 @@ package solutions.y20.d19
 import helpers.*
 import grid.*
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 fun solve1(l:String){
 

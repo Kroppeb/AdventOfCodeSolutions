@@ -6,7 +6,7 @@ import grid.Clock
 import helpers.Ints
 import helpers.getInts
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 private fun part1(data: Data) {
     var u = 0;
@@ -42,4 +42,4 @@ fun main() {
 }
 
 
-fun <T> T.log(): T = also { println(this) }
+private fun <T> T.log(): T = also { println(this) }

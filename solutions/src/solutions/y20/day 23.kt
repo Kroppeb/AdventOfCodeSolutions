@@ -6,7 +6,7 @@ import grid.Clock
 import helpers.*
 import java.util.ArrayDeque
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 private fun part1(data: Data) {
 	var s = data
@@ -114,4 +114,4 @@ fun main() {
 }
 
 
-fun <T> T.log(): T = also { println(this) }
+private fun <T> T.log(): T = also { println(this) }

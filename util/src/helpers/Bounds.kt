@@ -11,7 +11,7 @@ import kotlin.math.*
 abstract class IBounds : Iterable<Point> {
 	abstract val lower: Point
 	abstract val higher: Point
-	operator fun contains(point: Point): Boolean = point.x in lower.x..higher.x && point.y in lower.y..higher.y
+	operator fun contains(point: Point): Boolean = point.x in xs && point.y in ys
 
 	val isSquare: Boolean get() = (higher.x - lower.x) == (higher.y - lower.y)
 	val ne
@@ -42,17 +42,20 @@ abstract class IBounds : Iterable<Point> {
 	val lowerLeft get() = sw
 	val lowerRight get() = se
 
-	override operator fun iterator() = (this.lower.x..this.higher.x).flatMap { x ->
-		(this.lower.y..this.higher.y).map { y -> x toP y }
-	}.iterator()
+	override operator fun iterator() = xs.flatMap { x -> ys.map { y -> x toP y } }.iterator()
 
 	val xs get() = this.lower.x..this.higher.x
 	val ys get() = this.lower.y..this.higher.y
 
-	val xSize get() = (this.higher.x - this.lower.x + 1)
-	val ySize get() = (this.higher.y - this.lower.y + 1)
+	open val xSize get() = (this.higher.x - this.lower.x + 1)
+	open val ySize get() = (this.higher.y - this.lower.y + 1)
 	val size get() = xSize toP ySize
 	val area get() = xSize * ySize
+
+	fun exactCenter() = (lower + higher).also{
+		require(it.x % 2 == 0)
+		require(it.y % 2 == 0)
+	} / 2
 }
 
 data class Bounds(override val lower: Point, override val higher: Point) : IBounds() {
@@ -63,8 +66,8 @@ data class Bounds(override val lower: Point, override val higher: Point) : IBoun
 	 * ∀x:x in this && x in other <-> x in this.intersect(other)
 	 */
 	fun intersect(other: Bounds): Bounds = Bounds(
-		kotlin.math.max(this.lower.x, other.lower.x) toP kotlin.math.max(this.lower.y, other.lower.y),
-		kotlin.math.min(this.higher.x, other.higher.x) toP kotlin.math.min(this.higher.y, other.higher.y)
+		this.lower.max(other.lower),
+		this.higher.min(other.higher)
 	)
 
 	/**
@@ -75,8 +78,8 @@ data class Bounds(override val lower: Point, override val higher: Point) : IBoun
 	 *
 	 */
 	fun merge(other: Bounds): Bounds = Bounds(
-		kotlin.math.min(this.lower.x, other.lower.x) toP kotlin.math.min(this.lower.y, other.lower.y),
-		kotlin.math.max(this.higher.x, other.higher.x) toP kotlin.math.max(this.higher.y, other.higher.y)
+		this.lower.min(other.lower),
+		this.higher.max(other.higher)
 	)
 
 	companion object {
@@ -86,19 +89,38 @@ data class Bounds(override val lower: Point, override val higher: Point) : IBoun
 		∀x Bound: x.merge(INFINITE) == INFINITE
 		 */
 		val INFINITE = (Int.MIN_VALUE toP Int.MIN_VALUE) toB (Int.MAX_VALUE toP Int.MAX_VALUE)
+		val EMPTY = Bounds(0 toP 0, -1 toP -1)
 	}
 }
 
-class MutableBounds(start: Point) : IBounds(){
-	override var lower = start
-	override var higher = start
+class MutableBounds : IBounds {
+	override var lower: Point
+	override var higher: Point
+
+	constructor(start: Point) : super() {
+		this.lower = start
+		this.higher = start
+	}
+
+	constructor() : super() {
+		this.lower = Int.MAX_VALUE toP Int.MAX_VALUE
+		this.higher = Int.MIN_VALUE toP Int.MIN_VALUE
+	}
 
 	fun add(point: Point) {
 		lower = Point(min(lower.x, point.x), min(lower.y, point.y))
 		higher = Point(max(higher.x, point.x), max(higher.y, point.y))
 	}
 
-	fun toBounds(): Bounds = Bounds(lower, higher)
+	fun toBounds(): Bounds {
+		if (lower.x > higher.x || lower.y > higher.y) return Bounds.EMPTY
+		return Bounds(lower, higher)
+	}
+
+	override val xSize: Int
+		get() = super.xSize.coerceAtLeast(0)
+	override val ySize: Int
+		get() = super.ySize.coerceAtLeast(0)
 }
 
 infix fun Point.toB(other: Point): Bounds = Bounds(

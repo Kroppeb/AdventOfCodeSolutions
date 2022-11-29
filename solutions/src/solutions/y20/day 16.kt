@@ -5,7 +5,7 @@ package solutions.y20.d16
 import grid.Clock
 import helpers.*
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 private fun part1(data: Data) {
 	val rules = data.takeWhile { it.isNotBlank() }.map{

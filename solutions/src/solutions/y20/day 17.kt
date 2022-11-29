@@ -6,7 +6,7 @@ import grid.Clock
 import grid.entityGrid
 import helpers.*
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 private fun part1(data: Data) {
 	val st = data.e().entityGrid { it == '#' }

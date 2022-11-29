@@ -1,7 +1,17 @@
 package collections
 
-class UnionFind {
+class UnionFind (){
+	constructor(p0: Iterable<Any>): this(){
+		p0.forEach(this::reg)
+	}
+
 	val parents = mutableMapOf<Any, Element>()
+	val size: Int
+		get() = getAllRoots().size
+
+	fun reg(a: Any) {
+		parents.computeIfAbsent(a) { Element(0, null, it) }
+	}
 
 	fun getRoot(a: Any): Element {
 		val parent = parents.getOrPut(a) { Element(0, null, a) }
@@ -33,3 +43,5 @@ class UnionFind {
 		fun getRoot(): Element = parent?.getRoot()?.also{parent = it} ?: this
 	}
 }
+
+fun <T:Any> Iterable<T>.uf() = UnionFind(this)

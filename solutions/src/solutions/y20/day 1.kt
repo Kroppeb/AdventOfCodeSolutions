@@ -5,7 +5,7 @@ package solutions.solutions.y20.d01
 import helpers.*
 import grid.*
 
-val xxxxx = Clock(3, 6);
+private val xxxxx = Clock(3, 6);
 
 
 // Data = List<Int>

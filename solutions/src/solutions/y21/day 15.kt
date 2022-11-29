@@ -16,7 +16,7 @@ import itertools.count
 import java.util.*
 import kotlin.collections.ArrayDeque
 
-val xxxxx = Clock(6, 3);
+private val xxxxx = Clock(6, 3);
 
 /*
 
@@ -107,4 +107,4 @@ fun main() {
 }
 
 
-fun <T> T.log(): T = also { println(this) }
+private fun <T> T.log(): T = also { println(this) }
