@@ -292,7 +292,7 @@ fun <T> Iterable<T>.cartesianPower1(count: Int): List<List<T>> = if (count == 1)
 fun <T> Iterator<T>.powerSet(): List<List<T>> {
 	val iter = iterator()
 	if (!iter.hasNext())
-		return emptyList()
+		return listOf(listOf())
 	val pre = listOf(iter.getNext())
 	val next = iter.powerSet()
 	return next + next.map { pre + it }

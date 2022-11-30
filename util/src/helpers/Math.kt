@@ -1,5 +1,7 @@
 package helpers
 
+import kotlin.math.pow
+
 fun gcd(a:Int, b:Int):Int = if(a == 0) b else gcd(b % a, a)
 fun gcd(a:Long, b:Long):Long = if(a == 0L) b else gcd(b % a, a)
 
@@ -124,6 +126,49 @@ fun Array<Long>.minMaxIR():LongRange = min() .. max()
 @JvmName("minMaxIRLongs")
 fun LongArray.minMaxIR():LongRange = min() .. max()
 
+fun Int.pow(x: Int): Int = when {
+	x == 0 -> 1
+	x == 1 -> this
+	x % 2 == 0 -> (this * this).pow(x / 2)
+	else -> (this * this).pow(x / 2) * this
+}
 
+fun Long.pow(x: Int): Long = when {
+	x == 0 -> 1
+	x == 1 -> this
+	x % 2 == 0 -> (this * this).pow(x / 2)
+	else -> (this * this).pow(x / 2) *this
+}
 
+fun Long.powMod(x: Int, y:Long): Long = when {
+	x == 0 -> 1
+	x == 1 -> this % y
+	x % 2 == 0 -> (this * this % y).powMod(x / 2, y)
+	else -> (this * this % y).powMod(x / 2, y) * this % y
+}
+
+fun Int.primeFactors(): List<Pair<Int, Int>> {
+	val factors = mutableListOf<Pair<Int, Int>>()
+	var n = this
+	for (i in 2..n) {
+		var count = 0
+		while (n % i == 0) {
+			count++
+			n /= i
+		}
+		if (count > 0) factors.add(i to count)
+	}
+	return factors
+}
+
+fun Int.allDivisors(): List<Int> {
+	val factors = primeFactors()
+	var divisors = listOf(1)
+
+	for ((factor, count) in factors) {
+		divisors = divisors.flatMap { d -> (0..count).map { d * factor.pow(it) } }
+	}
+
+	return divisors
+}
 
