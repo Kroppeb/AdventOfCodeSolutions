@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "PackageName")
 
-package trainings.`2016`.`02`
+package solutions.y16.d02
 
 import grid.Clock
 import helpers.Lines

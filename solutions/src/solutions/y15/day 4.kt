@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y15.d04
+package solutions.y15.d05
 
 /*
 import grid.Clock

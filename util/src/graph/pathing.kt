@@ -2,7 +2,7 @@ package graph
 
 import java.util.*
 
-class BfsResult<out State>(val path: List<State>) {
+data class BfsResult<out State>(val path: List<State>) {
 	val start get() = path.first()
 	val end get() = path.last()
 	val length get() = path.size - 1
@@ -143,7 +143,7 @@ inline fun <State> bfsPathDist(
 	return null
 }
 
-class DijkstraResult<out State>(val path: List<State>, val cost: Double) {
+data class DijkstraResult<out State>(val path: List<State>, val cost: Double) {
 	val start get() = path.first()
 	val end get() = path.last()
 	val length get() = path.size - 1
