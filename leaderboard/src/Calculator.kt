@@ -1,4 +1,4 @@
-val year = "2021"
+val year = "2022"
 val user = "Kroppeb"
 val target = 100
 

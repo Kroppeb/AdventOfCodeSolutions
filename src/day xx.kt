@@ -27,18 +27,13 @@ import kotlin.math.*
 val xxxxx = Clock(6, 3);
 
 private fun part1() {
-	var data = getLines(1)
-
+	var data = getLines(2022_02)
 }
 
-private fun part2() {
-
-}
 
 fun main() {
-	println("Day 1: ")
+	println("Day 2: ")
 	part1()
-	part2()
 }
 
 
