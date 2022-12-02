@@ -511,3 +511,16 @@ fun <T, C : Comparable<C>> Iterable<T>.minBy(n : Int, selector: (T) -> C) = this
 
 fun <T, C : Comparable<C>> Iterable<T>.maxOf(n:Int, selector: (T) -> C) = this.map(selector).sortedDescending().take(n)
 fun <T, C : Comparable<C>> Iterable<T>.minOf(n:Int, selector: (T) -> C) = this.map(selector).sorted().take(n)
+
+// region String destructors
+operator fun String.component1(): Char = this[0]
+operator fun String.component2(): Char = this[1]
+operator fun String.component3(): Char = this[2]
+operator fun String.component4(): Char = this[3]
+operator fun String.component5(): Char = this[4]
+operator fun String.component6(): Char = this[5]
+operator fun String.component7(): Char = this[6]
+operator fun String.component8(): Char = this[7]
+operator fun String.component9(): Char = this[8]
+operator fun String.component10(): Char = this[9]
+// enregion

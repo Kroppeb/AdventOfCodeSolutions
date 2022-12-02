@@ -35,6 +35,11 @@ private fun part1() {
 	getLines(2022_02).e()
 		.map { (a, _, x) -> a - 'A' to x - 'X' }
 		.sumOf { (a, x) -> (x + 1) + 3 * (x - a + 1 mod 3) }.log()
+	getLines(2022_02).map { (a, _, x) -> a - 'A' to x - 'X' }.sumOf { (a, x) -> (x + 1) + 3 * (x - a + 1 mod 3) }.log()
+	getLines(2022_02).map { it.zip("A X",Char::minus) }.sumOf { (a, _, x) -> (x + 1) + 3 * (x - a + 1 mod 3) }.log()
+	getLines(2022_02).map { (a, _, x) -> a - 'A' to x - 'X' }.sumOf { (a, x) -> 4 + x + 3 * (x - a mod -1..1) }.log()
+	getLines(2022_02).map { it.zip("A X",Char::minus) }.sumOf { (a, _, x) -> 4 + x + 3 * (x - a mod -1..1) }.log()
+	getLines(2022_02).map { it.zip("A\u001CX",Char::minus) }.sumOf { (a, u, x) -> u + x + 3 * (x - a mod -1..1) }.log()
 }
 
 
@@ -48,6 +53,8 @@ private fun part2() {
 	getLines(2022_02).e()
 		.map { (a, _, x) -> a - 'A' to x - 'X' }
 		.sumOf { (a, x) -> (a + x mod 1..3) + 3 * x }.log()
+	getLines(2022_02).map { (a, _, x) -> a - 'A' to x - 'X' }.sumOf { (a, x) -> (a + x mod 1..3) + 3 * x }.log()
+	getLines(2022_02).map { it.zip("A X", Char::minus) }.sumOf { (a, _, x) -> (a + x mod 1..3) + 3 * x }.log()
 }
 
 
