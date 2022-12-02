@@ -1,6 +1,5 @@
 package helpers
 
-import kotlin.contracts.contract
 
 fun <T> Iterator<T>.getNext(): T {
 	hasNext()
@@ -26,6 +25,7 @@ inline fun <T, R> Iterable<Iterable<T>>.map2(convert: (T) -> R): List<List<R>> =
 inline fun <T, R> Iterable<T>.rleDecode(value: (T) -> R, length: (T) -> Int) =
 	flatMap { listOf(value(it)).repeat(length(it)) }
 
+@Deprecated("doesn't work")
 inline fun <T, R> Iterable<T>.rleEncode(convert: (T, Int) -> R) = groupBy { it }.map { convert(it.key, it.value.size) }
 
 fun <E> List<E>.repeat(length: Int): List<E> {
@@ -65,6 +65,9 @@ inline fun <K, A, B, R> Map<K, A>.intersectMap(other: Map<K, B>, m: (A, B) -> R)
 
 fun <K, V : Comparable<V>> Map<K, V>.minByValue() = minByOrNull { it.value }!!.key
 fun <K : Comparable<K>, V> Map<K, V>.minByKey() = minByOrNull { it.key }!!.value
+
+fun <K, V : Comparable<V>> Map<K, V>.maxByValue() = maxByOrNull { it.value }!!.key
+fun <K : Comparable<K>, V> Map<K, V>.maxByKey() = maxByOrNull { it.key }!!.value
 
 operator fun <E> List<E>.times(count: Int) = repeat(count)
 
@@ -484,6 +487,9 @@ fun Iterable<Int>.product(): Long = this.fold(1L) { acc, i -> acc * i }
 
 fun Iterable<Double>.product(): Double = this.fold(1.0) { acc, i -> acc * i }
 
+fun Iterable<Char>.join(): String = this.joinToString("")
+
+// TODO: add throw if not odd
 fun <T : Comparable<T>> Iterable<T>.medianOdd(): T = this.sorted()[this.count() / 2]
 fun <T : Comparable<T>> Iterable<T>.medianEven(): Pair<T, T> =
 	this.sorted().let { it[it.count() / 2] to it[it.count() / 2 - 1] }
@@ -496,3 +502,12 @@ fun <T> List<T>.permutations(): List<List<T>> = if (this.isEmpty()) listOf(empty
 }
 
 fun <T> Iterable<T>.permutations() = toList().permutations()
+
+fun <T : Comparable<T>> Iterable<T>.max(n : Int) = this.sortedDescending().take(n)
+fun <T : Comparable<T>> Iterable<T>.min(n : Int) = this.sorted().take(n)
+
+fun <T, C : Comparable<C>> Iterable<T>.maxBy(n : Int, selector: (T) -> C) = this.sortedByDescending(selector).take(n)
+fun <T, C : Comparable<C>> Iterable<T>.minBy(n : Int, selector: (T) -> C) = this.sortedBy(selector).take(n)
+
+fun <T, C : Comparable<C>> Iterable<T>.maxOf(n:Int, selector: (T) -> C) = this.map(selector).sortedDescending().take(n)
+fun <T, C : Comparable<C>> Iterable<T>.minOf(n:Int, selector: (T) -> C) = this.map(selector).sorted().take(n)

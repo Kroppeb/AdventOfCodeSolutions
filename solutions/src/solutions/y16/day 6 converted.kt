@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y22.d01
+package solutions.y16.d06c
 
 
 /*
@@ -19,6 +19,8 @@ import graph.*
 import grid.*
 import helpers.*
 import itertools.*
+import solutions.solutions.y19.d22.pow
+import java.security.MessageDigest
 import java.util.Comparator
 import java.util.PriorityQueue
 import kotlin.math.*
@@ -27,16 +29,17 @@ import kotlin.math.*
 private val xxxxx = Clock(6, 3);
 
 private fun part1() {
-	var data = getLines(2022_01).splitOnEmpty().map{it.int().sum()}.max().log()
+	var data = getLines(2016_06).e().transpose().map{it.countEach().maxByValue()}.join().log()
+
 }
 
 private fun part2() {
-	var data = getLines(2022_01).splitOnEmpty().map{it.int().sum()}.sortedDescending().take(3).sum().log()
+	var data = getLines(2016_06).e().transpose().map{it.countEach().minByValue()}.join().log()
 }
 
 
 fun main() {
-	println("Day 1: ")
+	println("Day 6: ")
 	part1()
 	part2()
 }

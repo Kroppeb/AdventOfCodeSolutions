@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y22.d01
+package solutions.y22.d01c
 
 
 /*
@@ -27,11 +27,11 @@ import kotlin.math.*
 private val xxxxx = Clock(6, 3);
 
 private fun part1() {
-	var data = getLines(2022_01).splitOnEmpty().map{it.int().sum()}.max().log()
+	var data = getLines(2022_01).splitOnEmpty().int().maxOf{it.sum()}.log()
 }
 
 private fun part2() {
-	var data = getLines(2022_01).splitOnEmpty().map{it.int().sum()}.sortedDescending().take(3).sum().log()
+	var data = getLines(2022_01).splitOnEmpty().int().maxOf(3){it.sum()}.sum().log()
 }
 
 

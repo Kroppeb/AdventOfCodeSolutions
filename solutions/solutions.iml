@@ -4,12 +4,12 @@
     <facet type="kotlin-language" name="Kotlin">
       <configuration version="3" platform="JVM 11" allPlatforms="JVM [11]" useProjectSettings="false">
         <compilerSettings>
-          <option name="additionalArguments" value="-version -Xopt-in=kotlin.ExperimentalStdlibApi" />
+          <option name="additionalArguments" value="-version -opt-in=kotlin.ExperimentalStdlibApi" />
         </compilerSettings>
         <compilerArguments>
           <option name="jvmTarget" value="11" />
-          <option name="languageVersion" value="1.4" />
-          <option name="apiVersion" value="1.3" />
+          <option name="languageVersion" value="1.7" />
+          <option name="apiVersion" value="1.7" />
         </compilerArguments>
       </configuration>
     </facet>
