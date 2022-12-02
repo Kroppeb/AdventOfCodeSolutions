@@ -2,7 +2,7 @@ package helpers
 
 import kotlin.math.abs
 
-inline fun loop(block: (Int) -> Unit) : Nothing{
+inline fun loop(block: (Int) -> Unit): Nothing {
 	var i = 0
 	while (true) {
 		block(i++)
@@ -246,7 +246,15 @@ inline fun bsFirstL(lower: Long? = null, upper: Long? = null, predicate: (Long) 
 }
 // endregion
 
-operator fun Int.rem(range: IntRange) = range.first + (this - range.first) % (range.last - range.first + 1)
+operator fun Int.rem(range: IntRange) = range.first + (this - range.first mod range.last - range.first + 1)
+infix fun Int.mod(base: IntRange) = this % base
+
+operator fun Long.rem(range: LongRange) = range.first + (this - range.first mod range.last - range.first + 1)
+infix fun Long.mod(base: LongRange) = this % base
+
+operator fun Long.rem(range: IntRange):Int = range.first + (this - range.first mod range.last - range.first + 1)
+infix fun Long.mod(base: IntRange) = this % base
+
 
 
 inline fun <reified T> Map<Int, T>.toArray(): Array<T?> {
@@ -331,6 +339,6 @@ fun List<Int>.toLongArray(): LongArray {
 	return LongArray(size) { this[it].toLong() }
 }
 
-fun <T>List<T>.mut() = this.toMutableList()
-fun <T>List<List<T>>.mut2() = this.map{it.mut()}.mut()
-fun <T>List<List<List<T>>>.mut3() = this.map{it.mut2()}.mut()
+fun <T> List<T>.mut() = this.toMutableList()
+fun <T> List<List<T>>.mut2() = this.map { it.mut() }.mut()
+fun <T> List<List<List<T>>>.mut3() = this.map { it.mut2() }.mut()

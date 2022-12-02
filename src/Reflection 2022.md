@@ -10,5 +10,5 @@
 * WHU??
 * Hardcoded stuff, seems like I wasn't the only one
 * Lost quite some time rereading stuff
-* [ ] maybe add a `mod` infix function to do mod stuff?
+* [x] maybe add a `mod` infix function to do mod stuff?
 

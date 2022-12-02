@@ -238,7 +238,7 @@ fun findReverseListsH(
 	return map
 }
 
-private fun part2() {
+private fun part2Old() {
 	var data = getLines(2015_19).splitOnEmpty()
 
 	val end = splt(data.last().first()).log()
@@ -286,7 +286,6 @@ private fun part2() {
 		}
 		.log()
 
-	error("stop")
 	var shortest = end.size
 	decalcify(end, reverse).log().let {
 		applyForced(it)
@@ -318,9 +317,36 @@ private fun part2() {
 }
 
 
+
+// I cheated and looked up some stuff
+private fun part2() {
+	var data = getLines(2015_19)
+	var tt = data.dropLast(2).map{it.split(" => ")}
+
+	var end = data.last()
+
+	var c = 0
+	o@ while (end != "e") {
+		c++
+		for ((f, t) in tt) {
+			if (t in end) {
+				end = end.replaceFirst(t, f)
+				continue@o
+			}
+		}
+		error(end)
+	}
+	c.log()
+}
+
+data class Test(val i:Int){
+
+}
+
+
 fun main() {
 	println("Day 19: ")
-	part1()
+	//part1()
 	part2()
 }
 

@@ -172,3 +172,6 @@ fun Int.allDivisors(): List<Int> {
 	return divisors
 }
 
+infix fun Int.mod(base:Int) = Math.floorMod(this, base)
+infix fun Long.mod(base:Int) = Math.floorMod(this, base)
+infix fun Long.mod(base:Long) = Math.floorMod(this, base)

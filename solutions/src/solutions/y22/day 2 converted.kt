@@ -29,12 +29,25 @@ private val xxxxx = Clock(6, 3);
 
 // Not an actual suggestion to improve, but to see what it would take to do this "not hardcoded"
 private fun part1() {
-	var data = getLines(2022_02).e().sumOf { (a, _, x) -> (x - 'X' + 1) + 3 * ((x - 'X' - (a - 'A') + 1 + 999) % 3) }.log()
+	getLines(2022_02).e().sumOf { (a, _, x) -> (x - 'X' + 1) + 3 * ((x - 'X' - (a - 'A') + 1 + 999) % 3) }.log()
+	getLines(2022_02).e().sumOf { (a, _, x) -> (x - 'X' + 1) + 3 * ((x - 'X' - (a - 'A') + 1) % (0..2)) }.log()
+	getLines(2022_02).e().sumOf { (a, _, x) -> (x - 'X' + 1) + 3 * ((x - 'X' - (a - 'A') + 1) mod 3) }.log()
+	getLines(2022_02).e()
+		.map { (a, _, x) -> a - 'A' to x - 'X' }
+		.sumOf { (a, x) -> (x + 1) + 3 * (x - a + 1 mod 3) }.log()
 }
 
 
 private fun part2() {
-	var data = getLines(2022_02).e().sumOf { (a, _, x) -> (((a - 'A') + (x - 'X') - 1 + 999) % 3) + 1 + 3 * (x - 'X') }.log()
+	getLines(2022_02).e().sumOf { (a, _, x) -> (((a - 'A') + (x - 'X') - 1 + 999) % 3) + 1 + 3 * (x - 'X') }.log()
+	getLines(2022_02).e().sumOf { (a, _, x) -> (((a - 'A') + (x - 'X') - 1) % (0..2)) + 1 + 3 * (x - 'X') }.log()
+	getLines(2022_02).e().sumOf { (a, _, x) -> (((a - 'A') + (x - 'X') - 1) mod 3) + 1 + 3 * (x - 'X') }.log()
+	getLines(2022_02).e()
+		.map { (a, _, x) -> a - 'A' to x - 'X' }
+		.sumOf { (a, x) -> (a + x - 1 mod 3) + 1 + 3 * x }.log()
+	getLines(2022_02).e()
+		.map { (a, _, x) -> a - 'A' to x - 'X' }
+		.sumOf { (a, x) -> (a + x mod 1..3) + 3 * x }.log()
 }
 
 
