@@ -12,3 +12,7 @@
 * Lost quite some time rereading stuff
 * [x] maybe add a `mod` infix function to do mod stuff?
 
+## Day 03
+39/21; points: 142, 4th place
+* ????
+* Lost a bunch of time checking assumptions I made by reading the problem text
