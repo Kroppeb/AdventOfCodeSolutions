@@ -36,6 +36,14 @@ private fun part1() {
 		val p4 = a.single{it in b}
 		if (p in 'a'..'z') p - 'a' + 1 else p - 'A' + 27
 	}.log()
+
+	getLines(2022_03).e().map{it.splitIn(2)}.sumOf{(a,b) ->
+		val p = a.toSet().intersect(b.toSet()).first()
+		val p2 = (a.toSet() * b.toSet()).first()
+		val p3 = a.find{it in b}!!
+		val p4 = a.single{it in b}
+		if (p in 'a'..'z') p - 'a' + 1 else p - 'A' + 27
+	}.log()
 }
 
 

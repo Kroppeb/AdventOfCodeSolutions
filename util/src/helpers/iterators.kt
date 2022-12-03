@@ -524,3 +524,16 @@ operator fun String.component8(): Char = this[7]
 operator fun String.component9(): Char = this[8]
 operator fun String.component10(): Char = this[9]
 // enregion
+
+
+fun <T>Collection<T>.splitIn(n: Int): List<List<T>> {
+	val length = this.size
+	require (size % n == 0)
+	return chunked(length / n)
+}
+
+fun <T,R>Collection<T>.splitIn(n: Int, transform: (List<T>) -> R): List<R> {
+	val length = this.size
+	require (size % n == 0)
+	return chunked(length / n, transform)
+}

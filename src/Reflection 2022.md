@@ -16,3 +16,4 @@
 39/21; points: 142, 4th place
 * ????
 * Lost a bunch of time checking assumptions I made by reading the problem text
+* [ ] `splitIn`
