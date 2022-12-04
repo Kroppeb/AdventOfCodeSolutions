@@ -27,7 +27,7 @@ import kotlin.math.*
 private val xxxxx = Clock(6, 3);
 
 private fun part1() {
-	var data = getLines(2022_04).posInts().map { it.chunked(2) { (a, b) -> a..b } }
+	getLines(2022_04).posInts().map { it.chunked(2) { (a, b) -> a..b } }
 		.count { (x, y) -> x.all { it in y } || y.all { it in x } }
 		.log()
 }

@@ -2,6 +2,7 @@ package grid
 
 
 import helpers.Point
+import helpers.mod
 import helpers.toP
 
 // TODO: make this into a class and use it as a context instead
@@ -27,7 +28,7 @@ object Clock {
 
 
 	operator fun invoke(x: Int, y: Int) {
-		if ((x + y) % 6 != 3)
+		if (x + y mod 6 != 3)
 			error("invalid clock")
 		when (x) {
 			3 -> eX = 1

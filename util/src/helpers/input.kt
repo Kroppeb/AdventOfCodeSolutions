@@ -65,12 +65,14 @@ fun getData(day: Int): String =
 					.readText()
 		}
 
+var hasWarnedAboutSusInt = false
 fun getInts(day: Int): Ints {
 	val input = getData(day)
-	if (regexSusInt.containsMatchIn(input)){
+	if (!hasWarnedAboutSusInt && regexSusInt.containsMatchIn(input)){
 		System.err.println("Warning: detected sus int separation pattern. Maybe you need PosInts instead?")
+		hasWarnedAboutSusInt = true
 	}
-	return regexInt.findAll(input).map { it.value.toInt() }.toList()
+	return regexInt.findAll(getData(day)).map { it.value.toInt() }.toList()
 }
 
 fun getPosInts(day: Int): PosInts {
@@ -177,6 +179,10 @@ fun String.getPoint() = getInts().getPoint()
 fun String.getPoint3D() = getInts().getPoint3D()
 
 fun String.getInts(): List<Int> {
+	if (!hasWarnedAboutSusInt && regexSusInt.containsMatchIn(this)){
+		System.err.println("Warning: detected sus int separation pattern. Maybe you need PosInts instead?")
+		hasWarnedAboutSusInt = true
+	}
 	return regexInt.findAll(this).map { it.value.toInt() }.toList()
 }
 fun String.getPosInts() = regexPosInt.findAll(this).map { it.value.toInt() }.toList()
