@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y22
+package solutions.y22.d04c
 
 
 /*
@@ -27,14 +27,22 @@ import kotlin.math.*
 private val xxxxx = Clock(6, 3);
 
 private fun part1() {
-	var data = getLines(5)
+	var data = getLines(2022_04).posInts().map { it.chunked(2) { (a, b) -> a..b } }
+		.count { (x, y) -> x.all { it in y } || y.all { it in x } }
+		.log()
+}
+
+private fun part2() {
+	var data = getLines(2022_04).posInts().map { it.chunked(2) { (a, b) -> a..b } }
+		.count { (x, y) -> x.any { it in y } || y.any { it in x } }
 		.log()
 }
 
 
 fun main() {
-	println("Day 5: ")
+	println("Day 4: ")
 	part1()
+	part2()
 }
 
 

@@ -3,6 +3,7 @@ package helpers
 import grid.SimpleGrid
 import grid.grid
 
+private val regexSusInt = Regex("""-?\d+-\d+""")
 private val regexInt = Regex("""-?\d+""")
 private val regexPosInt = Regex("""\d+""")
 private val regexDigit = Regex("""\d""")
@@ -65,7 +66,11 @@ fun getData(day: Int): String =
 		}
 
 fun getInts(day: Int): Ints {
-	return regexInt.findAll(getData(day)).map { it.value.toInt() }.toList()
+	val input = getData(day)
+	if (regexSusInt.containsMatchIn(input)){
+		System.err.println("Warning: detected sus int separation pattern. Maybe you need PosInts instead?")
+	}
+	return regexInt.findAll(input).map { it.value.toInt() }.toList()
 }
 
 fun getPosInts(day: Int): PosInts {
@@ -171,7 +176,9 @@ fun String.getAlphaNum() = regexAlphaNum.find(this)?.value
 fun String.getPoint() = getInts().getPoint()
 fun String.getPoint3D() = getInts().getPoint3D()
 
-fun String.getInts() = regexInt.findAll(this).map { it.value.toInt() }.toList()
+fun String.getInts(): List<Int> {
+	return regexInt.findAll(this).map { it.value.toInt() }.toList()
+}
 fun String.getPosInts() = regexPosInt.findAll(this).map { it.value.toInt() }.toList()
 fun String.getLongs() = regexInt.findAll(this).map { it.value.toLong() }.toList()
 fun String.getPosLongs() = regexPosInt.findAll(this).map { it.value.toLong() }.toList()

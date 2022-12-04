@@ -18,3 +18,7 @@
 * Lost a bunch of time checking assumptions I made by reading the problem text
 * [x] `splitIn`
 * [x] `Iterable<Set<T>>.union` and `intersect`
+
+## Day 04
+27/15; points: 160, 5th place
+* separated by minus signs => use posInts()
