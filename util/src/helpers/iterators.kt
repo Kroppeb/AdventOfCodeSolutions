@@ -537,3 +537,6 @@ fun <T,R>Collection<T>.splitIn(n: Int, transform: (List<T>) -> R): List<R> {
 	require (size % n == 0)
 	return chunked(length / n, transform)
 }
+
+fun <T>Iterable<Iterable<T>>.union() = this.reduce(Iterable<T>::union).toSet()
+fun <T>Iterable<Iterable<T>>.intersect() = this.reduce(Iterable<T>::intersect).toSet()
