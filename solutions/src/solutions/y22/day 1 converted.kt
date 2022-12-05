@@ -27,11 +27,13 @@ import kotlin.math.*
 private val xxxxx = Clock(6, 3);
 
 private fun part1() {
-	var data = getLines(2022_01).splitOnEmpty().int().maxOf{it.sum()}.log()
+	getLines(2022_01).splitOnEmpty().maxOf{it.int().sum()}.log()
+	getLines(2022_01).splitOnEmpty().int().maxOf{it.sum()}.log()
 }
 
 private fun part2() {
-	var data = getLines(2022_01).splitOnEmpty().int().maxOf(3){it.sum()}.sum().log()
+	getLines(2022_01).splitOnEmpty().maxOf(3){it.int().sum()}.sum().log()
+	getLines(2022_01).splitOnEmpty().int().maxOf(3){it.sum()}.sum().log()
 }
 
 

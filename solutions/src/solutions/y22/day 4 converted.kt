@@ -19,6 +19,7 @@ import graph.*
 import grid.*
 import helpers.*
 import itertools.*
+import solutions.solutions.y19.d20c.p
 import java.util.Comparator
 import java.util.PriorityQueue
 import kotlin.math.*
@@ -28,14 +29,17 @@ private val xxxxx = Clock(6, 3);
 
 private fun part1() {
 	getLines(2022_04).posInts().map { it.chunked(2) { (a, b) -> a..b } }
-		.count { (x, y) -> x.all { it in y } || y.all { it in x } }
-		.log()
+		.count { (x, y) -> x.all { it in y } || y.all { it in x } }.log()
+	getLines(2022_04).posInts().count { (a, b, c, d) -> (a..b).allIn(c..d) || (c..d).allIn(a..b) }.log()
 }
 
 private fun part2() {
-	var data = getLines(2022_04).posInts().map { it.chunked(2) { (a, b) -> a..b } }
-		.count { (x, y) -> x.any { it in y } || y.any { it in x } }
-		.log()
+	getLines(2022_04).posInts().map { it.chunked(2) { (a, b) -> a..b } }
+		.count { (x, y) -> x.any { it in y } || y.any { it in x } }.log()
+	getLines(2022_04).posInts().map { it.chunked(2) { (a, b) -> a..b } }
+		.count { (x, y) -> x.any { it in y } }.log()
+	getLines(2022_04).posInts().count { (a, b, c, d) -> (a..b).anyIn(c..d) || (c..d).anyIn(a..b) }.log()
+	getLines(2022_04).posInts().count { (a, b, c, d) -> (a..b).anyIn(c..d) }.log()
 }
 
 

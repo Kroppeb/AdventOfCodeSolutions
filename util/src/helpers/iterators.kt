@@ -503,14 +503,14 @@ fun <T> List<T>.permutations(): List<List<T>> = if (this.isEmpty()) listOf(empty
 
 fun <T> Iterable<T>.permutations() = toList().permutations()
 
-fun <T : Comparable<T>> Iterable<T>.max(n : Int) = this.sortedDescending().take(n)
-fun <T : Comparable<T>> Iterable<T>.min(n : Int) = this.sorted().take(n)
+fun <T : Comparable<T>> Iterable<T>.max(n: Int) = this.sortedDescending().take(n)
+fun <T : Comparable<T>> Iterable<T>.min(n: Int) = this.sorted().take(n)
 
-fun <T, C : Comparable<C>> Iterable<T>.maxBy(n : Int, selector: (T) -> C) = this.sortedByDescending(selector).take(n)
-fun <T, C : Comparable<C>> Iterable<T>.minBy(n : Int, selector: (T) -> C) = this.sortedBy(selector).take(n)
+inline fun <T, C : Comparable<C>> Iterable<T>.maxBy(n: Int, crossinline selector: (T) -> C) = this.sortedByDescending(selector).take(n)
+inline fun <T, C : Comparable<C>> Iterable<T>.minBy(n: Int, crossinline selector: (T) -> C) = this.sortedBy(selector).take(n)
 
-fun <T, C : Comparable<C>> Iterable<T>.maxOf(n:Int, selector: (T) -> C) = this.map(selector).sortedDescending().take(n)
-fun <T, C : Comparable<C>> Iterable<T>.minOf(n:Int, selector: (T) -> C) = this.map(selector).sorted().take(n)
+inline fun <T, C : Comparable<C>> Iterable<T>.maxOf(n: Int, selector: (T) -> C) = this.map(selector).sortedDescending().take(n)
+inline fun <T, C : Comparable<C>> Iterable<T>.minOf(n: Int, selector: (T) -> C) = this.map(selector).sorted().take(n)
 
 // region String destructors
 operator fun String.component1(): Char = this[0]
@@ -526,17 +526,39 @@ operator fun String.component10(): Char = this[9]
 // enregion
 
 
-fun <T>Collection<T>.splitIn(n: Int): List<List<T>> {
+fun <T> Collection<T>.splitIn(n: Int): List<List<T>> {
 	val length = this.size
-	require (size % n == 0)
+	require(size % n == 0)
 	return chunked(length / n)
 }
 
-fun <T,R>Collection<T>.splitIn(n: Int, transform: (List<T>) -> R): List<R> {
+fun <T, R> Collection<T>.splitIn(n: Int, transform: (List<T>) -> R): List<R> {
 	val length = this.size
-	require (size % n == 0)
+	require(size % n == 0)
 	return chunked(length / n, transform)
 }
 
-fun <T>Iterable<Iterable<T>>.union() = this.reduce(Iterable<T>::union).toSet()
-fun <T>Iterable<Iterable<T>>.intersect() = this.reduce(Iterable<T>::intersect).toSet()
+fun <T> Iterable<Iterable<T>>.union() = this.reduce(Iterable<T>::union).toSet()
+fun <T> Iterable<Iterable<T>>.intersect() = this.reduce(Iterable<T>::intersect).toSet()
+
+
+// aka: does this intersect
+fun <T> Iterable<T>.anyIn(other: Iterable<T>): Boolean {
+	val o = other.toSet()
+	return any { it in o }
+}
+
+// aka: is this a subset of
+fun <T> Iterable<T>.allIn(other: Iterable<T>): Boolean {
+	val o = other.toSet()
+	return all { it in other }
+}
+
+// aka: are these fully distinct
+fun <T> Iterable<T>.noneIn(other: Iterable<T>): Boolean {
+	val o = other.toSet()
+	return none { it in other }
+}
+
+// aka: is this a superset of
+fun <T> Iterable<T>.containsAll(other: Iterable<T>) = other.allIn(this)
