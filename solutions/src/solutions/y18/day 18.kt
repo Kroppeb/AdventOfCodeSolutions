@@ -9,14 +9,8 @@ import itertools.*
 import kotlin.math.*
  */
 
-import graph.bfs
 import grid.*
 import helpers.*
-import itertools.*
-import solutions.solutions.y19.d20c.p
-import java.util.Comparator.comparing
-import java.util.stream.Collectors.toSet
-import kotlin.math.*
 
 
 private val xxxxx = Clock(6, 3);
@@ -31,7 +25,7 @@ private fun part1() {
 			'|' -> if (p.getOctNeighbours().filter{it in data.bounds}.count{data[it] == '#'} >= 3) '#' else '|'
 			'#' -> if (p.getOctNeighbours().filter{it in data.bounds}.count{data[it] == '#'} >= 1 && p.getOctNeighbours().filter{it in data.bounds}.count{data[it] == '|'} >= 1) '#' else '.'
 			else -> error("u")
-		} }.grid()
+		} }
 	}
 
 	(data.allItems().count{it == '|'} * data.allItems().count{it == '#'}).log()
@@ -42,29 +36,27 @@ private fun part2() {
 
 	var data = getLines(2018_18).e().grid()
 
-	val seen = mutableMapOf<List<List<Char>>, Int>(data.items to 0)
+	val seen = mutableMapOf(data to 0)
 
 	loop{i ->
 		val index = i + 1
-		val l = data.mapIndexed { p, c ->  when(c) {
+		data = data.mapIndexed { p, c ->  when(c) {
 			'.' -> if (p.getOctNeighbours().filter{it in data.bounds}.count{data[it] == '|'} >= 3) '|' else '.'
 			'|' -> if (p.getOctNeighbours().filter{it in data.bounds}.count{data[it] == '#'} >= 3) '#' else '|'
 			'#' -> if (p.getOctNeighbours().filter{it in data.bounds}.count{data[it] == '#'} >= 1 && p.getOctNeighbours().filter{it in data.bounds}.count{data[it] == '|'} >= 1) '#' else '.'
 			else -> error("u")
 		} }
 
-		data = l.grid()
-
-		if (l in seen) {
-			val cycle = index - seen[l]!!
+		if (data in seen) {
+			val cycle = index - seen[data]!!
 			val left = (1000000000  - index) % cycle
-			val target = seen.entries.filter { it.value == left + seen[l]!!}.first().key
+			val target = seen.entries.filter { it.value == left + seen[data]!!}.first().key
 
-			(target.flatten().count{it == '|'} * target.flatten().count{it == '#'}).log()
+			(target.allItems().count{it == '|'} * target.allItems().count{it == '#'}).log()
 			return
 		}
 
-		seen[l] = index
+		seen[data] = index
 	}
 }
 

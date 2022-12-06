@@ -13,15 +13,8 @@ import java.util.PriorityQueue
 import kotlin.math.*
  */
 
-import collections.*
-import graph.*
 import grid.*
 import helpers.*
-import itertools.*
-import solutions.solutions.y19.d20c.p
-import java.util.Comparator
-import java.util.PriorityQueue
-import kotlin.math.*
 
 
 private val xxxxx = Clock(6, 3);
@@ -30,7 +23,7 @@ private val xxxxx = Clock(6, 3);
 private fun part1() {
 	var data = getLines(2017_22).e().grid()
 
-	var inf = data.mapIndexed { point, c -> point to c }.flatten().filter{(p,c) -> c == '#'}.map{it.first}.toMutableSet()
+	var inf = data.mapIndexed { point, c -> point to c }.allItems().filter{ (p,c) -> c == '#'}.map{it.first}.toMutableSet()
 
 	var pos = (data.bounds.lower + data.bounds.higher) / 2
 	var dir = -1 toP 0
@@ -57,7 +50,7 @@ private fun part1() {
 private fun part2() {
 	var data = getLines(2017_22).e().grid()
 
-	var inf = data.mapIndexed { point, c -> point to c }.flatten().filter{(p,c) -> c == '#'}.map{it.first to 2}.toMap().toMutableMap() // TODO: fixme
+	var inf = data.mapIndexed { point, c -> point to c }.allItems().filter{ (p,c) -> c == '#'}.map{it.first to 2}.toMap().toMutableMap() // TODO: fixme
 
 	var pos = (data.bounds.lower + data.bounds.higher) / 2
 	var dir = -1 toP 0

@@ -26,9 +26,6 @@
 note: I want to add these helpers
 * [x] HetN for n in 2-9
 * [x] DFS
-* [ ] Line3D (maybe LineG?)
-* [ ] maybe Bounds3D? (already have BoundsG)
-* [ ] splitAt
 
 ## Day 05
 64/73; points: 65, 4th place
@@ -41,3 +38,13 @@ note: I want to add these helpers
 * also `firstIndexOf` indeed existed, should have trusted myself
 * nim-ka has some interesting utils I should steal
   * [ ] rotate left and right
+
+
+note: I want to add thes helpers
+* [ ] Line3D (maybe LineG?)
+* [ ] maybe Bounds3D? (already have BoundsG)
+* [x] splitAt
+* [ ] grid.findPoints / findSinglePoint (throws if multiple match) 
+  * update y17d22
+* [ ] pure state loop
+  * update y18d18 and others (look for maps)

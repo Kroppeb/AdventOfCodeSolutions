@@ -43,6 +43,9 @@ class SimpleGrid<out T>(val items: List<List<T>>) : StrictGrid<T> {
 	override fun toString(): String {
 		return items.joinToString("\n") { it.joinToString(" ") }
 	}
+
+	override fun equals(other: Any?): Boolean = other is SimpleGrid<*> && this.items == other.items
+	override fun hashCode(): Int = this.items.hashCode()
 }
 
 
@@ -62,7 +65,8 @@ fun <T> List<List<T>>.grid(): SimpleGrid<T> {
 fun <T> Iterable<List<List<T>>>.grids(): List<SimpleGrid<T>> = map{it.grid()}
 
 inline fun <T, R> SimpleGrid<T>.map(block: (T) -> R) = this.items.map2(block).grid()
-inline fun <T, R> SimpleGrid<T>.mapIndexed(block: (Point, T) -> R) = this.items.mapIndexed { i, a ->
+@Deprecated("exists for historical reasons")
+inline fun <T, R> SimpleGrid<T>.mapIndexedOld(block: (Point, T) -> R) = this.items.mapIndexed { i, a ->
 	a.mapIndexed{ j,b ->
 		val p = if (Clock.nX != 0) {
 			// x is first index
@@ -74,4 +78,17 @@ inline fun <T, R> SimpleGrid<T>.mapIndexed(block: (Point, T) -> R) = this.items.
 		block(p, b)
 	}
 }
+
+inline fun <T, R> SimpleGrid<T>.mapIndexed(block: (Point, T) -> R) = this.items.mapIndexed { i, a ->
+	a.mapIndexed{ j,b ->
+		val p = if (Clock.nX != 0) {
+			// x is first index
+			i toP j
+		} else {
+			// y is first index
+			j toP i
+		}
+		block(p, b)
+	}
+}.grid()
 inline fun <T, R> SimpleGrid<T>.forEachIndexed(block: (Point, T) -> R) = this.bounds.forEach { block(it, get(it)) }

@@ -52,6 +52,9 @@ class MutableSimpleGrid<T>(val items: MutableList<MutableList<T>>) : StrictGrid<
 	override fun toString(): String {
 		return items.joinToString("\n") { it.joinToString(" ") }
 	}
+
+	override fun equals(other: Any?): Boolean = other is SimpleGrid<*> && this.items == other.items
+	override fun hashCode(): Int = this.items.hashCode()
 }
 
 
@@ -82,5 +85,8 @@ inline fun <T, R> MutableSimpleGrid<T>.mapIndexed(block: (Point, T) -> R) = this
 		}
 		block(p, b)
 	}
-}
+}.grid()
+
 inline fun <T, R> MutableSimpleGrid<T>.forEachIndexed(block: (Point, T) -> R) = this.bounds.forEach { block(it, get(it)) }
+
+fun <T>SimpleGrid<T>.mutable() = this.items.mutableGrid()

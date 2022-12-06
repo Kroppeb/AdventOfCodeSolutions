@@ -9,16 +9,8 @@ import itertools.*
 import kotlin.math.*
  */
 
-import grid.Clock
-import grid.grid
-import grid.mapIndexed
-import grid.mutableGrid
+import grid.*
 import helpers.*
-import itertools.*
-import kotlinx.coroutines.NonCancellable.children
-import solutions.solutions.y19.d20c.p
-import solutions.y15.d16.target
-import kotlin.math.*
 
 
 private val xxxxx = Clock(6, 3);
@@ -39,7 +31,7 @@ private fun part1() {
 			} else {
 				p.getOctNeighbours().count { it in data.bounds && data[it] } == 3
 			}
-		}.grid()
+		}
 	}
 
 	data.allItems().count{ it }.log()
@@ -64,7 +56,7 @@ private fun part2() {
 			} else {
 				p.getOctNeighbours().count { it in data.bounds && data[it] } == 3
 			}
-		}.mutableGrid()
+		}.mutable()
 
 		data[data.bounds.lowerLeft] = true
 		data[data.bounds.lowerRight] = true

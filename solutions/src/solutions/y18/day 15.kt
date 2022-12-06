@@ -12,10 +12,7 @@ import kotlin.math.*
 import graph.bfs
 import grid.*
 import helpers.*
-import itertools.*
-import solutions.solutions.y19.d20c.p
 import java.util.Comparator.comparing
-import java.util.stream.Collectors.toSet
 import kotlin.math.*
 
 
@@ -38,7 +35,7 @@ private fun part1() {
 	val elfs = mutableSetOf<Unit>()
 	val goblins = mutableSetOf<Unit>()
 
-	data.mapIndexed { point, c ->
+	data.forEachIndexed { point, c ->
 		when (c) {
 			'E' -> elfs.add(Unit(point, 200, true))
 			'G' -> goblins.add(Unit(point, 200, false))
@@ -85,12 +82,12 @@ private fun part1() {
 				val score = units.sumBy { max(it.health, 0) } * count
 
 
-				walls.mapIndexed { point, b ->
-					if (b) '#'
-					else if (elfs.any { it.pos == point }) 'E'
-					else if (goblins.any { it.pos == point }) 'G'
-					else '.'
-				}.forEach { it.log() }
+//				walls.mapIndexed { point, b ->
+//					if (b) '#'
+//					else if (elfs.any { it.pos == point }) 'E'
+//					else if (goblins.any { it.pos == point }) 'G'
+//					else '.'
+//				}.forEach { it.log() }
 
 				sortedUnits.log()
 				score.log()
@@ -172,7 +169,7 @@ private fun part2() {
 		val elfs = mutableSetOf<Unit>()
 		val goblins = mutableSetOf<Unit>()
 
-		data.mapIndexed { point, c ->
+		data.forEachIndexed { point, c ->
 			when (c) {
 				'E' -> elfs.add(Unit(point, 200, true))
 				'G' -> goblins.add(Unit(point, 200, false))
@@ -221,12 +218,12 @@ private fun part2() {
 					val score = elfs.sumBy { it.health } * count
 
 
-					walls.mapIndexed { point, b ->
-						if (b) '#'
-						else if (elfs.any { it.pos == point }) 'E'
-						else if (goblins.any { it.pos == point }) 'G'
-						else '.'
-					}.forEach { it.log() }
+//					walls.mapIndexed { point, b ->
+//						if (b) '#'
+//						else if (elfs.any { it.pos == point }) 'E'
+//						else if (goblins.any { it.pos == point }) 'G'
+//						else '.'
+//					}.forEach { it.log() }
 
 					sortedUnits.log()
 					score.log()

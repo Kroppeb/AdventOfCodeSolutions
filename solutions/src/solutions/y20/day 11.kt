@@ -2,10 +2,8 @@
 
 package solutions.y20.d11
 
-import collections.*
 import grid.*
 import helpers.*
-import kotlinx.coroutines.*
 
 private val xxxxx = Clock(6, 3);
 
@@ -17,9 +15,9 @@ private fun part1(data: Data) {
 
 		var cont = false
 		val g3 =
-				g2.mapIndexed { p, c ->
+				g2.mapIndexedOld { p, c ->
 					if (c == '.')
-						return@mapIndexed c
+						return@mapIndexedOld c
 					val cc = p.getOctNeighbours().filter { it in g1.bounds }.count { g2[it] == '#' }
 					if (c == 'L') {
 						if (cc == 0) {
@@ -57,9 +55,9 @@ private fun part2(data: Data) {
 
 		var cont = false
 		val g3 =
-				g2.mapIndexed { p, c ->
+				g2.mapIndexedOld { p, c ->
 					if (c == '.')
-						return@mapIndexed c
+						return@mapIndexedOld c
 					val cc = p.getOctNeighbours().map{
 						var pp = it
 						var diff = it - p

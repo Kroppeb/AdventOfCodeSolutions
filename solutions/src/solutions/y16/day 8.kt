@@ -14,16 +14,8 @@ import java.util.PriorityQueue
 import kotlin.math.*
  */
 
-import collections.*
-import graph.*
 import grid.*
 import helpers.*
-import itertools.*
-import solutions.solutions.y19.d22.pow
-import java.security.MessageDigest
-import java.util.Comparator
-import java.util.PriorityQueue
-import kotlin.math.*
 
 
 private val xxxxx = Clock(3, 6);
@@ -37,15 +29,15 @@ private fun part1() {
 		when{
 			line[0] == "rect" -> {
 				val (x,y) = va
-				grid = grid.mapIndexed { point, b -> b || point.x < x && point.y < y }.grid()
+				grid = grid.mapIndexed { point, b -> b || point.x < x && point.y < y }
 			}
 			line[1] == "column" -> {
 				val (id, amount) = va
-				grid = grid.mapIndexed { point, b -> if (point.x == id) grid[(point + Clock.down * 5 * amount) % grid.bounds] else b }.grid()
+				grid = grid.mapIndexed { point, b -> if (point.x == id) grid[(point + Clock.down * 5 * amount) % grid.bounds] else b }
 			}
 			line[1] == "row" -> {
 				val (id, amount) = va
-				grid = grid.mapIndexed { point, b -> if (point.y == id) grid[(point + Clock.right * 49 * amount) % grid.bounds] else b }.grid()
+				grid = grid.mapIndexed { point, b -> if (point.y == id) grid[(point + Clock.right * 49 * amount) % grid.bounds] else b }
 			}
 		}
 	}
@@ -63,15 +55,15 @@ private fun part2() {
 		when{
 			line[0] == "rect" -> {
 				val (x,y) = va
-				grid = grid.mapIndexed { point, b -> b || point.x < x && point.y < y }.grid()
+				grid = grid.mapIndexed { point, b -> b || point.x < x && point.y < y }
 			}
 			line[1] == "column" -> {
 				val (id, amount) = va
-				grid = grid.mapIndexed { point, b -> if (point.x == id) grid[(point + Clock.down * 5 * amount) % grid.bounds] else b }.grid()
+				grid = grid.mapIndexed { point, b -> if (point.x == id) grid[(point + Clock.down * 5 * amount) % grid.bounds] else b }
 			}
 			line[1] == "row" -> {
 				val (id, amount) = va
-				grid = grid.mapIndexed { point, b -> if (point.y == id) grid[(point + Clock.right * 49 * amount) % grid.bounds] else b }.grid()
+				grid = grid.mapIndexed { point, b -> if (point.y == id) grid[(point + Clock.right * 49 * amount) % grid.bounds] else b }
 			}
 		}
 	}
