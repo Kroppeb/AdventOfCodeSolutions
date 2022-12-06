@@ -5,7 +5,7 @@ First hundred users to get both stars on Day 4:
   3) Dec 04  00:01:34  dan-simon
   4) Dec 04  00:01:37  5space
   5) Dec 04  00:01:40  betaveros (AoC++)
-  6) Dec 04  00:01:44  Xavier Cooney
+  6) Dec 04  00:01:44  Xavier Cooney (AoC++)
   7) Dec 04  00:01:47  Alex Wice
   8) Dec 04  00:01:50  hyper-neutrino (AoC++)
   9) Dec 04  00:01:51  nim-ka
@@ -84,7 +84,7 @@ First hundred users to get both stars on Day 4:
  82) Dec 04  00:03:12  miriam-rittenberg
  83) Dec 04  00:03:13  Jouni K. Seppänen (AoC++) (Sponsor)
  84) Dec 04  00:03:14  Md Abedin
- 85) Dec 04  00:03:16  rozbrajaczpoziomow
+ 85) Dec 04  00:03:16  rozbrajaczpoziomow (AoC++)
  86) Dec 04  00:03:16  Luke M
  87) Dec 04  00:03:17  Raghavan
  88) Dec 04  00:03:18  Svelte-Enthusiast
@@ -117,7 +117,7 @@ First hundred users to get the first star on Day 4:
  13) Dec 04  00:01:24  Epiphane (AoC++)
  14) Dec 04  00:01:25  jonathanpaulson (AoC++)
  15) Dec 04  00:01:25  mserrano
- 16) Dec 04  00:01:26  Xavier Cooney
+ 16) Dec 04  00:01:26  Xavier Cooney (AoC++)
  17) Dec 04  00:01:26  Utkarsh Kukreti
  18) Dec 04  00:01:26  (anonymous user #1047278) (AoC++)
  19) Dec 04  00:01:28  Gorane7

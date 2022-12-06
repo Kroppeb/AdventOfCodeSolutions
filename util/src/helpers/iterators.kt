@@ -46,12 +46,12 @@ fun <K, A> Map<K, A>.intersect(other: Iterable<K>) = this.keys.intersect(other).
 fun <K, A, B> Map<K, A>.union(other: Map<K, B>) = this.keys.union(other.keys).associateWith { this[it] to other[it] }
 inline fun <K, A> Map<K, A>.merge(other: Map<K, A>, m: (A, A) -> A) = this.keys.union(other.keys).associateWith {
 	val p = this[it] to other[it]
-	val (x,y) = p
-	when(p) {
+	val (x, y) = p
+	when (p) {
 		null to null -> error("?")
-		null to y -> y  as A
+		null to y -> y as A
 		x to null -> x as A
-		x to y -> m(x as A,y as A)
+		x to y -> m(x as A, y as A)
 		else -> error("?")
 	}
 }
@@ -554,12 +554,22 @@ fun <T, R> Collection<T>.splitIn(n: Int, transform: (List<T>) -> R): List<R> {
 fun <T> Iterable<Iterable<T>>.union() = this.reduce(Iterable<T>::union).toSet()
 fun <T> Iterable<Iterable<T>>.intersect() = this.reduce(Iterable<T>::intersect).toSet()
 
-infix fun <T> Iterable<T>.notIn(other: Iterable<*>): Set<T> = this.toMutableSet().apply { removeAll(other as Iterable<T>) }
+infix fun <T> Iterable<T>.notIn(other: Iterable<*>): Set<T> =
+	this.toMutableSet().apply { removeAll(other as Iterable<T>) }
 
 // intersection, but better types
 @Suppress("BOUNDS_NOT_ALLOWED_IF_BOUNDED_BY_TYPE_PARAMETER")
 fun <T, R, V> Iterable<T>.onlyIn(other: Iterable<R>): Set<V> where V : T, V : R =
 	(this as Set<Any?>).toMutableSet().apply { removeAll(other) } as Set<V>
+
+
+// onlyIn but it's infix
+@Suppress("BOUNDS_NOT_ALLOWED_IF_BOUNDED_BY_TYPE_PARAMETER")
+infix fun <T, R, V> Iterable<T>.inter(other: Iterable<R>): Set<V> where V : T, V : R =
+	this.onlyIn(other)
+
+// symdiff
+infix fun <T> Iterable<T>.symDiff(other: Iterable<T>): Set<T> = this.union(other) - this.inter(other)
 
 // union, but it's infix
 infix fun <T> Iterable<T>.or(other: Iterable<T>): Set<T> = this.union(other)
@@ -592,3 +602,15 @@ infix fun <T> Iterable<T>.containsAll(other: Iterable<T>) = other.allIn(this)
 
 fun <T, R> Pair<Iterable<T>, Iterable<R>>.zipped() = first.zip(second)
 inline fun <T, R, V> Pair<Iterable<T>, Iterable<R>>.zipped(transform: (T, R) -> V) = first.zip(second, transform)
+
+
+fun <T> Iterable<T>.rotateLeft(i: Int): List<T> {
+	val list = this.toList()
+	val shift = i mod list.size
+
+	return list.splitAt(shift).on{l,r -> l + r}
+}
+
+fun <T> Iterable<T>.rotateRight(i: Int): List<T> = rotateLeft(-i)
+
+fun <T> Iterable<T>.splitAt(i: Int): Pair<List<T>, List<T>> = take(i) to drop(i)

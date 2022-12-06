@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y22
+package solutions.y22.d06
 
 
 /*
@@ -33,18 +33,28 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(6).first().e()
+	var data = getLines(2022_06).first().e()
+		.windowed(4)
+		.withIndex()
+		.find{(_, p) -> p.areDistinct()}
+
+		.log() // note: add 4 to the number
+}
+
+private fun part2() {
+	var data = getLines(2022_06).first().e()
 		.windowed(14)
 		.withIndex()
 		.find{(_, p) -> p.areDistinct()}
 
-		.log()
+		.log() // note: add 14 to the number
 }
 
 
 fun main() {
 	println("Day 6: ")
 	part1()
+	part2()
 }
 
 

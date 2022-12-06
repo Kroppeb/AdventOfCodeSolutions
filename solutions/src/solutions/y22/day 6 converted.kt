@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y22
+package solutions.y22.d06
 
 
 /*
@@ -24,6 +24,7 @@ import graph.*
 import grid.*
 import helpers.*
 import itertools.*
+import solutions.solutions.y19.d20c.p
 import java.util.Comparator
 import java.util.PriorityQueue
 import kotlin.math.*
@@ -33,18 +34,22 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(6).first().e()
-		.windowed(14)
-		.withIndex()
-		.find{(_, p) -> p.areDistinct()}
+	getLines(2022_06).first().e()
+		.windowed(4)
+		.indexOfFirst { it.areDistinct() } + 4 log 1
+}
 
-		.log()
+private fun part2() {
+	getLines(2022_06).first().e()
+		.windowed(4)
+		.indexOfFirst { it.areDistinct() } + 4 log 1
 }
 
 
 fun main() {
 	println("Day 6: ")
 	part1()
+	part2()
 }
 
 

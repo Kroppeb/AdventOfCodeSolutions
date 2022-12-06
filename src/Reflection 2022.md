@@ -28,9 +28,16 @@ note: I want to add these helpers
 * [x] DFS
 * [ ] Line3D (maybe LineG?)
 * [ ] maybe Bounds3D? (already have BoundsG)
-* [ ] 
+* [ ] splitAt
 
 ## Day 05
 64/73; points: 65, 4th place
 * input parsing took long
 * Don't know why I went with Deques  
+
+## Day 06
+114/108; points: 0, 15th place
+* lost a lot of time trying to understand which value to return
+* also `firstIndexOf` indeed existed, should have trusted myself
+* nim-ka has some interesting utils I should steal
+  * [ ] rotate left and right

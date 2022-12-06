@@ -66,7 +66,7 @@ First hundred users to get both stars on Day 5:
  64) Dec 05  00:07:09  Aadit Ambadkar
  65) Dec 05  00:07:09  Kevin Sheng
  66) Dec 05  00:07:11  Virgile Andreani (AoC++)
- 67) Dec 05  00:07:14  Ezraft
+ 67) Dec 05  00:07:14  ezraft
  68) Dec 05  00:07:16  Kin Fung, Nicholas Ko
  69) Dec 05  00:07:20  Anish Singhani
  70) Dec 05  00:07:21  Balint R
@@ -81,7 +81,7 @@ First hundred users to get both stars on Day 5:
  79) Dec 05  00:07:29  Hendrik Melse
  80) Dec 05  00:07:33  Arrowbounce
  81) Dec 05  00:07:34  Ben
- 82) Dec 05  00:07:36  Andrey Anurin
+ 82) Dec 05  00:07:36  Andrey Anurin (AoC++)
  83) Dec 05  00:07:38  Red Bird
  84) Dec 05  00:07:38  Carl Schildkraut
  85) Dec 05  00:07:38  isnbh0
@@ -93,6 +93,13 @@ First hundred users to get both stars on Day 5:
  91) Dec 05  00:07:44  mjh316
  92) Dec 05  00:07:47  KevinL10 (Sponsor)
  93) Dec 05  00:07:51  Robert Xiao
+ 94) Dec 05  00:07:52  pkktino
+ 95) Dec 05  00:07:53  Tristan Lee
+ 96) Dec 05  00:07:55  thailandmatt
+ 97) Dec 05  00:07:55  Dylan Smith
+ 98) Dec 05  00:07:56  Oskar Haarklou Veileborg (AoC++)
+ 99) Dec 05  00:07:57  electraminer
+100) Dec 05  00:07:58  Jimmy Mårdell (AoC++) (Sponsor)
 First hundred users to get the first star on Day 5:
 
   1) Dec 05  00:02:40  (anonymous user #1510407)
@@ -164,13 +171,13 @@ First hundred users to get the first star on Day 5:
  67) Dec 05  00:05:59  Arrowbounce
  68) Dec 05  00:06:00  Adanakebapi
  69) Dec 05  00:06:02  Paul Swingle
- 70) Dec 05  00:06:04  Jimmy Mårdell (Sponsor)
+ 70) Dec 05  00:06:04  Jimmy Mårdell (AoC++) (Sponsor)
  71) Dec 05  00:06:05  Vince7778
  72) Dec 05  00:06:05  Vladislav Isenbaev
  73) Dec 05  00:06:06  Dr. Pohly
  74) Dec 05  00:06:08  Craig Gidney
  75) Dec 05  00:06:09  thailandmatt
- 76) Dec 05  00:06:10  Ezraft
+ 76) Dec 05  00:06:10  ezraft
  77) Dec 05  00:06:11  Jimmy Ding
  78) Dec 05  00:06:12  Jay Foad (AoC++)
  79) Dec 05  00:06:12  D. Salgado
@@ -184,7 +191,7 @@ First hundred users to get the first star on Day 5:
  87) Dec 05  00:06:27  Para Dust
  88) Dec 05  00:06:27  TimHuisman1703
  89) Dec 05  00:06:30  Kevin Sheng
- 90) Dec 05  00:06:31  Andrey Anurin
+ 90) Dec 05  00:06:31  Andrey Anurin (AoC++)
  91) Dec 05  00:06:33  Prabowo Djonatan
  92) Dec 05  00:06:33  Tobias-Glimmerfors
  93) Dec 05  00:06:34  Defelo (AoC++)
