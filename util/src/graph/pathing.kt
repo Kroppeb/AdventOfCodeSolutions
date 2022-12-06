@@ -35,7 +35,11 @@ inline fun <State> bfs(start: State, isEnd: (State) -> Boolean, next: (State) ->
 }
 
 
-inline fun <State> bfsDist(start: State, isEnd: (State, Int) -> Boolean, next: (State, Int) -> Iterable<State>): Pair<State?, Int> {
+inline fun <State> bfsDist(
+	start: State,
+	isEnd: (State, Int) -> Boolean,
+	next: (State, Int) -> Iterable<State>
+): Pair<State?, Int> {
 	val seen = mutableSetOf(start)
 	var queue = mutableListOf(start)
 	var nextQueue = mutableListOf<State>()
@@ -143,6 +147,119 @@ inline fun <State> bfsPathDist(
 	return null
 }
 
+
+data class DfsResult<out State>(val path: List<State>) {
+	val start get() = path.first()
+	val end get() = path.last()
+	val length get() = path.size - 1
+}
+
+
+inline fun <State> dfs(start: State, isEnd: (State) -> Boolean, next: (State) -> Iterable<State>): Pair<State?, Int> {
+	val seen = mutableSetOf(start)
+	var stack = mutableListOf(start to 0)
+	var maxDist = 0
+
+	while (stack.isNotEmpty()) {
+		val (current, dist) = stack.removeLast()
+		if (isEnd(current)) return current to dist
+		maxDist = maxOf(maxDist, dist)
+
+		for (i in next(current).reversed()) {
+			if (seen.add(i))
+				stack.add(i to dist + 1)
+		}
+	}
+	return null to maxDist
+}
+
+
+inline fun <State> dfsDist(
+	start: State,
+	isEnd: (State, Int) -> Boolean,
+	next: (State, Int) -> Iterable<State>
+): Pair<State?, Int> {
+	val seen = mutableSetOf(start)
+	var stack = mutableListOf(start to 0)
+	var maxDist = 0
+
+	while (stack.isNotEmpty()) {
+		val (current, dist) = stack.removeLast()
+		if (isEnd(current, dist)) return current to dist
+		maxDist = maxOf(maxDist, dist)
+
+		for (i in next(current, dist).reversed()) {
+			if (seen.add(i))
+				stack.add(i to dist + 1)
+		}
+	}
+	return null to maxDist
+}
+
+inline fun <State> dfsPath(
+	start: State,
+	isEnd: (State) -> Boolean,
+	next: (State) -> Iterable<State>
+): BfsResult<State>? {
+	val seen = mutableSetOf(start)
+	var stack = mutableListOf(start to 0)
+	val back = mutableMapOf<State, State>()
+
+	while (stack.isNotEmpty()) {
+		val (current, dist) = stack.removeLast()
+
+		if (isEnd(current)) {
+			val path = mutableListOf(current)
+			var c = current
+			while (true) {
+				c = back[c] ?: break
+				path += c
+			}
+			return BfsResult(path)
+		}
+
+		for (i in next(current).reversed()) {
+			if (seen.add(i)) {
+				stack.add(i to dist + 1)
+				back[i] = current
+			}
+		}
+	}
+	return null
+}
+
+inline fun <State> dfsPathDist(
+	start: State,
+	isEnd: (State, Int) -> Boolean,
+	next: (State, Int) -> Iterable<State>
+): BfsResult<State>? {
+	val seen = mutableSetOf(start)
+	var stack = mutableListOf(start to 0)
+	val back = mutableMapOf<State, State>()
+
+	while (stack.isNotEmpty()) {
+		val (current, dist) = stack.removeLast()
+
+		if (isEnd(current, dist)) {
+			val path = mutableListOf(current)
+			var c = current
+			while (true) {
+				c = back[c] ?: break
+				path += c
+			}
+			return BfsResult(path)
+		}
+
+		for (i in next(current, dist).reversed()) {
+			if (seen.add(i)) {
+				stack.add(i to dist + 1)
+				back[i] = current
+			}
+		}
+	}
+	return null
+}
+
 data class DijkstraResult<out State>(val path: List<State>, val cost: Double) {
 	val start get() = path.first()
 	val end get() = path.last()
@@ -199,7 +316,7 @@ fun <State> dijkstraDist(
 	start: State,
 	isEnd: (State, Int) -> Boolean,
 	next: (State, Int) -> Iterable<Pair<State, Int>>
-): DijkstraResult<State>? = dijkstraDDist(start, {state, dist -> isEnd(state, dist.toInt())}) { it, dist ->
+): DijkstraResult<State>? = dijkstraDDist(start, { state, dist -> isEnd(state, dist.toInt()) }) { it, dist ->
 	next(it, dist.toInt()).map { val (state, cost) = it; state to cost.toDouble() }
 }
 

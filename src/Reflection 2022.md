@@ -22,3 +22,15 @@
 ## Day 04
 27/15; points: 160, 5th place
 * separated by minus signs => use posInts()
+
+note: I want to add these helpers
+* [x] HetN for n in 2-9
+* [x] DFS
+* [ ] Line3D (maybe LineG?)
+* [ ] maybe Bounds3D? (already have BoundsG)
+* [ ] 
+
+## Day 05
+64/73; points: 65, 4th place
+* input parsing took long
+* Don't know why I went with Deques  

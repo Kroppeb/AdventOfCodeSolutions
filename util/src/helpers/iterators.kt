@@ -45,7 +45,15 @@ fun <K, A> Map<K, A>.intersect(other: Iterable<K>) = this.keys.intersect(other).
 
 fun <K, A, B> Map<K, A>.union(other: Map<K, B>) = this.keys.union(other.keys).associateWith { this[it] to other[it] }
 inline fun <K, A> Map<K, A>.merge(other: Map<K, A>, m: (A, A) -> A) = this.keys.union(other.keys).associateWith {
-	this[it]?.let { a -> other[it]?.let { b -> m(a, b) } ?: a } ?: other[it]!!
+	val p = this[it] to other[it]
+	val (x,y) = p
+	when(p) {
+		null to null -> error("?")
+		null to y -> y  as A
+		x to null -> x as A
+		x to y -> m(x as A,y as A)
+		else -> error("?")
+	}
 }
 
 inline fun <K, A, B, R> Map<K, A>.mergeMap(other: Map<K, B>, m: (A?, B?) -> R) = this.union(other).mapValues { (_, v) ->
@@ -506,10 +514,15 @@ fun <T> Iterable<T>.permutations() = toList().permutations()
 fun <T : Comparable<T>> Iterable<T>.max(n: Int) = this.sortedDescending().take(n)
 fun <T : Comparable<T>> Iterable<T>.min(n: Int) = this.sorted().take(n)
 
-inline fun <T, C : Comparable<C>> Iterable<T>.maxBy(n: Int, crossinline selector: (T) -> C) = this.sortedByDescending(selector).take(n)
-inline fun <T, C : Comparable<C>> Iterable<T>.minBy(n: Int, crossinline selector: (T) -> C) = this.sortedBy(selector).take(n)
+inline fun <T, C : Comparable<C>> Iterable<T>.maxBy(n: Int, crossinline selector: (T) -> C) =
+	this.sortedByDescending(selector).take(n)
 
-inline fun <T, C : Comparable<C>> Iterable<T>.maxOf(n: Int, selector: (T) -> C) = this.map(selector).sortedDescending().take(n)
+inline fun <T, C : Comparable<C>> Iterable<T>.minBy(n: Int, crossinline selector: (T) -> C) =
+	this.sortedBy(selector).take(n)
+
+inline fun <T, C : Comparable<C>> Iterable<T>.maxOf(n: Int, selector: (T) -> C) =
+	this.map(selector).sortedDescending().take(n)
+
 inline fun <T, C : Comparable<C>> Iterable<T>.minOf(n: Int, selector: (T) -> C) = this.map(selector).sorted().take(n)
 
 // region String destructors
@@ -541,24 +554,41 @@ fun <T, R> Collection<T>.splitIn(n: Int, transform: (List<T>) -> R): List<R> {
 fun <T> Iterable<Iterable<T>>.union() = this.reduce(Iterable<T>::union).toSet()
 fun <T> Iterable<Iterable<T>>.intersect() = this.reduce(Iterable<T>::intersect).toSet()
 
+infix fun <T> Iterable<T>.notIn(other: Iterable<*>): Set<T> = this.toMutableSet().apply { removeAll(other as Iterable<T>) }
+
+// intersection, but better types
+@Suppress("BOUNDS_NOT_ALLOWED_IF_BOUNDED_BY_TYPE_PARAMETER")
+fun <T, R, V> Iterable<T>.onlyIn(other: Iterable<R>): Set<V> where V : T, V : R =
+	(this as Set<Any?>).toMutableSet().apply { removeAll(other) } as Set<V>
+
+// union, but it's infix
+infix fun <T> Iterable<T>.or(other: Iterable<T>): Set<T> = this.union(other)
+
+// onlyIn but it's infix
+@Suppress("BOUNDS_NOT_ALLOWED_IF_BOUNDED_BY_TYPE_PARAMETER")
+infix fun <T, R, V> Iterable<T>.and(other: Iterable<R>): Set<V> where V : T, V : R =
+	this.onlyIn(other)
 
 // aka: does this intersect
-fun <T> Iterable<T>.anyIn(other: Iterable<T>): Boolean {
+infix fun <T> Iterable<T>.anyIn(other: Iterable<T>): Boolean {
 	val o = other.toSet()
 	return any { it in o }
 }
 
 // aka: is this a subset of
-fun <T> Iterable<T>.allIn(other: Iterable<T>): Boolean {
+infix fun <T> Iterable<T>.allIn(other: Iterable<T>): Boolean {
 	val o = other.toSet()
 	return all { it in other }
 }
 
 // aka: are these fully distinct
-fun <T> Iterable<T>.noneIn(other: Iterable<T>): Boolean {
+infix fun <T> Iterable<T>.noneIn(other: Iterable<T>): Boolean {
 	val o = other.toSet()
 	return none { it in other }
 }
 
 // aka: is this a superset of
-fun <T> Iterable<T>.containsAll(other: Iterable<T>) = other.allIn(this)
+infix fun <T> Iterable<T>.containsAll(other: Iterable<T>) = other.allIn(this)
+
+fun <T, R> Pair<Iterable<T>, Iterable<R>>.zipped() = first.zip(second)
+inline fun <T, R, V> Pair<Iterable<T>, Iterable<R>>.zipped(transform: (T, R) -> V) = first.zip(second, transform)

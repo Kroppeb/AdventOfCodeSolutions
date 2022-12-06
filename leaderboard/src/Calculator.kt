@@ -14,6 +14,15 @@ fun get(day: Int): Map<String, Int>? {
     return p.groupBy(Pair<String, Int>::first) { it.second }.mapValues { it.value.sum() }
 }
 
+fun get2(day: Int): Map<String, List<Int>>? {
+	val resource = object {}.javaClass.getResource("$year/$day")
+		?: object {}.javaClass.getResource("$year/$day.txt")
+		?: return null;
+	val p = reg.findAll(resource.readText()).toList().map { it.groupValues[2] to 101 - it.groupValues[1].toInt() }
+	//check(p.size == 200) { "day $day contained ${p.size} entries"}
+	return p.groupBy(Pair<String, Int>::first) { it.second }.mapValues { it.value }
+}
+
 fun main() {
     val days = (1..25).mapNotNull { it to (get(it) ?: return@mapNotNull null) }
     val inter = days.fold(mutableListOf<Pair<Int, Map<String, Int>>>()) { o, (i, n) ->

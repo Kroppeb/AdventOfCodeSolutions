@@ -67,7 +67,7 @@ private fun part2(data: Data) {
 private typealias Data = Lines
 
 fun main() {
-	val data: Data = getLines(2020_6)
+	val data: Data = getLines(2020_06)
 	part1(data)
 	part2(data)
 }
