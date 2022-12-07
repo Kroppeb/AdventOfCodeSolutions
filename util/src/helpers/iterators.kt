@@ -79,6 +79,14 @@ fun <K : Comparable<K>, V> Map<K, V>.maxByKey() = maxByOrNull { it.key }!!.value
 
 operator fun <E> List<E>.times(count: Int) = repeat(count)
 
+fun <T> generateTimes(times: Int, next: () -> T): List<T> {
+	val ret = mutableListOf<T>()
+	repeat(times) {
+		ret.add(next())
+	}
+	return ret
+}
+
 /**
  * Seed isn't returned, the retured list has length times
  */
@@ -551,8 +559,18 @@ fun <T, R> Collection<T>.splitIn(n: Int, transform: (List<T>) -> R): List<R> {
 	return chunked(length / n, transform)
 }
 
+fun <T> Collection<T>.splitIn2(): Pair<List<T>, List<T>> = splitIn(2).let{(a,b) -> a to b}
+fun <T, R> Collection<T>.splitIn2(transform: (List<T>) -> R): Pair<R,R> = splitIn(2, transform).let{(a,b) -> a to b}
+
 fun <T> Iterable<Iterable<T>>.union() = this.reduce(Iterable<T>::union).toSet()
 fun <T> Iterable<Iterable<T>>.intersect() = this.reduce(Iterable<T>::intersect).toSet()
+
+
+fun <T> Pair<Iterable<T>, Iterable<T>>.union() = first or second
+
+@Suppress("BOUNDS_NOT_ALLOWED_IF_BOUNDED_BY_TYPE_PARAMETER")
+fun <T, R, V> Pair<Iterable<T>, Iterable<R>>.intersect(): Set<V> where V : T, V : R =
+	first and second as Iterable<V>
 
 infix fun <T> Iterable<T>.notIn(other: Iterable<*>): Set<T> =
 	this.toMutableSet().apply { removeAll(other as Iterable<T>) }
@@ -560,7 +578,7 @@ infix fun <T> Iterable<T>.notIn(other: Iterable<*>): Set<T> =
 // intersection, but better types
 @Suppress("BOUNDS_NOT_ALLOWED_IF_BOUNDED_BY_TYPE_PARAMETER")
 fun <T, R, V> Iterable<T>.onlyIn(other: Iterable<R>): Set<V> where V : T, V : R =
-	(this as Set<Any?>).toMutableSet().apply { removeAll(other) } as Set<V>
+	(this as Iterable<Any?>).toMutableSet().apply { retainAll(other) } as Set<V>
 
 
 // onlyIn but it's infix
@@ -608,9 +626,33 @@ fun <T> Iterable<T>.rotateLeft(i: Int): List<T> {
 	val list = this.toList()
 	val shift = i mod list.size
 
-	return list.splitAt(shift).on{l,r -> l + r}
+	return list.splitAt(shift).on { l, r -> l + r }
 }
 
 fun <T> Iterable<T>.rotateRight(i: Int): List<T> = rotateLeft(-i)
 
 fun <T> Iterable<T>.splitAt(i: Int): Pair<List<T>, List<T>> = take(i) to drop(i)
+
+fun <T> Iterable<T>.split2(item: T): Pair<List<T>, List<T>> {
+	val list = this.toList()
+	val idx = list.indexOf(item)
+	return take(idx) to drop(idx + 1)
+}
+
+inline fun <T> Iterable<T>.split2On(predicate: (T) -> Boolean): Pair<List<T>, List<T>> {
+	val before = mutableListOf<T>()
+	val iterator = this.iterator()
+	for (i in iterator) {
+		if (!predicate(i)) {
+			before.add(i)
+		} else {
+			break
+		}
+	}
+	val after = mutableListOf<T>()
+	for (i in iterator) {
+		after.add(i)
+	}
+
+	return before to after
+}

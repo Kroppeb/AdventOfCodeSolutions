@@ -48,3 +48,4 @@ note: I want to add thes helpers
   * update y17d22
 * [ ] pure state loop
   * update y18d18 and others (look for maps)
+* [ ] allMaxByKey/value
