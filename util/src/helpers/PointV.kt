@@ -40,11 +40,17 @@ class PointV<C : Comparable<C>> internal constructor(
 	override fun max(other: PointV<C>): PointV<C> = this.zipEach(other) { a, b -> max(a, b) }
 	override fun min(other: PointV<C>): PointV<C> = this.zipEach(other) { a, b -> min(a, b) }
 
-	override fun rem(other: PointV<C>): PointV<C> = this.zipEach(other, opps::rem)
-	override fun div(other: PointV<C>): PointV<C> = this.zipEach(other, opps::div)
-	override fun times(other: PointV<C>): PointV<C> = this.zipEach(other, opps::times)
+
 	override fun plus(other: PointV<C>): PointV<C> = this.zipEach(other, opps::plus)
 	override fun minus(other: PointV<C>): PointV<C> = this.zipEach(other, opps::minus)
+	override fun times(other: PointV<C>): PointV<C> = this.zipEach(other, opps::times)
+	override fun div(other: PointV<C>): PointV<C> = this.zipEach(other, opps::div)
+	override fun rem(other: PointV<C>): PointV<C> = this.zipEach(other, opps::rem)
+
+
+	override fun times(other: C): PointV<C> = this.mapEach{ opps.times(it, other)}
+	override fun div(other: C): PointV<C> = this.mapEach{ opps.div(it, other)}
+	override fun rem(other: C): PointV<C> = this.mapEach{ opps.rem(it, other)}
 
 	override fun getVonNeumannNeighbours(): List<PointV<C>> = buildList(this.values.size * 2) {
 		for (i in values.indices) {
@@ -64,6 +70,10 @@ class PointV<C : Comparable<C>> internal constructor(
 		if (other !is PointV<*>) return false
 
 		return this.values == other.values && this.opps == other.opps
+	}
+
+	override fun gcd(): C {
+		TODO("Not yet implemented")
 	}
 
 	override fun hashCode(): Int {
@@ -87,6 +97,8 @@ internal interface Opps<T : Comparable<T>> {
 
 	fun unaryMinus(a: T): T
 
+	fun gcd(a: T, b: T): T
+
 	fun abs(a: T): T = max(a, unaryMinus(a))
 
 
@@ -104,6 +116,8 @@ private val IntOpps = object : Opps<Int> {
 	override fun dec(a: Int): Int = a - 1
 
 	override fun unaryMinus(a: Int): Int = -a
+
+	override fun gcd(a: Int, b: Int): Int = gcd(a, b)
 }
 
 private val LongOpps = object : Opps<Long> {
@@ -117,6 +131,8 @@ private val LongOpps = object : Opps<Long> {
 	override fun dec(a: Long): Long = a - 1
 
 	override fun unaryMinus(a: Long): Long = -a
+
+	override fun gcd(a: Long, b: Long): Long = gcd(a, b)
 }
 
 private val DoubleOpps = object : Opps<Double> {
@@ -130,6 +146,8 @@ private val DoubleOpps = object : Opps<Double> {
 	override fun dec(a: Double): Double = a - 1
 
 	override fun unaryMinus(a: Double): Double = -a
+
+	override fun gcd(a: Double, b: Double): Double = error("GCD is not defined for doubles")
 }
 
 private val BigIntegerOpps = object : Opps<BigInteger> {
@@ -143,6 +161,8 @@ private val BigIntegerOpps = object : Opps<BigInteger> {
 	override fun dec(a: BigInteger): BigInteger = a - BigInteger.ONE
 
 	override fun unaryMinus(a: BigInteger): BigInteger = -a
+
+	override fun gcd(a: BigInteger, b: BigInteger): BigInteger = a.gcd(b)
 }
 
 infix fun Int.toPV(other: Int) = PointV(listOf(this, other), IntOpps)

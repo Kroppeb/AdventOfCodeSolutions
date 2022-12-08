@@ -2,9 +2,9 @@ package helpers
 
 interface PointNI<T : PointNI<T>> : PointN<T, Int> {
 
-	operator fun times(other: Int): T
-	operator fun div(other: Int): T
-	operator fun rem(other: Int): T
+	override operator fun times(other: Int): T
+	override operator fun div(other: Int): T
+	override operator fun rem(other: Int): T
 
 
 	override fun sqrDist(): Int
@@ -15,7 +15,7 @@ interface PointNI<T : PointNI<T>> : PointN<T, Int> {
 	override fun distTo(other: T): Double = (this - other).dist()
 	override fun manDistTo(other: T): Int = (this - other).manDist()
 
-	fun gcd(): Int
+	override fun gcd(): Int
 
 	fun dot(other: T): Int
 }

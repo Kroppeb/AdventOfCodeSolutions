@@ -52,10 +52,20 @@ abstract class IBounds : Iterable<Point> {
 	val size get() = xSize toP ySize
 	val area get() = xSize * ySize
 
-	fun exactCenter() = (lower + higher).also{
+	fun exactCenter() = (lower + higher).also {
 		require(it.x % 2 == 0)
 		require(it.y % 2 == 0)
 	} / 2
+
+	fun leftEdge() = this.upperLeft toL this.lowerLeft
+	fun rightEdge() = this.upperRight toL this.lowerRight
+	fun topEdge() = this.upperLeft toL this.upperRight
+	fun bottomEdge() = this.lowerLeft toL this.lowerRight
+
+	fun northEdge() = topEdge()
+	fun southEdge() = bottomEdge()
+	fun eastEdge() = rightEdge()
+	fun westEdge() = leftEdge()
 }
 
 data class Bounds(override val lower: Point, override val higher: Point) : IBounds() {

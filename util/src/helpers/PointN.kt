@@ -1,6 +1,6 @@
 package helpers
 
-interface PointN<T : PointN<T, C>, C:Comparable<C>> {
+interface PointN<T : PointN<T, C>, C : Comparable<C>> {
 
 	fun getVonNeumannNeighbours(): List<T>
 	fun getMooreNeighbours(): List<T>
@@ -14,9 +14,17 @@ interface PointN<T : PointN<T, C>, C:Comparable<C>> {
 	operator fun div(other: T): T
 	operator fun rem(other: T): T
 
+	operator fun times(other: C): T
+	operator fun div(other: C): T
+	operator fun rem(other: C): T
+
 	fun abs(): T
 
-	fun discreteAngle(): T
+	fun discreteAngle(): T {
+		val g = gcd()
+		return this / g
+	}
+
 	fun min(other: T): T
 	fun max(other: T): T
 
@@ -27,4 +35,11 @@ interface PointN<T : PointN<T, C>, C:Comparable<C>> {
 	fun sqrDistTo(other: T): C = (this - other).sqrDist()
 	fun distTo(other: T): Double = (this - other).dist()
 	fun manDistTo(other: T): C = (this - other).manDist()
+
+	fun gcd(): C
+
+	/**
+	 * includes self
+	 */
+	fun sequence(step: T): Sequence<T> = generateSequence(this as T) { it + step }
 }

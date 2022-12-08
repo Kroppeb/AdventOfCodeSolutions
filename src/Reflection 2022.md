@@ -41,7 +41,7 @@ note: I want to add these helpers
 
 
 note: I want to add thes helpers
-* [ ] Line3D (maybe LineG?)
+* [x] Line3D (maybe LineG?)
 * [ ] maybe Bounds3D? (already have BoundsG)
 * [x] splitAt
 * [ ] grid.findPoints / findSinglePoint (throws if multiple match) 
@@ -49,3 +49,27 @@ note: I want to add thes helpers
 * [x] pure state loop
   * update y18d18 and others (look for maps)
 * [x] allMaxByKey/value
+
+## Day 07
+388/320; points: 0, 20th place
+
+
+## Day 08
+32/1871; points: 69, 24th place
+* My morning routine was un acceptable. Lost multiple points in part 1 because of that
+* Also please no sleep revenge, it's not helping
+* ... I have a 13 minutes warning and 3 minute warning
+  * at 13 is the moment I should start making sure 
+    the early part of the checklist gets done
+  * at 3 minutes the middle part should be FULLY DONE
+
+
+* [ ] Bound edges
+* [x] norths/easts/souths/wests
+* [x] Make grid iterable of BoundedGridPoints
+  * `p` -> point
+  * `v` -> value
+  * `b` -> bounds
+  * `g` -> grid
+  * mirror neighbours
+    * only those in the bounds, map the coordinates to BoundedGridPoints too

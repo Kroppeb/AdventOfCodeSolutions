@@ -2,7 +2,7 @@ package grid
 
 import helpers.*
 
-class SimpleGrid<out T>(val items: List<List<T>>) : StrictGrid<T> {
+class SimpleGrid<out T>(val items: List<List<T>>) : StrictGrid<T>, Iterable<BoundedGridPoint<T>> {
 	override val bounds: Bounds
 
 	init {
@@ -46,6 +46,12 @@ class SimpleGrid<out T>(val items: List<List<T>>) : StrictGrid<T> {
 
 	override fun equals(other: Any?): Boolean = other is SimpleGrid<*> && this.items == other.items
 	override fun hashCode(): Int = this.items.hashCode()
+	override fun iterator(): Iterator<BoundedGridPoint<T>> = bounds.map{this.getBp(it)}.iterator()
+
+	fun getBpOrNull(point: Point): BoundedGridPoint<T>? =
+		if (point in bounds) BoundedGridPoint(point, this[point], this) else null
+
+	fun getBp(point: Point) = getBpOrNull(point) ?: throw IndexOutOfBoundsException(point.toString())
 }
 
 

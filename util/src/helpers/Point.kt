@@ -64,11 +64,6 @@ data class Point(val x: Int, val y: Int) : PointNI<Point> {
 
 	override fun gcd(): Int = gcd(kotlin.math.abs(x), kotlin.math.abs(y))
 
-	override fun discreteAngle(): Point {
-		val g = gcd()
-		return this / g
-	}
-
 	override fun min(other: Point): Point = min(this.x, other.x) toP min(this.y, other.y)
 	override fun max(other: Point): Point = max(this.x, other.x) toP max(this.y, other.y)
 
@@ -80,4 +75,19 @@ data class Point(val x: Int, val y: Int) : PointNI<Point> {
 	fun isBelow(other: Point) = Clock.down.dot(this) > Clock.down.dot(other)
 	fun sameLeftRight(other: Point) = Clock.left.dot(this) == Clock.left.dot(other)
 	fun sameUpDown(other: Point) = Clock.up.dot(this) == Clock.up.dot(other)
+
+	companion object {
+		val ZERO = 0 toP 0
+		val DIRS = ZERO.getQuadNeighbours()
+	}
+
+	fun northsInc() = this.sequence(Clock.up)
+	fun southsInc() = this.sequence(Clock.down)
+	fun eastsInc() = this.sequence(Clock.right)
+	fun westsInc() = this.sequence(Clock.left)
+
+	fun norths() = this.northsInc().drop(1)
+	fun souths() = this.southsInc().drop(1)
+	fun easts() = this.eastsInc().drop(1)
+	fun wests() = this.westsInc().drop(1)
 }

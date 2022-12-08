@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y22
+package solutions.y22.d08
 
 
 /*
@@ -19,28 +19,21 @@ import java.awt.Toolkit
 import java.awt.datatransfer.Clipboard
 import java.awt.datatransfer.StringSelection
 
-import collections.*
-import graph.*
 import grid.*
 import helpers.*
-import itertools.*
-import java.util.Comparator
-import java.util.PriorityQueue
-import kotlin.math.*
 
 
 private val xxxxx = Clock(6, 3);
 
 
-private fun part0(): MutableSet<Pair<Int, Int>> {
-	var data = getLines(8).e().map2 { it - '0' }
+private fun part1() {
+	var data = getLines(2022_08).e().map2 { it - '0' }
 
 	val seen = msot<Pair<Int, Int>>()
-	var data1 = data
 	var size = -1
 	for (i in data.indices) {
-		for (j in 0 until data1[i].size) {
-			var x = data1[i][j]
+		for (j in 0 until data[i].size) {
+			var x = data[i][j]
 			if (x > size) {
 				size = x
 				seen += i to j
@@ -49,7 +42,7 @@ private fun part0(): MutableSet<Pair<Int, Int>> {
 
 		size = -1
 		for (j in (0 until data[i].size).reversed()) {
-			var x = data1[i][j]
+			var x = data[i][j]
 			if (x > size) {
 				size = x
 				seen += i to j
@@ -57,12 +50,12 @@ private fun part0(): MutableSet<Pair<Int, Int>> {
 		}
 	}
 
-	data1 = data1.transpose()
+	data = data.transpose()
 	size = -1
 
-	for (i in data1.indices) {
-		for (j in 0 until data1[i].size) {
-			var x = data1[i][j]
+	for (i in data.indices) {
+		for (j in 0 until data[i].size) {
+			var x = data[i][j]
 			if (x > size) {
 				size = x
 				seen += j to i
@@ -70,8 +63,8 @@ private fun part0(): MutableSet<Pair<Int, Int>> {
 		}
 
 		size = -1
-		for (j in (0 until data1[i].size).reversed()) {
-			var x = data1[i][j]
+		for (j in (0 until data[i].size).reversed()) {
+			var x = data[i][j]
 			if (x > size) {
 				size = x
 				seen += j to i
@@ -79,14 +72,13 @@ private fun part0(): MutableSet<Pair<Int, Int>> {
 		}
 	}
 
-	return seen
+	seen.size.log()
 }
 
 
-
-private fun part1() {
-	var data = getLines(8).e().map2 { it - '0' }
-	data.indices.maxOf{u -> data[0].indices.maxOf{ v -> extracted(data, u, v, data[u][v])}} .log()
+private fun part2() {
+	var data = getLines(2022_08).e().map2 { it - '0' }
+	data.indices.maxOf { u -> data[0].indices.maxOf { v -> extracted(data, u, v, data[u][v]) } }.log()
 
 
 }
@@ -106,7 +98,7 @@ private fun extracted(
 
 		count++
 
-		if (x >= max){
+		if (x >= max) {
 			break
 		}
 	}
@@ -118,7 +110,7 @@ private fun extracted(
 		var x = data1[u][j]
 
 		count++
-		if (x >= max){
+		if (x >= max) {
 			break
 		}
 	}
@@ -134,7 +126,7 @@ private fun extracted(
 		var x = data1[v][j]
 
 		count++
-		if (x >= max){
+		if (x >= max) {
 			break
 		}
 	}
@@ -148,9 +140,9 @@ private fun extracted(
 		var x = data1[v][j]
 //		if (x > size) {
 //			size = x
-			count++
+		count++
 //		}
-		if (x >= max){
+		if (x >= max) {
 			break
 		}
 	}
@@ -166,14 +158,15 @@ private fun extracted(
 
 
 fun main() {
-	println("Day 7: ")
+	println("Day 8: ")
 	part1()
+	part2()
 }
 
 
 private var _logIndex = 0
 private fun <T> T.log(): T = also { println("%03d %03d:\t\t%s".format(_logIndex / 1000, _logIndex++ % 1000, this)) }
-	.also { setClipboard(it.toString()) }
+//	.also { setClipboard(it.toString()) }
 
 private infix fun <T> T.log(_ignored: Any?): T = this.log()
 private fun setClipboard(s: String) {

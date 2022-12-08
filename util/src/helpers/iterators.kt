@@ -1,12 +1,6 @@
 package helpers
 
 
-import helpers.minBy
-import helpers.maxBy
-import helpers.allMinBy
-import helpers.allMaxBy
-
-
 fun <T> Iterator<T>.getNext(): T {
 	hasNext()
 	return next()
@@ -77,16 +71,16 @@ inline fun <K, A, B, R> Map<K, A>.intersectMap(other: Map<K, B>, m: (A, B) -> R)
 		else null
 	}.toMap()
 
-fun <K, V : Comparable<V>> Map<K, V>.minByValue() = minBy{ it.value }.key
-fun <K : Comparable<K>, V> Map<K, V>.minByKey() = minBy{ it.key }.value
+fun <K, V : Comparable<V>> Map<K, V>.minByValue() = minBy { it.value }.key
+fun <K : Comparable<K>, V> Map<K, V>.minByKey() = minBy { it.key }.value
 
-fun <K, V : Comparable<V>> Map<K, V>.maxByValue() = maxBy{ it.value }.key
-fun <K : Comparable<K>, V> Map<K, V>.maxByKey() = maxBy{ it.key }.value
+fun <K, V : Comparable<V>> Map<K, V>.maxByValue() = maxBy { it.value }.key
+fun <K : Comparable<K>, V> Map<K, V>.maxByKey() = maxBy { it.key }.value
 
-fun <K, V : Comparable<V>> Map<K, V>.allMinByValue() = allMinBy { it.value }.map{it.key}
-fun <K : Comparable<K>, V> Map<K, V>.allMinByKey() = allMinBy { it.key }.map{it.value}
-fun <K, V : Comparable<V>> Map<K, V>.allMaxByValue() = allMaxBy { it.value }.map{it.key}
-fun <K : Comparable<K>, V> Map<K, V>.allMaxByKey() = allMaxBy { it.key }.map{it.value}
+fun <K, V : Comparable<V>> Map<K, V>.allMinByValue() = allMinBy { it.value }.map { it.key }
+fun <K : Comparable<K>, V> Map<K, V>.allMinByKey() = allMinBy { it.key }.map { it.value }
+fun <K, V : Comparable<V>> Map<K, V>.allMaxByValue() = allMaxBy { it.value }.map { it.key }
+fun <K : Comparable<K>, V> Map<K, V>.allMaxByKey() = allMaxBy { it.key }.map { it.value }
 
 
 operator fun <E> List<E>.times(count: Int) = repeat(count)
@@ -308,14 +302,14 @@ fun <T> Iterable<T>.orderedPairWise(): List<Pair<T, T>> = flatMapIndexed { i, v 
 	filterIndexed { i2, _ -> i != i2 }.map { v to it }
 }
 
-fun <T> Iterator<T>.subSetsWithLength(n: Int) : List<List<T>> {
+fun <T> Iterator<T>.subSetsWithLength(n: Int): List<List<T>> {
 	if (n == 0)
 		return listOf(emptyList())
 	if (!this.hasNext())
 		return emptyList()
 
 	val item = this.next()
-	return this.subSetsWithLength(n - 1).map{listOf(item) + it } + this.subSetsWithLength(n)
+	return this.subSetsWithLength(n - 1).map { listOf(item) + it } + this.subSetsWithLength(n)
 }
 
 fun <T> Iterable<T>.subSetsWithLength(n: Int) = iterator().subSetsWithLength(n)
@@ -523,9 +517,25 @@ inline fun <T, R> Iterable<T>.repeatMap(count: Int, mapping: (Int, T) -> R): Lis
 
 fun Iterable<String>.splitOnEmpty(): List<List<String>> = this.splitOn { it.isEmpty() }
 
+@JvmName("productInts")
 fun Iterable<Int>.product(): Long = this.fold(1L) { acc, i -> acc * i }
-
+fun Iterable<Long>.product(): Long = this.fold(1L) { acc, i -> acc * i }
 fun Iterable<Double>.product(): Double = this.fold(1.0) { acc, i -> acc * i }
+
+
+@OptIn(kotlin.experimental.ExperimentalTypeInference::class)
+@OverloadResolutionByLambdaReturnType
+@JvmName("productOfInts")
+inline fun <T> Iterable<T>.productOf(transform: (T) -> Int): Long = this.fold(1L) { acc, i -> acc * transform(i) }
+
+@OptIn(kotlin.experimental.ExperimentalTypeInference::class)
+@OverloadResolutionByLambdaReturnType
+@JvmName("productOfLongs")
+inline fun <T> Iterable<T>.productOf(transform: (T) -> Long): Long = this.fold(1L) { acc, i -> acc * transform(i) }
+
+@OptIn(kotlin.experimental.ExperimentalTypeInference::class)
+@OverloadResolutionByLambdaReturnType
+inline fun <T> Iterable<T>.productOf(transform: (T) -> Double): Double = this.fold(1.0) { acc, i -> acc * transform(i) }
 
 fun Iterable<Char>.join(): String = this.joinToString("")
 
@@ -583,8 +593,9 @@ fun <T, R> Collection<T>.splitIn(n: Int, transform: (List<T>) -> R): List<R> {
 	return chunked(length / n, transform)
 }
 
-fun <T> Collection<T>.splitIn2(): Pair<List<T>, List<T>> = splitIn(2).let{(a,b) -> a to b}
-fun <T, R> Collection<T>.splitIn2(transform: (List<T>) -> R): Pair<R,R> = splitIn(2, transform).let{(a,b) -> a to b}
+fun <T> Collection<T>.splitIn2(): Pair<List<T>, List<T>> = splitIn(2).let { (a, b) -> a to b }
+fun <T, R> Collection<T>.splitIn2(transform: (List<T>) -> R): Pair<R, R> =
+	splitIn(2, transform).let { (a, b) -> a to b }
 
 fun <T> Iterable<Iterable<T>>.union() = this.reduce(Iterable<T>::union).toSet()
 fun <T> Iterable<Iterable<T>>.intersect() = this.reduce(Iterable<T>::intersect).toSet()
@@ -679,4 +690,13 @@ inline fun <T> Iterable<T>.split2On(predicate: (T) -> Boolean): Pair<List<T>, Li
 	}
 
 	return before to after
+}
+
+fun <T> Iterable<T>.takeUntilInc(predicate: (T) -> Boolean): List<T> = buildList {
+	for (i in this@takeUntilInc) {
+		add(i)
+		if (predicate(i)) {
+			break
+		}
+	}
 }

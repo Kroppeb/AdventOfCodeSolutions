@@ -87,11 +87,6 @@ data class Point3D(val x: Int, val y: Int, val z: Int) : PointNI<Point3D> {
 
 	override fun gcd(): Int = gcd(kotlin.math.abs(x), gcd(kotlin.math.abs(y), kotlin.math.abs(z)))
 
-	override fun discreteAngle(): Point3D {
-		val g = gcd()
-		return this / g
-	}
-
 	override fun min(other: Point3D): Point3D = min(this.x, other.x) toP min(this.y, other.y) toP min(this.z, other.z)
 	override fun max(other: Point3D): Point3D = max(this.x, other.x) toP max(this.y, other.y) toP max(this.z, other.z)
 
