@@ -252,9 +252,8 @@ infix fun Int.mod(base: IntRange) = this % base
 operator fun Long.rem(range: LongRange) = range.first + (this - range.first mod range.last - range.first + 1)
 infix fun Long.mod(base: LongRange) = this % base
 
-operator fun Long.rem(range: IntRange):Int = range.first + (this - range.first mod range.last - range.first + 1)
+operator fun Long.rem(range: IntRange): Int = range.first + (this - range.first mod range.last - range.first + 1)
 infix fun Long.mod(base: IntRange) = this % base
-
 
 
 inline fun <reified T> Map<Int, T>.toArray(): Array<T?> {
@@ -342,3 +341,29 @@ fun List<Int>.toLongArray(): LongArray {
 fun <T> List<T>.mut() = this.toMutableList()
 fun <T> List<List<T>>.mut2() = this.map { it.mut() }.mut()
 fun <T> List<List<List<T>>>.mut3() = this.map { it.mut2() }.mut()
+
+fun <T> pureStateLoop(start: T, steps: Int, f: (T) -> T): T {
+	var id = 0
+	var state = start
+	val seen = mutableMapOf<T, Int>()
+	val reverse = mutableListOf<T>(start)
+	while (id < steps) {
+		state = f(state)
+
+		id++
+
+		val prev = seen[state]
+		if (prev != null) {
+			val oo = 1_000_000_000 mod (prev until id)
+
+			return reverse[oo]
+//			val diff = id - seen[state]!!
+//			val oo = (1_000_000_000 - seen[state]!!) % diff
+//			return seen.entries.find{it.value == seen[state]!! + oo}!!.key
+		}
+
+		seen[state] = id
+		reverse.add(state)
+	}
+	return state
+}

@@ -1,6 +1,12 @@
 package helpers
 
 
+import helpers.minBy
+import helpers.maxBy
+import helpers.allMinBy
+import helpers.allMaxBy
+
+
 fun <T> Iterator<T>.getNext(): T {
 	hasNext()
 	return next()
@@ -71,11 +77,17 @@ inline fun <K, A, B, R> Map<K, A>.intersectMap(other: Map<K, B>, m: (A, B) -> R)
 		else null
 	}.toMap()
 
-fun <K, V : Comparable<V>> Map<K, V>.minByValue() = minByOrNull { it.value }!!.key
-fun <K : Comparable<K>, V> Map<K, V>.minByKey() = minByOrNull { it.key }!!.value
+fun <K, V : Comparable<V>> Map<K, V>.minByValue() = minBy{ it.value }.key
+fun <K : Comparable<K>, V> Map<K, V>.minByKey() = minBy{ it.key }.value
 
-fun <K, V : Comparable<V>> Map<K, V>.maxByValue() = maxByOrNull { it.value }!!.key
-fun <K : Comparable<K>, V> Map<K, V>.maxByKey() = maxByOrNull { it.key }!!.value
+fun <K, V : Comparable<V>> Map<K, V>.maxByValue() = maxBy{ it.value }.key
+fun <K : Comparable<K>, V> Map<K, V>.maxByKey() = maxBy{ it.key }.value
+
+fun <K, V : Comparable<V>> Map<K, V>.allMinByValue() = allMinBy { it.value }.map{it.key}
+fun <K : Comparable<K>, V> Map<K, V>.allMinByKey() = allMinBy { it.key }.map{it.value}
+fun <K, V : Comparable<V>> Map<K, V>.allMaxByValue() = allMaxBy { it.value }.map{it.key}
+fun <K : Comparable<K>, V> Map<K, V>.allMaxByKey() = allMaxBy { it.key }.map{it.value}
+
 
 operator fun <E> List<E>.times(count: Int) = repeat(count)
 
@@ -295,6 +307,18 @@ fun <T> Iterable<T>.pairWise(): List<Pair<T, T>> = flatMapIndexed { i, v -> drop
 fun <T> Iterable<T>.orderedPairWise(): List<Pair<T, T>> = flatMapIndexed { i, v ->
 	filterIndexed { i2, _ -> i != i2 }.map { v to it }
 }
+
+fun <T> Iterator<T>.subSetsWithLength(n: Int) : List<List<T>> {
+	if (n == 0)
+		return listOf(emptyList())
+	if (!this.hasNext())
+		return emptyList()
+
+	val item = this.next()
+	return this.subSetsWithLength(n - 1).map{listOf(item) + it } + this.subSetsWithLength(n)
+}
+
+fun <T> Iterable<T>.subSetsWithLength(n: Int) = iterator().subSetsWithLength(n)
 
 fun <T> Iterable<T>.selfPairWise(): List<Pair<T, T>> = flatMapIndexed { i, v -> drop(i).map { v to it } }
 

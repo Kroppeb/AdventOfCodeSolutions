@@ -33,7 +33,51 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(7)
+	var data = getLines(2022_07)
+
+	val s = mutableMapOf<List<String>, Int>()
+
+	var d = listOf<String>()
+
+	var i = 0
+	while (i in data.indices) {
+		var line = data[i]
+		if (line.startsWith("$ cd ")) {
+			val dir = line.drop(5)
+			if (dir == "..") {
+				d = d.dropLast(1)
+			} else {
+				d = d + listOf(dir)
+			}
+			i++
+		} else {
+			i++
+			while (i in data.indices && !data[i].startsWith("$")) {
+				line = data[i]
+				val (a, b) = line.split(" ")
+				val x = a.toIntOrNull()
+				if (x != null) {
+					s[d + listOf(b, "_")] = x
+				} else {
+					s[d + listOf(b, ".")] = 0
+				}
+				i++
+			}
+		}
+	}
+
+	for (dir in s.keys.sortedBy { -it.size }) {
+		val k = dir.dropLast(2) + listOf(".")
+//		dir to k log 0
+		s[k] = (s[k] ?: 0) + s[dir]!!
+	}
+
+	s.entries.filter{(k,v) ->  k.size > 0 && k.last() == "." && v<= 100000 }.sumBy{(k,v) -> v}.log()
+}
+
+
+private fun part2() {
+	var data = getLines(2022_07)
 
 	val s = mutableMapOf<List<String>, Int>()
 

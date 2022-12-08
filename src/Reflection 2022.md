@@ -37,7 +37,7 @@ note: I want to add these helpers
 * lost a lot of time trying to understand which value to return
 * also `firstIndexOf` indeed existed, should have trusted myself
 * nim-ka has some interesting utils I should steal
-  * [ ] rotate left and right
+  * [x] rotate left and right
 
 
 note: I want to add thes helpers
@@ -46,6 +46,6 @@ note: I want to add thes helpers
 * [x] splitAt
 * [ ] grid.findPoints / findSinglePoint (throws if multiple match) 
   * update y17d22
-* [ ] pure state loop
+* [x] pure state loop
   * update y18d18 and others (look for maps)
-* [ ] allMaxByKey/value
+* [x] allMaxByKey/value

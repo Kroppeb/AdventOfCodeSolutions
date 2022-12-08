@@ -1,6 +1,5 @@
 package helpers
 
-import kotlin.math.pow
 
 fun gcd(a:Int, b:Int):Int = if(a == 0) b else gcd(b % a, a)
 fun gcd(a:Long, b:Long):Long = if(a == 0L) b else gcd(b % a, a)
@@ -96,6 +95,18 @@ inline fun <C : Comparable<C>>DoubleArray.allMinBy(b: (Double) -> C):List<Double
 	return filter { b(it) == b(min) }
 }
 inline fun <C : Comparable<C>>DoubleArray.allMaxBy(b: (Double) -> C):List<Double> {
+	val max = maxBy(b)
+	return filter { b(it) == b(max) }
+}
+
+inline fun <K, V, T : Comparable<T>>Map<K,V>.minBy(b:(Map.Entry<K,V>) -> T):Map.Entry<K,V> = minByOrNull(b)!!
+inline fun <K, V, T : Comparable<T>>Map<K,V>.maxBy(b:(Map.Entry<K,V>) -> T):Map.Entry<K,V> = maxByOrNull(b)!!
+
+inline fun <K, V, T : Comparable<T>>Map<K,V>.allMinBy(b:(Map.Entry<K,V>) -> T):Map<K,V> {
+	val min = minBy(b)
+	return filter { b(it) == b(min) }
+}
+inline fun <K, V, T : Comparable<T>>Map<K,V>.allMaxBy(b:(Map.Entry<K,V>) -> T):Map<K,V> {
 	val max = maxBy(b)
 	return filter { b(it) == b(max) }
 }
