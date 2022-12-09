@@ -50,10 +50,10 @@ private fun part2(data: Data) {
     println(y * x)
 }
 
-private typealias Data = SSV
+private typealias Data = WSV
 
 fun main() {
-    val data: Data = getSSV(2).log()
+    val data: Data = getWSV(2021_02).log()
     part1(data)
     part2(data)
 }

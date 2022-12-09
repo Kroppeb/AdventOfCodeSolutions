@@ -80,4 +80,6 @@ data class PointL(val x: Long, val y: Long) : PointNL<PointL> {
 	fun sameUpDown(other: PointL) = Clock.up.dot(this) == Clock.up.dot(other)
 
 	override fun sign() = x.sign.toLong() toP y.sign.toLong()
+
+	fun toPair() = x to y
 }

@@ -82,3 +82,4 @@ note: I want to add thes helpers
 * and an off by 1 for part 2
 * [ ] update pointHelpers
 * [x] applyNTimes
+* [ ] point + pointL exists, but not for 3d (maybe also make if for nd?)

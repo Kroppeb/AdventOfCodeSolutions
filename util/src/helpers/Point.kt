@@ -90,4 +90,6 @@ data class Point(val x: Int, val y: Int) : PointNI<Point> {
 	fun wests() = this.westsInc().drop(1)
 
 	override fun sign(): Point = x.sign toP y.sign
+
+	fun toPair() = x to y
 }

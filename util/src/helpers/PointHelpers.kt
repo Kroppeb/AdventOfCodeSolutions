@@ -113,3 +113,6 @@ operator fun PointL.times(other: Point) = this * other.toPointL()
 operator fun PointL.div(other: Point) = this / other.toPointL()
 operator fun PointL.rem(other: Point) = this % other.toPointL()
 fun PointL.dot(other: Point) = this.dot(other.toPointL())
+
+fun Pair<Int, Int>.toPoint() = first toP second
+fun Pair<Long, Long>.toPointL() = first toP second
