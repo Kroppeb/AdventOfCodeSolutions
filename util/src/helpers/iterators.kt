@@ -700,3 +700,6 @@ fun <T> Iterable<T>.takeUntilInc(predicate: (T) -> Boolean): List<T> = buildList
 		}
 	}
 }
+
+inline fun <T> Iterable<T>.partitionIndexed(predicate: (Int, T) -> Boolean) =
+	withIndex().partition { (i, value) -> predicate(i, value) }.map { l -> l.map { it.value } }
