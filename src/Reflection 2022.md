@@ -46,6 +46,7 @@ note: I want to add thes helpers
 * [x] splitAt
 * [ ] grid.findPoints / findSinglePoint (throws if multiple match) 
   * update y17d22
+  * => `grid.find`
 * [x] pure state loop
   * update y18d18 and others (look for maps)
 * [x] allMaxByKey/value
@@ -64,7 +65,7 @@ note: I want to add thes helpers
   * at 3 minutes the middle part should be FULLY DONE
 
 
-* [ ] Bound edges
+* [x] Bound edges
 * [x] norths/easts/souths/wests
 * [x] Make grid iterable of BoundedGridPoints
   * `p` -> point
@@ -73,3 +74,11 @@ note: I want to add thes helpers
   * `g` -> grid
   * mirror neighbours
     * only those in the bounds, map the coordinates to BoundedGridPoints too
+
+## Day 09
+53/171; points: 48, 26th place
+* I can't believe I choked part 2 again
+* forgot the repeating part of part 1 somehow
+* and an off by 1 for part 2
+* [ ] update pointHelpers
+* [x] applyNTimes

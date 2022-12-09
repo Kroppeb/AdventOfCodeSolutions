@@ -10,10 +10,12 @@ interface PointNI<T : PointNI<T>> : PointN<T, Int> {
 	override fun sqrDist(): Int
 	override fun dist(): Double
 	override fun manDist(): Int
+	override fun chebyshevDist(): Int
 
 	override fun sqrDistTo(other: T): Int = (this - other).sqrDist()
 	override fun distTo(other: T): Double = (this - other).dist()
 	override fun manDistTo(other: T): Int = (this - other).manDist()
+	override fun chebyshevDistTo(other: T): Int = (this - other).chebyshevDist()
 
 	override fun gcd(): Int
 

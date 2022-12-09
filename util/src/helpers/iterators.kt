@@ -703,3 +703,16 @@ fun <T> Iterable<T>.takeUntilInc(predicate: (T) -> Boolean): List<T> = buildList
 
 inline fun <T> Iterable<T>.partitionIndexed(predicate: (Int, T) -> Boolean) =
 	withIndex().partition { (i, value) -> predicate(i, value) }.map { l -> l.map { it.value } }
+
+inline fun <T, R : T> T.applyNTimes(n: Int, action: (T) -> R): R {
+	require(n > 0)
+	return applyNTimesOr0(n, action) as R
+}
+
+inline fun <T> T.applyNTimesOr0(n: Int, action: (T) -> T): T {
+	var cur = this;
+	repeat(n) {
+		cur = action(cur)
+	}
+	return cur
+}

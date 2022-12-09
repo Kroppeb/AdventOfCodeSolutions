@@ -31,10 +31,12 @@ interface PointN<T : PointN<T, C>, C : Comparable<C>> {
 	fun sqrDist(): C
 	fun dist(): Double
 	fun manDist(): C
+	fun chebyshevDist(): C
 
 	fun sqrDistTo(other: T): C = (this - other).sqrDist()
 	fun distTo(other: T): Double = (this - other).dist()
 	fun manDistTo(other: T): C = (this - other).manDist()
+	fun chebyshevDistTo(other: T): C = (this - other).chebyshevDist()
 
 	fun gcd(): C
 
@@ -42,4 +44,5 @@ interface PointN<T : PointN<T, C>, C : Comparable<C>> {
 	 * includes self
 	 */
 	fun sequence(step: T): Sequence<T> = generateSequence(this as T) { it + step }
+	fun sign(): T
 }

@@ -2,6 +2,7 @@ package helpers
 
 import java.math.BigInteger
 import kotlin.math.pow
+import kotlin.math.sign
 
 typealias PointVI = PointV<Int>
 typealias PointVL = PointV<Int>
@@ -23,19 +24,12 @@ class PointV<C : Comparable<C>> internal constructor(
 
 	override fun unaryMinus() = mapEach(opps::unaryMinus)
 
-	override fun abs() = mapEach(opps::unaryMinus)
-
-	override fun discreteAngle(): PointV<C> {
-		TODO("Not yet implemented")
-	}
+	override fun abs() = mapEach(opps::abs)
 
 	override fun sqrDist(): C = this.values.map(opps::square).reduce(opps::plus)
-
-	override fun dist(): Double {
-		TODO("Not yet implemented")
-	}
-
+	override fun dist(): Double = error("Not supported")
 	override fun manDist(): C = this.values.map(opps::abs).reduce(opps::plus)
+	override fun chebyshevDist(): C = this.values.map(opps::abs).max()
 
 	override fun max(other: PointV<C>): PointV<C> = this.zipEach(other) { a, b -> max(a, b) }
 	override fun min(other: PointV<C>): PointV<C> = this.zipEach(other) { a, b -> min(a, b) }
@@ -83,6 +77,8 @@ class PointV<C : Comparable<C>> internal constructor(
 	override fun toString(): String {
 		return values.joinToString(prefix = "<", postfix = ">")
 	}
+
+	override fun sign(): PointV<C> = mapEach(opps::sign)
 }
 
 internal interface Opps<T : Comparable<T>> {
@@ -96,6 +92,7 @@ internal interface Opps<T : Comparable<T>> {
 	fun dec(a: T): T
 
 	fun unaryMinus(a: T): T
+	fun sign(a: T): T
 
 	fun gcd(a: T, b: T): T
 
@@ -116,6 +113,7 @@ private val IntOpps = object : Opps<Int> {
 	override fun dec(a: Int): Int = a - 1
 
 	override fun unaryMinus(a: Int): Int = -a
+	override fun sign(a: Int): Int = a.sign
 
 	override fun gcd(a: Int, b: Int): Int = gcd(a, b)
 }
@@ -131,6 +129,7 @@ private val LongOpps = object : Opps<Long> {
 	override fun dec(a: Long): Long = a - 1
 
 	override fun unaryMinus(a: Long): Long = -a
+	override fun sign(a: Long): Long = a.sign.toLong()
 
 	override fun gcd(a: Long, b: Long): Long = gcd(a, b)
 }
@@ -146,6 +145,7 @@ private val DoubleOpps = object : Opps<Double> {
 	override fun dec(a: Double): Double = a - 1
 
 	override fun unaryMinus(a: Double): Double = -a
+	override fun sign(a: Double): Double = a.sign
 
 	override fun gcd(a: Double, b: Double): Double = error("GCD is not defined for doubles")
 }
@@ -161,6 +161,7 @@ private val BigIntegerOpps = object : Opps<BigInteger> {
 	override fun dec(a: BigInteger): BigInteger = a - BigInteger.ONE
 
 	override fun unaryMinus(a: BigInteger): BigInteger = -a
+	override fun sign(a: BigInteger): BigInteger = a.signum().toBigInteger()
 
 	override fun gcd(a: BigInteger, b: BigInteger): BigInteger = a.gcd(b)
 }

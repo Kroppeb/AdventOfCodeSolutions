@@ -1,6 +1,7 @@
 package helpers
 
 import grid.Clock
+import kotlin.math.sign
 import kotlin.math.sqrt
 
 data class Point3DL(val x: Long, val y: Long, val z: Long) : PointNL<Point3DL> {
@@ -71,10 +72,7 @@ data class Point3DL(val x: Long, val y: Long, val z: Long) : PointNL<Point3DL> {
 	override fun sqrDist(): Long = TODO()
 	override fun dist(): Double = sqrt(sqrDist().toDouble())
 	override fun manDist(): Long = kotlin.math.abs(x) + kotlin.math.abs(y) + kotlin.math.abs(z)
-
-	override fun sqrDistTo(other: Point3DL): Long = (this - other).sqrDist()
-	override fun distTo(other: Point3DL): Double = (this - other).dist()
-	override fun manDistTo(other: Point3DL): Long = (this - other).manDist()
+	override fun chebyshevDist(): Long = kotlin.math.max(kotlin.math.max(kotlin.math.abs(x), kotlin.math.abs(y)), kotlin.math.abs(z))
 
 	override fun gcd(): Long = gcd(kotlin.math.abs(x), gcd(kotlin.math.abs(y), kotlin.math.abs(z)))
 
@@ -82,4 +80,6 @@ data class Point3DL(val x: Long, val y: Long, val z: Long) : PointNL<Point3DL> {
 	override fun max(other: Point3DL): Point3DL = max(this.x, other.x) toP max(this.y, other.y) toP max(this.z, other.z)
 
 	override fun dot(other: Point3DL) = (this.x * other.x + this.y * other.y + this.z * other.z)
+
+	override fun sign() = x.sign.toLong() toP y.sign.toLong() toP z.sign.toLong()
 }

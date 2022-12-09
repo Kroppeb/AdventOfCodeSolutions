@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y22
+package solutions.y22.d09c4
 
 
 /*
@@ -33,18 +33,28 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(10)
+	getLines(2022_09)
+		.rleDecode({ it[0].toPoint() }, { it.int() })
+		.scan(0 toP 0) { acc, pt -> acc + pt }
+		.scan(0 toP 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
+		.distinct().size log 1
+}
 
-		.log()
-
-
+private fun part2() {
+	getLines(2022_09)
+		.rleDecode({ it[0].toPoint() }, { it.int() })
+		.scan(0 toP 0) { acc, pt -> acc + pt }
+		.applyNTimes(9){
+			it.scan(0 toP 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
+		}
+		.distinct().size log 2
 }
 
 
-
 fun main() {
-	println("Day 10: ")
+	println("Day 9: ")
 	part1()
+	part2()
 }
 
 

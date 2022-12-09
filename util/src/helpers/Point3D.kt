@@ -1,6 +1,7 @@
 package helpers
 
 import grid.Clock
+import kotlin.math.sign
 import kotlin.math.sqrt
 
 /**
@@ -80,10 +81,7 @@ data class Point3D(val x: Int, val y: Int, val z: Int) : PointNI<Point3D> {
 	override fun sqrDist(): Int = x * x + y * y + z * z
 	override fun dist(): Double = sqrt(sqrDist().toDouble())
 	override fun manDist(): Int = kotlin.math.abs(x) + kotlin.math.abs(y) + kotlin.math.abs(z)
-
-	override fun sqrDistTo(other: Point3D): Int = (this - other).sqrDist()
-	override fun distTo(other: Point3D): Double = (this - other).dist()
-	override fun manDistTo(other: Point3D): Int = (this - other).manDist()
+	override fun chebyshevDist(): Int = maxOf(kotlin.math.abs(x), kotlin.math.abs(y), kotlin.math.abs(z))
 
 	override fun gcd(): Int = gcd(kotlin.math.abs(x), gcd(kotlin.math.abs(y), kotlin.math.abs(z)))
 
@@ -91,4 +89,6 @@ data class Point3D(val x: Int, val y: Int, val z: Int) : PointNI<Point3D> {
 	override fun max(other: Point3D): Point3D = max(this.x, other.x) toP max(this.y, other.y) toP max(this.z, other.z)
 
 	override fun dot(other: Point3D) = this.x * other.x + this.y * other.y + this.z * other.z
+
+	override fun sign() = x.sign toP y.sign toP z.sign
 }

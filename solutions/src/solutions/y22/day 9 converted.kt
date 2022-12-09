@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y22
+package solutions.y22.d09c
 
 
 /*
@@ -33,18 +33,62 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(10)
+	var data = getLines(2022_09)
 
-		.log()
+	var head = 0 toP 0
+	var tail = head
+	val seen = msop(tail)
 
+	for (line in data) {
+		val rep = line.int()
+		repeat(rep) {
+			head += line[0].toPoint()
 
+			if (tail.chebyshevDistTo(head) > 1) { // tail.sqDistTo(head) > 2
+				tail += (head - tail).sign()
+			}
+
+			seen.add(tail)
+		}
+	}
+
+	seen.size log 1
+}
+
+private fun part2() {
+	var data = getLines(2022_09)
+
+	val seen = msop()
+	var head = 0 toP 0
+	var knots = (1..9).map { head }.mut()
+
+	seen.add(head)
+
+	for (line in data) {
+		val rep = line.int()
+		repeat(rep) {
+			head += line[0].toPoint()
+
+			var follow = head
+			repeat(9) { i ->
+				if (knots[i].chebyshevDistTo(follow) > 1) {
+					knots[i] += (follow - knots[i]).sign()
+				}
+
+				follow = knots[i]
+			}
+			seen.add(follow)
+		}
+	}
+
+	seen.size log 2
 }
 
 
-
 fun main() {
-	println("Day 10: ")
+	println("Day 9: ")
 	part1()
+	part2()
 }
 
 

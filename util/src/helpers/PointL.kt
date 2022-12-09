@@ -2,6 +2,7 @@ package helpers
 
 import grid.Clock
 import kotlin.math.atan2
+import kotlin.math.sign
 import kotlin.math.sqrt
 
 data class PointL(val x: Long, val y: Long) : PointNL<PointL> {
@@ -53,10 +54,7 @@ data class PointL(val x: Long, val y: Long) : PointNL<PointL> {
 	override fun sqrDist(): Long = x * x + y * y
 	override fun dist(): Double = sqrt(sqrDist().toDouble())
 	override fun manDist(): Long = kotlin.math.abs(x) + kotlin.math.abs(y)
-
-	override fun sqrDistTo(other: PointL): Long = (this - other).sqrDist()
-	override fun distTo(other: PointL): Double = (this - other).dist()
-	override fun manDistTo(other: PointL): Long = (this - other).manDist()
+	override fun chebyshevDist(): Long = kotlin.math.max(kotlin.math.abs(x), kotlin.math.abs(y))
 
 	fun angle(): Double {
 		return atan2(y.toDouble(), x.toDouble())
@@ -80,4 +78,6 @@ data class PointL(val x: Long, val y: Long) : PointNL<PointL> {
 	fun isBelow(other: PointL) = Clock.down.dot(this) > Clock.down.dot(other)
 	fun sameLeftRight(other: PointL) = Clock.left.dot(this) == Clock.left.dot(other)
 	fun sameUpDown(other: PointL) = Clock.up.dot(this) == Clock.up.dot(other)
+
+	override fun sign() = x.sign.toLong() toP y.sign.toLong()
 }
