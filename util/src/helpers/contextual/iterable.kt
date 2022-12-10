@@ -17,7 +17,7 @@ context(InternalIndirectAddOp<K>)
 fun <R, K, T: K>  Iterable<R>.cumSumOf(selector: (R) -> T): List<T> = map(selector).cumSum()
 
 context(InternalIndirectAddOp<K>)
-fun <K, T: K>  Iterable<T>.cumSum(initial:T): List<T> = scan(initial) { a, b -> a + b }
+infix fun <K, T: K>  Iterable<T>.cumSum(initial:T): List<T> = scan(initial) { a, b -> a + b }
 
 context(InternalIndirectAddOp<K>)
 fun <R, K, T: K>  Iterable<R>.cumSumOf(initial:T, selector: (R) -> T): List<T> = map(selector).cumSum(initial)

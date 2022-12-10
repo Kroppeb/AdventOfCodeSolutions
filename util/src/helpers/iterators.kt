@@ -1,5 +1,8 @@
 package helpers
 
+import helpers.attributes.Infix_
+import helpers.attributes.applyNTimesOr0
+
 
 fun <T> Iterator<T>.getNext(): T {
 	hasNext()
@@ -20,7 +23,7 @@ fun Iterable<String>.e() = map { it.e() }
 @JvmName("e3")
 fun Iterable<Iterable<String>>.e() = map { it.e() }
 
-inline fun <T, R> Iterable<Iterable<T>>.map2(convert: (T) -> R): List<List<R>> = map { it.map(convert) }
+inline infix fun <T, R> Iterable<Iterable<T>>.map2(convert: (T) -> R): List<List<R>> = map { it.map(convert) }
 
 inline fun <T, R> Iterable<T>.rleDecode(value: (T) -> R, length: (T) -> Int) =
 	flatMap { listOf(value(it)).repeat(length(it)) }
@@ -337,6 +340,7 @@ fun <T> Iterator<T>.powerSet(): List<List<T>> {
 
 fun <T> Iterable<T>.powerSet(): List<List<T>> = iterator().powerSet()
 
+@Deprecated("use trait version")
 fun Iterable<Int>.cumSum() = scan(Int::plus)
 
 val <T>Iterable<Pair<T, *>>.firsts get() = map { it.first }
@@ -567,7 +571,7 @@ inline fun <T, C : Comparable<C>> Iterable<T>.maxOf(n: Int, selector: (T) -> C) 
 
 inline fun <T, C : Comparable<C>> Iterable<T>.minOf(n: Int, selector: (T) -> C) = this.map(selector).sorted().take(n)
 
-// region String destructors
+//region String destructors
 operator fun String.component1(): Char = this[0]
 operator fun String.component2(): Char = this[1]
 operator fun String.component3(): Char = this[2]
@@ -578,10 +582,10 @@ operator fun String.component7(): Char = this[6]
 operator fun String.component8(): Char = this[7]
 operator fun String.component9(): Char = this[8]
 operator fun String.component10(): Char = this[9]
-// enregion
+//endregion
 
 
-fun <T> Collection<T>.splitIn(n: Int): List<List<T>> {
+infix fun <T> Collection<T>.splitIn(n: Int): List<List<T>> {
 	val length = this.size
 	require(size % n == 0)
 	return chunked(length / n)
@@ -594,7 +598,7 @@ fun <T, R> Collection<T>.splitIn(n: Int, transform: (List<T>) -> R): List<R> {
 }
 
 fun <T> Collection<T>.splitIn2(): Pair<List<T>, List<T>> = splitIn(2).let { (a, b) -> a to b }
-fun <T, R> Collection<T>.splitIn2(transform: (List<T>) -> R): Pair<R, R> =
+infix fun <T, R> Collection<T>.splitIn2(transform: (List<T>) -> R): Pair<R, R> =
 	splitIn(2, transform).let { (a, b) -> a to b }
 
 fun <T> Iterable<Iterable<T>>.union() = this.reduce(Iterable<T>::union).toSet()
@@ -607,16 +611,19 @@ fun <T> Pair<Iterable<T>, Iterable<T>>.union() = first or second
 fun <T, R, V> Pair<Iterable<T>, Iterable<R>>.intersect(): Set<V> where V : T, V : R =
 	first and second as Iterable<V>
 
+@Infix_
 infix fun <T> Iterable<T>.notIn(other: Iterable<*>): Set<T> =
 	this.toMutableSet().apply { removeAll(other as Iterable<T>) }
 
 // intersection, but better types
+@Infix_
 @Suppress("BOUNDS_NOT_ALLOWED_IF_BOUNDED_BY_TYPE_PARAMETER")
 fun <T, R, V> Iterable<T>.onlyIn(other: Iterable<R>): Set<V> where V : T, V : R =
 	(this as Iterable<Any?>).toMutableSet().apply { retainAll(other) } as Set<V>
 
 
 // onlyIn but it's infix
+@Infix_
 @Suppress("BOUNDS_NOT_ALLOWED_IF_BOUNDED_BY_TYPE_PARAMETER")
 infix fun <T, R, V> Iterable<T>.inter(other: Iterable<R>): Set<V> where V : T, V : R =
 	this.onlyIn(other)
@@ -633,24 +640,28 @@ infix fun <T, R, V> Iterable<T>.and(other: Iterable<R>): Set<V> where V : T, V :
 	this.onlyIn(other)
 
 // aka: does this intersect
+@Infix_
 infix fun <T> Iterable<T>.anyIn(other: Iterable<T>): Boolean {
 	val o = other.toSet()
 	return any { it in o }
 }
 
 // aka: is this a subset of
+@Infix_
 infix fun <T> Iterable<T>.allIn(other: Iterable<T>): Boolean {
 	val o = other.toSet()
 	return all { it in other }
 }
 
 // aka: are these fully distinct
+@Infix_
 infix fun <T> Iterable<T>.noneIn(other: Iterable<T>): Boolean {
 	val o = other.toSet()
 	return none { it in other }
 }
 
 // aka: is this a superset of
+@Infix_
 infix fun <T> Iterable<T>.containsAll(other: Iterable<T>) = other.allIn(this)
 
 fun <T, R> Pair<Iterable<T>, Iterable<R>>.zipped() = first.zip(second)
