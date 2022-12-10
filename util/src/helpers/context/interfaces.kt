@@ -7,6 +7,8 @@ interface InternalIndirectAddOp<T> {
 
 @Suppress("UNCHECKED_CAST")
 interface InternalFinalAddOp<T> : InternalIndirectAddOp<T> {
+	@Suppress("INAPPLICABLE_JVM_NAME")
+	@JvmName("plusFinal")
 	operator fun T.plus(other: T): T
 
 	override fun <K : T> K.plus(other: K): K {
@@ -21,6 +23,8 @@ interface InternalIndirectSubOp<T> {
 
 @Suppress("UNCHECKED_CAST")
 interface InternalFinalSubOp<T> : InternalIndirectSubOp<T> {
+	@Suppress("INAPPLICABLE_JVM_NAME")
+	@JvmName("minusFinal")
 	operator fun T.minus(other: T): T
 
 	override fun <K : T> K.minus(other: K): K {
@@ -35,6 +39,8 @@ interface InternalIndirectMulOp<T> {
 
 @Suppress("UNCHECKED_CAST")
 interface InternalFinalMulOp<T> : InternalIndirectMulOp<T> {
+	@Suppress("INAPPLICABLE_JVM_NAME")
+	@JvmName("timesFinal")
 	operator fun T.times(other: T): T
 
 	override fun <K : T> K.times(other: K): K {
@@ -49,6 +55,8 @@ interface InternalIndirectDivOp<T> {
 
 @Suppress("UNCHECKED_CAST")
 interface InternalFinalDivOp<T> : InternalIndirectDivOp<T> {
+	@Suppress("INAPPLICABLE_JVM_NAME")
+	@JvmName("divFinal")
 	operator fun T.div(other: T): T
 
 	override fun <K : T> K.div(other: K): K {
@@ -63,6 +71,8 @@ interface InternalIndirectRemOp<T> {
 
 @Suppress("UNCHECKED_CAST")
 interface InternalFinalRemOp<T> : InternalIndirectRemOp<T> {
+	@Suppress("INAPPLICABLE_JVM_NAME")
+	@JvmName("remFinal")
 	operator fun T.rem(other: T): T
 
 	override fun <K : T> K.rem(other: K): K {
@@ -72,27 +82,37 @@ interface InternalFinalRemOp<T> : InternalIndirectRemOp<T> {
 
 // inc
 interface InternalIndirectIncOp<T> {
-	/* operator */ fun <K : T> K.inc(): K
+	fun <K : T> K.inc(): K
 }
 
 @Suppress("UNCHECKED_CAST")
 interface InternalFinalIncOp<T> : InternalIndirectIncOp<T> {
-	/* operator */ fun T.inc(): T
+	@Suppress("INAPPLICABLE_JVM_NAME")
+	@JvmName("incFinal")
+	fun T.inc(): T
 
 	override fun <K : T> K.inc(): K {
 		return (this.inc()) as K
 	}
 }
 
+context (InternalIndirectIncOp<T>)
+fun <K : T, T> K.inc(): K = this.inc()
+
 
 // dec
 interface InternalIndirectDecOp<T> {
-	/* operator */ fun <K : T> K.dec(): K
+	fun <K : T> K.dec(): K
 }
+
+context (InternalIndirectDecOp<T>)
+fun <K : T, T> K.dec(): K = this.dec()
 
 @Suppress("UNCHECKED_CAST")
 interface InternalFinalDecOp<T> : InternalIndirectDecOp<T> {
-	/* operator */ fun T.dec(): T
+	@Suppress("INAPPLICABLE_JVM_NAME")
+	@JvmName("decFinal")
+	fun T.dec(): T
 
 	override fun <K : T> K.dec(): K {
 		return (this.dec()) as K
@@ -106,6 +126,8 @@ interface InternalIndirectNegOp<T> {
 
 @Suppress("UNCHECKED_CAST")
 interface InternalFinalNegOp<T> : InternalIndirectNegOp<T> {
+	@Suppress("INAPPLICABLE_JVM_NAME")
+	@JvmName("negFinal")
 	fun T.unaryMinus(): T
 
 	override fun <K : T> K.unaryMinus(): K {
@@ -120,13 +142,14 @@ interface InternalIndirectSignOp<T> {
 
 @Suppress("UNCHECKED_CAST")
 interface InternalFinalSignOp<T> : InternalIndirectSignOp<T> {
+	@Suppress("INAPPLICABLE_JVM_NAME")
+	@JvmName("signFinal")
 	fun T.sign(): T
 
 	override fun <K : T> K.sign(): K {
 		return (this.sign()) as K
 	}
 }
-
 
 
 interface InternalIndirectMathOp<T> : InternalIndirectAddOp<T>, InternalIndirectSubOp<T>, InternalIndirectMulOp<T>,
@@ -145,3 +168,12 @@ interface InternalExtendedFinalMathOp<T> : InternalFinalMathOp<T>,
 	InternalFinalIncOp<T>, InternalFinalDecOp<T>,
 	InternalFinalSignOp<T>
 
+
+interface CanBeEmptyTrait<T>{
+	fun T.isEmpty(): Boolean
+	fun T.isNotEmpty(): Boolean = !isEmpty()
+}
+
+interface HasSizeTrait<T> {
+	fun T.size(): Int
+}

@@ -337,6 +337,7 @@ fun <T> Iterator<T>.powerSet(): List<List<T>> {
 
 fun <T> Iterable<T>.powerSet(): List<List<T>> = iterator().powerSet()
 
+@Deprecated("use trait version")
 fun Iterable<Int>.cumSum() = scan(Int::plus)
 
 val <T>Iterable<Pair<T, *>>.firsts get() = map { it.first }
@@ -567,7 +568,7 @@ inline fun <T, C : Comparable<C>> Iterable<T>.maxOf(n: Int, selector: (T) -> C) 
 
 inline fun <T, C : Comparable<C>> Iterable<T>.minOf(n: Int, selector: (T) -> C) = this.map(selector).sorted().take(n)
 
-// region String destructors
+//region String destructors
 operator fun String.component1(): Char = this[0]
 operator fun String.component2(): Char = this[1]
 operator fun String.component3(): Char = this[2]
@@ -578,10 +579,10 @@ operator fun String.component7(): Char = this[6]
 operator fun String.component8(): Char = this[7]
 operator fun String.component9(): Char = this[8]
 operator fun String.component10(): Char = this[9]
-// enregion
+//endregion
 
 
-fun <T> Collection<T>.splitIn(n: Int): List<List<T>> {
+infix fun <T> Collection<T>.splitIn(n: Int): List<List<T>> {
 	val length = this.size
 	require(size % n == 0)
 	return chunked(length / n)
@@ -594,7 +595,7 @@ fun <T, R> Collection<T>.splitIn(n: Int, transform: (List<T>) -> R): List<R> {
 }
 
 fun <T> Collection<T>.splitIn2(): Pair<List<T>, List<T>> = splitIn(2).let { (a, b) -> a to b }
-fun <T, R> Collection<T>.splitIn2(transform: (List<T>) -> R): Pair<R, R> =
+infix fun <T, R> Collection<T>.splitIn2(transform: (List<T>) -> R): Pair<R, R> =
 	splitIn(2, transform).let { (a, b) -> a to b }
 
 fun <T> Iterable<Iterable<T>>.union() = this.reduce(Iterable<T>::union).toSet()
