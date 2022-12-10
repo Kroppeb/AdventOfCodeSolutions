@@ -23,6 +23,9 @@ import collections.*
 import graph.*
 import grid.*
 import helpers.*
+import helpers.context.PointNOpps
+import helpers.context.launch
+import helpers.contextual.cumSum
 import itertools.*
 import java.util.Comparator
 import java.util.PriorityQueue
@@ -32,18 +35,18 @@ import kotlin.math.*
 private val xxxxx = Clock(6, 3);
 
 
-private fun part1() {
+private fun part1() = launch{
 	getLines(2022_09)
 		.rleDecode({ it[0].toPoint() }, { it.int() })
-		.runningFold(0 toP 0){ p, d -> p + d }
-		.runningFold(0 toP 0){ t, h -> if (t.chebyshevDistTo(h) > 1) t + (h - t).sign() else t }
+		.cumSum(0 toP 0)
+		.scan(0 toP 0){ t, h -> if (t.chebyshevDistTo(h) > 1) t + (h - t).sign() else t }
 		.distinct().size log 1
 }
 
-private fun part2() {
+private fun part2() = launch{
 	getLines(2022_09)
 		.rleDecode({ it[0].toPoint() }, { it.int() })
-		.scan(0 toP 0) { p, d -> p + d }
+		.cumSum(0 toP 0)
 		.applyNTimes(9){
 			it.scan { t, h -> if (t.chebyshevDistTo(h) > 1) t + (h - t).sign() else t }
 		}
