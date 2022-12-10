@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y22
+package solutions.y22.d10
 
 
 /*
@@ -24,6 +24,7 @@ import graph.*
 import grid.*
 import helpers.*
 import itertools.*
+import solutions.solutions.y19.d20c.p
 import java.util.Comparator
 import java.util.PriorityQueue
 import kotlin.math.*
@@ -33,7 +34,43 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(10).map{it.split(" ")}
+	var data = getLines(2022_10).map{it.split(" ")}
+
+	var sum = 0
+	var x = 1
+
+	var i = 0
+
+	for (line in data) {
+		when(line[0] ) {
+			"noop" -> {
+				i++
+				if ((i % 40) == 20) {
+					sum += x * i
+				}
+			}
+			"addx" -> {
+				i++
+				if ((i % 40) == 20) {
+					sum += x * i
+				}
+				i++
+				if ((i % 40) == 20) {
+					sum += x * i
+				}
+				x += line[1].toInt()
+			}
+		}
+	}
+
+	sum log 1
+
+
+
+}
+
+private fun part2() {
+	var data = getLines(2022_10).map{it.split(" ")}
 
 	var sum = 0
 	var x = 1
@@ -74,12 +111,13 @@ private fun part1() {
 fun main() {
 	println("Day 10: ")
 	part1()
+	part2()
 }
 
 
 private var _logIndex = 0
 private fun <T> T.log(): T = also { println("%03d %03d:\t\t%s".format(_logIndex / 1000, _logIndex++ % 1000, this)) }
-	.also { setClipboard(it.toString()) }
+	// .also { setClipboard(it.toString()) }
 
 private infix fun <T> T.log(_ignored: Any?): T = this.log()
 private fun setClipboard(s: String) {

@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y22
+package solutions.y22.d10c
 
 
 /*
@@ -24,6 +24,8 @@ import graph.*
 import grid.*
 import helpers.*
 import itertools.*
+import solutions.solutions.y19.d20c.p
+import solutions.solutions.y19.d22.l
 import java.util.Comparator
 import java.util.PriorityQueue
 import kotlin.math.*
@@ -33,53 +35,45 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(10).map{it.split(" ")}
-
-	var sum = 0
-	var x = 1
-
-	var i = 0
-
-	var p = (0..39).map{x -> (0..5).map{false}}.mut2()
-	for (line in data) {
-		when(line[0] ) {
-			"noop" -> {
-				i++
-				if ((i % 40) - x in -1..1) {
-					p[i % 40][i/40] = true
-				}
-			}
-			"addx" -> {
-				i++
-				if ((i % 40) - x in -1..1) {
-					p[i % 40][i/40] = true
-				}
-				i++
-				x += line[1].toInt()
-				if ((i % 40) - x in -1..1) {
-					p[i % 40][i/40] = true
-				}
+	getLines(2022_10).map { it.split(" ") }
+		.scan(listOf(1)) { xs, line ->
+			val x = xs.last()
+			when (line[0]) {
+				"noop" -> listOf(x)
+				"addx" -> listOf(x, x + line[1].int())
+				else -> error(line)
 			}
 		}
-	}
-
-	p.transpose().forEach { println(it.map{if (it) "#" else "."}.joinToString("")) }
-
-
-
+		.flatten()
+		.withIndex().drop(19).chunked(40) { it[0] }
+		.sumOf { (i, l) -> (i + 1) * l } log 1
 }
 
+private fun part2() {
+	getLines(2022_10).map { it.split(" ") }
+		.scan(listOf(1)) { xs, line ->
+			val x = xs.last()
+			when (line[0]) {
+				"noop" -> listOf(x)
+				"addx" -> listOf(x, x + line[1].int())
+				else -> error(line)
+			}
+		}
+		.flatten()
+		.chunked(40) { it.mapIndexed{ i, x -> x in i-1..i+1 } }.printCrt()
+}
 
 
 fun main() {
 	println("Day 10: ")
 	part1()
+	part2()
 }
 
 
 private var _logIndex = 0
 private fun <T> T.log(): T = also { println("%03d %03d:\t\t%s".format(_logIndex / 1000, _logIndex++ % 1000, this)) }
-	.also { setClipboard(it.toString()) }
+// .also { setClipboard(it.toString()) }
 
 private infix fun <T> T.log(_ignored: Any?): T = this.log()
 private fun setClipboard(s: String) {

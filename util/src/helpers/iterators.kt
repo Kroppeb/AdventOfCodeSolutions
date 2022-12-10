@@ -122,7 +122,7 @@ fun <S, T> generateStateTimes(times: Int, seed: S, next: (state: S) -> Pair<S, T
 
 inline fun <T, R> Iterable<T>.scan(start: R, transform: (R, T) -> R): List<R> {
 	var acc = start
-	val ret = mutableListOf<R>()
+	val ret = mutableListOf<R>(start)
 	for (i in this) {
 		acc = transform(acc, i)
 		ret.add(acc)
@@ -538,6 +538,8 @@ inline fun <T> Iterable<T>.productOf(transform: (T) -> Long): Long = this.fold(1
 inline fun <T> Iterable<T>.productOf(transform: (T) -> Double): Double = this.fold(1.0) { acc, i -> acc * transform(i) }
 
 fun Iterable<Char>.join(): String = this.joinToString("")
+@JvmName("joinStrings")
+fun Iterable<String>.join(): String = this.joinToString("")
 
 // TODO: add throw if not odd
 fun <T : Comparable<T>> Iterable<T>.medianOdd(): T = this.sorted()[this.count() / 2]
@@ -715,4 +717,10 @@ inline fun <T> T.applyNTimesOr0(n: Int, action: (T) -> T): T {
 		cur = action(cur)
 	}
 	return cur
+}
+
+fun Iterable<Iterable<Boolean>>.printCrt() {
+	for (i in this) {
+		println(i.joinToString(""){ if (it) "##" else "  " })
+	}
 }
