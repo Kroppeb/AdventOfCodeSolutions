@@ -83,3 +83,12 @@ note: I want to add thes helpers
 * [ ] update pointHelpers
 * [x] applyNTimes
 * [ ] point + pointL exists, but not for 3d (maybe also make if for nd?)
+
+## Day 10
+176/110; points: 0, 27th place
+* Missed the fact x had to start at 1
+* had 2 off by one errors that cancelled each other during part 1
+
+
+## Day 11
+67/162; points: 34, 32th place
