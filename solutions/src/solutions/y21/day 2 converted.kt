@@ -2,8 +2,8 @@
 
 package solutions.y21.d2c
 
-import grid.Clock
-import helpers.*
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.*
 
 private val xxxxx = Clock(6, 3);
 

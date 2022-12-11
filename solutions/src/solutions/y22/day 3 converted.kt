@@ -4,26 +4,21 @@ package solutions.y22.d03c
 
 
 /*
-import collections.*
-import graph.*
-import grid.*
-import helpers.*
+import me.kroppeb.aoc.helpers.collections.*
+import me.kroppeb.aoc.helpers.graph.*
+
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import java.util.Comparator
 import java.util.PriorityQueue
 import kotlin.math.*
  */
 
-import collections.*
-import graph.*
-import grid.*
-import helpers.*
+import me.kroppeb.aoc.helpers.collections.*
+import me.kroppeb.aoc.helpers.graph.*
+
+import me.kroppeb.aoc.helpers.*
 import itertools.*
-import solutions.solutions.y19.d22.l
-import java.nio.file.Path
-import java.util.Comparator
-import java.util.PriorityQueue
-import javax.sound.sampled.AudioSystem.getLine
 import kotlin.io.path.div
 import kotlin.math.*
 

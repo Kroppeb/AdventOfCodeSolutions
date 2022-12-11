@@ -3,15 +3,15 @@
 package solutions.y18.d21
 
 /*
-import grid.Clock
-import helpers.*
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import kotlin.math.*
  */
 
-import graph.*
-import grid.*
-import helpers.*
+import me.kroppeb.aoc.helpers.graph.*
+
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import kotlin.math.*
 

@@ -3,18 +3,16 @@
 package solutions.y21.d6c2
 
 /*
-import grid.Clock
-import helpers.*
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import kotlin.math.*
  */
 
-import grid.Clock
-import helpers.*
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.*
 import java.util.concurrent.atomic.AtomicInteger
-import java.util.function.IntBinaryOperator
 import kotlin.math.*
-import kotlin.text.Typography.times
 
 private val xxxxx = Clock(6, 3);
 

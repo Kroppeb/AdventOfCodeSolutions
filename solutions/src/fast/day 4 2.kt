@@ -1,6 +1,6 @@
 package fast
 
-import helpers.*
+import me.kroppeb.aoc.helpers.*
 import kotlin.math.*
 import kotlin.system.measureNanoTime
 import kotlin.system.measureTimeMillis

@@ -2,10 +2,10 @@
 
 package solutions.y16.d03
 
-import grid.Clock
-import helpers.SSV
-import helpers.getAlphaNumLines
-import helpers.transpose
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.SSV
+import me.kroppeb.aoc.helpers.getAlphaNumLines
+import me.kroppeb.aoc.helpers.transpose
 import kotlinx.coroutines.runBlocking
 
 private val xxxxx = Clock(3, 6);

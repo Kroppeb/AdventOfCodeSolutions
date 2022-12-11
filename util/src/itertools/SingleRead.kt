@@ -1,7 +1,5 @@
 package itertools
 
-import helpers.scan
-
 fun <T>List<T>.prefixes() = indices.map { this.subList(0,it+1) }
 fun <T>Sequence<T>.prefixes() = mapIndexed { index: Int, _: T -> this.take(index+1) }
 fun <T>Iterable<T>.prefixes() = scan(emptyList<T>()){a,t-> a + listOf(t)}

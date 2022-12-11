@@ -1,10 +1,11 @@
 @file:Suppress("PackageDirectoryMismatch")
 package solutions.solutions.y19.d20c
 
-import collections.defaultMapOf
-import graph.bfs
-import grid.*
-import helpers.*
+import me.kroppeb.aoc.helpers.collections.defaultMapOf
+import me.kroppeb.aoc.helpers.graph.bfs
+
+import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.point.Point
 import kotlin.collections.*
 
 val p = Clock(3, 6)

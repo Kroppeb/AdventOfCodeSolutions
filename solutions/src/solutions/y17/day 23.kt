@@ -3,24 +3,22 @@
 package solutions.y17.d23
 
 /*
-import collections.*
-import graph.*
-import grid.*
-import helpers.*
+import me.kroppeb.aoc.helpers.collections.*
+import me.kroppeb.aoc.helpers.graph.*
+
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import java.util.Comparator
 import java.util.PriorityQueue
 import kotlin.math.*
  */
 
-import collections.*
-import graph.*
-import grid.*
-import helpers.*
+import me.kroppeb.aoc.helpers.collections.*
+import me.kroppeb.aoc.helpers.graph.*
+
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import java.util.ArrayDeque
-import java.util.Comparator
-import java.util.PriorityQueue
 import kotlin.math.*
 
 

@@ -3,19 +3,16 @@
 package solutions.y15.d05
 
 /*
-import grid.Clock
-import helpers.*
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import kotlin.math.*
  */
 
-import grid.Clock
-import helpers.*
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import kotlin.math.*
-
-import java.math.BigInteger
-import java.security.MessageDigest
 
 
 private val xxxxx = Clock(6, 3);

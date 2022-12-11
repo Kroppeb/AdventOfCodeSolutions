@@ -3,19 +3,15 @@
 package solutions.y18.d16
 
 /*
-import grid.Clock
-import helpers.*
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import kotlin.math.*
  */
 
-import graph.bfs
-import grid.*
-import helpers.*
+
+import me.kroppeb.aoc.helpers.*
 import itertools.*
-import solutions.solutions.y19.d20c.p
-import java.util.Comparator.comparing
-import java.util.stream.Collectors.toSet
 import kotlin.math.*
 
 

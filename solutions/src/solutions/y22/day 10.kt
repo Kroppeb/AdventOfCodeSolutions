@@ -4,10 +4,10 @@ package solutions.y22.d10
 
 
 /*
-import collections.*
-import graph.*
-import grid.*
-import helpers.*
+import me.kroppeb.aoc.helpers.collections.*
+import me.kroppeb.aoc.helpers.graph.*
+
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import java.util.Comparator
 import java.util.PriorityQueue
@@ -19,14 +19,11 @@ import java.awt.Toolkit
 import java.awt.datatransfer.Clipboard
 import java.awt.datatransfer.StringSelection
 
-import collections.*
-import graph.*
-import grid.*
-import helpers.*
+import me.kroppeb.aoc.helpers.collections.*
+import me.kroppeb.aoc.helpers.graph.*
+
+import me.kroppeb.aoc.helpers.*
 import itertools.*
-import solutions.solutions.y19.d20c.p
-import java.util.Comparator
-import java.util.PriorityQueue
 import kotlin.math.*
 
 

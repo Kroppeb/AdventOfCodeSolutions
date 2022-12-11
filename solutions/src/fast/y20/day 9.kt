@@ -2,10 +2,10 @@
 
 package fast.y20.d09d
 
-import helpers.*
-import collections.*
-import grid.*
-import graph.BFS
+import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.collections.**
+
+import me.kroppeb.aoc.helpers.graph.*BFS
 import itertools.count
 import kotlinx.coroutines.*
 import kotlin.math.pow

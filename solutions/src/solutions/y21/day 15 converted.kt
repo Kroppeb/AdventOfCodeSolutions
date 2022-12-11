@@ -3,20 +3,17 @@
 package solutions.y21.d15c
 
 /*
-import grid.Clock
-import helpers.*
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import kotlin.math.*
  */
 
-import collections.counter
-import graph.dijkstra
-import grid.Clock
-import grid.grid
-import helpers.*
-import itertools.count
-import java.util.*
-import kotlin.collections.ArrayDeque
+import me.kroppeb.aoc.helpers.graph.dijkstra
+import me.kroppeb.aoc.helpers.Clock
+
+import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.point.toP
 
 private val xxxxx = Clock(6, 3);
 

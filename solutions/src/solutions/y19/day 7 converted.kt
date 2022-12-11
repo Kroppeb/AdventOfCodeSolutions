@@ -1,11 +1,13 @@
 package solutions.solutions.y19
 
-import coroutines.parallelMap
-import coroutines.pipeTo
-import helpers.*
+import me.kroppeb.aoc.helpers.coroutines.parallelMap
+import me.kroppeb.aoc.helpers.coroutines.pipeTo
+import me.kroppeb.aoc.helpers.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ReceiveChannel
+import me.kroppeb.aoc.helpers.coroutines.parallelMap
+import me.kroppeb.aoc.helpers.coroutines.pipeTo
 
 fun permutations() = (0..4).cartesianProduct((0..4)).flatMap { (a, b) ->
 	(0..4).cartesianProduct((0..4))

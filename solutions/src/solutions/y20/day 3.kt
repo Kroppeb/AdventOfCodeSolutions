@@ -2,8 +2,9 @@
 
 package solutions.solutions.y20.d03
 
-import helpers.*
-import grid.*
+import me.kroppeb.aoc.helpers.*
+
+import me.kroppeb.aoc.helpers.point.toP
 
 private val xxxxx = Clock(3, 6);
 

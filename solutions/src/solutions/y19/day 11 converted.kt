@@ -1,6 +1,8 @@
 @file:Suppress("PackageDirectoryMismatch")
 package solutions.solutions.y19.d11c
-import helpers.*
+import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.toP
 import kotlinx.coroutines.runBlocking
 
 private fun part1(data: IntCode)= runBlocking {

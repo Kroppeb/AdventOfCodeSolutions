@@ -2,10 +2,9 @@
 
 package solutions.y21.d1c
 
-import grid.Clock
-import helpers.Ints
-import helpers.getInts
-import helpers.isSorted
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.Ints
+import me.kroppeb.aoc.helpers.getInts
 
 private val xxxxx = Clock(6, 3);
 

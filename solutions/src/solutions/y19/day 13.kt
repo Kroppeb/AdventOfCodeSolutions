@@ -1,7 +1,9 @@
 @file:Suppress("PackageDirectoryMismatch")
 package solutions.solutions.y19.d13
 
-import helpers.*
+import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.toP
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.ClosedReceiveChannelException
 

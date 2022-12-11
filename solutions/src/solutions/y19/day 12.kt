@@ -1,11 +1,13 @@
 @file:Suppress("PackageDirectoryMismatch")
 package solutions.solutions.y19.d12
 
-import helpers.*
+import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.point.Point3D
+import me.kroppeb.aoc.helpers.point.toP
 import kotlinx.coroutines.runBlocking
 import kotlin.math.*
 
-data class Moon(var p:Point3D, var v:Point3D)
+data class Moon(var p: Point3D, var v: Point3D)
 
 private fun part1(data: IntLines)= runBlocking {
 	val moons = data.map{(x,y,z) -> Moon(x toP y toP z, 0 toP 0 toP 0) }

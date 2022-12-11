@@ -3,13 +3,14 @@
 package solutions.y21.d5c
 
 /*
-import grid.Clock
-import helpers.*
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.*
 import kotlin.math.*
  */
 
-import grid.Clock
-import helpers.*
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.point.toP
 import kotlin.math.*
 
 private val xxxxx = Clock(6, 3);

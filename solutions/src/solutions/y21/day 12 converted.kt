@@ -3,17 +3,16 @@
 package solutions.y21.d12c
 
 /*
-import grid.Clock
-import helpers.*
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import kotlin.math.*
  */
 
-import graph.SimpleGraph
-import grid.Clock
-import helpers.getLines
-import helpers.mlot
-import helpers.mmoat
+import me.kroppeb.aoc.helpers.graph.SimpleGraph
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.getLines
+import me.kroppeb.aoc.helpers.mlot
 
 private val xxxxx = Clock(6, 3);
 

@@ -1,12 +1,13 @@
 @file:Suppress("PackageDirectoryMismatch")
 package solutions.solutions.y19.d18
 
-import grid.entityGrid
-import helpers.Point
-import helpers.getLines
+
+import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.getLines
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import me.kroppeb.aoc.helpers.entityGrid
 import java.util.*
 import kotlin.collections.List
 import kotlin.collections.MutableSet

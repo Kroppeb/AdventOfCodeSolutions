@@ -3,16 +3,15 @@
 package solutions.y15.d19
 
 /*
-import grid.Clock
-import helpers.*
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import kotlin.math.*
  */
 
-import graph.bfs
-import graph.dijkstra
-import grid.*
-import helpers.*
+import me.kroppeb.aoc.helpers.graph.dijkstra
+
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import java.util.ArrayDeque
 import kotlin.math.*

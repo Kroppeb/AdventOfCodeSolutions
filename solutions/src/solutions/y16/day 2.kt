@@ -2,9 +2,9 @@
 
 package solutions.y16.d02
 
-import grid.Clock
-import helpers.Lines
-import helpers.getLines
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.Lines
+import me.kroppeb.aoc.helpers.getLines
 import kotlinx.coroutines.runBlocking
 import java.lang.Math.abs
 

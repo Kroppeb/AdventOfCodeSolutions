@@ -2,9 +2,13 @@
 
 package solutions.y20.d17
 
-import grid.Clock
-import grid.entityGrid
-import helpers.*
+import me.kroppeb.aoc.helpers.Clock
+
+import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.Point3D
+import me.kroppeb.aoc.helpers.point.toB
+import me.kroppeb.aoc.helpers.point.toP
 
 private val xxxxx = Clock(6, 3);
 

@@ -2,7 +2,7 @@
 
 package solutions.solutions.y20.d01c
 
-import helpers.*
+import me.kroppeb.aoc.helpers.*
 
 
 private fun part1(data: Data) {

@@ -2,9 +2,9 @@
 
 package solutions.y16.d01
 
-import grid.Clock
-import helpers.Words
-import helpers.getAlphaNums
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.Words
+import me.kroppeb.aoc.helpers.getAlphaNums
 import kotlinx.coroutines.runBlocking
 import kotlin.math.abs
 

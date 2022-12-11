@@ -3,18 +3,16 @@
 package solutions.y15.d09
 
 /*
-import grid.Clock
-import helpers.*
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import kotlin.math.*
  */
 
-import graph.SimpleGraph
-import graph.dijkstra
-import graph.dijkstraD
-import grid.Clock
-import grid.mutableGrid
-import helpers.*
+import me.kroppeb.aoc.helpers.graph.SimpleGraph
+import me.kroppeb.aoc.helpers.graph.dijkstraD
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import solutions.solutions.y19.permutations
 import kotlin.math.*

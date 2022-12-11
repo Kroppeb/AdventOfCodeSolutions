@@ -2,10 +2,8 @@
 
 package solutions.y22.d09cstd
 
-import helpers.getLines
-import helpers.Point
-import java.awt.datatransfer.Clipboard
-import java.awt.datatransfer.StringSelection
+import me.kroppeb.aoc.helpers.getLines
+import me.kroppeb.aoc.helpers.point.Point
 import kotlin.collections.scan
 
 

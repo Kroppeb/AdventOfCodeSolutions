@@ -3,14 +3,14 @@
 package solutions.y17.d06
 
 /*
-import grid.Clock
-import helpers.*
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import kotlin.math.*
  */
 
-import grid.*
-import helpers.*
+
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import kotlin.math.*
 

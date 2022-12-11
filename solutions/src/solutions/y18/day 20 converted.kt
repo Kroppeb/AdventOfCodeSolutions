@@ -3,19 +3,19 @@
 package solutions.y18.d20c
 
 /*
-import grid.Clock
-import helpers.*
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import kotlin.math.*
  */
 
-import graph.SimpleGraph
-import graph.bfs
-import graph.bfsDist
-import grid.*
-import helpers.*
-import itertools.*
-import kotlin.math.*
+import me.kroppeb.aoc.helpers.graph.SimpleGraph
+import me.kroppeb.aoc.helpers.graph.bfs
+import me.kroppeb.aoc.helpers.graph.bfsDist
+
+import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.toP
 
 
 private val xxxxx = Clock(6, 3);

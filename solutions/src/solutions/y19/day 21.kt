@@ -1,7 +1,7 @@
 @file:Suppress("PackageDirectoryMismatch")
 package solutions.solutions.y19.d21
 
-import helpers.*
+import me.kroppeb.aoc.helpers.*
 import kotlinx.coroutines.*
 
 private val code1 = """NOT C J

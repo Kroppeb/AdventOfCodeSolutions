@@ -4,27 +4,22 @@ package solutions.y16.d17
 
 
 /*
-import collections.*
-import graph.*
-import grid.*
-import helpers.*
+import me.kroppeb.aoc.helpers.collections.*
+import me.kroppeb.aoc.helpers.graph.*
+
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import java.util.Comparator
 import java.util.PriorityQueue
 import kotlin.math.*
  */
 
-import collections.*
-import graph.*
-import grid.*
-import helpers.*
-import itertools.*
-import solutions.solutions.y19.d20c.p
+import me.kroppeb.aoc.helpers.graph.*
+
+import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.point.toB
+import me.kroppeb.aoc.helpers.point.toP
 import java.security.MessageDigest
-import java.util.Comparator
-import java.util.PriorityQueue
-import kotlin.experimental.and
-import kotlin.math.*
 
 
 private val xxxxx = Clock(6, 3);

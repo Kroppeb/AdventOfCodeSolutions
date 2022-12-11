@@ -2,11 +2,11 @@
 
 package solutions.y21.d3
 
-import grid.Clock
-import helpers.Lines
-import helpers.e
-import helpers.getLines
-import helpers.transpose
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.Lines
+import me.kroppeb.aoc.helpers.e
+import me.kroppeb.aoc.helpers.getLines
+import me.kroppeb.aoc.helpers.transpose
 
 private val xxxxx = Clock(6, 3);
 

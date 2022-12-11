@@ -1,7 +1,7 @@
 @file:Suppress("PackageDirectoryMismatch", "PackageName")
 package solutions.y17.d02
-import helpers.*
-import grid.*
+import me.kroppeb.aoc.helpers.*
+
 import kotlinx.coroutines.*
 
 private val xxxxx = Clock(3,6);

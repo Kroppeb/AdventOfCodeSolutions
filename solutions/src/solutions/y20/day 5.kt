@@ -2,8 +2,8 @@
 
 package solutions.y20.d05
 
-import helpers.*
-import grid.*
+import me.kroppeb.aoc.helpers.*
+
 import kotlin.math.pow
 
 private val xxxxx = Clock(3, 6);

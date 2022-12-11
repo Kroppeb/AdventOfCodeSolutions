@@ -1,7 +1,7 @@
 package solutions.y17.d07
 
 
-import helpers.*
+import me.kroppeb.aoc.helpers.*
 
 private fun part1(data: List<List<Any?>>){
 	val ps = data.map{it[0]}.toSet()

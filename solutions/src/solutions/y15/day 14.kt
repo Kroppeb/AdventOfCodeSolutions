@@ -3,24 +3,20 @@
 package solutions.y15.d14
 
 /*
-import graph.*
-import grid.*
-import helpers.*
+import me.kroppeb.aoc.helpers.graph.*
+
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import java.util.Comparator
 import java.util.PriorityQueue
 import kotlin.math.*
  */
 
-import collections.Counter
-import collections.UnionFind
-import com.beust.klaxon.Parser
-import graph.*
-import grid.*
-import helpers.*
+import me.kroppeb.aoc.helpers.collections.Counter
+import me.kroppeb.aoc.helpers.graph.*
+
+import me.kroppeb.aoc.helpers.*
 import itertools.*
-import java.util.Comparator
-import java.util.PriorityQueue
 import kotlin.math.*
 
 

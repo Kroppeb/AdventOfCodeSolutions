@@ -2,9 +2,9 @@
 
 package solutions.y20.d12
 
-import collections.*
-import grid.*
-import helpers.*
+import me.kroppeb.aoc.helpers.collections.*
+import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.point.toP
 import kotlinx.coroutines.*
 
 private val xxxxx = Clock(6, 3);

@@ -3,20 +3,17 @@
 package solutions.y18.d24
 
 /*
-import grid.Clock
-import helpers.*
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import kotlin.math.*
  */
 
-import graph.*
-import grid.*
-import helpers.*
+import me.kroppeb.aoc.helpers.graph.*
+
+import me.kroppeb.aoc.helpers.*
 import itertools.*
-import solutions.solutions.y19.d22.m
-import solutions.y18.d24.Unit
 import java.util.Comparator
-import java.util.PriorityQueue
 import kotlin.math.*
 
 

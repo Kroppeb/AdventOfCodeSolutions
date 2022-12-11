@@ -1,8 +1,8 @@
 @file:Suppress("PackageDirectoryMismatch")
 package solutions.solutions.y19.d17
 
-import grid.entityGrid
-import helpers.*
+
+import me.kroppeb.aoc.helpers.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.toList
 

@@ -1,7 +1,7 @@
 @file:Suppress("PackageDirectoryMismatch")
 package solutions.solutions.y19.d25
 
-import helpers.*
+import me.kroppeb.aoc.helpers.*
 import kotlinx.coroutines.*
 
 private fun part1(data: IntCode) = runBlocking(Dispatchers.Default) {

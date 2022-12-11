@@ -1,7 +1,7 @@
 @file:Suppress("PackageDirectoryMismatch")
 package solutions.solutions.y19.d22
 
-import helpers.*
+import me.kroppeb.aoc.helpers.*
 import kotlin.collections.*
 import java.math.BigInteger
 

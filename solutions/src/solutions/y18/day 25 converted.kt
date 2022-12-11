@@ -3,18 +3,18 @@
 package solutions.y18.d25c
 
 /*
-import graph.*
-import grid.*
-import helpers.*
+import me.kroppeb.aoc.helpers.graph.*
+
+import me.kroppeb.aoc.helpers.*
 import itertools.*
 import java.util.Comparator
 import java.util.PriorityQueue
 import kotlin.math.*
  */
 
-import collections.uf
-import grid.*
-import helpers.*
+import me.kroppeb.aoc.helpers.collections.uf
+import me.kroppeb.aoc.helpers.point.toPointV
+import me.kroppeb.aoc.helpers.*
 
 
 private val xxxxx = Clock(6, 3);

@@ -2,8 +2,8 @@
 
 package solutions.y20.d18
 
-import helpers.*
-import grid.*
+import me.kroppeb.aoc.helpers.*
+
 import java.util.ArrayDeque
 
 private val xxxxx = Clock(6, 3);

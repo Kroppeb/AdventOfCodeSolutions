@@ -1,7 +1,7 @@
 @file:Suppress("PackageDirectoryMismatch")
 package solutions.solutions.y19.d10
 
-import helpers.*
+import me.kroppeb.aoc.helpers.*
 import kotlin.math.*
 
 private fun ggd(a:Int, b:Int):Int = if(a == 0) b else ggd(b % a, a)

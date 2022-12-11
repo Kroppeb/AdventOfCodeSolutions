@@ -2,11 +2,11 @@
 
 package solutions.y20.d24
 
-import collections.counter
-import grid.Clock
-import helpers.Lines
-import helpers.getLines
-import helpers.toP
+import me.kroppeb.aoc.helpers.collections.counter
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.Lines
+import me.kroppeb.aoc.helpers.getLines
+import me.kroppeb.aoc.helpers.point.toP
 
 private val xxxxx = Clock(6, 3);
 

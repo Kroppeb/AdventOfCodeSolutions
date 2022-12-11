@@ -1,7 +1,7 @@
 @file:Suppress("PackageDirectoryMismatch", "PackageName")
 package solutions.y17.d05
-import helpers.*
-import grid.*
+import me.kroppeb.aoc.helpers.*
+
 
 private val xxxxx = Clock(3,6);
 

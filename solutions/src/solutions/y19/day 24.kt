@@ -1,9 +1,12 @@
 @file:Suppress("PackageDirectoryMismatch")
 package solutions.solutions.y19.d24
 
-import helpers.*
+import me.kroppeb.aoc.helpers.*
 import kotlin.collections.*
-import grid.entityGrid
+
+import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.toB
+import me.kroppeb.aoc.helpers.point.toP
 
 
 private fun bio1(s: Set<Point>): Int {

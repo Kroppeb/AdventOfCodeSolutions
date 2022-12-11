@@ -1,8 +1,9 @@
 @file:Suppress("PackageDirectoryMismatch", "PackageName")
 package solutions.y17.d03
-import helpers.*
-import grid.*
-import kotlinx.coroutines.*
+
+import me.kroppeb.aoc.helpers.Clock
+import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.toP
 import kotlin.math.abs
 
 private val xxxxx = Clock(3,6);

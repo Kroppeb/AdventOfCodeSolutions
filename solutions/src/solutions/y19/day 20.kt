@@ -1,8 +1,10 @@
 @file:Suppress("PackageDirectoryMismatch")
 package solutions.solutions.y19.d20
 
-import grid.entityGrid
-import helpers.*
+
+import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.toP
 import kotlinx.coroutines.runBlocking
 import java.util.*
 import java.util.ArrayDeque

@@ -1,9 +1,10 @@
 @file:Suppress("PackageDirectoryMismatch")
 package solutions.solutions.y19.d10c
 
-import grid.StrictPointGrid
-import grid.entityGrid
-import helpers.*
+
+
+import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.point.Point
 import kotlin.math.*
 
 
@@ -23,7 +24,7 @@ private fun part1(data: StrictPointGrid) =
 
 private fun fix(i: Double) = if (i < 0) i + 100 else i
 
-private fun part2(data: StrictPointGrid, a:Point) {
+private fun part2(data: StrictPointGrid, a: Point) {
 	data.points.filter { it != a }.map { b ->
 		val d = b - a
 		val g = gcd(abs(d.x), abs(d.y))
