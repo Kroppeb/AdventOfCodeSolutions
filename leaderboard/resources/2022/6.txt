@@ -40,7 +40,7 @@ First hundred users to get both stars on Day 6:
  38) Dec 06  00:01:56  A5rocks
  39) Dec 06  00:01:57  Antonio Molina
  40) Dec 06  00:01:58  Paul Draper
- 41) Dec 06  00:01:58  (anonymous user #970329)
+ 41) Dec 06  00:01:58  Akimitsu Hogge
  42) Dec 06  00:01:58  nim-ka
  43) Dec 06  00:01:59  Lewin Gan
  44) Dec 06  00:01:59  xnkvbo
@@ -144,7 +144,7 @@ First hundred users to get the first star on Day 6:
  40) Dec 06  00:01:32  KevinL10 (Sponsor)
  41) Dec 06  00:01:32  Tanner Hoke
  42) Dec 06  00:01:32  Henrik Lehtonen (Sponsor)
- 43) Dec 06  00:01:33  (anonymous user #970329)
+ 43) Dec 06  00:01:33  Akimitsu Hogge
  44) Dec 06  00:01:34  Paul Draper
  45) Dec 06  00:01:34  Tim Vermeulen (AoC++)
  46) Dec 06  00:01:35  Colter

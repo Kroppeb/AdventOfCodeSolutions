@@ -45,7 +45,7 @@ First hundred users to get both stars on Day 4:
  43) Dec 04  00:02:39  rhendric
  44) Dec 04  00:02:39  Bryan Kok
  45) Dec 04  00:02:40  Marco Poon
- 46) Dec 04  00:02:40  (anonymous user #970329)
+ 46) Dec 04  00:02:40  Akimitsu Hogge
  47) Dec 04  00:02:41  Ian DeHaan
  48) Dec 04  00:02:45  Epiphane (AoC++)
  49) Dec 04  00:02:49  Kevin Sheng
@@ -156,7 +156,7 @@ First hundred users to get the first star on Day 4:
  52) Dec 04  00:01:50  Ian DeHaan
  53) Dec 04  00:01:50  Nathan Fenner (AoC++)
  54) Dec 04  00:01:50  Marco Poon
- 55) Dec 04  00:01:51  (anonymous user #970329)
+ 55) Dec 04  00:01:51  Akimitsu Hogge
  56) Dec 04  00:01:53  Brandon Lin
  57) Dec 04  00:01:53  Lydxn
  58) Dec 04  00:01:53  Olle Lapidus

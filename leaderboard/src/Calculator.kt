@@ -1,6 +1,6 @@
-val year = "2022"
+val year = "2019"
 val user = "Kroppeb"
-val target = 10
+val target = 100
 
 
 val reg = Regex("""^\s*(\d+)\)\sDec\s\d+\s+[0-9:]+\s+(.+?)(\s*\(AoC\+\+\))?(\s*\(Sponsor\))?\s*$""", RegexOption.MULTILINE)

@@ -57,7 +57,7 @@ First hundred users to get both stars on Day 2:
  55) Dec 02  00:05:45  David Walker
  56) Dec 02  00:05:48  Benjamin Avrahami
  57) Dec 02  00:05:48  zacharybarbanell
- 58) Dec 02  00:05:48  (anonymous user #1698958)
+ 58) Dec 02  00:05:48  Andrey Akhmetov
  59) Dec 02  00:05:49  hughcoleman
  60) Dec 02  00:05:49  Xavier Cooney (AoC++)
  61) Dec 02  00:05:49  Max Jäger (AoC++)
@@ -172,7 +172,7 @@ First hundred users to get the first star on Day 2:
  68) Dec 02  00:03:29  klange
  69) Dec 02  00:03:29  Matt Gruskin (AoC++)
  70) Dec 02  00:03:30  Yoshiap
- 71) Dec 02  00:03:30  (anonymous user #1698958)
+ 71) Dec 02  00:03:30  Andrey Akhmetov
  72) Dec 02  00:03:30  Eduardo Quirino
  73) Dec 02  00:03:31  Branflakes2415
  74) Dec 02  00:03:31  hughcoleman
