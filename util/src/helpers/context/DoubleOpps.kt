@@ -2,7 +2,7 @@ package helpers.context
 
 import kotlin.math.sign
 
-object DoubleOpps : InternalExtendedFinalMathOp<Double> {
+object DoubleOpps : InternalExtendedFinalMathOp<Double>, CanBeZeroTrait<Double> {
 	@Suppress("INAPPLICABLE_JVM_NAME")
 	@JvmName("plusFinal")
 	override operator fun Double.plus(other: Double): Double = this + other
@@ -33,6 +33,7 @@ object DoubleOpps : InternalExtendedFinalMathOp<Double> {
 	@Suppress("INAPPLICABLE_JVM_NAME")
 	@JvmName("signFinal")
 	override fun Double.sign(): Double = this.sign
+	override fun Double.isZero(): Boolean = this == 0.0
 
 //	override fun gcd(a: Double, b: Double): Double = gcd(a, b)
 //

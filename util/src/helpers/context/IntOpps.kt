@@ -2,7 +2,7 @@ package helpers.context
 
 import kotlin.math.sign
 
-object IntOpps : InternalExtendedFinalMathOp<Int> {
+object IntOpps : InternalExtendedFinalMathOp<Int>, CanBeZeroTrait<Int> {
 	@Suppress("INAPPLICABLE_JVM_NAME")
 	@JvmName("plusFinal")
 	override operator fun Int.plus(other: Int): Int = this + other
@@ -33,6 +33,7 @@ object IntOpps : InternalExtendedFinalMathOp<Int> {
 	@Suppress("INAPPLICABLE_JVM_NAME")
 	@JvmName("signFinal")
 	override fun Int.sign(): Int = this.sign
+	override fun Int.isZero(): Boolean = this == 0
 
 //	override fun gcd(a: Int, b: Int): Int = gcd(a, b)
 //

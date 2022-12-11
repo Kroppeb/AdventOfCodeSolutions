@@ -20,4 +20,6 @@ interface PointNI<T : PointNI<T>> : PointN<T, Int> {
 	override fun gcd(): Int
 
 	fun dot(other: T): Int
+
+	override fun isZero(): Boolean = this.manDist() == 0
 }

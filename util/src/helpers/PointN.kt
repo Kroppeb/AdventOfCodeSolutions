@@ -45,4 +45,5 @@ interface PointN<T : PointN<T, C>, C : Comparable<C>> {
 	 */
 	fun sequence(step: T): Sequence<T> = generateSequence(this as T) { it + step }
 	fun sign(): T
+	fun isZero(): Boolean
 }

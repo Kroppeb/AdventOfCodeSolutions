@@ -121,14 +121,14 @@ interface InternalFinalDecOp<T> : InternalIndirectDecOp<T> {
 
 // neg
 interface InternalIndirectNegOp<T> {
-	fun <K : T> K.unaryMinus(): K
+	operator fun <K : T> K.unaryMinus(): K
 }
 
 @Suppress("UNCHECKED_CAST")
 interface InternalFinalNegOp<T> : InternalIndirectNegOp<T> {
 	@Suppress("INAPPLICABLE_JVM_NAME")
 	@JvmName("negFinal")
-	fun T.unaryMinus(): T
+	operator fun T.unaryMinus(): T
 
 	override fun <K : T> K.unaryMinus(): K {
 		return (this.unaryMinus()) as K
@@ -158,15 +158,15 @@ interface InternalIndirectMathOp<T> : InternalIndirectAddOp<T>, InternalIndirect
 
 interface InternalFinalMathOp<T> : InternalFinalAddOp<T>, InternalFinalSubOp<T>, InternalFinalMulOp<T>,
 	InternalFinalDivOp<T>, InternalFinalRemOp<T>,
-	InternalFinalNegOp<T>
+	InternalFinalNegOp<T>, InternalIndirectMathOp<T>
 
 interface InternalExtendedIndirectMathOp<T> : InternalIndirectMathOp<T>,
 	InternalIndirectIncOp<T>, InternalIndirectDecOp<T>,
-	InternalIndirectSignOp<T>
+	InternalIndirectSignOp<T>, CanBeZeroTrait<T>
 
 interface InternalExtendedFinalMathOp<T> : InternalFinalMathOp<T>,
 	InternalFinalIncOp<T>, InternalFinalDecOp<T>,
-	InternalFinalSignOp<T>
+	InternalFinalSignOp<T>, InternalExtendedIndirectMathOp<T>, CanBeZeroTrait<T>
 
 
 interface CanBeEmptyTrait<T>{
@@ -176,4 +176,8 @@ interface CanBeEmptyTrait<T>{
 
 interface HasSizeTrait<T> {
 	fun T.size(): Int
+}
+
+interface CanBeZeroTrait<T> {
+	fun T.isZero(): Boolean
 }

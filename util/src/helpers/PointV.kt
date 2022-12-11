@@ -1,5 +1,7 @@
 package helpers
 
+import helpers.context.*
+import helpers.contextual.*
 import java.math.BigInteger
 import kotlin.math.pow
 import kotlin.math.sign
@@ -9,61 +11,65 @@ typealias PointVL = PointV<Int>
 typealias PointVD = PointV<Double>
 typealias PointVBI = PointV<BigInteger>
 
+context(opp@InternalExtendedIndirectMathOp<C>)
 class PointV<C : Comparable<C>> internal constructor(
-	val values: List<C>,
-	internal val opps: Opps<C>
+	val values: List<C>
 ) : PointN<PointV<C>, C> {
-	private inline fun mapEach(op: (C) -> C): PointV<C> = PointV(values.map(op), opps)
+	private inline fun mapEach(op: context(InternalExtendedIndirectMathOp<C>) (C) -> C): PointV<C> =
+		PointV(values.map { op(this@opp, it) })
 
-	private inline fun zipEach(other: PointV<C>, op: (C, C) -> C): PointV<C> {
-		require(other.opps == this.opps)
+	private inline fun zipEach(
+		other: PointV<C>, op: context(InternalExtendedIndirectMathOp<C>) (C, C) -> C
+	): PointV<C> {
 		require(other.values.size == this.values.size)
 
-		return PointV(this.values.zip(other.values, op), this.opps)
+		return PointV(this.values.zip(other.values) { a, b -> op(this@opp, a, b) })
 	}
 
-	override fun unaryMinus() = mapEach(opps::unaryMinus)
+	override fun unaryMinus() = mapEach { -it }
 
-	override fun abs() = mapEach(opps::abs)
+	override fun abs() = mapEach { it.abs() }
 
-	override fun sqrDist(): C = this.values.map(opps::square).reduce(opps::plus)
+	override fun sqrDist(): C = values.map { it * it }.reduce { a, b -> a + b }
 	override fun dist(): Double = error("Not supported")
-	override fun manDist(): C = this.values.map(opps::abs).reduce(opps::plus)
-	override fun chebyshevDist(): C = this.values.map(opps::abs).max()
+	override fun manDist(): C = values.map { it.abs() }.reduce { a, b -> a + b }
+	override fun chebyshevDist(): C = values.map { it.abs() }.max()
 
 	override fun max(other: PointV<C>): PointV<C> = this.zipEach(other) { a, b -> max(a, b) }
 	override fun min(other: PointV<C>): PointV<C> = this.zipEach(other) { a, b -> min(a, b) }
 
 
-	override fun plus(other: PointV<C>): PointV<C> = this.zipEach(other, opps::plus)
-	override fun minus(other: PointV<C>): PointV<C> = this.zipEach(other, opps::minus)
-	override fun times(other: PointV<C>): PointV<C> = this.zipEach(other, opps::times)
-	override fun div(other: PointV<C>): PointV<C> = this.zipEach(other, opps::div)
-	override fun rem(other: PointV<C>): PointV<C> = this.zipEach(other, opps::rem)
+	override fun plus(other: PointV<C>): PointV<C> = this.zipEach(other) { a, b -> a + b }
+	override fun minus(other: PointV<C>): PointV<C> = this.zipEach(other) { a, b -> a - b }
+	override fun times(other: PointV<C>): PointV<C> = this.zipEach(other) { a, b -> a * b }
+	override fun div(other: PointV<C>): PointV<C> = this.zipEach(other) { a, b -> a / b }
+	override fun rem(other: PointV<C>): PointV<C> = this.zipEach(other) { a, b -> a % b }
 
 
-	override fun times(other: C): PointV<C> = this.mapEach{ opps.times(it, other)}
-	override fun div(other: C): PointV<C> = this.mapEach{ opps.div(it, other)}
-	override fun rem(other: C): PointV<C> = this.mapEach{ opps.rem(it, other)}
+	override fun times(other: C): PointV<C> = this.mapEach { it * other }
+	override fun div(other: C): PointV<C> = this.mapEach { it / other }
+	override fun rem(other: C): PointV<C> = this.mapEach { it % other }
 
-	override fun getVonNeumannNeighbours(): List<PointV<C>> = buildList(this.values.size * 2) {
+	override fun getVonNeumannNeighbours(): List<PointV<C>> = buildList(values.size * 2) {
 		for (i in values.indices) {
-			add(PointV(values.toMutableList().also { it[i] = opps.inc(it[i]) }, opps))
-			add(PointV(values.toMutableList().also { it[i] = opps.dec(it[i]) }, opps))
+			add(PointV(values.toMutableList().also { it[i]++ }))
+			add(PointV(values.toMutableList().also { it[i]-- }))
 		}
 	}
 
-	override fun getMooreNeighbours(): List<PointV<C>> =
-		listOf(opps::inc, { it }, opps::dec).cartesianPower(this.values.size)
-			.let { it.subList(0, it.size / 2) + it.subList(it.size / 2 + 1, it.size) }
-			.map { ops -> ops.zip(this.values) { op, x -> op(x) } }
-			.map { PointV(it, opps) }
+
+	override fun getMooreNeighbours(): List<PointV<C>> = listOf<(C) -> C>({ it.inc() }, { it }, { it.dec() })
+		.cartesianPower(values.size)
+		.let { it.subList(0, it.size / 2) + it.subList(it.size / 2 + 1, it.size) }
+		.map { ops -> ops.zip(values) { op, x -> op(x) } }
+		.map { PointV(it) }
+
 
 	override fun equals(other: Any?): Boolean {
 		if (this === other) return true
 		if (other !is PointV<*>) return false
 
-		return this.values == other.values && this.opps == other.opps
+		return this.values == other.values
 	}
 
 	override fun gcd(): C {
@@ -71,113 +77,33 @@ class PointV<C : Comparable<C>> internal constructor(
 	}
 
 	override fun hashCode(): Int {
-		return values.hashCode() * 31 + opps.hashCode()
+		return values.hashCode()
 	}
 
 	override fun toString(): String {
 		return values.joinToString(prefix = "<", postfix = ">")
 	}
 
-	override fun sign(): PointV<C> = mapEach(opps::sign)
+	override fun sign(): PointV<C> = mapEach { it.sign() }
+
+	override fun isZero(): Boolean = values.all { it.isZero() }
+
+	fun getOpp() = this@opp
 }
 
-internal interface Opps<T : Comparable<T>> {
-	fun plus(a: T, b: T): T
-	fun minus(a: T, b: T): T
-	fun times(a: T, b: T): T
-	fun div(a: T, b: T): T
-	fun rem(a: T, b: T): T
 
-	fun inc(a: T): T
-	fun dec(a: T): T
+infix fun Int.toPV(other: Int) = with(IntOpps) { PointV(listOf(this@toPV, other)) }
 
-	fun unaryMinus(a: T): T
-	fun sign(a: T): T
+infix fun Long.toPV(other: Long) = with(LongOpps) { PointV(listOf(this@toPV, other)) }
+infix fun Double.toPV(other: Double) = with(DoubleOpps) { PointV(listOf(this@toPV, other)) }
 
-	fun gcd(a: T, b: T): T
-
-	fun abs(a: T): T = max(a, unaryMinus(a))
-
-
-	fun square(a: T) = times(a, a)
-}
-
-private val IntOpps = object : Opps<Int> {
-	override fun plus(a: Int, b: Int): Int = a + b
-	override fun minus(a: Int, b: Int): Int = a - b
-	override fun times(a: Int, b: Int): Int = a * b
-	override fun div(a: Int, b: Int): Int = a / b
-	override fun rem(a: Int, b: Int): Int = a % b
-
-	override fun inc(a: Int): Int = a + 1
-	override fun dec(a: Int): Int = a - 1
-
-	override fun unaryMinus(a: Int): Int = -a
-	override fun sign(a: Int): Int = a.sign
-
-	override fun gcd(a: Int, b: Int): Int = gcd(a, b)
-}
-
-private val LongOpps = object : Opps<Long> {
-	override fun plus(a: Long, b: Long): Long = a + b
-	override fun minus(a: Long, b: Long): Long = a - b
-	override fun times(a: Long, b: Long): Long = a * b
-	override fun div(a: Long, b: Long): Long = a / b
-	override fun rem(a: Long, b: Long): Long = a % b
-
-	override fun inc(a: Long): Long = a + 1
-	override fun dec(a: Long): Long = a - 1
-
-	override fun unaryMinus(a: Long): Long = -a
-	override fun sign(a: Long): Long = a.sign.toLong()
-
-	override fun gcd(a: Long, b: Long): Long = gcd(a, b)
-}
-
-private val DoubleOpps = object : Opps<Double> {
-	override fun plus(a: Double, b: Double): Double = a + b
-	override fun minus(a: Double, b: Double): Double = a - b
-	override fun times(a: Double, b: Double): Double = a * b
-	override fun div(a: Double, b: Double): Double = a / b
-	override fun rem(a: Double, b: Double): Double = a % b
-
-	override fun inc(a: Double): Double = a + 1
-	override fun dec(a: Double): Double = a - 1
-
-	override fun unaryMinus(a: Double): Double = -a
-	override fun sign(a: Double): Double = a.sign
-
-	override fun gcd(a: Double, b: Double): Double = error("GCD is not defined for doubles")
-}
-
-private val BigIntegerOpps = object : Opps<BigInteger> {
-	override fun plus(a: BigInteger, b: BigInteger): BigInteger = a + b
-	override fun minus(a: BigInteger, b: BigInteger): BigInteger = a - b
-	override fun times(a: BigInteger, b: BigInteger): BigInteger = a * b
-	override fun div(a: BigInteger, b: BigInteger): BigInteger = a / b
-	override fun rem(a: BigInteger, b: BigInteger): BigInteger = a % b
-
-	override fun inc(a: BigInteger): BigInteger = a + BigInteger.ONE
-	override fun dec(a: BigInteger): BigInteger = a - BigInteger.ONE
-
-	override fun unaryMinus(a: BigInteger): BigInteger = -a
-	override fun sign(a: BigInteger): BigInteger = a.signum().toBigInteger()
-
-	override fun gcd(a: BigInteger, b: BigInteger): BigInteger = a.gcd(b)
-}
-
-infix fun Int.toPV(other: Int) = PointV(listOf(this, other), IntOpps)
-infix fun Long.toPV(other: Long) = PointV(listOf(this, other), LongOpps)
-infix fun Double.toPV(other: Double) = PointV(listOf(this, other), DoubleOpps)
-infix fun BigInteger.toPV(other: BigInteger) = PointV(listOf(this, other), BigIntegerOpps)
-
-infix fun <C:Comparable<C>> PointV<C>.toPV(other: C) = PointV(this.values + listOf(other), this.opps)
+infix fun <C : Comparable<C>> PointV<C>.toPV(other: C) = with(this.getOpp()) {PointV(values + listOf(other))}
 
 @JvmName("ListIntToPointV")
-fun List<Int>.toPointV() = PointV(this, IntOpps)
+fun List<Int>.toPointV() = with (IntOpps) { PointV(this@toPointV) }
+
 @JvmName("ListLongToPointV")
-fun List<Long>.toPointV() = PointV(this, LongOpps)
+fun List<Long>.toPointV() = with (LongOpps) { PointV(this@toPointV) }
+
 @JvmName("ListDoubleToPointV")
-fun List<Double>.toPointV() = PointV(this, DoubleOpps)
-@JvmName("ListBigIntegerToPointV")
-fun List<BigInteger>.toPointV() = PointV(this, BigIntegerOpps)
+fun List<Double>.toPointV() = with (DoubleOpps) { PointV(this@toPointV) }

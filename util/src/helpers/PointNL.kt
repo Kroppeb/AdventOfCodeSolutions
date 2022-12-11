@@ -18,4 +18,5 @@ interface PointNL<T : PointNL<T>> : PointN<T, Long> {
 	override fun gcd(): Long
 
 	fun dot(other: T): Long
+	override fun isZero(): Boolean = this.manDist() == 0L
 }
