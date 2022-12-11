@@ -33,43 +33,7 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(11).splitOnEmpty()
-
-	var items = data.map { it[1].longs().map{it} }.toMutableList()
-	var opp = data.map { it[2].contains('+') to it[2].getLong() }
-	var test = data.map { it[3].long() }
-	var steps = data.map { it[4].int() to it[5].int() }
-
-	var action = items.map { 0L }.toMutableList()
-
-	repeat(10000) {
-		for (m in items.indices) {
-			for (item in items[m]) {
-				val (oa, ob) = opp[m]
-				var new = if (oa) {
-					item + ob!!
-				} else if (ob == null) {
-					item * item
-				} else {
-					item * ob
-				}
-				new %= 2L * 3L * 5L * 7L * 11L *  13L * 17L * 19L
-//				new /= 3
-				if ((new % test[m]) == 0L) {
-					items[steps[m].first] = items[steps[m].first] + listOf(new)
-				} else {
-					items[steps[m].second] = items[steps[m].second] + listOf(new)
-				}
-				action[m]++
-			}
-			items[m] = listOf()
-		}
-
-		if (it % 1000 == 0) {
-			it. log()
-		}
-	}
-	action.log().max(2).product() log 1
+	var data = getLines(12) log 1
 
 
 
@@ -77,7 +41,7 @@ private fun part1() {
 
 
 fun main() {
-	println("Day 11: ")
+	println("Day 12: ")
 	part1()
 }
 
