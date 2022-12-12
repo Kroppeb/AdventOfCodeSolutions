@@ -1,5 +1,7 @@
 package me.kroppeb.aoc.helpers
 
+import me.kroppeb.aoc.helpers.sint.*
+
 
 fun <T> Iterator<T>.getNext(): T {
 	hasNext()
@@ -26,12 +28,22 @@ inline fun <T, R> Iterable<T>.rleDecode(value: (T) -> R, length: (T) -> Int) =
 	flatMap { listOf(value(it)).repeat(length(it)) }
 
 @Deprecated("doesn't work")
-inline fun <T, R> Iterable<T>.rleEncode(convert: (T, Int) -> R) = groupBy { it }.map { convert(it.key, it.value.size) }
+inline fun <T, R> Iterable<T>.rleEncode(convert: (T, Int) -> R) = blockCounts().map {(a,b) -> convert(a, b) }
 
 fun <E> List<E>.repeat(length: Int): List<E> {
 	if (size == 0 || length == 0)
 		return emptyList()
 	val list = ArrayList<E>(size * length)
+	repeat(length) {
+		list.addAll(this)
+	}
+	return list
+}
+
+fun <E> List<E>.repeat(length: Sint): List<E> {
+	if (size == 0 || length == 0.s)
+		return emptyList()
+	val list = ArrayList<E>((size * length).i)
 	repeat(length) {
 		list.addAll(this)
 	}
@@ -84,8 +96,17 @@ fun <K : Comparable<K>, V> Map<K, V>.allMaxByKey() = allMaxBy { it.key }.map { i
 
 
 operator fun <E> List<E>.times(count: Int) = repeat(count)
+operator fun <E> List<E>.times(count: Sint) = repeat(count)
 
 fun <T> generateTimes(times: Int, next: () -> T): List<T> {
+	val ret = mutableListOf<T>()
+	repeat(times) {
+		ret.add(next())
+	}
+	return ret
+}
+
+fun <T> generateTimes(times: Sint, next: () -> T): List<T> {
 	val ret = mutableListOf<T>()
 	repeat(times) {
 		ret.add(next())
@@ -106,10 +127,39 @@ fun <T> generateTimes(times: Int, seed: T, next: (T) -> T): List<T> {
 	return ret
 }
 
+
+/**
+ * Seed isn't returned, the retured list has length times
+ */
+fun <T> generateTimes(times: Sint, seed: T, next: (T) -> T): List<T> {
+	var acc = seed
+	val ret = mutableListOf<T>()
+	repeat(times) {
+		acc = next(acc)
+		ret.add(acc)
+	}
+	return ret
+}
+
 /**
  * Seed isn't returned, the retured list has length times
  */
 fun <S, T> generateStateTimes(times: Int, seed: S, next: (state: S) -> Pair<S, T>): List<T> {
+	var acc = seed
+	val ret = mutableListOf<T>()
+	repeat(times) {
+		val (s, t) = next(acc)
+		acc = s
+		ret.add(t)
+	}
+	return ret
+}
+
+
+/**
+ * Seed isn't returned, the retured list has length times
+ */
+fun <S, T> generateStateTimes(times: Sint, seed: S, next: (state: S) -> Pair<S, T>): List<T> {
 	var acc = seed
 	val ret = mutableListOf<T>()
 	repeat(times) {
@@ -161,6 +211,14 @@ fun <T> Iterable<T>.countEach(): Map<T, Int> {
 	return counts
 }
 
+
+fun <T> Iterable<T>.cntEach(): Map<T, Sint> {
+	val counts = mutableMapOf<T, Sint>()
+	for (element in this)
+		counts.merge(element, 1.s, Sint::plus)
+	return counts
+}
+
 fun <T> Iterable<T>.blockCounts(): List<Pair<T, Int>> {
 	val iter = iterator()
 	if (!iter.hasNext())
@@ -175,6 +233,28 @@ fun <T> Iterable<T>.blockCounts(): List<Pair<T, Int>> {
 			ret.add(acc to count)
 			acc = i
 			count = 1
+
+		}
+	}
+	ret.add(acc to count)
+	return ret
+}
+
+
+fun <T> Iterable<T>.blockCnts(): List<Pair<T, Sint>> {
+	val iter = iterator()
+	if (!iter.hasNext())
+		return emptyList()
+	var acc = iter.next()
+	var count = 1.s
+	val ret = mutableListOf<Pair<T, Sint>>()
+	for (i in iter) {
+		if (acc == i)
+			count++
+		else {
+			ret.add(acc to count)
+			acc = i
+			count = 1.s
 
 		}
 	}
@@ -297,6 +377,10 @@ fun Iterable<*>.areDistinct(): Boolean {
 inline fun <T, R> Iterable<T>.flatMapIndexed(transform: (Int, T) -> Iterable<R>): List<R> =
 	mapIndexed(transform).flatten()
 
+
+inline fun <T, R> Iterable<T>.flatMapIdx(transform: (Sint, T) -> Iterable<R>): List<R> =
+	mapIdx(transform).flatten()
+
 fun <T> Iterable<T>.pairWise(): List<Pair<T, T>> = flatMapIndexed { i, v -> drop(i + 1).map { v to it } }
 fun <T> Iterable<T>.orderedPairWise(): List<Pair<T, T>> = flatMapIndexed { i, v ->
 	filterIndexed { i2, _ -> i != i2 }.map { v to it }
@@ -312,7 +396,20 @@ fun <T> Iterator<T>.subSetsWithLength(n: Int): List<List<T>> {
 	return this.subSetsWithLength(n - 1).map { listOf(item) + it } + this.subSetsWithLength(n)
 }
 
+
+fun <T> Iterator<T>.subSetsWithLength(n: Sint): List<List<T>> {
+	if (n == 0.s)
+		return listOf(emptyList())
+	if (!this.hasNext())
+		return emptyList()
+
+	val item = this.next()
+	return this.subSetsWithLength(n - 1).map { listOf(item) + it } + this.subSetsWithLength(n)
+}
+
 fun <T> Iterable<T>.subSetsWithLength(n: Int) = iterator().subSetsWithLength(n)
+
+fun <T> Iterable<T>.subSetsWithLength(n: Sint) = iterator().subSetsWithLength(n)
 
 fun <T> Iterable<T>.selfPairWise(): List<Pair<T, T>> = flatMapIndexed { i, v -> drop(i).map { v to it } }
 
@@ -516,12 +613,17 @@ operator fun <E> List<E>.component100(): E = this[99]
 inline fun <T, R> Iterable<T>.repeatMap(count: Int, mapping: (Int, T) -> R): List<R> =
 	(0 until count).flatMap { i -> map { mapping(i, it) } }
 
+inline fun <T, R> Iterable<T>.repeatMap(count: Sint, mapping: (Sint, T) -> R): List<R> =
+	(0 until count).flatMap { i -> map { mapping(i, it) } }
+
 fun Iterable<String>.splitOnEmpty(): List<List<String>> = this.splitOn { it.isEmpty() }
 
 @JvmName("productInts")
 fun Iterable<Int>.product(): Long = this.fold(1L) { acc, i -> acc * i }
 fun Iterable<Long>.product(): Long = this.fold(1L) { acc, i -> acc * i }
 fun Iterable<Double>.product(): Double = this.fold(1.0) { acc, i -> acc * i }
+@JvmName("productSints")
+fun Iterable<Sint>.product(): Sint = this.fold(1.s) { acc, i -> acc * i }
 
 
 @OptIn(kotlin.experimental.ExperimentalTypeInference::class)
@@ -537,6 +639,10 @@ inline fun <T> Iterable<T>.productOf(transform: (T) -> Long): Long = this.fold(1
 @OptIn(kotlin.experimental.ExperimentalTypeInference::class)
 @OverloadResolutionByLambdaReturnType
 inline fun <T> Iterable<T>.productOf(transform: (T) -> Double): Double = this.fold(1.0) { acc, i -> acc * transform(i) }
+
+@OptIn(kotlin.experimental.ExperimentalTypeInference::class)
+@OverloadResolutionByLambdaReturnType
+inline fun <T> Iterable<T>.productOf(transform: (T) -> Sint): Sint = this.fold(1.s) { acc, i -> acc * transform(i) }
 
 fun Iterable<Char>.join(): String = this.joinToString("")
 @JvmName("joinStrings")
@@ -558,6 +664,8 @@ fun <T> Iterable<T>.permutations() = toList().permutations()
 
 fun <T : Comparable<T>> Iterable<T>.max(n: Int) = this.sortedDescending().take(n)
 fun <T : Comparable<T>> Iterable<T>.min(n: Int) = this.sorted().take(n)
+fun <T : Comparable<T>> Iterable<T>.max(n: Sint) = this.sortedDescending().take(n)
+fun <T : Comparable<T>> Iterable<T>.min(n: Sint) = this.sorted().take(n)
 
 inline fun <T, C : Comparable<C>> Iterable<T>.maxBy(n: Int, crossinline selector: (T) -> C) =
 	this.sortedByDescending(selector).take(n)
@@ -565,10 +673,22 @@ inline fun <T, C : Comparable<C>> Iterable<T>.maxBy(n: Int, crossinline selector
 inline fun <T, C : Comparable<C>> Iterable<T>.minBy(n: Int, crossinline selector: (T) -> C) =
 	this.sortedBy(selector).take(n)
 
+inline fun <T, C : Comparable<C>> Iterable<T>.maxBy(n: Sint, crossinline selector: (T) -> C) =
+	this.sortedByDescending(selector).take(n)
+
+inline fun <T, C : Comparable<C>> Iterable<T>.minBy(n: Sint, crossinline selector: (T) -> C) =
+	this.sortedBy(selector).take(n)
+
+
 inline fun <T, C : Comparable<C>> Iterable<T>.maxOf(n: Int, selector: (T) -> C) =
 	this.map(selector).sortedDescending().take(n)
 
 inline fun <T, C : Comparable<C>> Iterable<T>.minOf(n: Int, selector: (T) -> C) = this.map(selector).sorted().take(n)
+
+inline fun <T, C : Comparable<C>> Iterable<T>.maxOf(n: Sint, selector: (T) -> C) =
+	this.map(selector).sortedDescending().take(n)
+
+inline fun <T, C : Comparable<C>> Iterable<T>.minOf(n: Sint, selector: (T) -> C) = this.map(selector).sorted().take(n)
 
 //region String destructors
 operator fun String.component1(): Char = this[0]
@@ -593,6 +713,18 @@ infix fun <T> Collection<T>.splitIn(n: Int): List<List<T>> {
 fun <T, R> Collection<T>.splitIn(n: Int, transform: (List<T>) -> R): List<R> {
 	val length = this.size
 	require(size % n == 0)
+	return chunked(length / n, transform)
+}
+
+infix fun <T> Collection<T>.splitIn(n: Sint): List<List<T>> {
+	val length = this.size
+	require(size divBy n)
+	return chunked(length / n)
+}
+
+fun <T, R> Collection<T>.splitIn(n: Sint, transform: (List<T>) -> R): List<R> {
+	val length = this.size
+	require(size divBy n)
 	return chunked(length / n, transform)
 }
 
@@ -669,7 +801,21 @@ fun <T> Iterable<T>.rotateLeft(i: Int): List<T> {
 
 fun <T> Iterable<T>.rotateRight(i: Int): List<T> = rotateLeft(-i)
 
+
+
+fun <T> Iterable<T>.rotateLeft(i: Sint): List<T> {
+	val list = this.toList()
+	val shift = i mod list.size
+
+	return list.splitAt(shift).on { l, r -> l + r }
+}
+
+fun <T> Iterable<T>.rotateRight(i: Sint): List<T> = rotateLeft(-i)
+
 fun <T> Iterable<T>.splitAt(i: Int): Pair<List<T>, List<T>> = take(i) to drop(i)
+
+fun <T> Iterable<T>.splitAt(i: Sint): Pair<List<T>, List<T>> = take(i) to drop(i)
+
 
 fun <T> Iterable<T>.split2(item: T): Pair<List<T>, List<T>> {
 	val list = this.toList()
@@ -707,12 +853,30 @@ fun <T> Iterable<T>.takeUntilInc(predicate: (T) -> Boolean): List<T> = buildList
 inline fun <T> Iterable<T>.partitionIndexed(predicate: (Int, T) -> Boolean) =
 	withIndex().partition { (i, value) -> predicate(i, value) }.map { l -> l.map { it.value } }
 
+
+inline fun <T> Iterable<T>.partitionIdx(predicate: (Sint, T) -> Boolean) =
+	withIdx().partition { (i, value) -> predicate(i, value) }.map { l -> l.map { it.value } }
+
 inline fun <T, R : T> T.applyNTimes(n: Int, action: (T) -> R): R {
 	require(n > 0)
 	return applyNTimesOr0(n, action) as R
 }
 
 inline fun <T> T.applyNTimesOr0(n: Int, action: (T) -> T): T {
+	var cur = this;
+	repeat(n) {
+		cur = action(cur)
+	}
+	return cur
+}
+
+
+inline fun <T, R : T> T.applyNTimes(n: Sint, action: (T) -> R): R {
+	require(n > 0)
+	return applyNTimesOr0(n, action) as R
+}
+
+inline fun <T> T.applyNTimesOr0(n: Sint, action: (T) -> T): T {
 	var cur = this;
 	repeat(n) {
 		cur = action(cur)

@@ -5,6 +5,7 @@ package solutions.solutions.y19.d17
 import me.kroppeb.aoc.helpers.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.toList
+import me.kroppeb.aoc.helpers.grid.entityGrid
 
 val mov = listOf("A,B,A,B,A,C,B,C,A,C","L,6,R,12,L,6","R,12,L,10,L,4,L,6","L,10,L,10,L,4,L,6","n","").joinToString(separator = "\n")
 

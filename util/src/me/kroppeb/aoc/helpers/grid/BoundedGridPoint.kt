@@ -1,5 +1,6 @@
-package me.kroppeb.aoc.helpers
+package me.kroppeb.aoc.helpers.grid
 
+import me.kroppeb.aoc.helpers.Clock
 import me.kroppeb.aoc.helpers.point.Point
 import me.kroppeb.aoc.helpers.point.toP
 import me.kroppeb.aoc.helpers.point.toPoint

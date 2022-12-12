@@ -21,6 +21,7 @@ import java.awt.datatransfer.StringSelection
 
 
 import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.grid.grid
 
 
 private val xxxxx = Clock(6, 3);

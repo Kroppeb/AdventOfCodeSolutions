@@ -13,6 +13,7 @@ import me.kroppeb.aoc.helpers.graph.dijkstra
 import me.kroppeb.aoc.helpers.Clock
 
 import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.grid.grid
 import me.kroppeb.aoc.helpers.point.toP
 
 private val xxxxx = Clock(6, 3);

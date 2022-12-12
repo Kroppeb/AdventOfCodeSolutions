@@ -1,13 +1,22 @@
 package me.kroppeb.aoc.helpers
 
+import me.kroppeb.aoc.helpers.context.SintOpps.isZero
+import me.kroppeb.aoc.helpers.sint.Sint
 
+
+@Deprecated("Use Sint and/or traits instead")
 fun gcd(a:Int, b:Int):Int = if(a == 0) b else gcd(b % a, a)
+@Deprecated("Use Sint and/or traits instead")
 fun gcd(a:Long, b:Long):Long = if(a == 0L) b else gcd(b % a, a)
 
+fun gcd(a: Sint, b: Sint): Sint = if(a.isZero()) b else gcd(b % a, a)
+
 @Suppress("RemoveExplicitTypeArguments")
+@Deprecated("Use Sint and/or traits instead")
 fun Iterable<Int>.gcd():Int = reduce<Int,Int>(::gcd)
 @JvmName("longGcd")
 @Suppress("RemoveExplicitTypeArguments")
+@Deprecated("Use Sint and/or traits instead")
 fun Iterable<Long>.gcd():Long = reduce<Long, Long>(::gcd)
 
 //fun gcd(vararg e:Int)

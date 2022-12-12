@@ -2,6 +2,7 @@
 package solutions.solutions.y19.d24
 
 import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.grid.entityGrid
 import kotlin.collections.*
 
 import me.kroppeb.aoc.helpers.point.Point

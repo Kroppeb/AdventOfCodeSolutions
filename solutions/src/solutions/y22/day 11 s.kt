@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y22.d11
+package solutions.y22.d11s
 
 
 /*
@@ -20,6 +20,7 @@ import java.awt.datatransfer.Clipboard
 import java.awt.datatransfer.StringSelection
 
 import me.kroppeb.aoc.helpers.collections.*
+import me.kroppeb.aoc.helpers.context.*
 import me.kroppeb.aoc.helpers.contextual.*
 import me.kroppeb.aoc.helpers.graph.*
 import me.kroppeb.aoc.helpers.grid.*
@@ -34,17 +35,17 @@ import kotlin.math.*
 private val xxxxx = Clock(6, 3);
 
 
-private fun part1() {
+private fun part1() = start{
 	var data = getLines(2022_11).splitOnEmpty()
 
-	var items = data.map { it[1].ints().map { it } }.toMutableList()
-	var opp = data.map { it[2].contains('+') to it[2].getInt() }
-	var test = data.map { it[3].int() }
-	var steps = data.map { it[4].int() to it[5].int() }
+	var items = data.map { it[1].sints() }.mut()
+	var opp = data.map { it[2].contains('+') to it[2].getSint() }
+	var test = data.map { it[3].sint() }
+	var steps = data.map { it[4].sint() to it[5].sint() }
 
-	var action = items.map { 0 }.toMutableList()
+	var action = items.map { 0.s }.mut()
 
-	repeat(10000) {
+	repeat(20) {
 		for (m in items.indices) {
 			for (item in items[m]) {
 				val (oa, ob) = opp[m]
@@ -56,7 +57,7 @@ private fun part1() {
 					item * ob
 				}
 				new /= 3
-				if ((new % test[m]) == 0) {
+				if (new divBy test[m]) {
 					items[steps[m].first] = items[steps[m].first] + listOf(new)
 				} else {
 					items[steps[m].second] = items[steps[m].second] + listOf(new)
@@ -72,15 +73,15 @@ private fun part1() {
 }
 
 
-private fun part2() {
+private fun part2() = start{
 	var data = getLines(2022_11).splitOnEmpty()
 
-	var items = data.map { it[1].longs().map { it } }.toMutableList()
-	var opp = data.map { it[2].contains('+') to it[2].getLong() }
-	var test = data.map { it[3].long() }
-	var steps = data.map { it[4].int() to it[5].int() }
+	var items = data.map { it[1].sints().map { it } }.mut()
+	var opp = data.map { it[2].contains('+') to it[2].getSint() }
+	var test = data.map { it[3].sint() }
+	var steps = data.map { it[4].sint() to it[5].sint() }
 
-	var action = items.map { 0L }.toMutableList()
+	var action = items.map { 0.s }.toMutableList()
 
 	repeat(10000) {
 		for (m in items.indices) {
@@ -93,9 +94,9 @@ private fun part2() {
 				} else {
 					item * ob
 				}
-				new %= 2L * 3L * 5L * 7L * 11L * 13L * 17L * 19L
+				new %= 2L * 3L * 5L * 7L * 11L * 13L * 17L * 19L.s
 //				new /= 3
-				if ((new % test[m]) == 0L) {
+				if (new divBy test[m]) {
 					items[steps[m].first] = items[steps[m].first] + listOf(new)
 				} else {
 					items[steps[m].second] = items[steps[m].second] + listOf(new)
@@ -105,7 +106,7 @@ private fun part2() {
 			items[m] = listOf()
 		}
 
-		if (it % 1000 == 0) {
+		if (it divBy 1000) {
 			it.log()
 		}
 	}

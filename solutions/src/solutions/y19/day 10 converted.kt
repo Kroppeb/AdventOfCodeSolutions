@@ -4,6 +4,8 @@ package solutions.solutions.y19.d10c
 
 
 import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.grid.StrictPointGrid
+import me.kroppeb.aoc.helpers.grid.entityGrid
 import me.kroppeb.aoc.helpers.point.Point
 import kotlin.math.*
 

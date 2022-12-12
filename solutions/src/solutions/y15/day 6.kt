@@ -12,6 +12,7 @@ import kotlin.math.*
 import me.kroppeb.aoc.helpers.Clock
 
 import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.grid.mutableGrid
 import me.kroppeb.aoc.helpers.point.toB
 import me.kroppeb.aoc.helpers.point.toP
 

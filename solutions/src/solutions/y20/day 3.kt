@@ -3,6 +3,7 @@
 package solutions.solutions.y20.d03
 
 import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.grid.grid
 
 import me.kroppeb.aoc.helpers.point.toP
 

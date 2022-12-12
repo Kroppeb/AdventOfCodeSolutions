@@ -6,6 +6,7 @@ import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.point.Point
 import me.kroppeb.aoc.helpers.point.toP
 import kotlinx.coroutines.runBlocking
+import me.kroppeb.aoc.helpers.grid.entityGrid
 import java.util.*
 import java.util.ArrayDeque
 

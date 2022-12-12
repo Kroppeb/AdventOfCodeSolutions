@@ -4,6 +4,9 @@ package solutions.y20.d11c
 
 
 import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.grid.grid
+import me.kroppeb.aoc.helpers.grid.map
+import me.kroppeb.aoc.helpers.grid.mapIndexed
 
 private val xxxxx = Clock(6, 3);
 

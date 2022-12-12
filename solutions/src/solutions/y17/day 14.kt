@@ -14,11 +14,9 @@ import kotlin.math.*
  */
 
 import me.kroppeb.aoc.helpers.collections.*
-import me.kroppeb.aoc.helpers.graph.*
 
 import me.kroppeb.aoc.helpers.*
-import itertools.*
-import kotlin.math.*
+import me.kroppeb.aoc.helpers.grid.grid
 
 
 private val xxxxx = Clock(6, 3);

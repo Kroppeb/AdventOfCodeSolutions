@@ -12,6 +12,10 @@ import kotlin.math.*
 import me.kroppeb.aoc.helpers.graph.bfs
 
 import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.grid.SimpleGrid
+import me.kroppeb.aoc.helpers.grid.forEachIndexed
+import me.kroppeb.aoc.helpers.grid.grid
+import me.kroppeb.aoc.helpers.grid.map
 import me.kroppeb.aoc.helpers.point.Point
 import java.util.Comparator.comparing
 import kotlin.math.*

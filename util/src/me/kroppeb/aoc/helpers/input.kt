@@ -1,8 +1,12 @@
 package me.kroppeb.aoc.helpers
 
+import me.kroppeb.aoc.helpers.grid.SimpleGrid
+import me.kroppeb.aoc.helpers.grid.grid
 import me.kroppeb.aoc.helpers.point.Point
 import me.kroppeb.aoc.helpers.point.Point3D
 import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.sint.Sint
+import me.kroppeb.aoc.helpers.sint.s
 
 private val regexSusInt = Regex("""-?\d+-\d+""")
 private val regexInt = Regex("""-?\d+""")
@@ -169,6 +173,8 @@ fun Iterable<Int>.point3D() = this.getPoint3D()!!
 
 fun String.getInt() = regexInt.find(this)?.value?.toInt()
 fun String.getPosInt() = regexPosInt.find(this)?.value?.toInt()
+fun String.getSint() = regexInt.find(this)?.value?.toLong()?.s
+fun String.getPosSint() = regexPosInt.find(this)?.value?.toLong()?.s
 fun String.getLong() = regexInt.find(this)?.value?.toLong()
 fun String.getPosLong() = regexPosInt.find(this)?.value?.toLong()
 fun String.getDigit() = regexDigit.find(this)?.value?.toInt()
@@ -179,6 +185,7 @@ fun String.getAlphaNum() = regexAlphaNum.find(this)?.value
 fun String.getPoint() = getInts().getPoint()
 fun String.getPoint3D() = getInts().getPoint3D()
 
+@Deprecated("use getSints() instead")
 fun String.getInts(): List<Int> {
 	if (!hasWarnedAboutSusInt && regexSusInt.containsMatchIn(this)){
 		System.err.println("Warning: detected sus int separation pattern. Maybe you need PosInts instead?")
@@ -187,7 +194,22 @@ fun String.getInts(): List<Int> {
 	return regexInt.findAll(this).map { it.value.toInt() }.toList()
 }
 fun String.getPosInts() = regexPosInt.findAll(this).map { it.value.toInt() }.toList()
-fun String.getLongs() = regexInt.findAll(this).map { it.value.toLong() }.toList()
+
+fun String.getSints(): List<Sint> {
+	if (!hasWarnedAboutSusInt && regexSusInt.containsMatchIn(this)){
+		System.err.println("Warning: detected sus int separation pattern. Maybe you need PosInts instead?")
+		hasWarnedAboutSusInt = true
+	}
+	return regexInt.findAll(this).map { it.value.toLong().s }.toList()
+}
+fun String.getPosSints() = regexPosInt.findAll(this).map { it.value.toLong().s }.toList()
+fun String.getLongs(): List<Long> {
+	if (!hasWarnedAboutSusInt && regexSusInt.containsMatchIn(this)){
+		System.err.println("Warning: detected sus int separation pattern. Maybe you need PosInts instead?")
+		hasWarnedAboutSusInt = true
+	}
+	return regexInt.findAll(this).map { it.value.toLong() }.toList()
+}
 fun String.getPosLongs() = regexPosInt.findAll(this).map { it.value.toLong() }.toList()
 fun String.getDigits() = regexDigit.findAll(this).map { it.value.toInt() }.toList()
 fun String.getDoubles() = regexFloat.findAll(this).map { it.value.toDouble() }.toList()
@@ -199,6 +221,8 @@ fun String.getPoints3D() = getInts().chunked(3).filter{it.size == 3}.map{it.poin
 
 fun String.int(): Int = getInt()!!
 fun String.posInt(): Int = getPosInt()!!
+fun String.sint(): Sint = getSint()!!
+fun String.posSint(): Sint = getPosSint()!!
 fun String.long(): Long = getLong()!!
 fun String.posLong(): Long = getPosLong()!!
 fun String.digit(): Int = getDigit()!!
@@ -209,8 +233,11 @@ fun String.alphaNum(): String = getAlphaNum()!!
 fun String.point(): Point = getPoint()!!
 fun String.point3D(): Point3D = getPoint3D()!!
 
+@Deprecated("use sints() instead", )
 fun String.ints(): List<Int> = getInts()
 fun String.posInts(): List<Int> = getPosInts()
+fun String.sints(): List<Sint> = getSints()
+fun String.posSints(): List<Sint> = getPosSints()
 fun String.longs(): List<Long> = getLongs()
 fun String.posLongs(): List<Long> = getPosLongs()
 fun String.digits(): List<Int> = getDigits()
@@ -223,6 +250,8 @@ fun String.points3D(): List<Point3D> = getPoints3D()
 
 fun Iterable<String>.int():List<Int> = map{it.int()}
 fun Iterable<String>.posInt():List<Int> = map{it.posInt()}
+fun Iterable<String>.sint():List<Sint> = map{it.sint()}
+fun Iterable<String>.posSint():List<Sint> = map{it.posSint()}
 fun Iterable<String>.long():List<Long> = map{it.long()}
 fun Iterable<String>.posLong():List<Long> = map{it.posLong()}
 fun Iterable<String>.digit():List<Int> = map{it.digit()}
@@ -235,6 +264,8 @@ fun Iterable<String>.point3D():List<Point3D> = map{it.point3D()}
 
 fun Iterable<String>.ints(): List<List<Int>> = map{it.ints()}
 fun Iterable<String>.posInts(): List<List<Int>> = map{it.posInts()}
+fun Iterable<String>.sints(): List<List<Sint>> = map{it.sints()}
+fun Iterable<String>.posSints(): List<List<Sint>> = map{it.posSints()}
 fun Iterable<String>.longs(): List<List<Long>> = map{it.longs()}
 fun Iterable<String>.posLongs(): List<List<Long>> = map{it.posLongs()}
 fun Iterable<String>.digits(): List<List<Int>> = map{it.digits()}
@@ -248,6 +279,8 @@ fun Iterable<String>.points3D(): List<List<Point3D>> = map{it.points3D()}
 
 @JvmName("int2") fun Iterable<Iterable<String>>.int():List<List<Int>> = map{it.int()}
 @JvmName("posInt2") fun Iterable<Iterable<String>>.posInt():List<List<Int>> = map{it.posInt()}
+@JvmName("sint2") fun Iterable<Iterable<String>>.sint():List<List<Sint>> = map{it.sint()}
+@JvmName("posSint2") fun Iterable<Iterable<String>>.posSint():List<List<Sint>> = map{it.posSint()}
 @JvmName("long2") fun Iterable<Iterable<String>>.long():List<List<Long>> = map{it.long()}
 @JvmName("posLong2") fun Iterable<Iterable<String>>.posLong():List<List<Long>> = map{it.posLong()}
 @JvmName("digit2") fun Iterable<Iterable<String>>.digit():List<List<Int>> = map{it.digit()}
@@ -260,6 +293,8 @@ fun Iterable<String>.points3D(): List<List<Point3D>> = map{it.points3D()}
 
 @JvmName("ints2") fun Iterable<Iterable<String>>.ints():List<List<List<Int>>> = map{it.ints()}
 @JvmName("posInts2") fun Iterable<Iterable<String>>.posInts():List<List<List<Int>>> = map{it.posInts()}
+@JvmName("sints2") fun Iterable<Iterable<String>>.sints():List<List<List<Sint>>> = map{it.sints()}
+@JvmName("posSints2") fun Iterable<Iterable<String>>.posSints():List<List<List<Sint>>> = map{it.posSints()}
 @JvmName("longs2") fun Iterable<Iterable<String>>.longs():List<List<List<Long>>> = map{it.longs()}
 @JvmName("posLongs2") fun Iterable<Iterable<String>>.posLongs():List<List<List<Long>>> = map{it.posLongs()}
 @JvmName("digits2") fun Iterable<Iterable<String>>.digits():List<List<List<Int>>> = map{it.digits()}

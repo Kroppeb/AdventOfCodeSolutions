@@ -1,4 +1,4 @@
-package me.kroppeb.aoc.helpers
+package me.kroppeb.aoc.helpers.grid
 
 import me.kroppeb.aoc.helpers.point.Bounds
 import me.kroppeb.aoc.helpers.point.Point

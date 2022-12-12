@@ -1,9 +1,6 @@
 package me.kroppeb.aoc.helpers.point
 
-import me.kroppeb.aoc.helpers.Clock
-import me.kroppeb.aoc.helpers.max
-import me.kroppeb.aoc.helpers.min
-import me.kroppeb.aoc.helpers.rem
+import me.kroppeb.aoc.helpers.*
 
 /**
  * lower and higher are inclusive
@@ -138,7 +135,7 @@ infix fun Point.toB(other: Point): Bounds = Bounds(
 )
 
 operator fun Point.rangeTo(other: Point) = this toB other
-operator fun Point.rem(bounds: IBounds) = (x % bounds.xs) toP (y % bounds.ys)
+operator fun Point.rem(bounds: IBounds) = x % bounds.xs  toP y % bounds.ys
 
 fun Iterable<Point>.bounds(): Bounds {
 	val bounds = MutableBounds(first())

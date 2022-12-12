@@ -7,7 +7,7 @@ import me.kroppeb.aoc.helpers.getLines
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import me.kroppeb.aoc.helpers.entityGrid
+import me.kroppeb.aoc.helpers.grid.entityGrid
 import java.util.*
 import kotlin.collections.List
 import kotlin.collections.MutableSet

@@ -5,6 +5,7 @@ package solutions.y20.d17
 import me.kroppeb.aoc.helpers.Clock
 
 import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.grid.entityGrid
 import me.kroppeb.aoc.helpers.point.Point
 import me.kroppeb.aoc.helpers.point.Point3D
 import me.kroppeb.aoc.helpers.point.toB

@@ -21,7 +21,6 @@ import java.awt.datatransfer.StringSelection
 
 import me.kroppeb.aoc.helpers.collections.*
 import me.kroppeb.aoc.helpers.graph.*
-
 import me.kroppeb.aoc.helpers.*
 import itertools.*
 import kotlin.math.*

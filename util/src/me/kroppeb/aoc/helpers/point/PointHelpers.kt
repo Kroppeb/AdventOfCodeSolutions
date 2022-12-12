@@ -4,9 +4,17 @@ import me.kroppeb.aoc.helpers.Clock.down
 import me.kroppeb.aoc.helpers.Clock.left
 import me.kroppeb.aoc.helpers.Clock.right
 import me.kroppeb.aoc.helpers.Clock.up
+import me.kroppeb.aoc.helpers.sint.Sint
 
 infix fun Int.toP(y: Int): Point = Point(this, y)
 infix fun Point.toP(z: Int): Point3D = Point3D(x, y, z)
+
+// TODO: make Point use sint instead
+infix fun Int.toP(y: Sint): Point = this toP y.i
+infix fun Sint.toP(y: Int): Point = this.i toP y
+infix fun Sint.toP(y: Sint): Point = this.i toP y.i
+infix fun Point.toP(y: Sint): Point3D = this toP y.i
+
 
 
 fun Char.toPoint(): Point = when (this.toUpperCase()) {

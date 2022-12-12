@@ -16,6 +16,9 @@ import kotlin.math.*
 
 
 import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.grid.grid
+import me.kroppeb.aoc.helpers.grid.map
+import me.kroppeb.aoc.helpers.grid.mapIndexed
 import me.kroppeb.aoc.helpers.point.rem
 
 

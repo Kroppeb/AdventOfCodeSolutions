@@ -92,3 +92,5 @@ note: I want to add thes helpers
 
 ## Day 11
 67/162; points: 34, 32th place
+* why did I not realize I'd need to use modulo
+* [x] Sint (Safe integer) 

@@ -1,4 +1,4 @@
-package me.kroppeb.aoc.helpers
+package me.kroppeb.aoc.helpers.grid
 
 import me.kroppeb.aoc.helpers.point.Bounds
 import me.kroppeb.aoc.helpers.point.Point
@@ -19,6 +19,6 @@ interface ResizeableGrid<out T> : Grid<T> {
 	fun contract(x:Int=0, y:Int=0)
 }
 
-interface MutableGrid<T> : Grid<T>{
+interface MutableGrid<T> : Grid<T> {
 	operator fun set(index: Point, item:T)
 }

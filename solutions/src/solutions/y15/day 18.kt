@@ -11,6 +11,10 @@ import kotlin.math.*
 
 
 import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.grid.grid
+import me.kroppeb.aoc.helpers.grid.mapIndexed
+import me.kroppeb.aoc.helpers.grid.mutable
+import me.kroppeb.aoc.helpers.grid.mutableGrid
 
 
 private val xxxxx = Clock(6, 3);

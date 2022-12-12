@@ -5,6 +5,9 @@ import me.kroppeb.aoc.helpers.collections.defaultMapOf
 import me.kroppeb.aoc.helpers.graph.bfs
 
 import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.grid.SimpleGrid
+import me.kroppeb.aoc.helpers.grid.entityGrid
+import me.kroppeb.aoc.helpers.grid.grid
 import me.kroppeb.aoc.helpers.point.Point
 import kotlin.collections.*
 
