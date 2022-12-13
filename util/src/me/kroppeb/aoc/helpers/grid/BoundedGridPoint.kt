@@ -71,4 +71,8 @@ data class BoundedGridPoint<out T>(val p: Point, val v: T, val g: SimpleGrid<T>)
 	fun souths() = p.souths().takeWhile { it in b }.map{g.getBp(it)}.toList()
 	fun easts() = p.easts().takeWhile { it in b }.map{g.getBp(it)}.toList()
 	fun wests() = p.wests().takeWhile { it in b }.map{g.getBp(it)}.toList()
+
+	override fun toString(): String {
+		return "BoundedGridPoint(p=$p, v=$v)"
+	}
 }

@@ -93,4 +93,14 @@ note: I want to add thes helpers
 ## Day 11
 67/162; points: 34, 32th place
 * why did I not realize I'd need to use modulo
-* [x] Sint (Safe integer) 
+* [x] Sint (Safe integer)
+
+## Day 12
+7/17; points: 178, 25th place
+* =| why is the difference between part 1 and 2 only 1 :whyy:
+* [x] make bfs and family versions that take in a list of start nodes :|
+* [ ] dijkstra needs sint overloads
+
+also:
+* [ ] move points to sint
+* [ ] make BoundedGridPoint + Point and all those things?

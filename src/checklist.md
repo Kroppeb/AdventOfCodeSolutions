@@ -5,13 +5,13 @@
 * read reflections 
 
 ## Early
-* [x] Reflection of previous day
+* [ ] Reflection of previous day
 * [ ] Git commit previous day
 * [ ] Validate that any changes in utils do not cause the building to fail
-* [x] Make sure we have a file to work in
-* [x] Make sure the `Clock` is set right
-* [x] Add imports
-* [x] Test download command
+* [ ] Make sure we have a file to work in
+* [ ] Make sure the `Clock` is set right
+* [ ] Add imports
+* [ ] Test download command
 * [ ] Open obs
  
 

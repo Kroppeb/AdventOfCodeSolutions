@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y22
+package solutions.y22.d12
 
 
 /*
@@ -41,24 +41,42 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(12).e().grid()
+	var data = getLines(2022_12).e().grid()
 
-	fun h(p: Char): Char{
-		return when(p) {
+	fun h(p: Char): Char {
+		return when (p) {
 			'S' -> 'a'
 			'E' -> 'z'
 			else -> p
 		}
 	}
 
-	bfs(-1 toP -1, {it.x != -1 && data[it] == 'E'}) { p ->
+	bfs(data.bounds.first { data[it] == 'S' }, { data[it] == 'E' }) { p ->
+		data.getBp(p).getQuadNeighbours().filter { h(data[p]) - h(it.v) >= -1 }.map { it.p }
+	} log 0
+
+
+}
+
+
+private fun part2() {
+	var data = getLines(2022_12).e().grid()
+
+	fun h(p: Char): Char {
+		return when (p) {
+			'S' -> 'a'
+			'E' -> 'z'
+			else -> p
+		}
+	}
+
+	bfs(-1 toP -1, { it.x != -1 && data[it] == 'E' }) { p ->
 		if (p.x == -1) {
-			data.bounds.filter{data[it] == 'a'}
+			data.bounds.filter { data[it] == 'a' }
 		} else {
 			data.getBp(p).getQuadNeighbours().filter { h(data[p]) - h(it.v) >= -1 }.map { it.p }
 		}
-	} log 0
-
+	} log 0 // subtract 1 (intentionally off by 1)
 
 
 }
@@ -67,12 +85,13 @@ private fun part1() {
 fun main() {
 	println("Day 12: ")
 	part1()
+	part2()
 }
 
 
 private var _logIndex = 0
 private fun <T> T.log(): T = also { println("%03d %03d:\t\t%s".format(_logIndex / 1000, _logIndex++ % 1000, this)) }
-	.also { setClipboard(it.toString()) }
+//	.also { setClipboard(it.toString()) }
 
 private infix fun <T> T.log(_ignored: Any?): T = this.log()
 private fun setClipboard(s: String) {
