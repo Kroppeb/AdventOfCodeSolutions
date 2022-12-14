@@ -104,3 +104,7 @@ note: I want to add thes helpers
 also:
 * [ ] move points to sint
 * [ ] make BoundedGridPoint + Point and all those things?
+
+## Day 13
+95/67; points: 40, 30h place
+* JSON? JSON??? since when are we doing JSON???

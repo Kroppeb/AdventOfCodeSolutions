@@ -5,7 +5,7 @@
 * read reflections 
 
 ## Early
-* [ ] Reflection of previous day
+* [x] Reflection of previous day
 * [ ] Git commit previous day
 * [ ] Validate that any changes in utils do not cause the building to fail
 * [ ] Make sure we have a file to work in

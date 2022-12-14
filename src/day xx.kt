@@ -19,6 +19,7 @@ import kotlin.math.*
  */
 
 
+import com.beust.klaxon.Parser
 import java.awt.Toolkit
 import java.awt.datatransfer.Clipboard
 import java.awt.datatransfer.StringSelection
@@ -41,31 +42,13 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(12).e().grid()
-
-	fun h(p: Char): Char{
-		return when(p) {
-			'S' -> 'a'
-			'E' -> 'z'
-			else -> p
-		}
-	}
-
-	bfs(-1 toP -1, {it.x != -1 && data[it] == 'E'}) { p ->
-		if (p.x == -1) {
-			data.bounds.filter{data[it] == 'a'}
-		} else {
-			data.getBp(p).getQuadNeighbours().filter { h(data[p]) - h(it.v) >= -1 }.map { it.p }
-		}
-	} log 0
-
-
+	var data = getLines(14) log 0
 
 }
 
 
 fun main() {
-	println("Day 12: ")
+	println("Day 14: ")
 	part1()
 }
 
