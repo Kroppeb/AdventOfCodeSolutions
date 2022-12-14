@@ -18,6 +18,30 @@ data class Point(val x: Int, val y: Int) : PointNI<Point> {
 	val south get() = down
 	val west get() = left
 
+	val r get() = right
+	val d get() = down
+	val l get() = left
+	val u get() = up
+
+	val n get() = north
+	val e get() = east
+	val s get() = south
+	val w get() = west
+
+	val dr get() = down.right
+	val dl get() = down.left
+	val ur get() = up.right
+	val ul get() = up.left
+	val rd get() = right.down
+	val ru get() = right.up
+	val ld get() = left.down
+	val lu get() = left.up
+
+	val ne get() = north.east
+	val se get() = south.east
+	val sw get() = south.west
+	val nw get() = north.west
+
 
 	fun rotateClock() = Clock.right * Clock.up.dot(this) + Clock.up * Clock.left.dot(this)
 	fun rotateAntiClock() = -rotateClock()

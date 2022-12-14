@@ -44,7 +44,69 @@ private val xxxxx = Clock(3, 6);
 
 
 private fun part1() {
-	var data = getLines(14).points()
+	var data = getLines(2022_14).points()
+
+	val walls = msop()
+
+	for (line in data) {
+		for ((s, e) in line.zipWithNext()) {
+			walls += s toL e
+		}
+	}
+
+	val sand = msop()
+
+	o@ while (500 toP 0 !in sand) {
+
+		var s = 500 toP 0
+		while (true) {
+
+			if (s.y > 5000) {
+				break@o
+			}
+			if (s.down !in walls && s.down !in sand) {
+				s = s.down
+				continue
+			}
+
+			if (s.left.down !in walls && s.left.down !in sand) {
+				s = s.left.down
+				continue
+			}
+
+			if (s.right.down !in walls && s.right.down !in sand) {
+				s = s.right.down
+				continue
+			}
+
+			break
+		}
+
+
+
+		sand += s
+	}
+
+//	val p = walls.bounds()
+//	p.ys.forEach { y ->
+//		p.xs.forEach { x ->
+//			if (x toP y in walls) {
+//				print('#')
+//			} else if (x toP y in sand) {
+//				print('o')
+//			} else {
+//				print('.')
+//			}
+//		}
+//		println()
+//	}
+	sand.size log 1
+
+}
+
+
+private fun part2() {
+	var data = getLines(2022_14).points()
 
 	val walls = msop()
 
@@ -112,12 +174,13 @@ private fun part1() {
 fun main() {
 	println("Day 14: ")
 	part1()
+	part2()
 }
 
 
 private var _logIndex = 0
 private fun <T> T.log(): T = also { println("%03d %03d:\t\t%s".format(_logIndex / 1000, _logIndex++ % 1000, this)) }
-	.also { setClipboard(it.toString()) }
+	// .also { setClipboard(it.toString()) }
 
 private infix fun <T> T.log(_ignored: Any?): T = this.log()
 private fun setClipboard(s: String) {
