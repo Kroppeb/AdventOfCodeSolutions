@@ -23,9 +23,9 @@ private fun part1() {
 
 	repeat(10) {
 		data = data.mapIndexed { p, c ->  when(c) {
-			'.' -> if (p.getOctNeighbours().filter{it in data.bounds}.count{data[it] == '|'} >= 3) '|' else '.'
-			'|' -> if (p.getOctNeighbours().filter{it in data.bounds}.count{data[it] == '#'} >= 3) '#' else '|'
-			'#' -> if (p.getOctNeighbours().filter{it in data.bounds}.count{data[it] == '#'} >= 1 && p.getOctNeighbours().filter{it in data.bounds}.count{data[it] == '|'} >= 1) '#' else '.'
+			'.' -> if (p.getOctNeighbours().filter{it in data.boundsI}.count{data[it] == '|'} >= 3) '|' else '.'
+			'|' -> if (p.getOctNeighbours().filter{it in data.boundsI}.count{data[it] == '#'} >= 3) '#' else '|'
+			'#' -> if (p.getOctNeighbours().filter{it in data.boundsI}.count{data[it] == '#'} >= 1 && p.getOctNeighbours().filter{it in data.boundsI}.count{data[it] == '|'} >= 1) '#' else '.'
 			else -> error("u")
 		} }
 	}
@@ -43,9 +43,9 @@ private fun part2() {
 	loop{i ->
 		val index = i + 1
 		data = data.mapIndexed { p, c ->  when(c) {
-			'.' -> if (p.getOctNeighbours().filter{it in data.bounds}.count{data[it] == '|'} >= 3) '|' else '.'
-			'|' -> if (p.getOctNeighbours().filter{it in data.bounds}.count{data[it] == '#'} >= 3) '#' else '|'
-			'#' -> if (p.getOctNeighbours().filter{it in data.bounds}.count{data[it] == '#'} >= 1 && p.getOctNeighbours().filter{it in data.bounds}.count{data[it] == '|'} >= 1) '#' else '.'
+			'.' -> if (p.getOctNeighbours().filter{it in data.boundsI}.count{data[it] == '|'} >= 3) '|' else '.'
+			'|' -> if (p.getOctNeighbours().filter{it in data.boundsI}.count{data[it] == '#'} >= 3) '#' else '|'
+			'#' -> if (p.getOctNeighbours().filter{it in data.boundsI}.count{data[it] == '#'} >= 1 && p.getOctNeighbours().filter{it in data.boundsI}.count{data[it] == '|'} >= 1) '#' else '.'
 			else -> error("u")
 		} }
 

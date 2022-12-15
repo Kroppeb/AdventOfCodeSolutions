@@ -18,7 +18,7 @@ import me.kroppeb.aoc.helpers.graph.*
 
 import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.point.toB
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 import java.security.MessageDigest
 
 
@@ -27,9 +27,9 @@ private val xxxxx = Clock(6, 3);
 private fun part1() {
 	var data = getLines(2016_17).first()
 
-	val bounds = 0 toP 0 toB (3 toP 3)
+	val bounds = 0 toPI 0 toB (3 toPI 3)
 
-	bfs(0 toP 0 to data, { (a, _) -> a.x == 3 && a.y == 3 }) { (p, d) ->
+	bfs(0 toPI 0 to data, { (a, _) -> a.x == 3 && a.y == 3 }) { (p, d) ->
 		val hash = md5(d)
 		buildList {
 			if (p.up in bounds && (hash[0].toInt() and 0xf0 in 0xb0..0xff)){
@@ -52,9 +52,9 @@ private fun part1() {
 private fun part2() {
 	var data = getLines(2016_17).first()
 
-	val bounds = 0 toP 0 toB (3 toP 3)
+	val bounds = 0 toPI 0 toB (3 toPI 3)
 
-	bfsLong(0 toP 0 to data, { (a, _) -> a.x == 3 && a.y == 3 }) { (p, d) ->
+	bfsLong(0 toPI 0 to data, { (a, _) -> a.x == 3 && a.y == 3 }) { (p, d) ->
 		val hash = md5(d)
 		buildList {
 			if (p.up in bounds && (hash[0].toInt() and 0xf0 in 0xb0..0xff)){

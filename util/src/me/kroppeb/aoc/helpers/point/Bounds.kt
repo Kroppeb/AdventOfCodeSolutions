@@ -1,6 +1,7 @@
 package me.kroppeb.aoc.helpers.point
 
 import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.sint.*
 
 /**
  * lower and higher are inclusive
@@ -9,6 +10,7 @@ abstract class IBounds : Iterable<Point> {
 	abstract val lower: Point
 	abstract val higher: Point
 	operator fun contains(point: Point): Boolean = point.x in xs && point.y in ys
+	operator fun contains(point: PointI): Boolean = point.sint in this
 
 	val isSquare: Boolean get() = (higher.x - lower.x) == (higher.y - lower.y)
 	val ne
@@ -50,8 +52,8 @@ abstract class IBounds : Iterable<Point> {
 	val area get() = xSize * ySize
 
 	fun exactCenter() = (lower + higher).also {
-		require(it.x % 2 == 0)
-		require(it.y % 2 == 0)
+		require(it.x divBy 2)
+		require(it.y divBy 2)
 	} / 2
 
 	fun leftEdge() = this.upperLeft toL this.lowerLeft
@@ -66,16 +68,26 @@ abstract class IBounds : Iterable<Point> {
 }
 
 data class Bounds(override val lower: Point, override val higher: Point) : IBounds() {
-	constructor(xs: IntRange, ys: IntRange) : this(xs.first toP ys.first, xs.last toP ys.last)
+	constructor(lower: PointI, higher: PointI) : this(lower.sint, higher.sint)
+	constructor(xs: IntRange, ys: IntRange) : this(xs.first.s toP ys.first.s, xs.last.s toP ys.last.s)
+	constructor(xs: SintRange, ys: SintRange) : this(xs.first toP ys.first, xs.last toP ys.last)
+
 
 
 	/**
 	 * ∀x:x in this && x in other <-> x in this.intersect(other)
 	 */
-	fun intersect(other: Bounds): Bounds = Bounds(
+	fun intersect(other: IBounds): Bounds = Bounds(
 		this.lower.max(other.lower),
 		this.higher.min(other.higher)
 	)
+
+	fun intersect(other: IBoundsI): Bounds = Bounds(
+		this.lower.max(other.lower.sint),
+		this.higher.min(other.higher.sint)
+	)
+
+
 
 	/**
 	 * ∀x:x in this || x in other -> x in this.merge(other)
@@ -84,9 +96,14 @@ data class Bounds(override val lower: Point, override val higher: Point) : IBoun
 	 * 	as small as possible
 	 *
 	 */
-	fun merge(other: Bounds): Bounds = Bounds(
+	fun merge(other: IBounds): Bounds = Bounds(
 		this.lower.min(other.lower),
 		this.higher.max(other.higher)
+	)
+
+	fun merge(other: IBoundsI): Bounds = Bounds(
+		this.lower.min(other.lower.sint),
+		this.higher.max(other.higher.sint)
 	)
 
 	companion object {
@@ -95,8 +112,8 @@ data class Bounds(override val lower: Point, override val higher: Point) : IBoun
 		∀x Bound: x.intersect(INFINITE) == x
 		∀x Bound: x.merge(INFINITE) == INFINITE
 		 */
-		val INFINITE = (Int.MIN_VALUE toP Int.MIN_VALUE) toB (Int.MAX_VALUE toP Int.MAX_VALUE)
-		val EMPTY = Bounds(0 toP 0, -1 toP -1)
+		val INFINITE = (Int.MIN_VALUE toPI Int.MIN_VALUE) toB (Int.MAX_VALUE toPI Int.MAX_VALUE)
+		val EMPTY = Bounds(0 toPI 0, -1 toPI -1)
 	}
 }
 
@@ -110,8 +127,8 @@ class MutableBounds : IBounds {
 	}
 
 	constructor() : super() {
-		this.lower = Int.MAX_VALUE toP Int.MAX_VALUE
-		this.higher = Int.MIN_VALUE toP Int.MIN_VALUE
+		this.lower = Sint.MAX_VALUE toP Sint.MAX_VALUE
+		this.higher = Sint.MIN_VALUE toP Sint.MIN_VALUE
 	}
 
 	fun add(point: Point) {
@@ -124,9 +141,9 @@ class MutableBounds : IBounds {
 		return Bounds(lower, higher)
 	}
 
-	override val xSize: Int
+	override val xSize: Sint
 		get() = super.xSize.coerceAtLeast(0)
-	override val ySize: Int
+	override val ySize: Sint
 		get() = super.ySize.coerceAtLeast(0)
 }
 
@@ -138,7 +155,40 @@ operator fun Point.rangeTo(other: Point) = this toB other
 operator fun Point.rem(bounds: IBounds) = x % bounds.xs  toP y % bounds.ys
 
 fun Iterable<Point>.bounds(): Bounds {
-	val bounds = MutableBounds(first())
+	val bounds = MutableBounds()
 	forEach { bounds.add(it) }
 	return bounds.toBounds()
+}
+
+
+
+@OptIn(kotlin.experimental.ExperimentalTypeInference::class)
+@OverloadResolutionByLambdaReturnType
+@JvmName("printString")
+inline fun IBounds.print(transform: (Point) -> String) {
+	if (Clock.nY != 0) {
+		val yys = if (Clock.nY == -1) ys else ys.reversed()
+		val xxs = if (Clock.eX == 1) xs else xs.reversed()
+		for (y in yys) {
+			for (x in xxs) {
+				print(transform(x toP y))
+			}
+			println()
+		}
+	} else {
+		val xxs = if (Clock.nX == -1) xs else xs.reversed()
+		val yys = if (Clock.eY == 1) ys else ys.reversed()
+		for (x in xxs) {
+			for (y in yys) {
+				print(transform(x toP y))
+			}
+			println()
+		}
+	}
+}
+
+@OptIn(kotlin.experimental.ExperimentalTypeInference::class)
+@OverloadResolutionByLambdaReturnType
+inline fun IBounds.print(transform: (Point) -> Char) {
+	print { "" + transform(it) }
 }

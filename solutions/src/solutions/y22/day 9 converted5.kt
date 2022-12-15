@@ -23,8 +23,8 @@ import java.awt.datatransfer.StringSelection
 import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.context.start
 import me.kroppeb.aoc.helpers.contextual.cumSum
-import me.kroppeb.aoc.helpers.point.toP
-import me.kroppeb.aoc.helpers.point.toPoint
+import me.kroppeb.aoc.helpers.point.*
+import me.kroppeb.aoc.helpers.sint.*
 
 
 private val xxxxx = Clock(6, 3);
@@ -40,8 +40,8 @@ private fun part1() = start{
 
 private fun part2() = start{
 	getLines(2022_09)
-		.rleDecode({ it[0].toPoint() }, { it.int() })
-		.cumSum(0 toP 0)
+		.rleDecode({ it[0].toPointI() }, { it.int() })
+		.cumSum(0 toPI 0)
 		.applyNTimes(9){
 			it.scan { t, h -> if (t.chebyshevDistTo(h) > 1) t + (h - t).sign() else t }
 		}

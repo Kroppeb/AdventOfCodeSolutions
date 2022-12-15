@@ -11,8 +11,8 @@ import kotlin.math.*
 
 import me.kroppeb.aoc.helpers.Clock
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.Point3D
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.Point3DI
+import me.kroppeb.aoc.helpers.point.toPI
 
 private val xxxxx = Clock(6, 3);
 
@@ -23,7 +23,7 @@ private val xxxxx = Clock(6, 3);
 private fun part1() {
     var data = getLines(2021_22).map { it ->
         val v = it.ints().let { (x1, x2, y1, y2, z1, z2) ->
-            (x1 toP y1 toP z1) to (x2 toP y2 toP z2)
+            (x1 toPI y1 toPI z1) to (x2 toPI y2 toPI z2)
         }
 
         val s = it.split(" ").first() == "on"
@@ -34,7 +34,7 @@ private fun part1() {
     val cells = (-50..50).flatMap { x ->
         (-50..50).flatMap { y ->
             (-50..50).map { z ->
-                x toP y toP z to false
+                x toPI y toPI z to false
             }
         }
     }.toMap().toMutableMap()
@@ -57,7 +57,7 @@ private fun part1() {
 private fun part2() {
     var data = getLines(2021_22).map { it ->
         val v = it.ints().let { (x1, x2, y1, y2, z1, z2) ->
-            (x1 toP y1 toP z1) to (x2 toP y2 toP z2)
+            (x1 toPI y1 toPI z1) to (x2 toPI y2 toPI z2)
         }
 
         val s = it.split(" ").first() == "on"
@@ -65,7 +65,7 @@ private fun part2() {
         s to v
     }
 
-    var cells = listOf<Pair<Point3D, Point3D>>()
+    var cells = listOf<Pair<Point3DI, Point3DI>>()
 
 
     for ((s, d) in data) {
@@ -74,8 +74,8 @@ private fun part2() {
         cells = cells.flatMap { (start, stop) ->
             if (dStart.x in start.x..stop.x && (stop.y>=dStart.y && start.y <= dStop.y) && (stop.z>=dStart.z && start.z <= dStop.z)) {
                 listOf(
-                        start to (dStart.x - 1 toP stop.y toP stop.z),
-                        (dStart.x toP start.y toP start.z) to stop
+                        start to (dStart.x - 1 toPI stop.y toPI stop.z),
+                        (dStart.x toPI start.y toPI start.z) to stop
                 )
             } else {
                 listOf(start to stop)
@@ -83,8 +83,8 @@ private fun part2() {
         }.flatMap { (start, stop) ->
             if (dStop.x in start.x..stop.x && (stop.y>=dStart.y && start.y <= dStop.y) && (stop.z>=dStart.z && start.z <= dStop.z)) {
                 listOf(
-                        start to (dStop.x toP stop.y toP stop.z),
-                        (dStop.x + 1 toP start.y toP start.z) to stop
+                        start to (dStop.x toPI stop.y toPI stop.z),
+                        (dStop.x + 1 toPI start.y toPI start.z) to stop
                 )
             } else {
                 listOf(start to stop)
@@ -92,8 +92,8 @@ private fun part2() {
         }.flatMap { (start, stop) ->
             if (dStart.y in start.y..stop.y && (stop.x>=dStart.x && start.x <= dStop.x) && (stop.z>=dStart.z && start.z <= dStop.z)) {
                 listOf(
-                        start to (stop.x toP dStart.y - 1 toP stop.z),
-                        (start.x toP dStart.y toP start.z) to stop
+                        start to (stop.x toPI dStart.y - 1 toPI stop.z),
+                        (start.x toPI dStart.y toPI start.z) to stop
                 )
             } else {
                 listOf(start to stop)
@@ -101,8 +101,8 @@ private fun part2() {
         }.flatMap { (start, stop) ->
             if (dStop.y in start.y..stop.y && (stop.x>=dStart.x && start.x <= dStop.x) && (stop.z>=dStart.z && start.z <= dStop.z)) {
                 listOf(
-                        start to (stop.x toP dStop.y toP stop.z),
-                        (start.x toP dStop.y + 1 toP start.z) to stop
+                        start to (stop.x toPI dStop.y toPI stop.z),
+                        (start.x toPI dStop.y + 1 toPI start.z) to stop
                 )
             } else {
                 listOf(start to stop)
@@ -110,8 +110,8 @@ private fun part2() {
         }.flatMap { (start, stop) ->
             if (dStart.z in start.z..stop.z && (stop.x>=dStart.x && start.x <= dStop.x) && (stop.y>=dStart.y && start.y <= dStop.y)) {
                 listOf(
-                        start to (stop.x toP stop.y toP dStart.z - 1),
-                        (start.x toP start.y toP dStart.z) to stop
+                        start to (stop.x toPI stop.y toPI dStart.z - 1),
+                        (start.x toPI start.y toPI dStart.z) to stop
                 )
             } else {
                 listOf(start to stop)
@@ -119,8 +119,8 @@ private fun part2() {
         }.flatMap { (start, stop) ->
             if (dStop.z in start.z..stop.z && (stop.x>=dStart.x && start.x <= dStop.x) && (stop.y>=dStart.y && start.y <= dStop.y)) {
                 listOf(
-                        start to (stop.x toP stop.y toP dStop.z),
-                        (start.x toP start.y toP dStop.z + 1) to stop
+                        start to (stop.x toPI stop.y toPI dStop.z),
+                        (start.x toPI start.y toPI dStop.z + 1) to stop
                 )
             } else {
                 listOf(start to stop)

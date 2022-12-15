@@ -23,18 +23,10 @@ import java.awt.Toolkit
 import java.awt.datatransfer.Clipboard
 import java.awt.datatransfer.StringSelection
 
-import me.kroppeb.aoc.helpers.collections.*
-import me.kroppeb.aoc.helpers.context.*
-import me.kroppeb.aoc.helpers.contextual.*
 import me.kroppeb.aoc.helpers.graph.*
 import me.kroppeb.aoc.helpers.grid.*
-import me.kroppeb.aoc.helpers.sint.*
 import me.kroppeb.aoc.helpers.*
-import itertools.*
-import me.kroppeb.aoc.helpers.point.toP
-import java.util.Comparator
-import java.util.PriorityQueue
-import kotlin.math.*
+import me.kroppeb.aoc.helpers.point.toPI
 
 
 private val xxxxx = Clock(6, 3);
@@ -51,7 +43,7 @@ private fun part1() {
 		}
 	}
 
-	bfs(data.bounds.first { data[it] == 'S' }, { data[it] == 'E' }) { p ->
+	bfs(data.boundsI.first { data[it] == 'S' }, { data[it] == 'E' }) { p ->
 		data.getBp(p).getQuadNeighbours().filter { h(data[p]) - h(it.v) >= -1 }.map { it.p }
 	} log 0
 
@@ -70,9 +62,9 @@ private fun part2() {
 		}
 	}
 
-	bfs(-1 toP -1, { it.x != -1 && data[it] == 'E' }) { p ->
+	bfs(-1 toPI -1, { it.x != -1 && data[it] == 'E' }) { p ->
 		if (p.x == -1) {
-			data.bounds.filter { data[it] == 'a' }
+			data.boundsI.filter { data[it] == 'a' }
 		} else {
 			data.getBp(p).getQuadNeighbours().filter { h(data[p]) - h(it.v) >= -1 }.map { it.p }
 		}

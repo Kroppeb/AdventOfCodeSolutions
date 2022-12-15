@@ -21,8 +21,8 @@ import java.awt.datatransfer.StringSelection
 
 
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.toP
-import me.kroppeb.aoc.helpers.point.toPoint
+import me.kroppeb.aoc.helpers.point.toPI
+import me.kroppeb.aoc.helpers.point.toPointI
 
 
 private val xxxxx = Clock(6, 3);
@@ -30,25 +30,25 @@ private val xxxxx = Clock(6, 3);
 
 private fun part1() {
 	getLines(2022_09)
-		.rleDecode({ it[0].toPoint() }, { it.int() })
-		.scan(0 toP 0) { acc, pt -> acc + pt }
-		.scan(0 toP 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
+		.rleDecode({ it[0].toPointI() }, { it.int() })
+		.scan(0 toPI 0) { acc, pt -> acc + pt }
+		.scan(0 toPI 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
 		.distinct().size log 1
 }
 
 private fun part2() {
 	getLines(2022_09)
-		.rleDecode({ it[0].toPoint() }, { it.int() })
-		.scan(0 toP 0) { acc, pt -> acc + pt }
-		.scan(0 toP 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
-		.scan(0 toP 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
-		.scan(0 toP 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
-		.scan(0 toP 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
-		.scan(0 toP 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
-		.scan(0 toP 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
-		.scan(0 toP 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
-		.scan(0 toP 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
-		.scan(0 toP 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
+		.rleDecode({ it[0].toPointI() }, { it.int() })
+		.scan(0 toPI 0) { acc, pt -> acc + pt }
+		.scan(0 toPI 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
+		.scan(0 toPI 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
+		.scan(0 toPI 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
+		.scan(0 toPI 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
+		.scan(0 toPI 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
+		.scan(0 toPI 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
+		.scan(0 toPI 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
+		.scan(0 toPI 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
+		.scan(0 toPI 0) { acc, pt -> if (acc.chebyshevDistTo(pt) > 1) acc + (pt - acc).sign() else acc }
 		.distinct().size log 2
 }
 

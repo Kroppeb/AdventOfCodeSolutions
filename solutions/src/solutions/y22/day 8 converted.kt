@@ -30,11 +30,11 @@ private val xxxxx = Clock(6, 3);
 private fun part1() {
 	var data = getLines(2022_08).e().map2 { it - '0' }.grid()
 
-	val seen = msop()
+	val seen = msopi()
 
-	for (p in data.bounds.eastEdge()) {
+	for (p in data.boundsI.eastEdge()) {
 		var size = -1
-		for (x in p.westsInc().takeWhile{it in data.bounds}) {
+		for (x in p.westsInc().takeWhile{it in data.boundsI}) {
 			val u = data[x]
 			if (u > size) {
 				size = u
@@ -43,9 +43,9 @@ private fun part1() {
 		}
 	}
 
-	for (p in data.bounds.westEdge()) {
+	for (p in data.boundsI.westEdge()) {
 		var size = -1
-		for (x in p.eastsInc().takeWhile{it in data.bounds}) {
+		for (x in p.eastsInc().takeWhile{it in data.boundsI}) {
 			val u = data[x]
 			if (u > size) {
 				size = u
@@ -54,9 +54,9 @@ private fun part1() {
 		}
 	}
 
-	for (p in data.bounds.southEdge()) {
+	for (p in data.boundsI.southEdge()) {
 		var size = -1
-		for (x in p.northsInc().takeWhile{it in data.bounds}) {
+		for (x in p.northsInc().takeWhile{it in data.boundsI}) {
 			val u = data[x]
 			if (u > size) {
 				size = u
@@ -65,9 +65,9 @@ private fun part1() {
 		}
 	}
 
-	for (p in data.bounds.northEdge()) {
+	for (p in data.boundsI.northEdge()) {
 		var size = -1
-		for (x in p.southsInc().takeWhile{it in data.bounds}) {
+		for (x in p.southsInc().takeWhile{it in data.boundsI}) {
 			val u = data[x]
 			if (u > size) {
 				size = u

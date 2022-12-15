@@ -1,29 +1,29 @@
 package me.kroppeb.aoc.helpers.grid
 
-import me.kroppeb.aoc.helpers.point.Bounds
-import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.BoundsI
+import me.kroppeb.aoc.helpers.point.PointI
 import me.kroppeb.aoc.helpers.point.toB
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 
-class StrictPointGrid(override val bounds: Bounds, var points: Set<Point>) : StrictGrid<Boolean> {
-	override fun get(index: Point) = index in bounds && index in points
+class StrictPointGrid(override val boundsI: BoundsI, var points: Set<PointI>) : StrictGrid<Boolean> {
+	override fun get(index: PointI) = index in boundsI && index in points
 }
 
 inline fun <T> SimpleGrid<T>.entityGrid(predicate: (T) -> Boolean): StrictPointGrid {
-	val points = mutableSetOf<Point>()
+	val points = mutableSetOf<PointI>()
 	forEachIndexed { point, t -> if(predicate(t)) points.add(point) }
-	return StrictPointGrid(bounds, points);
+	return StrictPointGrid(boundsI, points);
 }
 
 inline fun <T> List<List<T>>.entityGrid(predicate: (T) -> Boolean): StrictPointGrid = grid().entityGrid(predicate)
 
-fun Iterable<Point>.entityGrid(): StrictPointGrid {
+fun Iterable<PointI>.entityGrid(): StrictPointGrid {
 	var maxX = Int.MIN_VALUE
 	var maxY = Int.MIN_VALUE
 	var minX = Int.MAX_VALUE
 	var minY = Int.MAX_VALUE
 
-	val points = mutableSetOf<Point>()
+	val points = mutableSetOf<PointI>()
 	this.forEach { p ->
 		val (x, y) = p
 		if (x > maxX)
@@ -37,10 +37,10 @@ fun Iterable<Point>.entityGrid(): StrictPointGrid {
 		points += p
 
 	}
-	return StrictPointGrid((minX toP minY) toB (maxX toP maxY), points)
+	return StrictPointGrid((minX toPI minY) toB (maxX toPI maxY), points)
 }
 
 
-class StrictTypedEntityGrid<T>(override val bounds: Bounds, val items: Map<Point, T>) : StrictGrid<T?> {
-	override fun get(index: Point) = items[index]
+class StrictTypedEntityGrid<T>(override val boundsI: BoundsI, val items: Map<PointI, T>) : StrictGrid<T?> {
+	override fun get(index: PointI) = items[index]
 }

@@ -3,8 +3,8 @@ package me.kroppeb.aoc.helpers.point
 import me.kroppeb.aoc.helpers.Clock
 import me.kroppeb.aoc.helpers.point.*
 
-typealias Line = LineN<Point>
-typealias Line3D = LineN<Point3D>
+typealias Line = LineN<PointI>
+typealias Line3D = LineN<Point3DI>
 typealias LineL = LineN<PointL>
 typealias Line3DL = LineN<Point3DL>
 

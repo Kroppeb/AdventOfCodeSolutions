@@ -2,8 +2,8 @@
 package solutions.y17.d03
 
 import me.kroppeb.aoc.helpers.Clock
-import me.kroppeb.aoc.helpers.point.Point
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.PointI
+import me.kroppeb.aoc.helpers.point.toPI
 import kotlin.math.abs
 
 private val xxxxx = Clock(3,6);
@@ -22,8 +22,8 @@ private fun part1(data: Data) {
 }
 
 private fun part2(data: Data)  {
-	val g = mutableMapOf<Point, Int>(0 toP 0 to 1)
-	var c = 0 toP 0
+	val g = mutableMapOf<PointI, Int>(0 toPI 0 to 1)
+	var c = 0 toPI 0
 	var r = 0
 	while(true){
 		r++

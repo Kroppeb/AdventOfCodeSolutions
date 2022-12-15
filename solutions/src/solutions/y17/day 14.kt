@@ -72,13 +72,13 @@ private fun part2() {
 
 	val uf = UnionFind()
 
-	for (p in grid.bounds.log()) {
+	for (p in grid.boundsI.log()) {
 		if (!grid[p]) continue
 
 		uf.getRoot(p)
 
 		for (u in p.getQuadNeighbours()) {
-			if (u in grid.bounds && grid[u]) {
+			if (u in grid.boundsI && grid[u]) {
 				uf.join(p, u)
 			}
 		}

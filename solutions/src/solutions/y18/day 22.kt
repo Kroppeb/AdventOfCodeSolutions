@@ -12,25 +12,25 @@ import kotlin.math.*
 import me.kroppeb.aoc.helpers.graph.*
 
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.PointI
 import me.kroppeb.aoc.helpers.point.bounds
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 
 
 private val xxxxx = Clock(6, 3);
 
 
-val geos = mmopl()
+val geos = mmopil()
 
 
 private fun part1() {
 	var data = getLines(2018_22)
 	val depth = data.first().int()
-	val target = data.last().ints().let{(a,b) -> a toP b}
+	val target = data.last().ints().let{(a,b) -> a toPI b}
 
 
-	fun getGeo(p: Point): Long {
-		if(p == target || p == 0 toP 0){
+	fun getGeo(p: PointI): Long {
+		if(p == target || p == 0 toPI 0){
 			return 0
 		}
 
@@ -45,32 +45,32 @@ private fun part1() {
 		}
 
 
-		fun getEro(p: Point): Long {
+		fun getEro(p: PointI): Long {
 			return (getGeo(p) + depth)  % 20183L
 		}
 
 		return (((getEro(p.up) * getEro(p.left)) % 20183L)).also{geos[p] = it}
 	}
 
-	fun getEro(p: Point): Long {
+	fun getEro(p: PointI): Long {
 		return (getGeo(p) + depth)  % 20183L
 	}
 
-	fun getType(point: Point): Int {
+	fun getType(point: PointI): Int {
 		return getEro(point).toInt() % 3
 	}
 
-	listOf(0 toP 0, target).bounds().sumBy { getType(it) }.log()
+	listOf(0 toPI 0, target).bounds().sumBy { getType(it) }.log()
 }
 
 private fun part2() {
 	var data = getLines(2018_22)
 	val depth = data.first().int()
-	val target = data.last().ints().let{(a,b) -> a toP b}
+	val target = data.last().ints().let{(a,b) -> a toPI b}
 
 
-	fun getGeo(p: Point): Long {
-		if(p == target || p == 0 toP 0){
+	fun getGeo(p: PointI): Long {
+		if(p == target || p == 0 toPI 0){
 			return 0
 		}
 
@@ -85,22 +85,22 @@ private fun part2() {
 		}
 
 
-		fun getEro(p: Point): Long {
+		fun getEro(p: PointI): Long {
 			return (getGeo(p) + depth)  % 20183L
 		}
 
 		return (((getEro(p.up) * getEro(p.left)) % 20183L)).also{geos[p] = it}
 	}
 
-	fun getEro(p: Point): Long {
+	fun getEro(p: PointI): Long {
 		return (getGeo(p) + depth)  % 20183L
 	}
 
-	fun getType(point: Point): Int {
+	fun getType(point: PointI): Int {
 		return getEro(point).toInt() % 3
 	}
 
-	dijkstra(0 toP 0 to "torch", {(p, i) -> p == target && i == "torch"}) {(p, i) ->
+	dijkstra(0 toPI 0 to "torch", { (p, i) -> p == target && i == "torch"}) { (p, i) ->
 		listOf("torch", "gear", "").map{p to it to 7} +
 				p.getQuadNeighbours().filter{it.x >= 0 && it.y >= 0}.filter{when(i) {
 					"torch" -> getType(p) in listOf(0,2)

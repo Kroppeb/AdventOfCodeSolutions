@@ -1,15 +1,15 @@
 @file:Suppress("PackageDirectoryMismatch")
 package solutions.solutions.y19.d11c
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.Point
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.PointI
+import me.kroppeb.aoc.helpers.point.toPI
 import kotlinx.coroutines.runBlocking
 
 private fun part1(data: IntCode)= runBlocking {
-	var loc = 0 toP 0
+	var loc = 0 toPI 0
 	var dir = 0
-	val paints = mutableSetOf<Point>()
-	val colored = mutableSetOf<Point>()
+	val paints = mutableSetOf<PointI>()
+	val colored = mutableSetOf<PointI>()
 	val computer = runComputer(data).run{
 		while(!isHalted()){
 			if(loc in colored){
@@ -36,9 +36,9 @@ private fun part1(data: IntCode)= runBlocking {
 	println(paints.size)
 }
 private fun part2(data: IntCode) = runBlocking {
-	var loc = 0 toP 0
+	var loc = 0 toPI 0
 	var dir = 0
-	val colored = mutableSetOf<Point>(loc)
+	val colored = mutableSetOf<PointI>(loc)
 	val computer = runComputer(data).run{
 		while(!isHalted()){
 			if(loc in colored){
@@ -65,7 +65,7 @@ private fun part2(data: IntCode) = runBlocking {
 	val ur = colored.reduce{a,b->a.max(b)}
 	for(i in (ll.x..ur.x).reversed() ){
 		for (j in (ll.y..ur.y)){
-			if(i toP j in colored)
+			if(i toPI j in colored)
 				print("██")
 			else
 				print("  ")

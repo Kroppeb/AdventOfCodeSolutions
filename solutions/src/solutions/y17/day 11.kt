@@ -15,7 +15,7 @@ import kotlin.math.*
 
 
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 import kotlin.math.*
 
 
@@ -26,7 +26,7 @@ private val xxxxx = Clock(6, 3);
 private fun part1() {
 	var data = getLines(2017_11).first().split(',')
 
-	var pos = 0 toP 0
+	var pos = 0 toPI 0
 
 	for (m in data) {
 		when(m) {
@@ -48,7 +48,7 @@ private fun part1() {
 private fun part2() {
 	var data = getLines(2017_11).first().split(',')
 
-	var pos = 0 toP 0
+	var pos = 0 toPI 0
 
 	var ma = 0
 	var ma2 = 0

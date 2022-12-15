@@ -12,7 +12,7 @@ import kotlin.math.*
 
 import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.point.bounds
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 import java.util.Comparator
 import java.util.PriorityQueue
 
@@ -21,7 +21,7 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(2018_23).ints().map { (a, b, c, z) -> a toP b toP c to z }
+	var data = getLines(2018_23).ints().map { (a, b, c, z) -> a toPI b toPI c to z }
 
 	var max = data.maxBy { it.second }
 
@@ -30,11 +30,11 @@ private fun part1() {
 }
 
 private fun part2() {
-	var data = getLines(2018_23).ints().map { (a, b, c, z) -> a toP b toP c to z }
+	var data = getLines(2018_23).ints().map { (a, b, c, z) -> a toPI b toPI c to z }
 
-	var xsRange = data.map { (a) -> a.x toP 0 }.bounds().xs
-	var ysRange = data.map { (a) -> a.y toP 0 }.bounds().xs
-	var zsRange = data.map { (a) -> a.z toP 0 }.bounds().xs
+	var xsRange = data.map { (a) -> a.x toPI 0 }.bounds().xs
+	var ysRange = data.map { (a) -> a.y toPI 0 }.bounds().xs
+	var zsRange = data.map { (a) -> a.z toPI 0 }.bounds().xs
 
 	fun dist(range: IntRange, v: Int): Int {
 		if (v in range) return 0

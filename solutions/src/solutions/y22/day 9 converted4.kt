@@ -21,8 +21,8 @@ import java.awt.datatransfer.StringSelection
 
 
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.toP
-import me.kroppeb.aoc.helpers.point.toPoint
+import me.kroppeb.aoc.helpers.point.toPI
+import me.kroppeb.aoc.helpers.point.toPointI
 
 
 private val xxxxx = Clock(6, 3);
@@ -30,16 +30,16 @@ private val xxxxx = Clock(6, 3);
 
 private fun part1() {
 	getLines(2022_09)
-		.rleDecode({ it[0].toPoint() }, { it.int() })
-		.runningFold(0 toP 0){ p, d -> p + d }
-		.runningFold(0 toP 0){ t, h -> if (t.chebyshevDistTo(h) > 1) t + (h - t).sign() else t }
+		.rleDecode({ it[0].toPointI() }, { it.int() })
+		.runningFold(0 toPI 0){ p, d -> p + d }
+		.runningFold(0 toPI 0){ t, h -> if (t.chebyshevDistTo(h) > 1) t + (h - t).sign() else t }
 		.distinct().size log 1
 }
 
 private fun part2() {
 	getLines(2022_09)
-		.rleDecode({ it[0].toPoint() }, { it.int() })
-		.scan(0 toP 0) { p, d -> p + d }
+		.rleDecode({ it[0].toPointI() }, { it.int() })
+		.scan(0 toPI 0) { p, d -> p + d }
 		.applyNTimes(9){
 			it.scan { t, h -> if (t.chebyshevDistTo(h) > 1) t + (h - t).sign() else t }
 		}

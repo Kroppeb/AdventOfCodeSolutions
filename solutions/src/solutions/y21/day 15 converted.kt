@@ -14,7 +14,7 @@ import me.kroppeb.aoc.helpers.Clock
 
 import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.grid.grid
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 
 private val xxxxx = Clock(6, 3);
 
@@ -27,9 +27,9 @@ private fun part1() {
 	var data = getLines(2021_15).digits().grid()
 
 	val res = dijkstra(
-		0 toP 0,
-		{ point -> point == data.bounds.se },
-		{ point -> point.getQuadNeighbours().filter{it in data.bounds}.map { it to data[it] } })
+		0 toPI 0,
+		{ point -> point == data.boundsI.se },
+		{ point -> point.getQuadNeighbours().filter{it in data.boundsI}.map { it to data[it] } })
 
 	res!!.cost.log()
 }
@@ -43,9 +43,9 @@ private fun part2() {
 		.grid()
 
 	val res = dijkstra(
-		0 toP 0,
-		{ point -> point == data.bounds.se },
-		{ point -> point.getQuadNeighbours().filter{it in data.bounds}.map { it to data[it] } })
+		0 toPI 0,
+		{ point -> point == data.boundsI.se },
+		{ point -> point.getQuadNeighbours().filter{it in data.boundsI}.map { it to data[it] } })
 
 	res!!.cost.log()
 }

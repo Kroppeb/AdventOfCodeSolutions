@@ -31,8 +31,8 @@ private val xxxxx = Clock(6, 3);
 private fun part1() {
 	var data = getLines(2022_09)
 
-	val seen = msop()
-	var head = 0 toP 0
+	val seen = msopi()
+	var head = 0 toPI 0
 	var tail = head
 
 	seen.add(tail)
@@ -60,7 +60,7 @@ private fun part1() {
 					a += (c - a).sign
 					b += (d - b).sign
 
-					tail = a toP b
+					tail = a toPI b
 				}
 			}
 
@@ -77,8 +77,8 @@ private fun part1() {
 private fun part2() {
 	var data = getLines(2022_09)
 
-	val seen = msop()
-	var head = 0 toP 0
+	val seen = msopi()
+	var head = 0 toPI 0
 	var knots = (1..9).map { head }.mut()
 
 	seen.add(head)
@@ -108,7 +108,7 @@ private fun part2() {
 						a += (c - a).sign
 						b += (d - b).sign
 
-						knots[i] = a toP b
+						knots[i] = a toPI b
 					}
 				}
 

@@ -11,10 +11,10 @@ import kotlin.math.*
 import me.kroppeb.aoc.helpers.collections.Counter
 import me.kroppeb.aoc.helpers.Clock
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.PointI
 import me.kroppeb.aoc.helpers.point.isAxisAligned
 import me.kroppeb.aoc.helpers.point.toL
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 
 private val xxxxx = Clock(6, 3);
 
@@ -23,9 +23,9 @@ private val xxxxx = Clock(6, 3);
 */
 
 private fun part1() {
-	var data = getLines(2021_05).ints().map { (a, b, c, d) -> a toP b toL (c toP d) }
+	var data = getLines(2021_05).ints().map { (a, b, c, d) -> a toPI b toL (c toPI d) }
 
-	val points = Counter<Point>()
+	val points = Counter<PointI>()
 
 	for (line in data) {
 		if (line.isAxisAligned()) {
@@ -37,9 +37,9 @@ private fun part1() {
 }
 
 private fun part2() {
-	var data = getLines(2021_05).ints().map { (a, b, c, d) -> a toP b toL (c toP d) }
+	var data = getLines(2021_05).ints().map { (a, b, c, d) -> a toPI b toL (c toPI d) }
 
-	val points = Counter<Point>()
+	val points = Counter<PointI>()
 
 	for (line in data) {
 		points.addAll(line)

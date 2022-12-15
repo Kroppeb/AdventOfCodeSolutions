@@ -6,14 +6,14 @@ import me.kroppeb.aoc.helpers.collections.counter
 import me.kroppeb.aoc.helpers.Clock
 import me.kroppeb.aoc.helpers.Lines
 import me.kroppeb.aoc.helpers.getLines
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 
 private val xxxxx = Clock(6, 3);
 
 private fun part1(data: Data) {
 	val points = data.map { line ->
 		var i = 0
-		var p = 0 toP 0
+		var p = 0 toPI 0
 		println(line)
 		while (i < line.length) {
 			when (line[i]) {
@@ -34,7 +34,7 @@ private fun part1(data: Data) {
 private fun part2(data: Data) {
 	val points = data.map { line ->
 		var i = 0
-		var p = 0 toP 0
+		var p = 0 toPI 0
 		println(line)
 		while (i < line.length) {
 			when (line[i]) {

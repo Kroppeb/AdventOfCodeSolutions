@@ -4,18 +4,18 @@ package solutions.y20.d12
 
 import me.kroppeb.aoc.helpers.collections.*
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 import kotlinx.coroutines.*
 
 private val xxxxx = Clock(6, 3);
 
 private fun part1(data: Data) {
-	var ours = 0 toP 0
-	var pos = 0 toP 0
+	var ours = 0 toPI 0
+	var pos = 0 toPI 0
 	var rot = pos.right
 	pos += rot * 10
 	pos = pos.up
-	val Z = 0 toP 0
+	val Z = 0 toPI 0
 	for(i in data){
 		val c = i[0]
 		val m = i.substring(1).toInt()

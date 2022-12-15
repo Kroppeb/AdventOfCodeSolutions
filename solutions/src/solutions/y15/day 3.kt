@@ -11,7 +11,7 @@ import kotlin.math.*
 
 import me.kroppeb.aoc.helpers.Clock
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.PointI
 
 private val xxxxx = Clock(6, 3);
 
@@ -22,8 +22,8 @@ private val xxxxx = Clock(6, 3);
 private fun part1() {
     var data = getLines(2015_03).first().e()
 
-    var pos = Point(0,0)
-    val houses = mutableSetOf<Point>()
+    var pos = PointI(0,0)
+    val houses = mutableSetOf<PointI>()
     houses += pos
     for (d in data){
         when (d) {
@@ -43,9 +43,9 @@ private fun part1() {
 private fun part2() {
     var data = getLines(1).first().e()
 
-    var pos1 = Point(0,0)
-    var pos2 = Point(0,0)
-    val houses = mutableSetOf<Point>()
+    var pos1 = PointI(0,0)
+    var pos2 = PointI(0,0)
+    val houses = mutableSetOf<PointI>()
     houses += pos1
     for (d in data){
         when (d) {

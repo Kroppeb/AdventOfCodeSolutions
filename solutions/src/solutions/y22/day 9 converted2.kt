@@ -21,8 +21,8 @@ import java.awt.datatransfer.StringSelection
 
 
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.toP
-import me.kroppeb.aoc.helpers.point.toPoint
+import me.kroppeb.aoc.helpers.point.toPI
+import me.kroppeb.aoc.helpers.point.toPointI
 
 
 private val xxxxx = Clock(6, 3);
@@ -31,12 +31,12 @@ private val xxxxx = Clock(6, 3);
 private fun part1() {
 	var data = getLines(2022_09)
 
-	var head = 0 toP 0
+	var head = 0 toPI 0
 	var tail = head
-	val seen = msop(tail)
+	val seen = msopi(tail)
 
 	for (c in data.rleDecode({ it[0] }, { it.int() })) {
-		head += c.toPoint()
+		head += c.toPointI()
 
 		if (tail.chebyshevDistTo(head) > 1) {
 			tail += (head - tail).sign()
@@ -51,14 +51,14 @@ private fun part1() {
 private fun part2() {
 	var data = getLines(2022_09)
 
-	val seen = msop()
-	var head = 0 toP 0
+	val seen = msopi()
+	var head = 0 toPI 0
 	var knots = (1..9).map { head }.mut()
 
 	seen.add(head)
 
 	for (c in data.rleDecode({ it[0] }, { it.int() })) {
-		head += c.toPoint()
+		head += c.toPointI()
 
 		var follow = head
 		repeat(9) { i ->

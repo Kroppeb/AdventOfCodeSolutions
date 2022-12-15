@@ -11,7 +11,7 @@ import kotlin.math.*
 
 import me.kroppeb.aoc.helpers.Clock
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.PointI
 import kotlin.collections.ArrayDeque
 
 private val xxxxx = Clock(6, 3);
@@ -24,10 +24,10 @@ private val xxxxx = Clock(6, 3);
 private fun part1() {
     var data = getLines(2021_15).digits()
 
-    val queue = ArrayDeque<Pair<Point, Long>>()
-    queue.addLast(Pair(Point(0, 0), 0))
+    val queue = ArrayDeque<Pair<PointI, Long>>()
+    queue.addLast(Pair(PointI(0, 0), 0))
 
-    val bestPoints = mutableMapOf<Point, Long>()
+    val bestPoints = mutableMapOf<PointI, Long>()
 
     var best = Long.MAX_VALUE;
 
@@ -55,10 +55,10 @@ private fun part1() {
 private fun part2() {
     var data = getLines(2021_15).digits()
 
-    val queue = ArrayDeque<Pair<Point, Long>>()
-    queue.addLast(Pair(Point(0, 0), 0))
+    val queue = ArrayDeque<Pair<PointI, Long>>()
+    queue.addLast(Pair(PointI(0, 0), 0))
 
-    val bestPoints = mutableMapOf<Point, Long>()
+    val bestPoints = mutableMapOf<PointI, Long>()
 
     var best = Long.MAX_VALUE;
 

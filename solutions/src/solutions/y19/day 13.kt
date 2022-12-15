@@ -2,8 +2,8 @@
 package solutions.solutions.y19.d13
 
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.Point
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.PointI
+import me.kroppeb.aoc.helpers.point.toPI
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.ClosedReceiveChannelException
 
@@ -11,7 +11,7 @@ private fun part1(data: IntCode)= runBlocking(Dispatchers.Default) {
 	val d = data.toMutableMap()
 	d[0] = 2L
 	var score = 0L
-	val tiles = mutableMapOf<Point, Long>()
+	val tiles = mutableMapOf<PointI, Long>()
 	var ball = 0
 	var paddle = 0
 	runComputer(d).run{
@@ -22,8 +22,8 @@ private fun part1(data: IntCode)= runBlocking(Dispatchers.Default) {
 					val x = output.receive()
 					val v = output.receive()
 
-					val p = x.toInt() toP y.toInt()
-					if (p == 0 toP -1)
+					val p = x.toInt() toPI y.toInt()
+					if (p == 0 toPI -1)
 						score = v
 					else
 						tiles[p] = v
@@ -56,7 +56,7 @@ private fun part1(data: IntCode)= runBlocking(Dispatchers.Default) {
 					var u = 0
 					for (i in (ll.x..ur.x)) {
 						for (j in (ll.y..ur.y)) {
-							print(when (tiles[i toP j] ?: 0) {
+							print(when (tiles[i toPI j] ?: 0) {
 								1L -> '#'
 								2L -> {
 									u += 1

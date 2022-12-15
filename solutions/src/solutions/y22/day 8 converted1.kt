@@ -30,9 +30,9 @@ private val xxxxx = Clock(6, 3);
 private fun part1() {
 	var data = getLines(2022_08).e().map2 { it - '0' }.grid()
 
-	val seen = msop()
+	val seen = msopi()
 
-	for (p in data.bounds.eastEdge()) {
+	for (p in data.boundsI.eastEdge()) {
 		var size = -1
 		for (x in data.getBp(p).westsInc()) {
 			if (x.v > size) {
@@ -42,7 +42,7 @@ private fun part1() {
 		}
 	}
 
-	for (p in data.bounds.westEdge()) {
+	for (p in data.boundsI.westEdge()) {
 		var size = -1
 		for (x in data.getBp(p).eastsInc()) {
 			if (x.v > size) {
@@ -52,7 +52,7 @@ private fun part1() {
 		}
 	}
 
-	for (p in data.bounds.southEdge()) {
+	for (p in data.boundsI.southEdge()) {
 		var size = -1
 		for (x in data.getBp(p).northsInc()) {
 			if (x.v > size) {
@@ -62,7 +62,7 @@ private fun part1() {
 		}
 	}
 
-	for (p in data.bounds.northEdge()) {
+	for (p in data.boundsI.northEdge()) {
 		var size = -1
 		for (x in data.getBp(p).southsInc()) {
 			if (x.v > size) {

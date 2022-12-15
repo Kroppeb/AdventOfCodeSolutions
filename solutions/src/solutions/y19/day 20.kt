@@ -3,8 +3,8 @@ package solutions.solutions.y19.d20
 
 
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.Point
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.PointI
+import me.kroppeb.aoc.helpers.point.toPI
 import kotlinx.coroutines.runBlocking
 import me.kroppeb.aoc.helpers.grid.entityGrid
 import java.util.*
@@ -15,28 +15,28 @@ private fun part1(data: Data) = runBlocking {
 	val grid = data.entityGrid { it == '.' }
 	val portalP = data.entityGrid { it.isLetter() }
 
-	val portals = mutableMapOf<String, MutableList<Point>>()
+	val portals = mutableMapOf<String, MutableList<PointI>>()
 
 	for (i in portalP.points) {
-		if (i + (0 toP 1) in portalP.points) {
+		if (i + (0 toPI 1) in portalP.points) {
 			val ps = portals.getOrPut("${data[i.x][i.y]}${data[i.x][i.y + 1]}") { mutableListOf() }
 			for (j in i.getQuadNeighbours()) {
 				if (j in grid.points)
 					ps.add(j)
 			}
-			for (j in (i + (0 toP 1)).getQuadNeighbours()) {
+			for (j in (i + (0 toPI 1)).getQuadNeighbours()) {
 				if (j in grid.points)
 					ps.add(j)
 			}
 		}
 
-		if (i + (1 toP 0) in portalP.points) {
+		if (i + (1 toPI 0) in portalP.points) {
 			val ps = portals.getOrPut("${data[i.x][i.y]}${data[i.x + 1][i.y]}") { mutableListOf() }
 			for (j in i.getQuadNeighbours()) {
 				if (j in grid.points)
 					ps.add(j)
 			}
-			for (j in (i + (1 toP 0)).getQuadNeighbours()) {
+			for (j in (i + (1 toPI 0)).getQuadNeighbours()) {
 				if (j in grid.points)
 					ps.add(j)
 			}
@@ -45,8 +45,8 @@ private fun part1(data: Data) = runBlocking {
 
 	val gportals = portals.flatMap { (k, v) -> v.map { it to k } }.toMap()
 
-	val seen = mutableSetOf<Point>()
-	val queue = ArrayDeque<Pair<Point, Int>>()
+	val seen = mutableSetOf<PointI>()
+	val queue = ArrayDeque<Pair<PointI, Int>>()
 	val end = portals["ZZ"]!!.first()
 	queue.add(portals["AA"]!!.first() to 0)
 	while (queue.size > 0) {
@@ -75,37 +75,37 @@ private fun part1(data: Data) = runBlocking {
 	println("no path")
 }
 
-private data class State(val p: Point, val d: Int, val depth: Int)
+private data class State(val p: PointI, val d: Int, val depth: Int)
 
 private fun part2(data: Data) = runBlocking {
 	val w = data.map { it.size }.max()
 	val grid = data.entityGrid { it == '.' }
 	val portalP = data.entityGrid { it.isLetter() }
 
-	fun isOutside(p: Point) = p.x == 2 || p.y == 2 || p.x == data.size - 3 || p.y == w - 3
+	fun isOutside(p: PointI) = p.x == 2 || p.y == 2 || p.x == data.size - 3 || p.y == w - 3
 
-	val portals = mutableMapOf<String, MutableList<Point>>()
+	val portals = mutableMapOf<String, MutableList<PointI>>()
 
 	for (i in portalP.points) {
-		if (i + (0 toP 1) in portalP.points) {
+		if (i + (0 toPI 1) in portalP.points) {
 			val ps = portals.getOrPut("${data[i.x][i.y]}${data[i.x][i.y + 1]}") { mutableListOf() }
 			for (j in i.getQuadNeighbours()) {
 				if (j in grid.points)
 					ps.add(j)
 			}
-			for (j in (i + (0 toP 1)).getQuadNeighbours()) {
+			for (j in (i + (0 toPI 1)).getQuadNeighbours()) {
 				if (j in grid.points)
 					ps.add(j)
 			}
 		}
 
-		if (i + (1 toP 0) in portalP.points) {
+		if (i + (1 toPI 0) in portalP.points) {
 			val ps = portals.getOrPut("${data[i.x][i.y]}${data[i.x + 1][i.y]}") { mutableListOf() }
 			for (j in i.getQuadNeighbours()) {
 				if (j in grid.points)
 					ps.add(j)
 			}
-			for (j in (i + (1 toP 0)).getQuadNeighbours()) {
+			for (j in (i + (1 toPI 0)).getQuadNeighbours()) {
 				if (j in grid.points)
 					ps.add(j)
 			}
@@ -118,7 +118,7 @@ private fun part2(data: Data) = runBlocking {
 	val back = mutableMapOf<State, State>()
 	var deepest = 0
 
-	val seen = mutableSetOf<Pair<Point, Int>>()
+	val seen = mutableSetOf<Pair<PointI, Int>>()
 	val queue = ArrayDeque<State>()
 	val end = portals["ZZ"]!!.first()
 	val first = portals["AA"]!!.first()

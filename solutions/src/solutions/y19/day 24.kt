@@ -5,17 +5,17 @@ import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.grid.entityGrid
 import kotlin.collections.*
 
-import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.PointI
 import me.kroppeb.aoc.helpers.point.toB
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 
 
-private fun bio1(s: Set<Point>): Int {
+private fun bio1(s: Set<PointI>): Int {
 	var b = 0
 	var p = 1
 	for (i in (0..4))
 		for (j in (0..4)) {
-			if (i toP j in s)
+			if (i toPI j in s)
 				b += p
 			p *= 2
 		}
@@ -28,7 +28,7 @@ private fun part1(data: Data) {
 	while (true) {
 		for (i in (0..4)) {
 			for (j in (0..4)) {
-				if (i toP j in current)
+				if (i toPI j in current)
 					print('#')
 				else
 					print('.')
@@ -44,7 +44,7 @@ private fun part1(data: Data) {
 		bios.add(bio)
 		val counts = current.flatMap { it.getQuadNeighbours() }.groupingBy { it }.eachCount()
 		current = counts.filter { (p, c) ->
-			p in (0 toP 0) toB (4 toP 4) &&
+			p in (0 toPI 0) toB (4 toPI 4) &&
 			if (p in current) {
 				c == 1
 			}
@@ -55,7 +55,7 @@ private fun part1(data: Data) {
 	}
 }
 
-private val empty = setOf<Point>()
+private val empty = setOf<PointI>()
 
 private fun part2(data: Data) {
 	var layers = mutableMapOf(0 to data)
@@ -72,22 +72,22 @@ private fun part2(data: Data) {
 		layers = layers.map{(i,current) ->
 			val counts = current.flatMap { it.getQuadNeighbours()}
 					.groupingBy { it }.eachCount().toMutableMap()
-			counts.merge(1 toP 2, upO[i+1]?:0, Int::plus)
-			counts.merge(3 toP 2, downO[i+1]?:0, Int::plus)
-			counts.merge(2 toP 1, leftO[i+1]?:0, Int::plus)
-			counts.merge(2 toP 3, rightO[i+1]?:0, Int::plus)
+			counts.merge(1 toPI 2, upO[i+1]?:0, Int::plus)
+			counts.merge(3 toPI 2, downO[i+1]?:0, Int::plus)
+			counts.merge(2 toPI 1, leftO[i+1]?:0, Int::plus)
+			counts.merge(2 toPI 3, rightO[i+1]?:0, Int::plus)
 
 			for(c in 0..4){
-				counts.merge(0 toP c, if(layers[i-1]?.contains(1 toP 2) == true) 1 else 0, Int::plus)
-				counts.merge(c toP 0, if(layers[i-1]?.contains(2 toP 1) == true) 1 else 0, Int::plus)
-				counts.merge(4 toP c, if(layers[i-1]?.contains(3 toP 2) == true) 1 else 0, Int::plus)
-				counts.merge(c toP 4, if(layers[i-1]?.contains(2 toP 3) == true) 1 else 0, Int::plus)
+				counts.merge(0 toPI c, if(layers[i-1]?.contains(1 toPI 2) == true) 1 else 0, Int::plus)
+				counts.merge(c toPI 0, if(layers[i-1]?.contains(2 toPI 1) == true) 1 else 0, Int::plus)
+				counts.merge(4 toPI c, if(layers[i-1]?.contains(3 toPI 2) == true) 1 else 0, Int::plus)
+				counts.merge(c toPI 4, if(layers[i-1]?.contains(2 toPI 3) == true) 1 else 0, Int::plus)
 			}
 
-			counts[2 toP 2] = 0
+			counts[2 toPI 2] = 0
 
 			i to counts.filter { (p, c) ->
-				p in (0 toP 0) toB (4 toP 4) &&
+				p in (0 toPI 0) toB (4 toPI 4) &&
 						if (p in current) {
 							c == 1
 						}
@@ -116,7 +116,7 @@ private fun part2(data: Data) {
 	println(layers.map{(_,v)->v.size}.sum())
 }
 
-typealias Data = Set<Point>
+typealias Data = Set<PointI>
 
 fun main() {
 	val data: Data = getLines(2019_24).map { it.map { it } }.entityGrid { it == '#' }.points

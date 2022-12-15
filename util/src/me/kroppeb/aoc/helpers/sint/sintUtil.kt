@@ -3,6 +3,7 @@ package me.kroppeb.aoc.helpers.sint
 import me.kroppeb.aoc.helpers.context.InternalIndirectAddOp
 import me.kroppeb.aoc.helpers.context.SintOpps
 import me.kroppeb.aoc.helpers.contextual.cumSum
+import me.kroppeb.aoc.helpers.mod
 import me.kroppeb.aoc.helpers.scan
 import kotlin.contracts.contract
 import me.kroppeb.aoc.helpers.contextual.divBy as divByTrait
@@ -176,3 +177,21 @@ fun Iterable<Sint>.cumSum(initial:Sint): List<Sint> = scan(initial) { a, b -> a 
 
 fun <T>  Iterable<T>.cumSumOf(initial:Sint, selector: (T) -> Sint): List<Sint> = map(selector).cumSum(initial)
 
+fun abs(a: Sint) = if (a.l < 0) -a else a
+
+
+fun Sint.toDouble(): Double = this.l.toDouble()
+
+val IntRange.s: SintRange get() = SintRange(this.start.s, this.endInclusive.s)
+val LongRange.s: SintRange get() = SintRange(this.start.s, this.endInclusive.s)
+
+operator fun Sint.rem(range: SintRange) = range.first + (this - range.first mod range.last - range.first + 1)
+operator fun Sint.rem(range: IntRange) = this % range.s
+operator fun Sint.rem(range: LongRange) = this % range.s
+operator fun Int.rem(range: SintRange) = this.s % range
+operator fun Long.rem(range: SintRange) = this.s % range
+infix fun Sint.mod(base: SintRange) = this % base
+infix fun Sint.mod(base: IntRange) = this % base
+infix fun Sint.mod(base: LongRange) = this % base
+infix fun Int.mod(base: SintRange) = this.s % base
+infix fun Long.mod(base: SintRange) = this.s % base

@@ -16,7 +16,7 @@ import me.kroppeb.aoc.helpers.grid.SimpleGrid
 import me.kroppeb.aoc.helpers.grid.forEachIndexed
 import me.kroppeb.aoc.helpers.grid.grid
 import me.kroppeb.aoc.helpers.grid.map
-import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.PointI
 import java.util.Comparator.comparing
 import kotlin.math.*
 
@@ -27,7 +27,7 @@ private val xxxxx = Clock(6, 3);
 
 */
 
-class Unit(var pos: Point, var health: Int, val isElf: Boolean) {
+class Unit(var pos: PointI, var health: Int, val isElf: Boolean) {
 	override fun toString(): String {
 		return if (isElf) "E($health)" else "G($health)"
 	}
@@ -48,7 +48,7 @@ private fun part1() {
 		}
 	}
 
-	val readOrder = Comparator<Point> { a, b ->
+	val readOrder = Comparator<PointI> { a, b ->
 		when {
 			a.isAbove(b) -> -1
 			a.isBelow(b) -> 1
@@ -58,8 +58,8 @@ private fun part1() {
 		}
 	};
 
-	fun isFree(pos: Point) =
-		pos in walls.bounds && !walls[pos] && elfs.none { it.pos == pos } && goblins.none { it.pos == pos }
+	fun isFree(pos: PointI) =
+		pos in walls.boundsI && !walls[pos] && elfs.none { it.pos == pos } && goblins.none { it.pos == pos }
 
 	loop { count ->
 		val units = elfs + goblins
@@ -182,7 +182,7 @@ private fun part2() {
 			}
 		}
 
-		val readOrder = Comparator<Point> { a, b ->
+		val readOrder = Comparator<PointI> { a, b ->
 			when {
 				a.isAbove(b) -> -1
 				a.isBelow(b) -> 1
@@ -192,8 +192,8 @@ private fun part2() {
 			}
 		};
 
-		fun isFree(pos: Point) =
-			pos in walls.bounds && !walls[pos] && elfs.none { it.pos == pos } && goblins.none { it.pos == pos }
+		fun isFree(pos: PointI) =
+			pos in walls.boundsI && !walls[pos] && elfs.none { it.pos == pos } && goblins.none { it.pos == pos }
 
 		var count = -1
 		while (true) {

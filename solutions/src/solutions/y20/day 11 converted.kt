@@ -20,7 +20,7 @@ private fun part1(data: Data) {
 		g2 = g2.mapIndexed { p, c ->
 			if (c == '.')
 				return@mapIndexed c
-			val cc = p.getOctNeighbours().filter { it in g1.bounds }.count { g2[it] == '#' }
+			val cc = p.getOctNeighbours().filter { it in g1.boundsI }.count { g2[it] == '#' }
 			if (c == 'L') {
 				if (cc == 0) {
 					cont = true
@@ -60,7 +60,7 @@ private fun part2(data: Data) {
 			val cc = p.getOctNeighbours().map {
 				var pp = it
 				var diff = it - p
-				while (pp in g1.bounds) {
+				while (pp in g1.boundsI) {
 					if (g2[pp] != '.')
 						return@map g2[pp]
 					pp += diff

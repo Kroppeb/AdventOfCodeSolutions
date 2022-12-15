@@ -11,10 +11,10 @@ import kotlin.math.*
 
 
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.Bounds
-import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.BoundsI
+import me.kroppeb.aoc.helpers.point.PointI
 import me.kroppeb.aoc.helpers.point.bounds
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 
 
 private val xxxxx = Clock(3, 6);
@@ -22,18 +22,18 @@ private val xxxxx = Clock(3, 6);
 
 private fun part1() {
 	var data = getLines(2018_17)
-	var clay = mutableSetOf<Point>()
+	var clay = mutableSetOf<PointI>()
 
 	for (line in data) {
 		val (a, b) = line.split(" ")
 		val (u, v, w) = line.ints()
 		if (a[0] == 'x') {
 			for (y in v..w) {
-				clay.add(Point(u, y))
+				clay.add(PointI(u, y))
 			}
 		} else {
 			for (x in v..w) {
-				clay.add(Point(x, u))
+				clay.add(PointI(x, u))
 			}
 		}
 	}
@@ -42,12 +42,12 @@ private fun part1() {
 	val ys = bounds_.ys
 	var xs_ = bounds_.xs
 	val xs = (xs_.first - 1)..(xs_.last + 1)
-	val bounds = Bounds(xs = xs, ys = ys)
+	val bounds = BoundsI(xs = xs, ys = ys)
 
-	val water = mutableMapOf<Point, Boolean>()
+	val water = mutableMapOf<PointI, Boolean>()
 
-	fun check(p: Point){
-		fun checkLeft(p: Point, mark: Boolean): Boolean {
+	fun check(p: PointI){
+		fun checkLeft(p: PointI, mark: Boolean): Boolean {
 			if (p !in bounds) error("wu")
 			if (p in clay) return true
 			if (p.down in clay) {
@@ -64,7 +64,7 @@ private fun part1() {
 			return false
 		}
 
-		fun checkRight(p: Point, mark: Boolean): Boolean {
+		fun checkRight(p: PointI, mark: Boolean): Boolean {
 			if (p !in bounds) error("wu")
 			if (p in clay) return true
 			if (p.down in clay) {
@@ -107,16 +107,16 @@ private fun part1() {
 		}
 	}
 
-	check(500 toP 0)
+	check(500 toPI 0)
 
 
 
 	bounds.ys.forEach {y->
 		bounds.xs.forEach { x ->
 			when{
-				(x toP y) in clay -> print('#')
-				water[(x toP y)] == true -> print('~')
-				water[(x toP y)] == false -> print('|')
+				(x toPI y) in clay -> print('#')
+				water[(x toPI y)] == true -> print('~')
+				water[(x toPI y)] == false -> print('|')
 				else -> print('.')
 			}
 		}

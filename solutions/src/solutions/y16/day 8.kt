@@ -37,11 +37,11 @@ private fun part1() {
 			}
 			line[1] == "column" -> {
 				val (id, amount) = va
-				grid = grid.mapIndexed { point, b -> if (point.x == id) grid[(point + Clock.down * 5 * amount) % grid.bounds] else b }
+				grid = grid.mapIndexed { point, b -> if (point.x == id) grid[(point + Clock.down * 5 * amount) % grid.boundsI] else b }
 			}
 			line[1] == "row" -> {
 				val (id, amount) = va
-				grid = grid.mapIndexed { point, b -> if (point.y == id) grid[(point + Clock.right * 49 * amount) % grid.bounds] else b }
+				grid = grid.mapIndexed { point, b -> if (point.y == id) grid[(point + Clock.right * 49 * amount) % grid.boundsI] else b }
 			}
 		}
 	}
@@ -63,11 +63,11 @@ private fun part2() {
 			}
 			line[1] == "column" -> {
 				val (id, amount) = va
-				grid = grid.mapIndexed { point, b -> if (point.x == id) grid[(point + Clock.down * 5 * amount) % grid.bounds] else b }
+				grid = grid.mapIndexed { point, b -> if (point.x == id) grid[(point + Clock.down * 5 * amount) % grid.boundsI] else b }
 			}
 			line[1] == "row" -> {
 				val (id, amount) = va
-				grid = grid.mapIndexed { point, b -> if (point.y == id) grid[(point + Clock.right * 49 * amount) % grid.bounds] else b }
+				grid = grid.mapIndexed { point, b -> if (point.y == id) grid[(point + Clock.right * 49 * amount) % grid.boundsI] else b }
 			}
 		}
 	}

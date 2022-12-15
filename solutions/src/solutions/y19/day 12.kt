@@ -2,20 +2,20 @@
 package solutions.solutions.y19.d12
 
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.Point3D
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.Point3DI
+import me.kroppeb.aoc.helpers.point.toPI
 import kotlinx.coroutines.runBlocking
 import kotlin.math.*
 
-data class Moon(var p: Point3D, var v: Point3D)
+data class Moon(var p: Point3DI, var v: Point3DI)
 
 private fun part1(data: IntLines)= runBlocking {
-	val moons = data.map{(x,y,z) -> Moon(x toP y toP z, 0 toP 0 toP 0) }
+	val moons = data.map{(x,y,z) -> Moon(x toPI y toPI z, 0 toPI 0 toPI 0) }
 	repeat(1000){
 		moons.forEach{ moon ->
 			moons.forEach {
 				val (dx,dy,dz) = it.p - moon.p
-				moon.v += dx.sign toP dy.sign toP dz.sign
+				moon.v += dx.sign toPI dy.sign toPI dz.sign
 			}
 		}
 
@@ -30,7 +30,7 @@ private fun part1(data: IntLines)= runBlocking {
 	)
 }
 private fun part2(data: IntLines) = runBlocking {
-	val moons = data.map{(x,y,z) -> Moon(x toP y toP z, 0 toP 0 toP 0) }
+	val moons = data.map{(x,y,z) -> Moon(x toPI y toPI z, 0 toPI 0 toPI 0) }
 	val orig = moons.map{it.copy()}
 	var x = 0L
 	var y = 0L
@@ -41,7 +41,7 @@ private fun part2(data: IntLines) = runBlocking {
 		moons.forEach{ moon ->
 			moons.forEach {
 				val (dx,dy,dz) = it.p - moon.p
-				moon.v += dx.sign toP dy.sign toP dz.sign
+				moon.v += dx.sign toPI dy.sign toPI dz.sign
 			}
 		}
 

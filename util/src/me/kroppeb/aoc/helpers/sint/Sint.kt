@@ -40,8 +40,12 @@ value class Sint(private val inner:Long) : Comparable<Sint> {
 	infix fun xor(other: Sint) = Sint(inner xor other.inner)
 	fun inv() = Sint(inner.inv())
 
+
 	companion object {
 		val ZERO = Sint(0)
 		val ONE = Sint(1)
+
+		val MAX_VALUE = Sint(Long.MAX_VALUE)
+		val MIN_VALUE = Sint(Long.MIN_VALUE)
 	}
 }

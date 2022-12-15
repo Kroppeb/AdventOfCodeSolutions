@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y22
+package solutions.y22.d14
 
 
 /*
@@ -19,34 +19,22 @@ import kotlin.math.*
  */
 
 
-import com.beust.klaxon.Parser
 import java.awt.Toolkit
 import java.awt.datatransfer.Clipboard
 import java.awt.datatransfer.StringSelection
 
-import me.kroppeb.aoc.helpers.collections.*
-import me.kroppeb.aoc.helpers.context.*
-import me.kroppeb.aoc.helpers.contextual.*
-import me.kroppeb.aoc.helpers.graph.*
-import me.kroppeb.aoc.helpers.grid.*
-import me.kroppeb.aoc.helpers.sint.*
 import me.kroppeb.aoc.helpers.*
-import itertools.*
-import me.kroppeb.aoc.helpers.point.bounds
 import me.kroppeb.aoc.helpers.point.toL
-import me.kroppeb.aoc.helpers.point.toP
-import java.util.Comparator
-import java.util.PriorityQueue
-import kotlin.math.*
+import me.kroppeb.aoc.helpers.point.toPI
 
 
 private val xxxxx = Clock(3, 6);
 
 
 private fun part1() {
-	var data = getLines(2022_14).points()
+	var data = getLines(2022_14).pointsI()
 
-	val walls = msop()
+	val walls = msopi()
 
 	for (line in data) {
 		for ((s, e) in line.zipWithNext()) {
@@ -54,11 +42,11 @@ private fun part1() {
 		}
 	}
 
-	val sand = msop()
+	val sand = msopi()
 
-	o@ while (500 toP 0 !in sand) {
+	o@ while (500 toPI 0 !in sand) {
 
-		var s = 500 toP 0
+		var s = 500 toPI 0
 		while (true) {
 
 			if (s.y > 5000) {
@@ -106,9 +94,9 @@ private fun part1() {
 
 
 private fun part2() {
-	var data = getLines(2022_14).points()
+	var data = getLines(2022_14).pointsI()
 
-	val walls = msop()
+	val walls = msopi()
 
 	for (line in data) {
 		for ((s, e) in line.zipWithNext()) {
@@ -118,13 +106,13 @@ private fun part2() {
 
 	val yy = walls.maxOf{it.y} + 2
 
-	walls += -1000 toP yy toL (2000 toP yy)
+	walls += -1000 toPI yy toL (2000 toPI yy)
 
-	val sand = msop()
+	val sand = msopi()
 
-	o@ while (500 toP 0 !in sand) {
+	o@ while (500 toPI 0 !in sand) {
 
-		var s = 500 toP 0
+		var s = 500 toPI 0
 		while (true) {
 
 			if (s.y > 5000) {

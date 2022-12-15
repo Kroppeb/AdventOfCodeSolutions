@@ -13,7 +13,7 @@ import me.kroppeb.aoc.helpers.Clock
 
 import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.grid.mutableGrid
-import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.PointI
 
 private val xxxxx = Clock(6, 3);
 
@@ -26,21 +26,21 @@ private fun part1() {
 
     var count = 0L;
     repeat(100){
-		data.bounds.forEach { data[it]++ }
+		data.boundsI.forEach { data[it]++ }
 
-		val flashed = msop()
+		val flashed = msopi()
 
-		fun flash(point: Point) {
+		fun flash(point: PointI) {
 			if(!flashed.add(point)) return
 			point.getOctNeighbours().forEach{p ->
-				if(p in data.bounds) {
+				if(p in data.boundsI) {
 					data[p] += 1
 					if (data[p] > 9) flash(p)
 				}
 			}
 		}
 
-		data.bounds.forEach { if(data[it] > 9) flash(it) }
+		data.boundsI.forEach { if(data[it] > 9) flash(it) }
 
 		count += flashed.size
 		flashed.forEach { data[it] = 0 }
@@ -58,21 +58,21 @@ private fun part2() {
 	var data = getLines(2021_11).digits().mutableGrid()
 
 	loop{i->
-		data.bounds.forEach { data[it]++ }
+		data.boundsI.forEach { data[it]++ }
 
-		val flashed = msop()
+		val flashed = msopi()
 
-		fun flash(point: Point) {
+		fun flash(point: PointI) {
 			if(!flashed.add(point)) return
 			point.getOctNeighbours().forEach{p ->
-				if(p in data.bounds) {
+				if(p in data.boundsI) {
 					data[p] += 1
 					if (data[p] > 9) flash(p)
 				}
 			}
 		}
 
-		data.bounds.forEach { if(data[it] > 9) flash(it) }
+		data.boundsI.forEach { if(data[it] > 9) flash(it) }
 
 		flashed.forEach { data[it] = 0 }
 		if(data.allItems().all{it == 0}) {

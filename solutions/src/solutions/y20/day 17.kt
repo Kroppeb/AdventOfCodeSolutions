@@ -6,27 +6,27 @@ import me.kroppeb.aoc.helpers.Clock
 
 import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.grid.entityGrid
-import me.kroppeb.aoc.helpers.point.Point
-import me.kroppeb.aoc.helpers.point.Point3D
+import me.kroppeb.aoc.helpers.point.PointI
+import me.kroppeb.aoc.helpers.point.Point3DI
 import me.kroppeb.aoc.helpers.point.toB
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 
 private val xxxxx = Clock(6, 3);
 
 private fun part1(data: Data) {
 	val st = data.e().entityGrid { it == '#' }
-	var current = st.points.map { it toP 0 }.toSet()
-	var bounds = st.bounds
+	var current = st.points.map { it toPI 0 }.toSet()
+	var bounds = st.boundsI
 	var zs = 0
 	var ze = 0
 	repeat(6) {
-		var next = mutableSetOf<Point3D>()
+		var next = mutableSetOf<Point3DI>()
 		for (x in (bounds.xs.start - 10)..(bounds.xs.endInclusive + 10))
 			for (y in (bounds.xs.start - 10)..(bounds.xs.endInclusive + 10)) {
-				var base = x toP y
+				var base = x toPI y
 				var b = false
 				for (z in (zs - 10)..(ze + 10)) {
-					var c = base toP z
+					var c = base toPI z
 					val count = c.getIcosiHeptaNeighbours().count { it in current }
 					if (c in current) {
 						if (count in 2..3) {
@@ -69,18 +69,18 @@ private fun part1(data: Data) {
 
 private fun part2(data: Data) {
 	val st = data.e().entityGrid { it == '#' }
-	var current = st.points.map { it to (0 toP 0) }.toSet()
-	var boundsa = st.bounds
-	var boundsb = (0 toP 0) toB (0 toP 0)
+	var current = st.points.map { it to (0 toPI 0) }.toSet()
+	var boundsa = st.boundsI
+	var boundsb = (0 toPI 0) toB (0 toPI 0)
 	repeat(6) {
-		var next = mutableSetOf<Pair<Point, Point>>()
+		var next = mutableSetOf<Pair<PointI, PointI>>()
 		for (x in (boundsa.xs.start - 10)..(boundsa.xs.endInclusive + 10))
 			for (y in (boundsa.ys.start - 10)..(boundsa.ys.endInclusive + 10)) {
-				var base = x toP y
+				var base = x toPI y
 				var b = false
 				for (z in (boundsa.xs.start - 10)..(boundsa.xs.endInclusive + 10))
 					for (w in (boundsa.ys.start - 10)..(boundsa.ys.endInclusive + 10)) {
-						var sec = z toP w
+						var sec = z toPI w
 						var c = base to sec
 						val count = base.getOctNeighbours().cartesianProduct(sec.getOctNeighbours()).count { it in current }
 						if (c in current) {

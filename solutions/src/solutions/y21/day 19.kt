@@ -11,8 +11,8 @@ import kotlin.math.*
 
 import me.kroppeb.aoc.helpers.Clock
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.Point3D
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.Point3DI
+import me.kroppeb.aoc.helpers.point.toPI
 import kotlin.math.abs
 
 private val xxxxx = Clock(6, 3);
@@ -24,7 +24,7 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-    var data = getLines(19).splitOn { it.isEmpty() }.map { it.drop(1) }.ints().map2 { (a, b, c) -> a toP b toP c }
+    var data = getLines(19).splitOn { it.isEmpty() }.map { it.drop(1) }.ints().map2 { (a, b, c) -> a toPI b toPI c }
 
     var diffs = data.mapIndexed { i, l ->
         val m = l.pairWise().map{(a,b) -> b-a}
@@ -43,7 +43,7 @@ private fun part1() {
     possiblePairs.sortBy { -it.second }
     possiblePairs.log()
 
-    val knownScanners = mutableMapOf<Int, Point3D>(0 to (0 toP 0 toP 0))
+    val knownScanners = mutableMapOf<Int, Point3DI>(0 to (0 toPI 0 toPI 0))
     val knownBeacons = data[0].toMutableSet()
     val scannerRotation = mutableMapOf(0 to listOf(1, 2, 3))
 
@@ -104,7 +104,7 @@ private fun part1() {
 
 }
 
-fun applyRotation(a: List<Int>, b: List<Point3D>) = b.map {
+fun applyRotation(a: List<Int>, b: List<Point3DI>) = b.map {
     when (a[0]) {
         1 -> it.x
         2 -> it.y
@@ -113,7 +113,7 @@ fun applyRotation(a: List<Int>, b: List<Point3D>) = b.map {
         -2 -> -it.y
         -3 -> -it.z
         else -> throw IllegalArgumentException()
-    } toP when (a[1]) {
+    } toPI when (a[1]) {
         1 -> it.x
         2 -> it.y
         3 -> it.z
@@ -121,7 +121,7 @@ fun applyRotation(a: List<Int>, b: List<Point3D>) = b.map {
         -2 -> -it.y
         -3 -> -it.z
         else -> throw IllegalArgumentException()
-    } toP when (a[2]) {
+    } toPI when (a[2]) {
         1 -> it.x
         2 -> it.y
         3 -> it.z

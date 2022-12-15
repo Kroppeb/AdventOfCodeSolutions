@@ -8,7 +8,7 @@ import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.grid.SimpleGrid
 import me.kroppeb.aoc.helpers.grid.entityGrid
 import me.kroppeb.aoc.helpers.grid.grid
-import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.PointI
 import kotlin.collections.*
 
 val p = Clock(3, 6)
@@ -18,7 +18,7 @@ private fun part1(data: Data) {
 	val walkable = data.entityGrid { it == '.' }
 	val portalP = data.entityGrid { it.isLetter() }
 
-	val portals = defaultMapOf<String, MutableList<Point>> { mutableListOf() }
+	val portals = defaultMapOf<String, MutableList<PointI>> { mutableListOf() }
 
 	for (i in portalP.points) {
 		if (i.right in portalP.points) {
@@ -46,7 +46,7 @@ private fun part1(data: Data) {
 		}
 	}
 
-	val gportals: Map<Point, String> = portals.flatMap { (k, v) -> v.map { it to k } }.toMap()
+	val gportals: Map<PointI, String> = portals.flatMap { (k, v) -> v.map { it to k } }.toMap()
 
 	val end = portals["ZZ"].first()
 	val (p, d) = bfs(portals["AA"].first(), { it == end }, {
@@ -66,15 +66,15 @@ private fun part1(data: Data) {
 		println("no path")
 }
 
-private data class State(val p: Point, val d: Int, val depth: Int)
+private data class State(val p: PointI, val d: Int, val depth: Int)
 
 private fun part2(data: Data) {
 	val walkable = data.entityGrid { it == '.' }
 	val portalP = data.entityGrid { it.isLetter() }
 
-	fun isOutside(p: Point) = p.x == 2 || p.y == 2 || p.x == data.bounds.higher.x - 2 || p.y == data.bounds.higher.y - 2
+	fun isOutside(p: PointI) = p.x == 2 || p.y == 2 || p.x == data.boundsI.higher.x - 2 || p.y == data.boundsI.higher.y - 2
 
-	val portals = defaultMapOf<String, MutableList<Point>> { mutableListOf() }
+	val portals = defaultMapOf<String, MutableList<PointI>> { mutableListOf() }
 
 	for (i in portalP.points) {
 		if (i.right in portalP.points) {
@@ -102,7 +102,7 @@ private fun part2(data: Data) {
 		}
 	}
 
-	val gportals: Map<Point, String> = portals.flatMap { (k, v) -> v.map { it to k } }.toMap()
+	val gportals: Map<PointI, String> = portals.flatMap { (k, v) -> v.map { it to k } }.toMap()
 
 
 	val end = portals["ZZ"].first() to 0
@@ -130,7 +130,7 @@ private fun part2(data: Data) {
 private typealias Data = SimpleGrid<Char>
 
 fun main() {
-	val data: Data = getLines(2019_20).e().grid().also { println(it.bounds) }
+	val data: Data = getLines(2019_20).e().grid().also { println(it.boundsI) }
 	part1(data)
 	part2(data)
 }

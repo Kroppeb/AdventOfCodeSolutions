@@ -17,7 +17,7 @@ import kotlin.math.*
 import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.grid.grid
 import me.kroppeb.aoc.helpers.grid.mapIndexed
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 
 
 private val xxxxx = Clock(6, 3);
@@ -28,8 +28,8 @@ private fun part1() {
 
 	var inf = data.mapIndexed { point, c -> point to c }.allItems().filter{ (p,c) -> c == '#'}.map{it.first}.toMutableSet()
 
-	var pos = (data.bounds.lower + data.bounds.higher) / 2
-	var dir = -1 toP 0
+	var pos = (data.boundsI.lower + data.boundsI.higher) / 2
+	var dir = -1 toPI 0
 
 	var count = 0
 	repeat(10000) {
@@ -55,8 +55,8 @@ private fun part2() {
 
 	var inf = data.mapIndexed { point, c -> point to c }.allItems().filter{ (p,c) -> c == '#'}.map{it.first to 2}.toMap().toMutableMap() // TODO: fixme
 
-	var pos = (data.bounds.lower + data.bounds.higher) / 2
-	var dir = -1 toP 0
+	var pos = (data.boundsI.lower + data.boundsI.higher) / 2
+	var dir = -1 toPI 0
 
 	var count = 0
 	repeat(10000000) {

@@ -5,15 +5,15 @@ package solutions.solutions.y20.d03
 import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.grid.grid
 
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 
 private val xxxxx = Clock(3, 6);
 
 private fun part1(data: Data, q: Int = 3, d: Int = 1): Int {
 	val grid = data.e().grid()
 	var s = 0
-	for (y in grid.bounds.lower.y..grid.bounds.higher.y step d) {
-		if (grid[(q * y / d % (grid.bounds.higher.x + 1)) toP y] == '#')
+	for (y in grid.boundsI.lower.y..grid.boundsI.higher.y step d) {
+		if (grid[(q * y / d % (grid.boundsI.higher.x + 1)) toPI y] == '#')
 			s++
 	}
 	println(s)

@@ -5,15 +5,15 @@ package solutions.solutions.y20.d03c
 import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.point.rem
 
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 
 private val xxxxx = Clock(3, 6);
 
 private fun check(data: Data, q: Int, d: Int): Int {
 	var s = 0
-	for (y in data.bounds.ys step d) {
-		val p = q * y / d toP y
-		if (data[p % data.bounds] == '#')
+	for (y in data.boundsI.ys step d) {
+		val p = q * y / d toPI y
+		if (data[p % data.boundsI] == '#')
 			s++
 	}
 	return s

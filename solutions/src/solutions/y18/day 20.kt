@@ -13,8 +13,8 @@ import me.kroppeb.aoc.helpers.graph.SimpleGraph
 import me.kroppeb.aoc.helpers.graph.bfs
 
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.Point
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.PointI
+import me.kroppeb.aoc.helpers.point.toPI
 
 
 private val xxxxx = Clock(6, 3);
@@ -23,10 +23,10 @@ private val xxxxx = Clock(6, 3);
 private fun part1() {
 	var data = getLines(2018_20).first().drop(1)
 
-	val graph = SimpleGraph<Point>()
+	val graph = SimpleGraph<PointI>()
 	var i = 0
 
-	fun parse(point: List<Point>): Collection<Point> {
+	fun parse(point: List<PointI>): Collection<PointI> {
 		var poss = point
 		while (true) {
 			when (data[i]) {
@@ -42,7 +42,7 @@ private fun part1() {
 						continue
 					}
 
-					val newPos = mutableSetOf<Point>()
+					val newPos = mutableSetOf<PointI>()
 
 					while (true) {
 						newPos += parse(poss)
@@ -58,7 +58,7 @@ private fun part1() {
 		}
 	}
 
-	parse(listOf(0 toP 0))
+	parse(listOf(0 toPI 0))
 //	val bounds = graph.neighbours.keys.bounds()
 //	for (y in bounds.ys) print("##")
 //	println("#")
@@ -84,17 +84,17 @@ private fun part1() {
 //		}
 //		println()
 //	}
-	bfs(0 toP 0, { false }) { graph.neighboursOf(it).keys }.second.log()
+	bfs(0 toPI 0, { false }) { graph.neighboursOf(it).keys }.second.log()
 }
 
 private fun part2() {
 
 	var data = getLines(2018_20).first().drop(1)
 
-	val graph = SimpleGraph<Point>()
+	val graph = SimpleGraph<PointI>()
 	var i = 0
 
-	fun parse(point: List<Point>): Collection<Point> {
+	fun parse(point: List<PointI>): Collection<PointI> {
 		var poss = point
 		while (true) {
 			when (data[i]) {
@@ -110,7 +110,7 @@ private fun part2() {
 						continue
 					}
 
-					val newPos = mutableSetOf<Point>()
+					val newPos = mutableSetOf<PointI>()
 
 					while (true) {
 						newPos += parse(poss)
@@ -126,7 +126,7 @@ private fun part2() {
 		}
 	}
 
-	parse(listOf(0 toP 0))
+	parse(listOf(0 toPI 0))
 //	val bounds = graph.neighbours.keys.bounds()
 //	for (y in bounds.ys) print("##")
 //	println("#")
@@ -152,11 +152,11 @@ private fun part2() {
 //		}
 //		println()
 //	}
-	val start = 0 toP 0
+	val start = 0 toPI 0
 	val seen = mutableSetOf(start)
-	val mark = mutableSetOf<Point>()
+	val mark = mutableSetOf<PointI>()
 	var queue = mutableListOf(start)
-	var nextQueue = mutableListOf<Point>()
+	var nextQueue = mutableListOf<PointI>()
 	var dist = -1
 
 	while (queue.isNotEmpty()) {

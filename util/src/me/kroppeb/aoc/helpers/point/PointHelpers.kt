@@ -5,19 +5,38 @@ import me.kroppeb.aoc.helpers.Clock.left
 import me.kroppeb.aoc.helpers.Clock.right
 import me.kroppeb.aoc.helpers.Clock.up
 import me.kroppeb.aoc.helpers.sint.Sint
+import me.kroppeb.aoc.helpers.sint.s
 
-infix fun Int.toP(y: Int): Point = Point(this, y)
-infix fun Point.toP(z: Int): Point3D = Point3D(x, y, z)
-
-// TODO: make Point use sint instead
-infix fun Int.toP(y: Sint): Point = this toP y.i
-infix fun Sint.toP(y: Int): Point = this.i toP y
-infix fun Sint.toP(y: Sint): Point = this.i toP y.i
-infix fun Point.toP(y: Sint): Point3D = this toP y.i
+infix fun Int.toPI(y: Int): PointI = PointI(this, y)
+infix fun PointI.toPI(z: Int): Point3DI = Point3DI(x, y, z)
 
 
+infix fun Long.toPL(o: Long) = PointL(this, o)
+infix fun PointL.toPL (o: Long) = Point3DL(this.x, this.y, o)
 
-fun Char.toPoint(): Point = when (this.toUpperCase()) {
+infix fun Sint.toP(y: Sint): Point = Point(this, y)
+infix fun Sint.toP(y: Int): Point = Point(this, y.s)
+infix fun Int.toP(y: Sint): Point = Point(this.s, y)
+infix fun Int.toP(y: Int): Point = Point(this.s, y.s)
+infix fun Sint.toP(y: Long): Point = Point(this, y.s)
+infix fun Long.toP(y: Sint): Point = Point(this.s, y)
+infix fun Long.toP(y: Int): Point = Point(this.s, y.s)
+infix fun Int.toP(y: Long): Point = Point(this.s, y.s)
+infix fun Long.toP(y: Long): Point = Point(this.s, y.s)
+
+infix fun Point.toP(z: Sint): Point3D = Point3D(x, y, z)
+infix fun Point.toP(z: Int): Point3D = Point3D(x, y, z.s)
+infix fun Point.toP(z: Long): Point3D = Point3D(x, y, z.s)
+
+infix fun PointI.toP(z: Sint): Point3D = Point3D(x.s, y.s, z)
+infix fun PointI.toP(z: Int): Point3D = Point3D(x.s, y.s, z.s)
+infix fun PointI.toP(z: Long): Point3D = Point3D(x.s, y.s, z.s)
+
+infix fun PointL.toP(z: Sint): Point3D = Point3D(x.s, y.s, z)
+infix fun PointL.toP(z: Int): Point3D = Point3D(x.s, y.s, z.s)
+infix fun PointL.toP(z: Long): Point3D = Point3D(x.s, y.s, z.s)
+
+fun Char.toPointI(): PointI = when (this.toUpperCase()) {
 	'E' -> right
 	'R' -> right
 
@@ -32,9 +51,7 @@ fun Char.toPoint(): Point = when (this.toUpperCase()) {
 	else -> error("")
 }
 
-
-infix fun Long.toP(o: Long) = PointL(this, o)
-infix fun PointL.toP (o: Long) = Point3DL(this.x, this.y, o)
+fun Char.toPoint() = toPointI().sint
 
 fun <T : PointN<T, *>> abs(v: T) = v.abs()
 
@@ -84,16 +101,16 @@ fun <T : PointN<T, C>, C:Comparable<C>> Iterable<T>.sortByFurthest() = sortedByD
 fun <T : PointN<T, C>, C:Comparable<C>> Iterable<T>.sortByFurthestMan() = sortedByDescending(PointN<T,C>::manDist)
 
 object PointOrdering {
-	object XMayor : Comparator<Point> {
-		override fun compare(o1: Point, o2: Point): Int {
+	object XMayor : Comparator<PointI> {
+		override fun compare(o1: PointI, o2: PointI): Int {
 			if (o1.x == o2.x)
 				return o1.y.compareTo(o2.y)
 			return o1.x.compareTo(o2.x)
 		}
 	}
 
-	object YMayor : Comparator<Point> {
-		override fun compare(o1: Point, o2: Point): Int {
+	object YMayor : Comparator<PointI> {
+		override fun compare(o1: PointI, o2: PointI): Int {
 			if (o1.y == o2.y)
 				return o1.x.compareTo(o2.x)
 			return o1.y.compareTo(o2.y)
@@ -102,24 +119,42 @@ object PointOrdering {
 }
 
 
-fun PointL.toPoint() = this.x.toInt() toP this.y.toInt()
-fun Point.toPointL() = this.x.toLong() toP this.y.toLong()
-fun Point3DL.toPoint3D() = this.x.toInt() toP this.y.toInt() toP this.z.toInt()
-fun Point3D.toPoint3DL() = this.x.toLong() toP this.y.toLong() toP this.z.toLong()
+fun PointL.toPoint() = this.x.toInt() toPI this.y.toInt()
+fun PointI.toPointL() = this.x.toLong() toPL this.y.toLong()
+fun Point3DL.toPoint3D() = this.x.toInt() toPI this.y.toInt() toPI this.z.toInt()
+fun Point3DI.toPoint3DL() = this.x.toLong() toPL this.y.toLong() toPL this.z.toLong()
 
-operator fun Point.plus(other: PointL) = this.toPointL() + other
-operator fun Point.minus(other: PointL) = this.toPointL() - other
-operator fun Point.times(other: PointL) = this.toPointL() * other
-operator fun Point.div(other: PointL) = this.toPointL() / other
-operator fun Point.rem(other: PointL) = this.toPointL() % other
-fun Point.dot(other: PointL) = this.toPointL().dot(other)
+operator fun PointI.plus(other: PointL) = this.toPointL() + other
+operator fun PointI.minus(other: PointL) = this.toPointL() - other
+operator fun PointI.times(other: PointL) = this.toPointL() * other
+operator fun PointI.div(other: PointL) = this.toPointL() / other
+operator fun PointI.rem(other: PointL) = this.toPointL() % other
+fun PointI.dot(other: PointL) = this.toPointL().dot(other)
 
-operator fun PointL.plus(other: Point) = this + other.toPointL()
-operator fun PointL.minus(other: Point) = this - other.toPointL()
-operator fun PointL.times(other: Point) = this * other.toPointL()
-operator fun PointL.div(other: Point) = this / other.toPointL()
-operator fun PointL.rem(other: Point) = this % other.toPointL()
-fun PointL.dot(other: Point) = this.dot(other.toPointL())
+operator fun PointL.plus(other: PointI) = this + other.toPointL()
+operator fun PointL.minus(other: PointI) = this - other.toPointL()
+operator fun PointL.times(other: PointI) = this * other.toPointL()
+operator fun PointL.div(other: PointI) = this / other.toPointL()
+operator fun PointL.rem(other: PointI) = this % other.toPointL()
+fun PointL.dot(other: PointI) = this.dot(other.toPointL())
 
-fun Pair<Int, Int>.toPoint() = first toP second
-fun Pair<Long, Long>.toPointL() = first toP second
+fun Pair<Int, Int>.toPoint() = first toPI second
+fun Pair<Long, Long>.toPointL() = first toPL second
+
+
+val PointI.sint get() = this.x.s toP this.y.s
+fun PointI.dot(other: Point) = this.sint.dot(other)
+operator fun Point.plus(other: PointI) = this.plus(other.sint)
+operator fun PointI.plus(other: Point) = this.sint.plus(other)
+operator fun Point.minus(other: PointI) = this.minus(other.sint)
+operator fun PointI.minus(other: Point) = this.sint.minus(other)
+operator fun Point.times(other: PointI) = this.times(other.sint)
+operator fun PointI.times(other: Point) = this.sint.times(other)
+operator fun Point.div(other: PointI) = this.div(other.sint)
+operator fun PointI.div(other: Point) = this.sint.div(other)
+operator fun Point.rem(other: PointI) = this.rem(other.sint)
+operator fun PointI.rem(other: Point) = this.sint.rem(other)
+
+operator fun PointI.times(other: Sint) = this.sint.times(other)
+operator fun PointI.div(other: Sint) = this.sint.div(other)
+operator fun PointI.rem(other: Sint) = this.sint.rem(other)

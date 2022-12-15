@@ -2,16 +2,16 @@
 package solutions.solutions.y19.d15
 
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.Point
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.PointI
+import me.kroppeb.aoc.helpers.point.toPI
 import kotlinx.coroutines.*
 import java.util.*
 
 private fun part1(data: IntCode)= runBlocking {
-	val map= mutableMapOf<Point,Long>()
-	val dd= mutableMapOf<Point,Int>()
-	var pos = 0 toP 0
-	val st = ArrayDeque<Point>()
+	val map= mutableMapOf<PointI,Long>()
+	val dd= mutableMapOf<PointI,Int>()
+	var pos = 0 toPI 0
+	val st = ArrayDeque<PointI>()
 	val t = listOf(1,3,2,4L)
 	var found = false
 	var maxd = 0
@@ -50,7 +50,7 @@ private fun part1(data: IntCode)= runBlocking {
 						// clear map and keep max st
 						map.clear()
 						st.clear()
-						pos = 0 toP 0
+						pos = 0 toPI 0
 						map[pos] = 2
 						// I forgot to add this during the contest.
 						maxd = 0

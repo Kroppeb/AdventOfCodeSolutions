@@ -2,13 +2,15 @@ package me.kroppeb.aoc.helpers.point
 
 import me.kroppeb.aoc.helpers.Clock
 import me.kroppeb.aoc.helpers.gcd
-import kotlin.math.sign
+import me.kroppeb.aoc.helpers.max
+import me.kroppeb.aoc.helpers.min
+import me.kroppeb.aoc.helpers.sint.*
 import kotlin.math.sqrt
 
 /**
  * righthanded rotations for now
  */
-data class Point3D(val x: Int, val y: Int, val z: Int) : PointNI<Point3D> {
+data class Point3D(val x: Sint, val y: Sint, val z: Sint) : PointNS<Point3D> {
 	val right by lazy { (x toP y) + Clock.right toP z }
 	val left by lazy { (x toP y) + Clock.left toP z }
 	val down by lazy { (x toP y) + Clock.down toP z }
@@ -73,29 +75,29 @@ data class Point3D(val x: Int, val y: Int, val z: Int) : PointNI<Point3D> {
 	override operator fun div(other: Point3D): Point3D = x / other.x toP y / other.y toP z / other.z
 	override operator fun rem(other: Point3D): Point3D = x % other.x toP y % other.y toP z % other.z
 
-	override operator fun times(other: Int): Point3D = x * other toP y * other toP z * other
-	override operator fun div(other: Int): Point3D = x / other toP y / other toP z / other
-	override operator fun rem(other: Int): Point3D = x % other toP y % other toP z % other
+	override operator fun times(other: Sint): Point3D = x * other toP y * other toP z * other
+	override operator fun div(other: Sint): Point3D = x / other toP y / other toP z / other
+	override operator fun rem(other: Sint): Point3D = x % other toP y % other toP z % other
 
-	override fun abs(): Point3D = kotlin.math.abs(x) toP kotlin.math.abs(y) toP kotlin.math.abs(z)
+	override fun abs(): Point3D = abs(x) toP abs(y) toP abs(z)
 
-	override fun sqrDist(): Int = x * x + y * y + z * z
+	override fun sqrDist(): Sint = x * x + y * y + z * z
 	override fun dist(): Double = sqrt(sqrDist().toDouble())
-	override fun manDist(): Int = kotlin.math.abs(x) + kotlin.math.abs(y) + kotlin.math.abs(z)
-	override fun chebyshevDist(): Int = maxOf(kotlin.math.abs(x), kotlin.math.abs(y), kotlin.math.abs(z))
+	override fun manDist(): Sint = abs(x) + abs(y) + abs(z)
+	override fun chebyshevDist(): Sint = maxOf(abs(x), abs(y), abs(z))
 
-	override fun gcd(): Int = me.kroppeb.aoc.helpers.gcd(kotlin.math.abs(x), gcd(kotlin.math.abs(y), kotlin.math.abs(z)))
+	override fun gcd():Sint = me.kroppeb.aoc.helpers.gcd(abs(x), gcd(abs(y), abs(z)))
 
-	override fun min(other: Point3D): Point3D = kotlin.math.min(this.x, other.x) toP kotlin.math.min(
+	override fun min(other: Point3D): Point3D = min(this.x, other.x) toP min(
 		this.y,
 		other.y
-	) toP kotlin.math.min(this.z, other.z)
-	override fun max(other: Point3D): Point3D = kotlin.math.max(this.x, other.x) toP kotlin.math.max(
+	) toP min(this.z, other.z)
+	override fun max(other: Point3D): Point3D = max(this.x, other.x) toP max(
 		this.y,
 		other.y
-	) toP kotlin.math.max(this.z, other.z)
+	) toP max(this.z, other.z)
 
 	override fun dot(other: Point3D) = this.x * other.x + this.y * other.y + this.z * other.z
 
-	override fun sign() = x.sign toP y.sign toP z.sign
+	override fun sign() = x.sign() toP y.sign() toP z.sign()
 }

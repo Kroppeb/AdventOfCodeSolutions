@@ -18,7 +18,7 @@ import me.kroppeb.aoc.helpers.graph.*
 
 import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.point.bounds
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 
 
 private val xxxxx = Clock(6, 3);
@@ -34,7 +34,7 @@ private fun part1() {
 }
 
 private fun part2() {
-	var data = getLines(2016_22).drop(2).ints().map{(x,y, _, u,a) -> x toP y to (u to a)}.toMap()
+	var data = getLines(2016_22).drop(2).ints().map{(x,y, _, u,a) -> x toPI y to (u to a)}.toMap()
 
 	var bounds = data.keys.bounds()
 
@@ -59,7 +59,7 @@ private fun part2() {
 //		}
 //	}}.log()
 
-	bfs((empty) to (goalX toP 0), {(_,s) -> s == 0 toP 0}) {(empty, p) ->
+	bfs((empty) to (goalX toPI 0), { (_,s) -> s == 0 toPI 0}) { (empty, p) ->
 		empty.getQuadNeighbours().filter{it in bounds}.filter{data[it]!!.first < 100}.map{x ->
 			x to if (x == p) empty else p
 		}

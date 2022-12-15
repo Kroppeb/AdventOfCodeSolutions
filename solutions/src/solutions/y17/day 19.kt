@@ -16,7 +16,7 @@ import kotlin.math.*
 
 import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.grid.grid
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 
 
 private val xxxxx = Clock(6, 3);
@@ -25,27 +25,27 @@ private val xxxxx = Clock(6, 3);
 private fun part1() {
 	var data = getLines(2017_19).e().grid()
 
-	var pos = 0 toP data.items.first().indexOf('|')
-	var dir = 1 toP 0
+	var pos = 0 toPI data.items.first().indexOf('|')
+	var dir = 1 toPI 0
 
 	var l = mutableListOf<Char>()
 
 	while (true) {
 		pos += dir
-		val next = if(pos + dir in data.bounds) data[pos + dir] else '\u0000'
+		val next = if(pos + dir in data.boundsI) data[pos + dir] else '\u0000'
 
-		when(val x = if(pos in data.bounds) data[pos] else '\u0000') {
+		when(val x = if(pos in data.boundsI) data[pos] else '\u0000') {
 			'|' -> {}
 			'-' -> {}
 			'\u0000' -> {break}
 			'+' -> {
 				dir = dir.rotateClock()
-				var c = if(pos + dir in data.bounds) data[pos + dir] else '\u0000'
+				var c = if(pos + dir in data.boundsI) data[pos + dir] else '\u0000'
 				if(c != '\u0000' && c != ' ' && c != if(dir.x == 0) '|' else '-') {
 					continue
 				}
 				dir = -dir
-				c = if(pos + dir in data.bounds) data[pos + dir] else '\u0000'
+				c = if(pos + dir in data.boundsI) data[pos + dir] else '\u0000'
 				if(c != '\u0000' && c != ' ' && c != if(dir.x == 0) '|' else '-') {
 					continue
 				}
@@ -65,8 +65,8 @@ private fun part1() {
 private fun part2() {
 	var data = getLines(2017_19).e().grid()
 
-	var pos = 0 toP data.items.first().indexOf('|')
-	var dir = 1 toP 0
+	var pos = 0 toPI data.items.first().indexOf('|')
+	var dir = 1 toPI 0
 
 	var l = mutableListOf<Char>()
 	var q = 0
@@ -74,20 +74,20 @@ private fun part2() {
 	while (true) {
 		q++
 		pos += dir
-		val next = if(pos + dir in data.bounds) data[pos + dir] else '\u0000'
+		val next = if(pos + dir in data.boundsI) data[pos + dir] else '\u0000'
 
-		when(val x = if(pos in data.bounds) data[pos] else '\u0000') {
+		when(val x = if(pos in data.boundsI) data[pos] else '\u0000') {
 			'|' -> {}
 			'-' -> {}
 			'\u0000' -> {break}
 			'+' -> {
 				dir = dir.rotateClock()
-				var c = if(pos + dir in data.bounds) data[pos + dir] else '\u0000'
+				var c = if(pos + dir in data.boundsI) data[pos + dir] else '\u0000'
 				if(c != '\u0000' && c != ' ' && c != if(dir.x == 0) '|' else '-') {
 					continue
 				}
 				dir = -dir
-				c = if(pos + dir in data.bounds) data[pos + dir] else '\u0000'
+				c = if(pos + dir in data.boundsI) data[pos + dir] else '\u0000'
 				if(c != '\u0000' && c != ' ' && c != if(dir.x == 0) '|' else '-') {
 					continue
 				}

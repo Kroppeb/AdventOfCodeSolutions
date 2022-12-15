@@ -25,9 +25,9 @@ private val xxxxx = Clock(6, 3);
 private fun part1() {
 	var data = getLines(2016_24).e().grid()
 
-	val poi = data.bounds.filter{data[it] != '.' && data[it] != '#' && data[it] != '0'}.toSet()
+	val poi = data.boundsI.filter{data[it] != '.' && data[it] != '#' && data[it] != '0'}.toSet()
 
-	val start = data.bounds.find{data[it] == '0'}!!
+	val start = data.boundsI.find{data[it] == '0'}!!
 
 	bfs(start to poi, {(_, poi) -> poi.isEmpty()}) {(p, poi) ->
 		p.getQuadNeighbours().filter{data[it] != '#'}.map{
@@ -44,9 +44,9 @@ private fun part1() {
 private fun part2() {
 	var data = getLines(2016_24).e().grid()
 
-	val poi = data.bounds.filter{data[it] != '.' && data[it] != '#' && data[it] != '0'}.toSet()
+	val poi = data.boundsI.filter{data[it] != '.' && data[it] != '#' && data[it] != '0'}.toSet()
 
-	val start = data.bounds.find{data[it] == '0'}!!
+	val start = data.boundsI.find{data[it] == '0'}!!
 
 	bfs(start to poi, {(p, poi) -> poi.isEmpty() && p == start}) {(p, poi) ->
 		p.getQuadNeighbours().filter{data[it] != '#'}.map{

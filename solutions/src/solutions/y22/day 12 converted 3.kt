@@ -29,10 +29,9 @@ import me.kroppeb.aoc.helpers.contextual.*
 import me.kroppeb.aoc.helpers.graph.*
 import me.kroppeb.aoc.helpers.grid.*
 import me.kroppeb.aoc.helpers.sint.*
+import me.kroppeb.aoc.helpers.point.*
 import me.kroppeb.aoc.helpers.*
 import itertools.*
-import me.kroppeb.aoc.helpers.point.toP
-import solutions.solutions.y19.d20c.p
 import java.util.Comparator
 import java.util.PriorityQueue
 import kotlin.math.*

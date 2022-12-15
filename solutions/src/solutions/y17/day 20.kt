@@ -43,7 +43,7 @@ data class Particle(var p: Point3DL, var v: Point3DL, val a: Point3DL, val id: I
 }
 
 private fun part1() {
-	var data = getLines(2017_20).points3D().mapIndexed() { id, (p, v, a) ->
+	var data = getLines(2017_20).points3DI().mapIndexed() { id, (p, v, a) ->
 		Particle(
 			Point3DL(p.x.toLong(), p.y.toLong(), p.z.toLong()),
 			Point3DL(v.x.toLong(), v.y.toLong(), v.z.toLong()),
@@ -88,7 +88,7 @@ private fun part1() {
 }
 
 private fun part2() {
-	var data = getLines(2017_20).points3D().mapIndexed() { id, (p, v, a) ->
+	var data = getLines(2017_20).points3DI().mapIndexed() { id, (p, v, a) ->
 		Particle(
 			Point3DL(p.x.toLong(), p.y.toLong(), p.z.toLong()),
 			Point3DL(v.x.toLong(), v.y.toLong(), v.z.toLong()),

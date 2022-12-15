@@ -1,11 +1,11 @@
 package me.kroppeb.aoc.helpers.grid
 
-import me.kroppeb.aoc.helpers.point.Bounds
-import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.BoundsI
+import me.kroppeb.aoc.helpers.point.PointI
 
 interface Grid<out T> {
-	operator fun get(index: Point): T
-	val bounds: Bounds
+	operator fun get(index: PointI): T
+	val boundsI: BoundsI
 }
 
 interface StrictGrid<out T> : Grid<T> {
@@ -20,5 +20,5 @@ interface ResizeableGrid<out T> : Grid<T> {
 }
 
 interface MutableGrid<T> : Grid<T> {
-	operator fun set(index: Point, item:T)
+	operator fun set(index: PointI, item:T)
 }

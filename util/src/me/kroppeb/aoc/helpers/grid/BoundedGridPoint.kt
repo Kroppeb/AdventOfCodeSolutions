@@ -1,12 +1,12 @@
 package me.kroppeb.aoc.helpers.grid
 
 import me.kroppeb.aoc.helpers.Clock
-import me.kroppeb.aoc.helpers.point.Point
-import me.kroppeb.aoc.helpers.point.toP
-import me.kroppeb.aoc.helpers.point.toPoint
+import me.kroppeb.aoc.helpers.point.PointI
+import me.kroppeb.aoc.helpers.point.toPI
+import me.kroppeb.aoc.helpers.point.toPointI
 
-data class BoundedGridPoint<out T>(val p: Point, val v: T, val g: SimpleGrid<T>) {
-	val b get() = g.bounds
+data class BoundedGridPoint<out T>(val p: PointI, val v: T, val g: SimpleGrid<T>) {
+	val b get() = g.boundsI
 
 	// TODO: evaluate whether having these as lazy actually helps or hurts
 	val right get() = g.getBpOrNull(this.p.right)
@@ -19,7 +19,7 @@ data class BoundedGridPoint<out T>(val p: Point, val v: T, val g: SimpleGrid<T>)
 	val south get() = down
 	val west get() = left
 
-	private fun Iterable<Point>.fix() = mapNotNull { g.getBpOrNull(it) }
+	private fun Iterable<PointI>.fix() = mapNotNull { g.getBpOrNull(it) }
 
 	fun getQuadNeighbours() = listOf(p.right, p.down, p.left, p.up).fix()
 	fun getDiagonalNeighbours() = listOf(p.right.down, p.left.down, p.left.up, p.right.up).fix()
@@ -34,26 +34,26 @@ data class BoundedGridPoint<out T>(val p: Point, val v: T, val g: SimpleGrid<T>)
 	fun getMooreNeighbours() = getOctNeighbours()
 	fun getVonNeumannNeighbours() = getQuadNeighbours()
 
-	operator fun minus(other: Point) = g.getBp(p.x - other.x toP p.y - other.y)
-	operator fun plus(other: Point) = g.getBp(p.x + other.x toP p.y + other.y)
+	operator fun minus(other: PointI) = g.getBp(p.x - other.x toPI p.y - other.y)
+	operator fun plus(other: PointI) = g.getBp(p.x + other.x toPI p.y + other.y)
 
-	operator fun minus(other: Char) = this - other.toPoint()
-	operator fun plus(other: Char) = this + other.toPoint()
+	operator fun minus(other: Char) = this - other.toPointI()
+	operator fun plus(other: Char) = this + other.toPointI()
 
-	fun sqrDistTo(other: Point): Int = (this.p - other).sqrDist()
-	fun distTo(other: Point): Double = (this.p - other).dist()
-	fun manDistTo(other: Point): Int = (this.p - other).manDist()
+	fun sqrDistTo(other: PointI): Int = (this.p - other).sqrDist()
+	fun distTo(other: PointI): Double = (this.p - other).dist()
+	fun manDistTo(other: PointI): Int = (this.p - other).manDist()
 
 	fun sqrDistTo(other: BoundedGridPoint<*>): Int = (this.p - other.p).sqrDist()
 	fun distTo(other: BoundedGridPoint<*>): Double = (this.p - other.p).dist()
 	fun manDistTo(other: BoundedGridPoint<*>): Int = (this.p - other.p).manDist()
 
-	fun isLeftOf(other: Point) = Clock.left.dot(this.p) > Clock.left.dot(other)
-	fun isRightOf(other: Point) = Clock.right.dot(this.p) > Clock.right.dot(other)
-	fun isAbove(other: Point) = Clock.up.dot(this.p) > Clock.up.dot(other)
-	fun isBelow(other: Point) = Clock.down.dot(this.p) > Clock.down.dot(other)
-	fun sameLeftRight(other: Point) = Clock.left.dot(this.p) == Clock.left.dot(other)
-	fun sameUpDown(other: Point) = Clock.up.dot(this.p) == Clock.up.dot(other)
+	fun isLeftOf(other: PointI) = Clock.left.dot(this.p) > Clock.left.dot(other)
+	fun isRightOf(other: PointI) = Clock.right.dot(this.p) > Clock.right.dot(other)
+	fun isAbove(other: PointI) = Clock.up.dot(this.p) > Clock.up.dot(other)
+	fun isBelow(other: PointI) = Clock.down.dot(this.p) > Clock.down.dot(other)
+	fun sameLeftRight(other: PointI) = Clock.left.dot(this.p) == Clock.left.dot(other)
+	fun sameUpDown(other: PointI) = Clock.up.dot(this.p) == Clock.up.dot(other)
 
 	fun isLeftOf(other: BoundedGridPoint<*>) = isLeftOf(other.p)
 	fun isRightOf(other: BoundedGridPoint<*>) = isRightOf(other.p)

@@ -20,7 +20,7 @@ private val xxxxx = Clock(6, 3);
 */
 
 private fun part1() {
-	getLines(2021_05).points()
+	getLines(2021_05).pointsI()
 		.map { (a,b) -> a toL b }
 		.filter { it.isAxisAligned() }
 		.flatten()
@@ -30,7 +30,7 @@ private fun part1() {
 }
 
 private fun part2() {
-	getLines(2021_05).points()
+	getLines(2021_05).pointsI()
 		.map { (a,b) -> a toL b }
 		.flatten()
 		.countEach()

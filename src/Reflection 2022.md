@@ -108,3 +108,7 @@ also:
 ## Day 13
 95/67; points: 40, 30h place
 * JSON? JSON??? since when are we doing JSON???
+
+## Day 14
+154/78; points: 23, 29th place
+* Made a wrong assumption =/

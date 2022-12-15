@@ -1,9 +1,9 @@
 package me.kroppeb.aoc.helpers
 
-import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.PointI
 
-fun Point.asPair(): Pair<Int, Int> = Pair(x, y)
-fun Pair<Int, Int>.asPoint(): Point = Point(first, second)
+fun PointI.asPair(): Pair<Int, Int> = Pair(x, y)
+fun Pair<Int, Int>.asPoint(): PointI = PointI(first, second)
 
 fun Pair<Int, Int>.getQuadNeighbours(): List<Pair<Int, Int>> = asPoint().getQuadNeighbours().map { it.asPair() }
 fun Pair<Int, Int>.getOctNeighbours(): List<Pair<Int, Int>> = asPoint().getOctNeighbours().map { it.asPair() }

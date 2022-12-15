@@ -1,18 +1,18 @@
 package me.kroppeb.aoc.helpers
 
 
-import me.kroppeb.aoc.helpers.point.Point
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.PointI
+import me.kroppeb.aoc.helpers.point.toPI
 
 // TODO: make this into a class and use it as a context instead
 object Clock {
-	lateinit var left: Point
+	lateinit var left: PointI
 		private set;
-	lateinit var right: Point
+	lateinit var right: PointI
 		private set;
-	lateinit var up: Point
+	lateinit var up: PointI
 		private set;
-	lateinit var down: Point
+	lateinit var down: PointI
 		private set;
 
 	// bounds calculation
@@ -43,8 +43,8 @@ object Clock {
 			12 -> nY = 1
 			else -> error("invalid clock y")
 		}
-		up = nX toP nY
-		right = eX toP eY
+		up = nX toPI nY
+		right = eX toPI eY
 		left = -right
 		down = -up
 
@@ -113,7 +113,7 @@ object Clock {
 		}
 	}
 
-	fun fromIndices(first: Int, second: Int): Point {
+	fun fromIndices(first: Int, second: Int): PointI {
 		return down * first + right * second
 	}
 }

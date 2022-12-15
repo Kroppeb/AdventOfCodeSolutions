@@ -2,7 +2,7 @@
 package solutions.solutions.y19.d18
 
 
-import me.kroppeb.aoc.helpers.point.Point
+import me.kroppeb.aoc.helpers.point.PointI
 import me.kroppeb.aoc.helpers.getLines
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -36,8 +36,8 @@ import kotlin.collections.toMutableSet
 import kotlin.collections.toSet
 
 data class Step(val pos: Robots, val distance: Int, val keys: Int)
-data class Robots(val a: Point, val b: Point, val c: Point, val d: Point) {
-	fun mod(id: Int, r: Point) = when (id) {
+data class Robots(val a: PointI, val b: PointI, val c: PointI, val d: PointI) {
+	fun mod(id: Int, r: PointI) = when (id) {
 		0 -> copy(a = r)
 		1 -> copy(b = r)
 		2 -> copy(c = r)
@@ -60,7 +60,7 @@ private fun part1(data: List<List<Char>>) {
 	val keys = passable.points.filter { (x, y) -> data[x][y].let { it.isLetter() && it.isLowerCase() } }.associateWith { (x, y) -> data[x][y] }
 
 	val a = keys.values.sorted().toString()
-	val kk = mutableMapOf<String, Int>(a to -1, emptyList<Point>().toString() to 0)
+	val kk = mutableMapOf<String, Int>(a to -1, emptyList<PointI>().toString() to 0)
 	val kr = mutableMapOf(-1 to keys.values.toSet(), 0 to emptySet())
 
 	val red = passable.points.toMutableSet()

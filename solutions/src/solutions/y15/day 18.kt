@@ -30,10 +30,10 @@ private fun part1() {
 	repeat(100) {
 		data = data.mapIndexed { p, x ->
 			if (x) {
-				val n = p.getOctNeighbours().count { it in data.bounds && data[it] }
+				val n = p.getOctNeighbours().count { it in data.boundsI && data[it] }
 				n == 2 || n == 3
 			} else {
-				p.getOctNeighbours().count { it in data.bounds && data[it] } == 3
+				p.getOctNeighbours().count { it in data.boundsI && data[it] } == 3
 			}
 		}
 	}
@@ -47,25 +47,25 @@ private fun part2() {
 	var data = getLines(2015_18).e().map2 { it == '#' }.mutableGrid()
 
 
-	data[data.bounds.lowerLeft] = true
-	data[data.bounds.lowerRight] = true
-	data[data.bounds.upperLeft] = true
-	data[data.bounds.upperRight] = true
+	data[data.boundsI.lowerLeft] = true
+	data[data.boundsI.lowerRight] = true
+	data[data.boundsI.upperLeft] = true
+	data[data.boundsI.upperRight] = true
 
 	repeat(100) {
 		data = data.mapIndexed { p, x ->
 			if (x) {
-				val n = p.getOctNeighbours().count { it in data.bounds && data[it] }
+				val n = p.getOctNeighbours().count { it in data.boundsI && data[it] }
 				n == 2 || n == 3
 			} else {
-				p.getOctNeighbours().count { it in data.bounds && data[it] } == 3
+				p.getOctNeighbours().count { it in data.boundsI && data[it] } == 3
 			}
 		}.mutable()
 
-		data[data.bounds.lowerLeft] = true
-		data[data.bounds.lowerRight] = true
-		data[data.bounds.upperLeft] = true
-		data[data.bounds.upperRight] = true
+		data[data.boundsI.lowerLeft] = true
+		data[data.boundsI.lowerRight] = true
+		data[data.boundsI.upperLeft] = true
+		data[data.boundsI.upperRight] = true
 	}
 
 	data.allItems().count{ it }.log()

@@ -1,5 +1,6 @@
 package me.kroppeb.aoc.helpers
 
+import me.kroppeb.aoc.helpers.collections.LazySet
 import me.kroppeb.aoc.helpers.sint.*
 
 
@@ -24,10 +25,19 @@ fun Iterable<Iterable<String>>.e() = map { it.e() }
 
 inline fun <T, R> Iterable<Iterable<T>>.map2(convert: (T) -> R): List<List<R>> = map { it.map(convert) }
 
+@JvmName("rleDecodeInt")
+@OptIn(kotlin.experimental.ExperimentalTypeInference::class)
+@OverloadResolutionByLambdaReturnType
 inline fun <T, R> Iterable<T>.rleDecode(value: (T) -> R, length: (T) -> Int) =
 	flatMap { listOf(value(it)).repeat(length(it)) }
 
-@Deprecated("doesn't work")
+
+@OptIn(kotlin.experimental.ExperimentalTypeInference::class)
+@OverloadResolutionByLambdaReturnType
+inline fun <T, R> Iterable<T>.rleDecodes(value: (T) -> R, length: (T) -> Sint) =
+	flatMap { listOf(value(it)).repeat(length(it)) }
+
+
 inline fun <T, R> Iterable<T>.rleEncode(convert: (T, Int) -> R) = blockCounts().map {(a,b) -> convert(a, b) }
 
 fun <E> List<E>.repeat(length: Int): List<E> {
@@ -742,13 +752,12 @@ fun <T> Pair<Iterable<T>, Iterable<T>>.union() = first or second
 fun <T, R, V> Pair<Iterable<T>, Iterable<R>>.intersect(): Set<V> where V : T, V : R =
 	first and second as Iterable<V>
 
-infix fun <T> Iterable<T>.notIn(other: Iterable<*>): Set<T> =
-	this.toMutableSet().apply { removeAll(other as Iterable<T>) }
+infix fun <T> Iterable<T>.notIn(other: Iterable<*>): Set<T> = LazySet.difference(this, other )
 
 // intersection, but better types
 @Suppress("BOUNDS_NOT_ALLOWED_IF_BOUNDED_BY_TYPE_PARAMETER")
 fun <T, R, V> Iterable<T>.onlyIn(other: Iterable<R>): Set<V> where V : T, V : R =
-	(this as Iterable<Any?>).toMutableSet().apply { retainAll(other) } as Set<V>
+	LazySet.intersection(this, other)
 
 
 // onlyIn but it's infix
@@ -757,10 +766,11 @@ infix fun <T, R, V> Iterable<T>.inter(other: Iterable<R>): Set<V> where V : T, V
 	this.onlyIn(other)
 
 // symdiff
-infix fun <T> Iterable<T>.symDiff(other: Iterable<T>): Set<T> = this.union(other) - this.inter(other)
+infix fun <T> Iterable<T>.symDiff(other: Iterable<T>): Set<T> =
+	LazySet.difference(this, other) or LazySet.difference(other, this)
 
 // union, but it's infix
-infix fun <T> Iterable<T>.or(other: Iterable<T>): Set<T> = this.union(other)
+infix fun <T> Iterable<T>.or(other: Iterable<T>): Set<T> = LazySet.union(this, other)
 
 // onlyIn but it's infix
 @Suppress("BOUNDS_NOT_ALLOWED_IF_BOUNDED_BY_TYPE_PARAMETER")

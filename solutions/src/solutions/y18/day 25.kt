@@ -15,14 +15,14 @@ import kotlin.math.*
 import me.kroppeb.aoc.helpers.collections.*
 
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.toP
+import me.kroppeb.aoc.helpers.point.toPI
 
 
 private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(2018_25).ints().map{(a,b,c,d) -> a toP b to (c toP d)}
+	var data = getLines(2018_25).ints().map{(a,b,c,d) -> a toPI b to (c toPI d)}
 
 	val union = UnionFind()
 
