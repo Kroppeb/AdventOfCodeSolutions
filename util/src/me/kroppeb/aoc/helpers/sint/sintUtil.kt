@@ -166,7 +166,7 @@ infix fun Long.mod(base:Sint) = this.s mod base
 
 
 
-fun Iterable<Sint>.sum(): Sint = reduce { a, b -> a + b }
+fun Iterable<Sint>.sum(): Sint = fold(0.s) { a, b -> a + b }
 
 fun <T>Iterable<T>.sumOf(selector: (T) -> Sint): Sint = map(selector).sum()
 fun Iterable<Sint>.cumSum(): List<Sint> = scan { a, b -> a + b }

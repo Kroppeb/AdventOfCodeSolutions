@@ -25,144 +25,48 @@ import kotlin.math.*
  */
 
 
+
 import java.awt.Toolkit
 import java.awt.datatransfer.Clipboard
 import java.awt.datatransfer.StringSelection
 
 import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.collections.*
+import me.kroppeb.aoc.helpers.context.*
+import me.kroppeb.aoc.helpers.contextual.*
+import me.kroppeb.aoc.helpers.graph.*
+import me.kroppeb.aoc.helpers.grid.*
 import me.kroppeb.aoc.helpers.point.*
 import me.kroppeb.aoc.helpers.sint.*
+import itertools.*
+import me.kroppeb.aoc.helpers.collections.list.Het3
+import me.kroppeb.aoc.helpers.collections.list.toH
+import kotlin.math.*
 
 
 private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(15).points()
-
-	var be = data.map { it[1] }.toSet()
-
-	var maxDist = data.maxOf { (a, b) -> a.manDistTo(b) } + 10 log 0
-
-	var c = 0
-	for (x in 0..4000000) {
-		if (x divBy 10000.s) {
-			println(x)
-		}
-		for (y in 0..4000000) {
-			val p = x toP y
-
-			if (x toP y in be) {
-				continue
-			}
+	var data = getLines(17) log 0
 
 
-			if (data.any { (a, b) ->
-					val d = p.manDistTo(a)
-					val d0 = b.manDistTo(a)
-
-					d <= d0
-				}) {
-				continue
-			}
-
-			p log 12
-			p.x * 4000000 + p.y log 12
-			break
-		}
-	}
 }
 
 
-private fun part2() {
-	var data = getLines(15).points()
-
-	var be = data.map { it[1] }.toSet()
-
-	var maxDist = data.maxOf { (a, b) -> a.manDistTo(b) } + 10 log 0
-
-	extracted(be, data, (0..4050000 step 0x1_00_00).cartesianSquare().map{(x,y) -> x toP y}, 0x10000, 0..4000000.s)
-}
-
-private fun extracted(
-	be: Set<Point>,
-	data: List<List<Point>>,
-	chunks: List<Point>,
-	oldSize: Int,
-	intRange: SintRange
-) {
-	var newSize = oldSize / 2 log 0
-	var halfSize = newSize / 2
-	var found = mlop()
-	for (p0 in chunks) {
-		for (p in listOf(
-			p0.x - halfSize toP p0.y - halfSize,
-			p0.x - halfSize toP p0.y + halfSize,
-			p0.x + halfSize toP p0.y - halfSize,
-			p0.x + halfSize toP p0.y + halfSize,
-		)) {
-
-			if (newSize == 1) {
-				if (p.x !in intRange || p.y !in intRange) {
-					continue
-				}
-				if (p in be) {
-					continue
-				}
-
-				if (data.any { (a, b) ->
-						val d = p.manDistTo(a)
-						val d0 = b.manDistTo(a)
-
-						d <= d0
-					}) {
-					continue
-				}
-				p log 1
-				p.x * 4000000 + p.y log 1
-				error("f")
-			} else {
-				if (data.any { (a, b) ->
-						val d = p.manDistTo(a)
-						val d0 = b.manDistTo(a)
-
-						d <= d0 - newSize - 3
-					}) {
-					continue
-				}
-				found += p
-			}
-		}
-	}
-
-	if (newSize == 1) {
-		error("f")
-	}
-
-	found.size log 0
-//	found log 0
-
-	if (halfSize == 1) {
-		extracted(be, data, found.flatMap { it.getOctNeighbourHood() }, newSize,  intRange)
-	} else {
-		extracted(be, data, found, newSize,  intRange)
-	}
+fun main() {
+	println("Day 17: ")
+	part1()
 }
 
 
-	fun main() {
-		println("Day 15: ")
-		part2()
-	}
+private var _logIndex = 0
+private fun <T> T.log(meta: String = ""): T = also { println("%03d %03d:\t$meta\t%s".format(_logIndex / 1000, _logIndex++ % 1000, this)) }
+	.also { if (meta in listOf("1","2")) setClipboard(it.toString()) }
 
-
-	private var _logIndex = 0
-	private fun <T> T.log(): T = also { println("%03d %03d:\t\t%s".format(_logIndex / 1000, _logIndex++ % 1000, this)) }
-		.also { setClipboard(it.toString()) }
-
-	private infix fun <T> T.log(_ignored: Any?): T = this.log()
-	private fun setClipboard(s: String) {
-		val selection = StringSelection(s)
-		val clipboard: Clipboard = Toolkit.getDefaultToolkit().systemClipboard
-		clipboard.setContents(selection, selection)
-	}
+private infix fun <T> T.log(_ignored: Any?): T = this.log()
+private fun setClipboard(s: String) {
+	val selection = StringSelection(s)
+	val clipboard: Clipboard = Toolkit.getDefaultToolkit().systemClipboard
+	clipboard.setContents(selection, selection)
+}

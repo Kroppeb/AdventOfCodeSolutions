@@ -112,3 +112,12 @@ also:
 ## Day 14
 154/78; points: 23, 29th place
 * Made a wrong assumption =/
+
+## Day 15
+195/795; points: 0, 33th place
+* I knew something was off with my last step but /shrug
+
+## Day 16
+66/354; points: 35, 32th place
+* Lost a bit of time on part 1 due to not having a good vision of a solution
+* Caved in after 1.5 hours for part 2 ad checked the subreddit
