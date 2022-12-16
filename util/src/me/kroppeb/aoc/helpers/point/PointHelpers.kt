@@ -158,3 +158,5 @@ operator fun PointI.rem(other: Point) = this.sint.rem(other)
 operator fun PointI.times(other: Sint) = this.sint.times(other)
 operator fun PointI.div(other: Sint) = this.sint.div(other)
 operator fun PointI.rem(other: Sint) = this.sint.rem(other)
+
+val Point3DI.sint get() = this.x.s toP this.y.s toP this.z.s
