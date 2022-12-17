@@ -13,6 +13,9 @@ public class SintRange(start: Sint, endInclusive: Sint) : SintProgression(start,
         return last + 1
     }
 
+	fun first() = first
+	fun last() = last
+
     @Suppress("ConvertTwoComparisonsToRangeCheck") // that would literally recurse
 	override fun contains(value: Sint): Boolean = first <= value && value <= last
 
@@ -119,6 +122,8 @@ private fun mod(a: Sint, b: Sint): Sint {
 }
 
 
+private var hasWarnedAboutToBigIterator = false
+
 /**
  * An iterator over a progression of values of type `Int`.
  * @property step the number by which the value is incremented on each step.
@@ -128,6 +133,22 @@ internal class SintProgressionIterator(first: Sint, last: Sint, val step: Sint) 
 	private var hasNext: Boolean = if (step > 0) first <= last else first >= last
 	private var next: Sint = if (hasNext) first else finalElement
 
+
+	init {
+		if (!hasWarnedAboutToBigIterator) {
+			var f = first / step
+			var l = last / step
+			if (f < Int.MIN_VALUE && l > Int.MAX_VALUE) {
+				System.err.println("Warning: You are using a SintProgressionIterator with a massive range")
+				error("a")
+				hasWarnedAboutToBigIterator = true
+			} else if((l - f) > Int.MAX_VALUE) {
+				System.err.println("Warning: You are using a SintProgressionIterator with a massive range")
+				error("a")
+				hasWarnedAboutToBigIterator = true
+			}
+		}
+	}
 	override fun hasNext(): Boolean = hasNext
 
 	override fun nextSint(): Sint {

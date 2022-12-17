@@ -78,19 +78,9 @@ data class Bounds3D(override val lower: Point3D, override val higher: Point3D) :
 	override fun weight(): Sint = super.volume
 
 	override fun fracture(other: Bounds3D): Collection<Bounds3D> {
-		val xr = listOf(other.xs)
-			.flatMap { if(this.xs.first in it) listOf(it.first..this.xs.first - 1, this.xs.first..it.last) else listOf(it) }
-			.flatMap { if(this.xs.last in it) listOf(it.first..this.xs.last, this.xs.last + 1..it.last) else listOf(it) }
-			.also{println(it)}
-			.filter{!it.isEmpty()}.also{println(it)}
-		val yr = listOf(this.ys)
-			.flatMap { if(this.ys.first in it) listOf(it.first..this.ys.first - 1, this.ys.first..it.last) else listOf(it) }
-			.flatMap { if(this.ys.last in it) listOf(it.first..this.ys.last, this.ys.last + 1..it.last) else listOf(it) }
-			.filter{it.isNotEmpty()}
-		val zr = listOf(this.zs)
-			.flatMap { if(this.zs.first in it) listOf(it.first..this.zs.first - 1, this.zs.first..it.last) else listOf(it) }
-			.flatMap { if(this.zs.last in it) listOf(it.first..this.zs.last, this.zs.last + 1..it.last) else listOf(it) }
-			.filter{it.isNotEmpty()}
+		val xr = this.xs.fracture(other.xs)
+		val yr = this.ys.fracture(other.ys)
+		val zr = this.zs.fracture(other.zs)
 		return xr.flatMap { x -> yr.flatMap { y -> zr.map { z -> Bounds3D(x, y, z) } } }
 	}
 

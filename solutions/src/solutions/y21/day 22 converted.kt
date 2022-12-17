@@ -38,7 +38,7 @@ private fun part1() {
 //	}
 
 	for (ling in data) {
-		val x = ling.sints(){it.chunked(2).transpose().map{(a,b,c) -> a toP b toP c}}.bounds()
+		val x = ling.sints(){it.chunked(2).transpose().map{(a,b,c) -> a toP b toP c}}.bounds().intersect((-50 toP -50 toP -50) toB (50 toP 50 toP 50))
 
 		if (ling.startsWith("on")) {
 			p.set(x, true)

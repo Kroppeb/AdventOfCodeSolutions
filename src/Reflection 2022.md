@@ -121,3 +121,4 @@ also:
 66/354; points: 35, 32th place
 * Lost a bit of time on part 1 due to not having a good vision of a solution
 * Caved in after 1.5 hours for part 2 ad checked the subreddit
+* [ ] add a way to reduce graphs
