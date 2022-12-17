@@ -74,13 +74,26 @@ private val rocks = listOf(
 )
 
 private fun part1() {
-	var data = getLines(17).first().map{it == '<'}
+	var data = getLines(2022_17).first().map{it == '<'}
 
 	val room = (0..6).map{it toP 0}.toMutableSet()
 	var x = 0
 
-	kotlin.repeat(2022) {
-		if (it % 100 == 0) println(it)
+	var starts = (0..4).map{ mutableMapOf<Int, Int>()}
+	var check = 1_000_000_000_000.s % 1720.s + 1720.s log 0
+	var height = -1.s
+	var diff = 0.s
+	var base = 0.s
+
+
+	kotlin.repeat(1000000) {
+		if (it % 1000 == 0) println(it)
+		if (it == check.i) {
+			base = room.maxOf{it.y}
+			val loops = (1_000_000_000_000) / 1720.s - 1
+			loops * 2626.s + base log 2
+			return
+		}
 		var base = room.maxOf { it.y } + 4
 
 		var pos = rocks[it % 5].map{it + (2 toP base)}
@@ -88,11 +101,11 @@ private fun part1() {
 		while(true){
 			var i = data[x++ % data.size]
 			var next =
-				if (i) {
-					pos.map{it.left}
-				} else {
-					pos.map{it.right}
-				}
+			if (i) {
+				pos.map{it.left}
+			} else {
+				pos.map{it.right}
+			}
 
 			if (next anyIn room || next.any{it.x < 0 || it.x > 6}) {
 
@@ -112,13 +125,10 @@ private fun part1() {
 //			println()
 		}
 
-
 		room.addAll(pos)
 //		room.bounds().print{if (it in room) '#' else '.'}
 //		println("---------")
 	}
-
-	room.maxOf{it.y} log 1
 
 
 

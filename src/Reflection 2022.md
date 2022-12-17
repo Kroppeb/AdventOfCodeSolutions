@@ -122,3 +122,8 @@ also:
 * Lost a bit of time on part 1 due to not having a good vision of a solution
 * Caved in after 1.5 hours for part 2 ad checked the subreddit
 * [ ] add a way to reduce graphs
+
+## Day 17
+60/399; points: 41, 31th place
+* I made an off by one typo? for part 1
+* I copied the wrong fucking value for part 2
