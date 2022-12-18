@@ -127,3 +127,7 @@ also:
 60/399; points: 41, 31th place
 * I made an off by one typo? for part 1
 * I copied the wrong fucking value for part 2
+
+## Day 18
+5/5; points: 192, 28th place
+* WHOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO

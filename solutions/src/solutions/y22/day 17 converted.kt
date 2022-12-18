@@ -73,39 +73,25 @@ private val rocks = listOf(
 	listOf(0 toP 0, 1 toP 0, 0 toP 1, 1 toP 1),
 )
 
-private fun part1() {
+private fun part2() {
 	var data = getLines(2022_17).first().map{it == '<'}
 
 	val room = (0..6).map{it toP 0}.toMutableSet()
-	var x = 0
 
-	var starts = (0..4).map{ mutableMapOf<Int, Int>()}
-	var check = 1_000_000_000_000.s % 1720.s + 1720.s log 0
-	var height = -1.s
-	var diff = 0.s
-	var base = 0.s
-
-
-	kotlin.repeat(1000000) {
-		if (it % 1000 == 0) println(it)
-		if (it == check.i) {
-			base = room.maxOf{it.y}
-			val loops = (1_000_000_000_000) / 1720.s - 1
-			loops * 2626.s + base log 2
-			return
-		}
+	pureStateLoopScore (0 to 0, 1_000_000_000_000.s, 1000.s) {(rock, x) ->
 		var base = room.maxOf { it.y } + 4
 
-		var pos = rocks[it % 5].map{it + (2 toP base)}
+		var pos = rocks[rock % 5].map{it + (2 toP base)}
+		var x = x;
 
 		while(true){
 			var i = data[x++ % data.size]
 			var next =
-			if (i) {
-				pos.map{it.left}
-			} else {
-				pos.map{it.right}
-			}
+				if (i) {
+					pos.map{it.left}
+				} else {
+					pos.map{it.right}
+				}
 
 			if (next anyIn room || next.any{it.x < 0 || it.x > 6}) {
 
@@ -125,19 +111,19 @@ private fun part1() {
 //			println()
 		}
 
+
 		room.addAll(pos)
 //		room.bounds().print{if (it in room) '#' else '.'}
 //		println("---------")
-	}
 
-
-
+		(rock + 1) % 5 to x % data.size to room.maxOf{it.y}
+	} log 2
 }
 
 
 fun main() {
 	println("Day 17: ")
-	part1()
+	part2()
 }
 
 

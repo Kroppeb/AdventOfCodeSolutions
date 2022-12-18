@@ -1,5 +1,6 @@
 package me.kroppeb.aoc.helpers
 
+import me.kroppeb.aoc.helpers.sint.*
 import kotlin.math.abs
 
 inline fun loop(block: (Int) -> Unit): Nothing {
@@ -342,7 +343,9 @@ fun <T> List<T>.mut() = this.toMutableList()
 fun <T> List<List<T>>.mut2() = this.map { it.mut() }.mut()
 fun <T> List<List<List<T>>>.mut3() = this.map { it.mut2() }.mut()
 
-fun <T> pureStateLoop(start: T, steps: Int, f: (T) -> T): T {
+inline fun <T> pureStateLoop(start: T, steps: Int,f: (T) -> T): T = pureStateLoop(start, steps, 0, f)
+
+inline fun <T> pureStateLoop(start: T, steps: Int, skipSteps: Int ,f: (T) -> T): T {
 	var id = 0
 	var state = start
 	val seen = mutableMapOf<T, Int>()
@@ -354,7 +357,7 @@ fun <T> pureStateLoop(start: T, steps: Int, f: (T) -> T): T {
 
 		val prev = seen[state]
 		if (prev != null) {
-			val oo = 1_000_000_000 mod (prev until id)
+			val oo = steps mod (prev until id)
 
 			return reverse[oo]
 //			val diff = id - seen[state]!!
@@ -366,4 +369,40 @@ fun <T> pureStateLoop(start: T, steps: Int, f: (T) -> T): T {
 		reverse.add(state)
 	}
 	return state
+}
+
+inline fun <T> pureStateLoopScore(start: T, steps: Sint, f: (T) -> Pair<T, Sint>): Sint = pureStateLoopScore(start, steps, 0.s, f)
+
+inline fun <T> pureStateLoopScore(start: T, steps: Sint, skipSteps: Sint ,f: (T) -> Pair<T, Sint>): Sint {
+	var id = 0.s
+	var state = start
+	val seen = mutableMapOf<T, Sint>()
+	val reverse = mutableListOf<T>(start)
+	val scores = mutableListOf(0.s)
+	while (id < steps) {
+		val (s,score) = f(state)
+		state = s
+
+		id++
+
+		if (id > skipSteps) {
+			val prev = seen[state]
+			if (prev != null) {
+				val oo = steps mod (prev until id)
+				val loops = (steps - oo) / (id - prev)
+				val scoreDiff = score - scores[prev]
+
+				return scores[oo] + scoreDiff * loops.s
+//			val diff = id - seen[state]!!
+//			val oo = (1_000_000_000 - seen[state]!!) % diff
+//			return seen.entries.find{it.value == seen[state]!! + oo}!!.key
+			}
+
+			seen[state] = id
+		}
+
+		reverse.add(state)
+		scores.add(score)
+	}
+	return scores.last()
 }
