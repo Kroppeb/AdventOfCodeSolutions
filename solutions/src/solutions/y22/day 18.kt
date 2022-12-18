@@ -82,6 +82,7 @@ private fun part2() {
 fun main() {
 	println("Day 18: ")
 	part1()
+	part2()
 }
 
 
