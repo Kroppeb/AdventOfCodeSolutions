@@ -6,10 +6,10 @@ import me.kroppeb.aoc.helpers.sint.*
 /**
  * lower and higher are inclusive
  */
-abstract class IBounds : Iterable<Point> {
+abstract class IBounds : Collection<Point> {
 	abstract val lower: Point
 	abstract val higher: Point
-	operator fun contains(point: Point): Boolean = point.x in xs && point.y in ys
+	override operator fun contains(point: Point): Boolean = point.x in xs && point.y in ys
 	operator fun contains(point: PointI): Boolean = point.sint in this
 
 	val isSquare: Boolean get() = (higher.x - lower.x) == (higher.y - lower.y)
@@ -48,8 +48,9 @@ abstract class IBounds : Iterable<Point> {
 
 	open val xSize get() = (this.higher.x - this.lower.x + 1)
 	open val ySize get() = (this.higher.y - this.lower.y + 1)
-	val size get() = xSize toP ySize
+	val sizes get() = xSize toP ySize
 	val area get() = xSize * ySize
+	override val size get() = area.i
 
 	fun exactCenter() = (lower + higher).also {
 		require(it.x divBy 2)
@@ -65,6 +66,10 @@ abstract class IBounds : Iterable<Point> {
 	fun southEdge() = bottomEdge()
 	fun eastEdge() = rightEdge()
 	fun westEdge() = leftEdge()
+
+	override fun containsAll(elements: Collection<Point>): Boolean = elements.all { it in this }
+
+	override fun isEmpty(): Boolean = size == 0
 }
 
 data class Bounds(override val lower: Point, override val higher: Point) : IBounds() {
@@ -115,6 +120,23 @@ data class Bounds(override val lower: Point, override val higher: Point) : IBoun
 		val INFINITE = (Int.MIN_VALUE toPI Int.MIN_VALUE) toB (Int.MAX_VALUE toPI Int.MAX_VALUE)
 		val EMPTY = Bounds(0 toPI 0, -1 toPI -1)
 	}
+
+
+	fun expand(x: Sint, y: Sint): Bounds {
+		val offset = x toP y
+		return Bounds(
+			this.lower - offset,
+			this.higher + offset
+		)
+	}
+
+	fun expand(i: Sint): Bounds = expand(i, i)
+	fun expand(x: Int, y: Int): Bounds = expand(x.s, y.s)
+	fun expand(i: Int): Bounds = expand(i.s)
+	fun retract(x: Sint, y: Sint): Bounds = expand(-x, -y)
+	fun retract(i: Sint): Bounds = expand(-i)
+	fun retract(x: Int, y: Int): Bounds = expand(-x, -y)
+	fun retract(i: Int): Bounds = expand(-i)
 }
 
 class MutableBounds : IBounds {

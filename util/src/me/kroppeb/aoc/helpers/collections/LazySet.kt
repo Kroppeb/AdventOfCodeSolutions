@@ -130,4 +130,6 @@ class LazySet<T>(val a: Collection<T>, val b: Collection<T>, val mode: Mode) : S
 		fun <T> intersection(a: Iterable<*>, b: Iterable<*>):Set<T> = LazySet(a.asCol(), b.asCol(), Mode.INTERSECTION) as Set<T>
 		fun <T> difference(a: Iterable<T>, b: Iterable<*>):Set<T> = LazySet(a.asCol(), b.asCol(), Mode.DIFFERENCE) as Set<T>
  	}
+
+	override fun toString(): String = this.toSet().toString()
 }

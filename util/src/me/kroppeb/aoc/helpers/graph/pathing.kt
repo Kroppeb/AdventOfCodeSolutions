@@ -714,3 +714,33 @@ inline fun <State> dijkstralDDist(
 
 	return null
 }
+
+
+inline fun <State> floodFill(start: State, next: (State) -> Iterable<State>): Set<State> {
+	val stack = mutableListOf(start)
+	val visited = mutableSetOf<State>()
+
+	while (stack.isNotEmpty()) {
+		val current = stack.removeLast()
+		if (current in visited) continue
+		visited += current
+		stack += next(current)
+	}
+
+	return visited
+}
+
+inline fun <State> floodFilll(starts: List<State>, next: (State) -> Iterable<State>): Set<State> {
+	val stack = starts.toMutableList()
+	val visited = mutableSetOf<State>()
+
+	while (stack.isNotEmpty()) {
+		val current = stack.removeLast()
+		if (!visited.add(current)) {
+			continue
+		}
+		stack += next(current)
+	}
+
+	return visited
+}

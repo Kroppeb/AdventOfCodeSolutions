@@ -75,7 +75,7 @@ private fun part2() {
 		stack += cur.getHexNeighbours()
 	}
 
-	data.sumOf { it.getHexNeighbours().count { it in accessible }.s } log 1
+	data.sumOf { it.getHexNeighbours().count { it in accessible }.s } log 2
 }
 
 

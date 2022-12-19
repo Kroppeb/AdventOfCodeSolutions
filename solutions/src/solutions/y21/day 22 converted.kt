@@ -29,7 +29,7 @@ private fun part1() {
 	var data = getLines(2021_22)
 
 
-	var p = BoundsTree<Bounds3D, Boolean>(Bounds3D.INFINITE, false)
+	var p = BoundsTree(Bounds3D.INFINITE, false)
 //	val asReversed = data.filter { it.startsWith("on") }.asReversed()
 //	asReversed.size log 0
 //	for (s in asReversed) {
@@ -37,18 +37,27 @@ private fun part1() {
 //		p.fractureCount log 0
 //	}
 
+//	var prev = lop3()
+
 	for (ling in data) {
-		val x = ling.sints(){it.chunked(2).transpose().map{(a,b,c) -> a toP b toP c}}.bounds().intersect((-50 toP -50 toP -50) toB (50 toP 50 toP 50))
+		val x = ling
+			.sints() { it.chunked(2).transpose().map { (a, b, c) -> a toP b toP c } }
+			.bounds()
+			.intersect((-50 toP -50 toP -50) toB (50 toP 50 toP 50))
 
 		if (ling.startsWith("on")) {
 			p.set(x, true)
 		} else {
 			p.set(x, false)
 		}
-		ling log 0
-		p.count { it } log 1
+//		ling log 0
+//		p.count { it } log 0
+//		val xx = p.filter { it } log 0
+//		xx symDiff prev log 0
+//		prev = xx
 	}
 
+	p.count { it } log 0
 }
 
 private fun part2() {

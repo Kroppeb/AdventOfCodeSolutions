@@ -1,16 +1,16 @@
 package me.kroppeb.aoc.helpers.point
 
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.context.IterableOpps.isNotEmpty
+import me.kroppeb.aoc.helpers.context.IterableOpps.size
 import me.kroppeb.aoc.helpers.sint.*
 
 /**
  * lower and higher are inclusive
  */
-abstract class IBounds3D : Iterable<Point3D> {
+abstract class IBounds3D : Collection<Point3D> {
 	abstract val lower: Point3D
 	abstract val higher: Point3D
-	operator fun contains(point: Point3D): Boolean = point.x in xs && point.y in ys && point.z in zs
+	override operator fun contains(point: Point3D): Boolean = point.x in xs && point.y in ys && point.z in zs
 	operator fun contains(point: Point3DI): Boolean = point.sint in this
 
 	val isSquare: Boolean get() = (higher.x - lower.x) == (higher.y - lower.y) && (higher.y - lower.y) == (higher.z - lower.z)
@@ -24,15 +24,18 @@ abstract class IBounds3D : Iterable<Point3D> {
 	open val xSize get() = (this.higher.x - this.lower.x + 1)
 	open val ySize get() = (this.higher.y - this.lower.y + 1)
 	open val zSize get() = (this.higher.z - this.lower.z + 1)
-	val size get() = xSize toP ySize toP zSize
+	val sizes get() = xSize toP ySize toP zSize
 	val volume get() = xSize * ySize * zSize
-	fun isEmpty() = xs.isEmpty() || ys.isEmpty() || zs.isEmpty()
+	override val size get() = volume.i
+	override fun isEmpty() = xs.isEmpty() || ys.isEmpty() || zs.isEmpty()
 
 	fun exactCenter() = (lower + higher).also {
 		require(it.x divBy 2)
 		require(it.y divBy 2)
 		require(it.z divBy 2)
 	} / 2
+
+	override fun containsAll(elements: Collection<Point3D>): Boolean = elements.all { it in this }
 }
 
 data class Bounds3D(override val lower: Point3D, override val higher: Point3D) : IBounds3D(),
@@ -73,7 +76,7 @@ data class Bounds3D(override val lower: Point3D, override val higher: Point3D) :
 
 	override fun merge(other: Bounds3D): Bounds3D = this.merge(other as IBounds3D)
 
-	override fun size(): Point3D = super.size
+	override fun size(): Point3D = super.sizes
 
 	override fun weight(): Sint = super.volume
 
@@ -83,6 +86,22 @@ data class Bounds3D(override val lower: Point3D, override val higher: Point3D) :
 		val zr = this.zs.fracture(other.zs)
 		return xr.flatMap { x -> yr.flatMap { y -> zr.map { z -> Bounds3D(x, y, z) } } }
 	}
+
+	fun expand(x: Sint, y: Sint, z: Sint): Bounds3D {
+		val offset = x toP y toP z
+		return Bounds3D(
+			this.lower - offset,
+			this.higher + offset
+		)
+	}
+
+	fun expand(i: Sint): Bounds3D = expand(i, i, i)
+	fun expand(x: Int, y: Int, z: Int): Bounds3D = expand(x.s, y.s, z.s)
+	fun expand(i: Int): Bounds3D = expand(i.s)
+	fun retract(x: Sint, y: Sint, z: Sint): Bounds3D = expand(-x, -y, -z)
+	fun retract(i: Sint): Bounds3D = expand(-i)
+	fun retract(x: Int, y: Int, z: Int): Bounds3D = expand(-x, -y, -z)
+	fun retract(i: Int): Bounds3D = expand(-i)
 
 	companion object {
 		/**

@@ -2,14 +2,12 @@ package me.kroppeb.aoc.helpers.point
 
 import me.kroppeb.aoc.helpers.context.InternalExtendedIndirectMathOp
 
-interface BoundsN<B:BoundsN<B,P,C>, P:PointN<P,C>, C:Comparable<C>> {
+interface BoundsN<B:BoundsN<B,P,C>, P:PointN<P,C>, C:Comparable<C>> : Collection<P> {
 	val lower: P
 	val higher: P
-	operator fun contains(point: P): Boolean
 	fun intersect(other: B): B
 	fun size(): P
 	fun weight(): C
-	fun isEmpty(): Boolean
 
 	fun doesIntersect(other: B): Boolean {
 		return !intersect(other).isEmpty()
