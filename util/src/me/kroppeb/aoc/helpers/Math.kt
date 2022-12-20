@@ -1,5 +1,6 @@
 package me.kroppeb.aoc.helpers
 
+import me.kroppeb.aoc.helpers.context.IterableOpps.isEmpty
 import me.kroppeb.aoc.helpers.context.SintOpps.isZero
 import me.kroppeb.aoc.helpers.sint.Sint
 
@@ -49,10 +50,12 @@ inline fun <C, T : Comparable<T>>Iterable<C>.minBy(b:(C) -> T):C = minByOrNull(b
 inline fun <C, T : Comparable<T>>Iterable<C>.maxBy(b:(C) -> T):C = maxByOrNull(b)!!
 
 inline fun <C, T : Comparable<T>>Iterable<C>.allMinBy(b:(C) -> T):List<C> {
+	if (isEmpty()) return emptyList()
 	val min = minBy(b)
 	return filter { b(it) == b(min) }
 }
 inline fun <C, T : Comparable<T>>Iterable<C>.allMaxBy(b:(C) -> T):List<C> {
+	if (isEmpty()) return emptyList()
 	val max = maxBy(b)
 	return filter { b(it) == b(max) }
 }
@@ -61,11 +64,13 @@ inline fun <C, T : Comparable<T>>Array<C>.minBy(b:(C) -> T):C = minByOrNull(b)!!
 inline fun <C, T : Comparable<T>>Array<C>.maxBy(b:(C) -> T):C = maxByOrNull(b)!!
 
 inline fun <C, T : Comparable<T>>Array<C>.allMinBy(b:(C) -> T):List<C> {
+	if (isEmpty()) return emptyList()
 	val min = minBy(b)
 	return filter { b(it) == b(min) }
 }
 
 inline fun <C, T : Comparable<T>>Array<C>.allMaxBy(b:(C) -> T):List<C> {
+	if (isEmpty()) return emptyList()
 	val max = maxBy(b)
 	return filter { b(it) == b(max) }
 }
@@ -74,11 +79,13 @@ inline fun <C : Comparable<C>>IntArray.minBy(b:(Int) -> C):Int = minByOrNull(b)!
 inline fun <C : Comparable<C>>IntArray.maxBy(b:(Int) -> C):Int = maxByOrNull(b)!!
 
 inline fun <C : Comparable<C>>IntArray.allMinBy(b:(Int) -> C):List<Int> {
+	if (isEmpty()) return emptyList()
 	val min = minBy(b)
 	return filter { b(it) == b(min) }
 }
 
 inline fun <C : Comparable<C>>IntArray.allMaxBy(b:(Int) -> C):List<Int> {
+	if (isEmpty()) return emptyList()
 	val max = maxBy(b)
 	return filter { b(it) == b(max) }
 }
@@ -87,11 +94,13 @@ inline fun <C : Comparable<C>>LongArray.minBy(b:(Long) -> C):Long = minByOrNull(
 inline fun <C : Comparable<C>>LongArray.maxBy(b:(Long) -> C):Long = maxByOrNull(b)!!
 
 inline fun <C : Comparable<C>>LongArray.allMinBy(b:(Long) -> C):List<Long> {
+	if (isEmpty()) return emptyList()
 	val min = minBy(b)
 	return filter { b(it) == b(min) }
 }
 
 inline fun <C : Comparable<C>>LongArray.allMaxBy(b:(Long) -> C):List<Long> {
+	if (isEmpty()) return emptyList()
 	val max = maxBy(b)
 	return filter { b(it) == b(max) }
 }
@@ -100,10 +109,12 @@ inline fun <C : Comparable<C>>DoubleArray.minBy(b: (Double) -> C):Double = minBy
 inline fun <C : Comparable<C>>DoubleArray.maxBy(b: (Double) -> C):Double = maxByOrNull(b)!!
 
 inline fun <C : Comparable<C>>DoubleArray.allMinBy(b: (Double) -> C):List<Double> {
+	if (isEmpty()) return emptyList()
 	val min = minBy(b)
 	return filter { b(it) == b(min) }
 }
 inline fun <C : Comparable<C>>DoubleArray.allMaxBy(b: (Double) -> C):List<Double> {
+	if (isEmpty()) return emptyList()
 	val max = maxBy(b)
 	return filter { b(it) == b(max) }
 }
@@ -112,10 +123,12 @@ inline fun <K, V, T : Comparable<T>>Map<K,V>.minBy(b:(Map.Entry<K,V>) -> T):Map.
 inline fun <K, V, T : Comparable<T>>Map<K,V>.maxBy(b:(Map.Entry<K,V>) -> T):Map.Entry<K,V> = maxByOrNull(b)!!
 
 inline fun <K, V, T : Comparable<T>>Map<K,V>.allMinBy(b:(Map.Entry<K,V>) -> T):Map<K,V> {
+	if (isEmpty()) return emptyMap()
 	val min = minBy(b)
 	return filter { b(it) == b(min) }
 }
 inline fun <K, V, T : Comparable<T>>Map<K,V>.allMaxBy(b:(Map.Entry<K,V>) -> T):Map<K,V> {
+	if (isEmpty()) return emptyMap()
 	val max = maxBy(b)
 	return filter { b(it) == b(max) }
 }

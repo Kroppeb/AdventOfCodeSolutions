@@ -132,3 +132,8 @@ also:
 5/5; points: 192, 28th place
 * WHOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 * [ ] make sint range a collection
+
+## Day 19
+591/576; points: 0, 28th place
+* Pfffft
+

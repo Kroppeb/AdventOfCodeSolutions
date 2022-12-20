@@ -66,20 +66,21 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(19)
+	var data = getLines(20) log 1
 
 }
 
 
 fun main() {
-	println("Day 19: ")
+	println("Day 20: ")
 	part1()
 }
 
 
 private var _logIndex = 0
-private fun <T> T.log(meta: String = ""): T = also { println("%03d %03d:\t$meta\t%s".format(_logIndex / 1000, _logIndex++ % 1000, this)) }
-	.also { if (meta in listOf("1","2")) setClipboard(it.toString()) }
+private fun <T> T.log(meta: String = ""): T =
+	also { println("%03d %03d:\t$meta\t%s".format(_logIndex / 1000, _logIndex++ % 1000, this)) }
+		.also { if (meta in listOf("1", "2")) setClipboard(it.toString()) }
 
 private infix fun <T> T.log(meta: Any?): T = this.log(meta.toString())
 private fun setClipboard(s: String) {
