@@ -66,13 +66,13 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(20) log 1
+	var data = getLines(21) log 1
 
 }
 
 
 fun main() {
-	println("Day 20: ")
+	println("Day 21: ")
 	part1()
 }
 
