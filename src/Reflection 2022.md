@@ -137,3 +137,12 @@ also:
 591/576; points: 0, 28th place
 * Pfffft
 
+## Day 20
+266/247; points: 0, 31th place
+* didn't see I had to count from the value 0, had a bunch of 
+  code just to handle counting from the start.  
+* while trying to find the bug, I just introduced more bugs -_- 
+
+## Day 21
+107/503; points: 0, 35th place
+

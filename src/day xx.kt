@@ -40,39 +40,24 @@ import java.awt.datatransfer.Clipboard
 import java.awt.datatransfer.StringSelection
 
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.collections.*
-import me.kroppeb.aoc.helpers.context.*
-import me.kroppeb.aoc.helpers.contextual.*
-import me.kroppeb.aoc.helpers.graph.*
-import me.kroppeb.aoc.helpers.grid.*
-import me.kroppeb.aoc.helpers.point.*
-import me.kroppeb.aoc.helpers.sint.*
-import itertools.*
-import me.kroppeb.aoc.helpers.collections.list.*
-import java.util.Comparator
-import java.util.PriorityQueue
+import me.kroppeb.aoc.helpers.sint.Sint
 import kotlin.*
-import kotlin.annotation.*
 import kotlin.collections.*
-import kotlin.comparisons.*
 import kotlin.io.*
-import kotlin.ranges.*
-import kotlin.sequences.*
 import kotlin.text.*
-import kotlin.math.*
 
 
 private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(21) log 1
+	var data = getLines(22) log 0
 
 }
 
 
 fun main() {
-	println("Day 21: ")
+	println("Day 22: ")
 	part1()
 }
 
