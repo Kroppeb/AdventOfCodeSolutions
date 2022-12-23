@@ -146,3 +146,6 @@ also:
 ## Day 21
 107/503; points: 0, 35th place
 
+## Day 22
+68/279; points: 33, 36th place
+* [ ] make grids use Bounds and Points ...
