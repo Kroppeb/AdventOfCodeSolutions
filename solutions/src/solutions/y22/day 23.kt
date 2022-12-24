@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y22
+package solutions.y22.d23
 
 
 /*
@@ -65,11 +65,102 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(24) log 0
+	var data = getLines(2022_23).e().grid()
+
+	var elves = data.filter{it.v == '#'}.map{it.p.sint}.toSet()
+
+	var moves:List<(Point) -> Point?> = listOf({
+		if (it.n !in elves && it.nw !in elves && it.ne !in elves) it.n else null
+	},{
+		if (it.s !in elves && it.sw !in elves && it.se !in elves) it.s else null
+	},
+		{
+			if (it.w !in elves && it.nw !in elves && it.sw !in elves) it.w else null
+		},
+		{
+			if (it.e !in elves && it.ne !in elves && it.se !in elves) it.e else null
+		},
+		)
+
+	repeat(10) {
+		var m = elves.filter{it.getOctNeighbours() anyIn elves}
+
+		val tm = m.map{ it to (moves.mapNotNull { mv -> mv(it) }.firstOrNull() ?: it) }
+		val x = tm.groupBy{it.second}.values
+
+		var nElves = elves.toMutableSet()
+		for (l in x) {
+			if (l.size == 1){
+				val (f,t) = l.first()
+				nElves.remove(f)
+				nElves.add(t)
+			}
+		}
+
+		elves = nElves
+
+//		println()
+//		elves.bounds().print{if(it in elves) '#' else '.'}
+
+		moves = moves.drop(1) + moves.take(1)
+	}
+
+	elves.bounds().size - elves.size log 1
+}
+
+
+private fun part2() {
+	var data = getLines(2022_23).e().grid()
+
+	var elves = data.filter{it.v == '#'}.map{it.p.sint}.toSet()
+
+	var moves:List<(Point) -> Point?> = listOf({
+		if (it.n !in elves && it.nw !in elves && it.ne !in elves) it.n else null
+	},{
+		if (it.s !in elves && it.sw !in elves && it.se !in elves) it.s else null
+	},
+		{
+			if (it.w !in elves && it.nw !in elves && it.sw !in elves) it.w else null
+		},
+		{
+			if (it.e !in elves && it.ne !in elves && it.se !in elves) it.e else null
+		},
+	)
+
+	loop() {
+		var m = elves.filter{it.getOctNeighbours() anyIn elves}
+
+		if (it % 10 == 0) {
+			"$it : ${m.size}" log 0
+		}
+		if (m.isEmpty()) {
+			it + 1 log 2
+			return
+		}
+
+		val tm = m.map{ it to (moves.mapNotNull { mv -> mv(it) }.firstOrNull() ?: it) }
+		val x = tm.groupBy{it.second}.values
+
+		var nElves = elves.toMutableSet()
+		for (l in x) {
+			if (l.size == 1){
+				val (f,t) = l.first()
+				nElves.remove(f)
+				nElves.add(t)
+			}
+		}
+
+		elves = nElves
+
+//		println()
+//		elves.bounds().print{if(it in elves) '#' else '.'}
+
+		moves = moves.drop(1) + moves.take(1)
+	}
 }
 
 fun main() {
-	println("Day 24: ")
+	println("Day 23: ")
 	part1()
 }
 

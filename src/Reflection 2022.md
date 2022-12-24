@@ -149,3 +149,7 @@ also:
 ## Day 22
 68/279; points: 33, 36th place
 * [ ] make grids use Bounds and Points ...
+
+## Day 23
+22/32; points: 148, 33th place
+* [x] `allIn` and family did a conversion to set even if the input was a set -_-

@@ -63,7 +63,7 @@ import kotlin.math.*
 private val xxxxx = Clock(6, 3);
 
 private fun part1() {
-	var (mp, ins) = getLines(22).splitOnEmpty()
+	var (mp, ins) = getLines(2022_22).splitOnEmpty()
 
 	var mx = mp.maxOf { it.length }
 

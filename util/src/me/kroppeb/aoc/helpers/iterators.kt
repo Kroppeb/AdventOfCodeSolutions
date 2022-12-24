@@ -779,20 +779,20 @@ infix fun <T, R, V> Iterable<T>.and(other: Iterable<R>): Set<V> where V : T, V :
 
 // aka: does this intersect
 infix fun <T> Iterable<T>.anyIn(other: Iterable<T>): Boolean {
-	val o = other.toSet()
+	val o = if(other is Set<T>) other else other.toSet()
 	return any { it in o }
 }
 
 // aka: is this a subset of
 infix fun <T> Iterable<T>.allIn(other: Iterable<T>): Boolean {
-	val o = other.toSet()
-	return all { it in other }
+	val o = if(other is Set<T>) other else other.toSet()
+	return all { it in o }
 }
 
 // aka: are these fully distinct
 infix fun <T> Iterable<T>.noneIn(other: Iterable<T>): Boolean {
-	val o = other.toSet()
-	return none { it in other }
+	val o = if(other is Set<T>) other else other.toSet()
+	return none { it in o }
 }
 
 // aka: is this a superset of
