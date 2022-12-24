@@ -44,7 +44,7 @@ private fun part1() {
 	}
 
 	bfs(data.boundsI.first { data[it] == 'S' }, { data[it] == 'E' }) { p ->
-		data.getBp(p).getQuadNeighbours().filter { h(data[p]) - h(it.v) >= -1 }.map { it.p }
+		data.getBp(p).getQuadNeighbours().filter { h(data[p]) - h(it.v) >= -1 }.map { it.pi }
 	} log 0
 
 
@@ -66,7 +66,7 @@ private fun part2() {
 		if (p.x == -1) {
 			data.boundsI.filter { data[it] == 'a' }
 		} else {
-			data.getBp(p).getQuadNeighbours().filter { h(data[p]) - h(it.v) >= -1 }.map { it.p }
+			data.getBp(p).getQuadNeighbours().filter { h(data[p]) - h(it.v) >= -1 }.map { it.pi }
 		}
 	} log 0 // subtract 1 (intentionally off by 1)
 

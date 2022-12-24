@@ -37,7 +37,7 @@ private fun part1() {
 		for (x in data.getBp(p).westsInc()) {
 			if (x.v > size) {
 				size = x.v
-				seen += x.p
+				seen += x.pi
 			}
 		}
 	}
@@ -47,7 +47,7 @@ private fun part1() {
 		for (x in data.getBp(p).eastsInc()) {
 			if (x.v > size) {
 				size = x.v
-				seen += x.p
+				seen += x.pi
 			}
 		}
 	}
@@ -57,7 +57,7 @@ private fun part1() {
 		for (x in data.getBp(p).northsInc()) {
 			if (x.v > size) {
 				size = x.v
-				seen += x.p
+				seen += x.pi
 			}
 		}
 	}
@@ -67,7 +67,7 @@ private fun part1() {
 		for (x in data.getBp(p).southsInc()) {
 			if (x.v > size) {
 				size = x.v
-				seen += x.p
+				seen += x.pi
 			}
 		}
 	}

@@ -79,6 +79,8 @@ inline fun <State> bfsDist(
 	var dist = -1
 
 	while (queue.isNotEmpty()) {
+		// each dist needs its own "seen" set
+		seen.clear()
 //		if (dist % 100 == 0)
 //			println("dist:$dist, seen: ${seen.size}, queue: ${queue.size}")
 		dist++
@@ -111,6 +113,8 @@ inline fun <State> bfslDist(
 	var dist = -1
 
 	while (queue.isNotEmpty()) {
+		// each dist needs its own "seen" set
+		seen.clear()
 //		if (dist % 100 == 0)
 //			println("dist:$dist, seen: ${seen.size}, queue: ${queue.size}")
 		dist++
@@ -226,6 +230,8 @@ inline fun <State> bfsPathDist(
 	var dist = -1
 
 	while (queue.isNotEmpty()) {
+		// each dist needs its own "seen" set
+		seen.clear()
 //		if (dist % 100 == 0)
 //			println("dist:$dist, seen: ${seen.size}, queue: ${queue.size}")
 		dist++
@@ -268,6 +274,8 @@ inline fun <State> bfslPathDist(
 	var dist = -1
 
 	while (queue.isNotEmpty()) {
+		// each dist needs its own "seen" set
+		seen.clear()
 //		if (dist % 100 == 0)
 //			println("dist:$dist, seen: ${seen.size}, queue: ${queue.size}")
 		dist++
@@ -349,7 +357,7 @@ inline fun <State> dfsDist(
 	isEnd: (State, Int) -> Boolean,
 	next: (State, Int) -> Iterable<State>
 ): Res<State> {
-	val seen = mutableSetOf(start)
+	val seen = mutableSetOf(start to 0)
 	var stack = mutableListOf(start to 0)
 	var maxDist = 0
 
@@ -359,7 +367,7 @@ inline fun <State> dfsDist(
 		maxDist = maxOf(maxDist, dist)
 
 		for (i in next(current, dist).reversed()) {
-			if (seen.add(i))
+			if (seen.add(i to dist + 1))
 				stack.add(i to dist + 1)
 		}
 	}
@@ -372,7 +380,7 @@ inline fun <State> dfslDist(
 	isEnd: (State, Int) -> Boolean,
 	next: (State, Int) -> Iterable<State>
 ): Res<State> {
-	val seen = starts.toMutableSet()
+	val seen = starts.map{it to 0}.toMutableSet()
 	var stack = starts.mapTo(mutableListOf()) { it to 0 }
 	var maxDist = 0
 
@@ -382,7 +390,7 @@ inline fun <State> dfslDist(
 		maxDist = maxOf(maxDist, dist)
 
 		for (i in next(current, dist).reversed()) {
-			if (seen.add(i))
+			if (seen.add(i to dist + 1))
 				stack.add(i to dist + 1)
 		}
 	}
@@ -395,7 +403,7 @@ inline fun <State> dfsPath(
 	isEnd: (State) -> Boolean,
 	next: (State) -> Iterable<State>
 ): BfsResult<State>? {
-	val seen = mutableSetOf(start)
+	val seen = mutableSetOf(start to 0)
 	var stack = mutableListOf(start to 0)
 	val back = mutableMapOf<State, State>()
 
@@ -413,7 +421,7 @@ inline fun <State> dfsPath(
 		}
 
 		for (i in next(current).reversed()) {
-			if (seen.add(i)) {
+			if (seen.add(i to dist + 1)) {
 				stack.add(i to dist + 1)
 				back[i] = current
 			}
@@ -428,7 +436,7 @@ inline fun <State> dfslPath(
 	isEnd: (State) -> Boolean,
 	next: (State) -> Iterable<State>
 ): BfsResult<State>? {
-	val seen = starts.toMutableSet()
+	val seen = starts.map{it to 0}.toMutableSet()
 	var stack = starts.mapTo(mutableListOf()) { it to 0 }
 	val back = mutableMapOf<State, State>()
 
@@ -446,7 +454,7 @@ inline fun <State> dfslPath(
 		}
 
 		for (i in next(current).reversed()) {
-			if (seen.add(i)) {
+			if (seen.add(i to dist + 1)) {
 				stack.add(i to dist + 1)
 				back[i] = current
 			}
@@ -461,7 +469,7 @@ inline fun <State> dfsPathDist(
 	isEnd: (State, Int) -> Boolean,
 	next: (State, Int) -> Iterable<State>
 ): BfsResult<State>? {
-	val seen = mutableSetOf(start)
+	val seen = mutableSetOf(start to 0)
 	var stack = mutableListOf(start to 0)
 	val back = mutableMapOf<State, State>()
 
@@ -479,7 +487,7 @@ inline fun <State> dfsPathDist(
 		}
 
 		for (i in next(current, dist).reversed()) {
-			if (seen.add(i)) {
+			if (seen.add(i to dist + 1)) {
 				stack.add(i to dist + 1)
 				back[i] = current
 			}
@@ -494,7 +502,7 @@ inline fun <State> dfsPathDist(
 	isEnd: (State, Int) -> Boolean,
 	next: (State, Int) -> Iterable<State>
 ): BfsResult<State>? {
-	val seen = starts.toMutableSet()
+	val seen = starts.map{it to 0}.toMutableSet()
 	var stack = starts.mapTo(mutableListOf()) { it to 0 }
 	val back = mutableMapOf<State, State>()
 
@@ -512,7 +520,7 @@ inline fun <State> dfsPathDist(
 		}
 
 		for (i in next(current, dist).reversed()) {
-			if (seen.add(i)) {
+			if (seen.add(i to dist + 1)) {
 				stack.add(i to dist + 1)
 				back[i] = current
 			}

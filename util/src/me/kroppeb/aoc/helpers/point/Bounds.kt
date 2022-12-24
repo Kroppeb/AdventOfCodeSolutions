@@ -214,3 +214,7 @@ inline fun IBounds.print(transform: (Point) -> String) {
 inline fun IBounds.print(transform: (Point) -> Char) {
 	print { "" + transform(it) }
 }
+
+
+val BoundsI.sint: Bounds
+	get() = Bounds(lower.sint, higher.sint)

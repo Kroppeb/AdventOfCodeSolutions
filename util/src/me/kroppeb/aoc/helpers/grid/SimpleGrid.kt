@@ -1,13 +1,11 @@
 package me.kroppeb.aoc.helpers.grid
 
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.point.BoundsI
-import me.kroppeb.aoc.helpers.point.PointI
-import me.kroppeb.aoc.helpers.point.toB
-import me.kroppeb.aoc.helpers.point.toPI
+import me.kroppeb.aoc.helpers.point.*
 
 class SimpleGrid<out T>(val items: List<List<T>>) : StrictGrid<T>, Iterable<BoundedGridPoint<T>> {
 	override val boundsI: BoundsI
+	val bounds: Bounds
 
 	init {
 		if (Clock.nX != 0) {
@@ -17,6 +15,7 @@ class SimpleGrid<out T>(val items: List<List<T>>) : StrictGrid<T>, Iterable<Boun
 			// y is first index
 			boundsI = (0 toPI 0) toB (items[0].lastIndex toPI items.lastIndex)
 		}
+		bounds = boundsI.sint
 	}
 
 	override fun get(index: PointI): T {
@@ -25,6 +24,15 @@ class SimpleGrid<out T>(val items: List<List<T>>) : StrictGrid<T>, Iterable<Boun
 			Clock.nX > 0 -> items[items.size - 1 - index.x][index.y]
 			Clock.nY < 0 -> items[index.y][index.x]
 			else -> items[items.size - 1 - index.y][index.x]
+		}
+	}
+
+	fun get(index: Point): T {
+		return when {
+			Clock.nX < 0 -> items[index.x.i][index.y.i]
+			Clock.nX > 0 -> items[items.size - 1 - index.x.i][index.y.i]
+			Clock.nY < 0 -> items[index.y.i][index.x.i]
+			else -> items[items.size - 1 - index.y.i][index.x.i]
 		}
 	}
 
@@ -55,7 +63,12 @@ class SimpleGrid<out T>(val items: List<List<T>>) : StrictGrid<T>, Iterable<Boun
 	fun getBpOrNull(point: PointI): BoundedGridPoint<T>? =
 		if (point in boundsI) BoundedGridPoint(point, this[point], this) else null
 
+	fun getBpOrNull(point: Point): BoundedGridPoint<T>? =
+		if (point in bounds) BoundedGridPoint(point, this.get(point), this) else null
+
 	fun getBp(point: PointI) = getBpOrNull(point) ?: throw IndexOutOfBoundsException(point.toString())
+
+	fun getBp(point: Point) = getBpOrNull(point) ?: throw IndexOutOfBoundsException(point.toString())
 }
 
 
