@@ -159,3 +159,7 @@ also:
 * spend too much time on making the updates on grid, that I had to rush starting, 
   and apparently I stopped the recording instead of downloading my input 
 * could just have done a bounds.retract
+
+## Day 25
+32/28; points: 142, 32th place
+* Whooo, some balanced based

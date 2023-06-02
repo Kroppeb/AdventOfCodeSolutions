@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y22
+package solutions.y22.d25
 
 
 /*
@@ -66,7 +66,7 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(25)
+	var data = getLines(2022_25)
 
 	val x = data.sumOf{ l -> l.reversed().mapIndexed{ i, c -> 5L.pow(i).s * when(c) {
 		'2' -> 2
