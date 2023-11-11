@@ -130,7 +130,7 @@ First hundred users to get the first star on Day 1:
  27) Dec 01  00:00:52  jhawthorn (AoC++)
  28) Dec 01  00:00:53  Waleed Khan (AoC++)
  29) Dec 01  00:00:54  connorjayr (AoC++)
- 30) Dec 01  00:00:54  TheJoshster
+ 30) Dec 01  00:00:54  joshuaruegge
  31) Dec 01  00:00:54  chunkybanana
  32) Dec 01  00:00:54  (anonymous user #672515)
  33) Dec 01  00:00:55  ZED.Charley William Thairo
