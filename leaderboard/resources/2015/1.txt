@@ -1,0 +1,203 @@
+First hundred users to get both stars on Day 1:
+  1) Dec 01  00:10:55  Aneurysm9 (AoC++)
+  2) Dec 01  00:16:22  Joel Lathrop
+  3) Dec 01  00:24:11  Igor Naverniouk
+  4) Dec 01  00:24:47  Corey Maher
+  5) Dec 01  00:24:54  Joe LeGasse
+  6) Dec 01  00:28:52  (anonymous user #286)
+  7) Dec 01  00:31:05  widgeonway
+  8) Dec 01  00:31:17  Cristian Radu
+  9) Dec 01  00:32:00  Stuart MacGillivray (AoC++)
+ 10) Dec 01  00:32:21  Noah Pena
+ 11) Dec 01  00:34:52  Naresh reddy
+ 12) Dec 01  00:34:53  @mikesmoniker
+ 13) Dec 01  00:40:49  SeeWhy
+ 14) Dec 01  00:42:03  Joshua Orvis
+ 15) Dec 01  00:43:53  @jan_walther
+ 16) Dec 01  00:45:25  (anonymous user #296)
+ 17) Dec 01  00:46:36  KamChanLiu
+ 18) Dec 01  00:47:20  darinc
+ 19) Dec 01  00:55:07  icholy
+ 20) Dec 01  00:59:56  (anonymous user #316)
+ 21) Dec 01  01:06:17  tobiowo
+ 22) Dec 01  01:08:43  Jean-Karim Bockstael
+ 23) Dec 01  01:10:52  danieljin
+ 24) Dec 01  01:12:10  Matthew Semeniuk
+ 25) Dec 01  01:12:47  Caleb Brown
+ 26) Dec 01  01:16:21  favrik
+ 27) Dec 01  01:20:39  randreucetti
+ 28) Dec 01  01:26:25  jhalley
+ 29) Dec 01  01:26:59  malisper
+ 30) Dec 01  01:27:38  Retsam
+ 31) Dec 01  01:32:49  (anonymous user #339)
+ 32) Dec 01  01:37:51  jacob
+ 33) Dec 01  01:37:59  (anonymous user #362)
+ 34) Dec 01  01:38:57  Zopherus
+ 35) Dec 01  01:46:02  (anonymous user #369)
+ 36) Dec 01  01:46:12  (anonymous user #380)
+ 37) Dec 01  01:47:01  Tommy Chanthaboune
+ 38) Dec 01  01:47:02  (anonymous user #360)
+ 39) Dec 01  01:49:14  lazandrei19
+ 40) Dec 01  01:49:29  stemog
+ 41) Dec 01  01:49:56  Taylor Growden (my-blue-snog-box)
+ 42) Dec 01  01:50:11  Spencer Pollock
+ 43) Dec 01  01:51:04  UWarbs
+ 44) Dec 01  01:53:41  owenso
+ 45) Dec 01  01:53:49  gintrator
+ 46) Dec 01  01:53:57  missblit
+ 47) Dec 01  01:56:24  JoggingThruThe6
+ 48) Dec 01  01:58:42  Clifford Duke
+ 49) Dec 01  01:59:20  (anonymous user #384)
+ 50) Dec 01  01:59:21  Ben Wolfram
+ 51) Dec 01  02:02:55  RakijaH
+ 52) Dec 01  02:04:17  Dávid Pörös
+ 53) Dec 01  02:04:28  (anonymous user #398)
+ 54) Dec 01  02:04:38  Juven Ardine
+ 55) Dec 01  02:07:30  GrizzlyAdams63
+ 56) Dec 01  02:09:37  (anonymous user #361)
+ 57) Dec 01  02:09:57  Berk Alyamach
+ 58) Dec 01  02:11:19  slapec
+ 59) Dec 01  02:16:12  Georg Metzger
+ 60) Dec 01  02:17:00  wrzazg
+ 61) Dec 01  02:18:37  t2davis
+ 62) Dec 01  02:20:49  Rijir
+ 63) Dec 01  02:21:18  Grayden Hormes
+ 64) Dec 01  02:24:10  Brynley McDonald
+ 65) Dec 01  02:25:04  (anonymous user #447)
+ 66) Dec 01  02:28:21  juno1990ahn
+ 67) Dec 01  02:29:08  Quadrophone
+ 68) Dec 01  02:31:36  (anonymous user #476)
+ 69) Dec 01  02:32:02  (anonymous user #473)
+ 70) Dec 01  02:32:54  MonkeyBrain4U
+ 71) Dec 01  02:35:32  dougg3
+ 72) Dec 01  02:35:40  Flnz
+ 73) Dec 01  02:36:00  AlliMcPalli
+ 74) Dec 01  02:36:16  shamittomar
+ 75) Dec 01  02:36:23  (anonymous user #482)
+ 76) Dec 01  02:39:28  (anonymous user #466)
+ 77) Dec 01  02:40:07  Joe Linhoff
+ 78) Dec 01  02:43:04  (anonymous user #500)
+ 79) Dec 01  02:44:01  SSteel2
+ 80) Dec 01  02:44:36  Pavan Nikhilesh
+ 81) Dec 01  02:44:42  blindwaves
+ 82) Dec 01  02:44:53  Henri Erilaid
+ 83) Dec 01  02:45:21  Tony Weston
+ 84) Dec 01  02:47:08  Anthony Nguyen
+ 85) Dec 01  02:49:18  sharmashobhit
+ 86) Dec 01  02:49:22  Mark Kahn
+ 87) Dec 01  02:52:23  Dexter John Chua
+ 88) Dec 01  02:52:43  vgel
+ 89) Dec 01  02:54:06  SpinCobra
+ 90) Dec 01  02:54:35  Fredrik A. Madsen-Malmo
+ 91) Dec 01  02:56:14  Tyler Kelley
+ 92) Dec 01  02:57:00  Alexandr Raskin
+ 93) Dec 01  02:57:32  (anonymous user #524)
+ 94) Dec 01  02:57:48  SirSoltex
+ 95) Dec 01  02:58:19  mikro86000
+ 96) Dec 01  03:02:16  (anonymous user #525)
+ 97) Dec 01  03:02:38  Seshadri R
+ 98) Dec 01  03:04:01  osguosgu
+ 99) Dec 01  03:05:11  Robert Mendel
+100) Dec 01  03:06:16  (anonymous user #540)
+
+First hundred users to get the first star on Day 1:
+  1) Dec 01  00:05:38  Aneurysm9 (AoC++)
+  2) Dec 01  00:05:40  Jonathan Cantwell
+  3) Dec 01  00:07:49  Tyrell Neufeld
+  4) Dec 01  00:08:01  Cristian Radu
+  5) Dec 01  00:08:19  Joel Lathrop
+  6) Dec 01  00:16:23  Stuart MacGillivray (AoC++)
+  7) Dec 01  00:16:41  Corey Maher
+  8) Dec 01  00:16:52  @RedaReinhart
+  9) Dec 01  00:20:17  Joe LeGasse
+ 10) Dec 01  00:21:38  (anonymous user #288)
+ 11) Dec 01  00:22:20  Igor Naverniouk
+ 12) Dec 01  00:26:49  (anonymous user #286)
+ 13) Dec 01  00:29:02  Noah Pena
+ 14) Dec 01  00:29:23  widgeonway
+ 15) Dec 01  00:30:41  @mikesmoniker
+ 16) Dec 01  00:32:26  Naresh reddy
+ 17) Dec 01  00:36:42  @jan_walther
+ 18) Dec 01  00:37:52  (anonymous user #296)
+ 19) Dec 01  00:37:52  Joshua Orvis
+ 20) Dec 01  00:38:08  SeeWhy
+ 21) Dec 01  00:42:02  KamChanLiu
+ 22) Dec 01  00:42:54  darinc
+ 23) Dec 01  00:43:07  alpoe
+ 24) Dec 01  00:47:09  icholy
+ 25) Dec 01  00:54:40  (anonymous user #316)
+ 26) Dec 01  01:03:50  JoggingThruThe6
+ 27) Dec 01  01:04:23  Jean-Karim Bockstael
+ 28) Dec 01  01:04:25  Caleb Brown
+ 29) Dec 01  01:04:31  tobiowo
+ 30) Dec 01  01:07:08  danieljin
+ 31) Dec 01  01:08:09  Matthew Semeniuk
+ 32) Dec 01  01:14:39  favrik
+ 33) Dec 01  01:16:06  jhalley
+ 34) Dec 01  01:17:40  randreucetti
+ 35) Dec 01  01:18:56  (anonymous user #339)
+ 36) Dec 01  01:20:03  Berk Alyamach
+ 37) Dec 01  01:20:16  Retsam
+ 38) Dec 01  01:23:48  (anonymous user #345)
+ 39) Dec 01  01:24:15  malisper
+ 40) Dec 01  01:25:09  jacob
+ 41) Dec 01  01:25:53  Richard Miller
+ 42) Dec 01  01:26:29  Jacky Lam
+ 43) Dec 01  01:30:27  Matt Jennings
+ 44) Dec 01  01:34:42  Zopherus
+ 45) Dec 01  01:34:52  (anonymous user #362)
+ 46) Dec 01  01:35:05  (anonymous user #361)
+ 47) Dec 01  01:36:53  Taylor Growden (my-blue-snog-box)
+ 48) Dec 01  01:37:14  Alexandr Raskin
+ 49) Dec 01  01:37:44  (anonymous user #356)
+ 50) Dec 01  01:38:44  (anonymous user #369)
+ 51) Dec 01  01:40:16  Tommy Chanthaboune
+ 52) Dec 01  01:41:39  (anonymous user #360)
+ 53) Dec 01  01:41:49  stemog
+ 54) Dec 01  01:42:36  lazandrei19
+ 55) Dec 01  01:42:55  (anonymous user #380)
+ 56) Dec 01  01:43:41  owenso
+ 57) Dec 01  01:45:44  Spencer Pollock
+ 58) Dec 01  01:47:29  missblit
+ 59) Dec 01  01:48:44  goldemerald
+ 60) Dec 01  01:49:03  UWarbs
+ 61) Dec 01  01:49:57  (anonymous user #384)
+ 62) Dec 01  01:50:01  gintrator
+ 63) Dec 01  01:51:23  Clifford Duke
+ 64) Dec 01  01:53:48  (anonymous user #398)
+ 65) Dec 01  01:55:37  Trey Spires
+ 66) Dec 01  01:56:22  Juven Ardine
+ 67) Dec 01  01:56:39  Fredrik Storøy
+ 68) Dec 01  01:59:08  Ben Wolfram
+ 69) Dec 01  02:01:27  RakijaH
+ 70) Dec 01  02:01:29  Dávid Pörös
+ 71) Dec 01  02:02:17  Brant Wladichuk
+ 72) Dec 01  02:02:57  (anonymous user #413)
+ 73) Dec 01  02:02:58  GrizzlyAdams63
+ 74) Dec 01  02:06:47  t2davis
+ 75) Dec 01  02:07:14  slapec
+ 76) Dec 01  02:10:13  Grayden Hormes
+ 77) Dec 01  02:10:53  Derek Knechtel
+ 78) Dec 01  02:11:11  Rijir
+ 79) Dec 01  02:12:41  Georg Metzger
+ 80) Dec 01  02:12:50  wrzazg
+ 81) Dec 01  02:13:07  MonkeyBrain4U
+ 82) Dec 01  02:14:31  (anonymous user #439)
+ 83) Dec 01  02:14:53  Tyler Kelley
+ 84) Dec 01  02:15:31  (anonymous user #447)
+ 85) Dec 01  02:22:33  Dexter John Chua
+ 86) Dec 01  02:22:36  Brynley McDonald
+ 87) Dec 01  02:23:24  Quadrophone
+ 88) Dec 01  02:26:49  Pavan Nikhilesh
+ 89) Dec 01  02:27:02  juno1990ahn
+ 90) Dec 01  02:28:13  Flnz
+ 91) Dec 01  02:29:49  (anonymous user #476)
+ 92) Dec 01  02:29:55  (anonymous user #473)
+ 93) Dec 01  02:31:31  SSteel2
+ 94) Dec 01  02:31:40  (anonymous user #478)
+ 95) Dec 01  02:31:58  (anonymous user #435)
+ 96) Dec 01  02:32:25  Jonas Bülow
+ 97) Dec 01  02:32:52  dougg3
+ 98) Dec 01  02:32:58  AlliMcPalli
+ 99) Dec 01  02:33:08  shamittomar
+100) Dec 01  02:34:31  (anonymous user #482)

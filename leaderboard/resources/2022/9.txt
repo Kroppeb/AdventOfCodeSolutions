@@ -1,5 +1,4 @@
 First hundred users to get both stars on Day 9:
-
   1) Dec 09  00:06:00  dan-simon
   2) Dec 09  00:07:13  SeanRBurton
   3) Dec 09  00:07:26  xiaowuc1
@@ -28,12 +27,12 @@ First hundred users to get both stars on Day 9:
  26) Dec 09  00:10:04  blaumeise20
  27) Dec 09  00:10:08  Ian DeHaan
  28) Dec 09  00:10:11  Akimitsu Hogge
- 29) Dec 09  00:10:12  5space
+ 29) Dec 09  00:10:12  5space (AoC++)
  30) Dec 09  00:10:14  Mercerenies
  31) Dec 09  00:10:16  Tobias-Glimmerfors
  32) Dec 09  00:10:23  mrphlip (AoC++)
  33) Dec 09  00:10:38  Kye W. Shi (AoC++)
- 34) Dec 09  00:10:41  nthistle
+ 34) Dec 09  00:10:41  nthistle (AoC++)
  35) Dec 09  00:10:50  Brett Math
  36) Dec 09  00:10:55  Max Jäger (AoC++)
  37) Dec 09  00:11:01  matthewmisiaszek (AoC++)
@@ -74,7 +73,7 @@ First hundred users to get both stars on Day 9:
  72) Dec 09  00:13:03  tckmn
  73) Dec 09  00:13:06  phoyh
  74) Dec 09  00:13:07  Zeyu Chen
- 75) Dec 09  00:13:12  qtgeo1248
+ 75) Dec 09  00:13:12  George Zhou
  76) Dec 09  00:13:13  jorisvr
  77) Dec 09  00:13:13  glguy (AoC++)
  78) Dec 09  00:13:16  Daniel Ng
@@ -83,9 +82,9 @@ First hundred users to get both stars on Day 9:
  81) Dec 09  00:13:25  Talchas
  82) Dec 09  00:13:31  Loks-
  83) Dec 09  00:13:34  noblematt
- 84) Dec 09  00:13:34  Erik Amirell Eklöf (Eae02)
+ 84) Dec 09  00:13:34  Erik Amirell Eklöf
  85) Dec 09  00:13:35  Josh Deprez
- 86) Dec 09  00:13:35  msullivan
+ 86) Dec 09  00:13:35  msullivan (AoC++)
  87) Dec 09  00:13:38  cup2of2tea (AoC++)
  88) Dec 09  00:13:40  (anonymous user #750627)
  89) Dec 09  00:13:40  Søren Fuglede Jørgensen (AoC++)
@@ -100,10 +99,10 @@ First hundred users to get both stars on Day 9:
  98) Dec 09  00:14:03  Hamza Hasan
  99) Dec 09  00:14:03  Théo Lecerf
 100) Dec 09  00:14:08  drysle
-First hundred users to get the first star on Day 9:
 
+First hundred users to get the first star on Day 9:
   1) Dec 09  00:02:41  tckmn
-  2) Dec 09  00:03:30  leijurv
+  2) Dec 09  00:03:30  leijurv (AoC++)
   3) Dec 09  00:03:43  Tris Emmy Wilson (AoC++)
   4) Dec 09  00:04:04  betaveros (AoC++)
   5) Dec 09  00:04:21  dan-simon
@@ -116,11 +115,11 @@ First hundred users to get the first star on Day 9:
  12) Dec 09  00:05:02  Antonio Molina
  13) Dec 09  00:05:03  Maxwell Zen
  14) Dec 09  00:05:11  Max Murin
- 15) Dec 09  00:05:13  5space
+ 15) Dec 09  00:05:13  5space (AoC++)
  16) Dec 09  00:05:13  nim-ka
  17) Dec 09  00:05:19  hyper-neutrino (AoC++)
  18) Dec 09  00:05:20  SeanRBurton
- 19) Dec 09  00:05:22  Andrey Akhmetov
+ 19) Dec 09  00:05:22  Andrey Akhmetov (AoC++)
  20) Dec 09  00:05:22  David Wahler (AoC++)
  21) Dec 09  00:05:24  Davis Yoshida
  22) Dec 09  00:05:24  Patrick Hogg (AoC++) (Sponsor)
@@ -133,11 +132,11 @@ First hundred users to get the first star on Day 9:
  29) Dec 09  00:05:39  Golovanov399
  30) Dec 09  00:05:39  dtinth (AoC++)
  31) Dec 09  00:05:40  periodically-makes-puns
- 32) Dec 09  00:05:43  Waffle 3z
+ 32) Dec 09  00:05:43  Waffle
  33) Dec 09  00:05:43  Alex Wice
  34) Dec 09  00:05:46  alcatrazEscapee
  35) Dec 09  00:05:51  D. Salgado
- 36) Dec 09  00:05:52  Pod
+ 36) Dec 09  00:05:52  JulesD
  37) Dec 09  00:05:56  SalomonT82
  38) Dec 09  00:05:58  mangoqwq
  39) Dec 09  00:06:10  andy-k
@@ -190,8 +189,8 @@ First hundred users to get the first star on Day 9:
  86) Dec 09  00:07:16  Shashank Bhatt
  87) Dec 09  00:07:20  Chris Mohr (AoC++)
  88) Dec 09  00:07:20  jimscchen
- 89) Dec 09  00:07:23  vstrimaitis
- 90) Dec 09  00:07:23  Ryan Hitchman
+ 89) Dec 09  00:07:23  vstrimaitis (AoC++)
+ 90) Dec 09  00:07:23  Ryan Hitchman (AoC++)
  91) Dec 09  00:07:24  geoffrey-wu
  92) Dec 09  00:07:26  William Y. Feng
  93) Dec 09  00:07:28  Max Jäger (AoC++)

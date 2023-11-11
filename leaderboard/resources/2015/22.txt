@@ -1,0 +1,203 @@
+First hundred users to get both stars on Day 22:
+  1) Dec 22  00:21:56  Paul Hankin
+  2) Dec 22  00:22:50  Ambrose Feinstein
+  3) Dec 22  00:26:32  marcusstuhr
+  4) Dec 22  00:33:12  Nick Parisi
+  5) Dec 22  00:39:09  etotheipi1
+  6) Dec 22  00:39:48  Thomas Holmes
+  7) Dec 22  00:41:23  asross
+  8) Dec 22  00:46:11  Andrey Anurin
+  9) Dec 22  00:46:22  orez-
+ 10) Dec 22  00:51:21  dougg3
+ 11) Dec 22  00:51:25  Andrew Skalski
+ 12) Dec 22  00:51:31  Stephen Lester
+ 13) Dec 22  00:53:48  asterite
+ 14) Dec 22  00:54:17  David Grenier
+ 15) Dec 22  00:54:28  (anonymous user #11054)
+ 16) Dec 22  00:54:47  Sreeram Ramachandran
+ 17) Dec 22  00:55:26  @Eric_Dykstra
+ 18) Dec 22  00:56:52  Mikachu
+ 19) Dec 22  00:57:00  Tom Saunders
+ 20) Dec 22  01:00:27  (anonymous user #27101)
+ 21) Dec 22  01:00:51  kalven
+ 22) Dec 22  01:01:07  Daniel Rejment
+ 23) Dec 22  01:02:26  Frank Chu
+ 24) Dec 22  01:04:49  Godspiral
+ 25) Dec 22  01:05:05  jweather
+ 26) Dec 22  01:06:15  Lance Nathan
+ 27) Dec 22  01:06:24  Andrey Astrelin
+ 28) Dec 22  01:08:59  Jeremy Rans
+ 29) Dec 22  01:13:00  RidgeX
+ 30) Dec 22  01:14:03  Joey Thaman
+ 31) Dec 22  01:14:04  SimonPrins (AoC++)
+ 32) Dec 22  01:16:00  Stuart MacGillivray (AoC++)
+ 33) Dec 22  01:16:45  balidani
+ 34) Dec 22  01:17:01  EthanNicholas
+ 35) Dec 22  01:17:59  Peter Ruibal
+ 36) Dec 22  01:18:11  mkigikm
+ 37) Dec 22  01:20:16  Christopher Osaki
+ 38) Dec 22  01:20:44  djimbob
+ 39) Dec 22  01:21:31  Mark Gritter
+ 40) Dec 22  01:23:55  Peter Ingleby
+ 41) Dec 22  01:24:07  Braeden Young
+ 42) Dec 22  01:27:20  aherdzik
+ 43) Dec 22  01:28:32  radek Olsak
+ 44) Dec 22  01:29:39  Martin Pärtel
+ 45) Dec 22  01:30:12  soolar
+ 46) Dec 22  01:32:34  Raven Black
+ 47) Dec 22  01:33:00  lukechampine
+ 48) Dec 22  01:33:04  stringham
+ 49) Dec 22  01:33:13  seraphdd
+ 50) Dec 22  01:34:37  fnuttplus
+ 51) Dec 22  01:34:52  Dwayne Towell
+ 52) Dec 22  01:35:46  Joshua Berne
+ 53) Dec 22  01:36:07  Clayton Hughes
+ 54) Dec 22  01:36:59  Austin
+ 55) Dec 22  01:39:03  @belbeeno
+ 56) Dec 22  01:42:08  chz16
+ 57) Dec 22  01:43:45  clhuang
+ 58) Dec 22  01:44:39  phil_r
+ 59) Dec 22  01:46:15  guosim
+ 60) Dec 22  01:49:03  bildzeitung
+ 61) Dec 22  01:49:59  (anonymous user #51437)
+ 62) Dec 22  01:51:06  Erik Godard
+ 63) Dec 22  01:56:15  inorix
+ 64) Dec 22  01:57:44  tomKPZ
+ 65) Dec 22  02:00:28  Joe LeGasse
+ 66) Dec 22  02:01:26  l2omain
+ 67) Dec 22  02:02:06  Lincoln Atkinson
+ 68) Dec 22  02:03:09  Igor Naverniouk
+ 69) Dec 22  02:04:14  juju2143
+ 70) Dec 22  02:04:52  Greg Millam
+ 71) Dec 22  02:06:53  @fenomas
+ 72) Dec 22  02:08:16  Jerry Towler
+ 73) Dec 22  02:08:48  @xAndy
+ 74) Dec 22  02:13:58  Stereo
+ 75) Dec 22  02:14:59  Tyler Bindon
+ 76) Dec 22  02:17:12  Chris Indoe
+ 77) Dec 22  02:22:48  Brian Green
+ 78) Dec 22  02:24:44  Dmitry Nikolayev
+ 79) Dec 22  02:27:44  Clinton Curry
+ 80) Dec 22  02:28:25  Andrew He
+ 81) Dec 22  02:29:04  earncefs
+ 82) Dec 22  02:29:09  ahorner
+ 83) Dec 22  02:30:31  alpha0924
+ 84) Dec 22  02:31:02  Matthew Semeniuk
+ 85) Dec 22  02:32:01  Marco Jäger
+ 86) Dec 22  02:33:02  Zel-os
+ 87) Dec 22  02:33:38  Caleb Robinson
+ 88) Dec 22  02:35:54  Pedro Osório
+ 89) Dec 22  02:35:56  Jonathan N
+ 90) Dec 22  02:37:00  @zigdon
+ 91) Dec 22  02:44:12  Tristan Stanley
+ 92) Dec 22  02:45:15  Slezak2007
+ 93) Dec 22  02:50:32  (anonymous user #10242)
+ 94) Dec 22  02:51:40  Thomas Sievert
+ 95) Dec 22  02:54:30  Andre da Rosa
+ 96) Dec 22  02:56:04  Alex Malecker
+ 97) Dec 22  03:02:25  jneubrand
+ 98) Dec 22  03:02:49  Benjamin Geiger
+ 99) Dec 22  03:03:04  JoggyFrazzle
+100) Dec 22  03:03:05  1337Flash
+
+First hundred users to get the first star on Day 22:
+  1) Dec 22  00:19:34  Paul Hankin
+  2) Dec 22  00:22:10  Ambrose Feinstein
+  3) Dec 22  00:26:07  marcusstuhr
+  4) Dec 22  00:30:34  dougg3
+  5) Dec 22  00:31:25  Nick Parisi
+  6) Dec 22  00:36:56  Godspiral
+  7) Dec 22  00:37:20  Stephen Lester
+  8) Dec 22  00:37:38  etotheipi1
+  9) Dec 22  00:38:46  kalven
+ 10) Dec 22  00:39:02  Thomas Holmes
+ 11) Dec 22  00:40:50  asross
+ 12) Dec 22  00:41:06  Andrey Anurin
+ 13) Dec 22  00:43:50  Andrey Astrelin
+ 14) Dec 22  00:45:31  orez-
+ 15) Dec 22  00:45:42  jweather
+ 16) Dec 22  00:46:16  David Grenier
+ 17) Dec 22  00:49:47  Michelle Brundin
+ 18) Dec 22  00:50:11  Andrew Skalski
+ 19) Dec 22  00:51:29  Tom Saunders
+ 20) Dec 22  00:51:36  aherdzik
+ 21) Dec 22  00:52:03  @Eric_Dykstra
+ 22) Dec 22  00:52:13  asterite
+ 23) Dec 22  00:52:31  Sreeram Ramachandran
+ 24) Dec 22  00:53:00  djimbob
+ 25) Dec 22  00:53:02  (anonymous user #11054)
+ 26) Dec 22  00:55:44  (anonymous user #27101)
+ 27) Dec 22  00:55:55  Raven Black
+ 28) Dec 22  00:56:22  Mikachu
+ 29) Dec 22  00:59:04  Daniel Rejment
+ 30) Dec 22  00:59:56  Frank Chu
+ 31) Dec 22  01:00:21  phil_r
+ 32) Dec 22  01:03:05  Lance Nathan
+ 33) Dec 22  01:03:45  GiedriusS
+ 34) Dec 22  01:06:50  Jeremy Rans
+ 35) Dec 22  01:09:58  RidgeX
+ 36) Dec 22  01:11:38  Braeden Young
+ 37) Dec 22  01:11:44  Joey Thaman
+ 38) Dec 22  01:11:46  SimonPrins (AoC++)
+ 39) Dec 22  01:12:19  Peter Ingleby
+ 40) Dec 22  01:14:34  Christopher Osaki
+ 41) Dec 22  01:14:55  Stuart MacGillivray (AoC++)
+ 42) Dec 22  01:15:44  mkigikm
+ 43) Dec 22  01:15:59  balidani
+ 44) Dec 22  01:16:25  EthanNicholas
+ 45) Dec 22  01:16:55  Peter Ruibal
+ 46) Dec 22  01:18:20  Mark Gritter
+ 47) Dec 22  01:19:05  Andre LeBlanc
+ 48) Dec 22  01:19:57  chz16
+ 49) Dec 22  01:24:06  1337Flash
+ 50) Dec 22  01:26:06  Martin Pärtel
+ 51) Dec 22  01:26:57  radek Olsak
+ 52) Dec 22  01:29:02  Stereo
+ 53) Dec 22  01:29:19  soolar
+ 54) Dec 22  01:30:37  seraphdd
+ 55) Dec 22  01:30:52  @belbeeno
+ 56) Dec 22  01:31:08  lukechampine
+ 57) Dec 22  01:31:48  fnuttplus
+ 58) Dec 22  01:31:56  stringham
+ 59) Dec 22  01:33:30  Dwayne Towell
+ 60) Dec 22  01:34:12  Joshua Berne
+ 61) Dec 22  01:34:57  Clayton Hughes
+ 62) Dec 22  01:35:51  clhuang
+ 63) Dec 22  01:36:18  Austin
+ 64) Dec 22  01:38:50  guosim
+ 65) Dec 22  01:44:50  Brian Green
+ 66) Dec 22  01:45:29  (anonymous user #48734)
+ 67) Dec 22  01:46:56  bildzeitung
+ 68) Dec 22  01:47:22  (anonymous user #51437)
+ 69) Dec 22  01:49:51  Boo
+ 70) Dec 22  01:49:56  Erik Godard
+ 71) Dec 22  01:51:40  inorix
+ 72) Dec 22  01:52:29  l2omain
+ 73) Dec 22  01:54:58  @fenomas
+ 74) Dec 22  01:54:59  Lincoln Atkinson
+ 75) Dec 22  01:56:06  vinheim3
+ 76) Dec 22  01:56:21  tomKPZ
+ 77) Dec 22  01:58:04  Joe LeGasse
+ 78) Dec 22  01:59:33  Igor Naverniouk
+ 79) Dec 22  02:01:47  Greg Millam
+ 80) Dec 22  02:02:12  Slezak2007
+ 81) Dec 22  02:02:49  gareve
+ 82) Dec 22  02:03:05  vasi
+ 83) Dec 22  02:03:12  ahorner
+ 84) Dec 22  02:03:58  juju2143
+ 85) Dec 22  02:04:33  Clinton Curry
+ 86) Dec 22  02:06:16  @xAndy
+ 87) Dec 22  02:06:21  Jerry Towler
+ 88) Dec 22  02:07:31  Tyler Bindon
+ 89) Dec 22  02:12:15  Chris Indoe
+ 90) Dec 22  02:18:21  earncefs
+ 91) Dec 22  02:18:45  Doug Orleans
+ 92) Dec 22  02:20:06  (anonymous user #8377)
+ 93) Dec 22  02:22:19  Andrew He
+ 94) Dec 22  02:23:29  Dmitry Nikolayev
+ 95) Dec 22  02:24:06  Thomas Sievert
+ 96) Dec 22  02:27:22  @zigdon
+ 97) Dec 22  02:28:44  alpha0924
+ 98) Dec 22  02:28:56  Tristan Stanley
+ 99) Dec 22  02:29:10  lizthegrey (AoC++)
+100) Dec 22  02:30:24  Matthew Semeniuk

@@ -1,10 +1,9 @@
 First hundred users to get both stars on Day 11:
-
   1) Dec 11  00:08:16  Robert Xiao
   2) Dec 11  00:08:34  betaveros (AoC++)
   3) Dec 11  00:08:37  hyper-neutrino (AoC++)
-  4) Dec 11  00:09:24  5space
-  5) Dec 11  00:10:42  (anonymous user #1510407)
+  4) Dec 11  00:09:24  5space (AoC++)
+  5) Dec 11  00:10:42  (anonymous user #1510407) (AoC++)
   6) Dec 11  00:10:58  bluepichu
   7) Dec 11  00:11:04  dan-simon
   8) Dec 11  00:11:23  bcc32 (AoC++)
@@ -23,7 +22,7 @@ First hundred users to get both stars on Day 11:
  21) Dec 11  00:13:04  Davis Yoshida
  22) Dec 11  00:13:09  Paul Draper
  23) Dec 11  00:13:10  Brandon Lin
- 24) Dec 11  00:13:16  Dr. Pohly
+ 24) Dec 11  00:13:16  djpohly
  25) Dec 11  00:13:18  LyricLy (AoC++)
  26) Dec 11  00:13:20  (anonymous user #44119)
  27) Dec 11  00:13:21  mrphlip (AoC++)
@@ -48,7 +47,7 @@ First hundred users to get both stars on Day 11:
  46) Dec 11  00:15:13  Bennett Marsh
  47) Dec 11  00:15:14  James Berglund
  48) Dec 11  00:15:20  Kai-Zhan Lee
- 49) Dec 11  00:15:33  leijurv
+ 49) Dec 11  00:15:33  leijurv (AoC++)
  50) Dec 11  00:15:38  Søren Fuglede Jørgensen (AoC++)
  51) Dec 11  00:15:42  Virgile Andreani (AoC++)
  52) Dec 11  00:15:46  Mercerenies
@@ -68,7 +67,7 @@ First hundred users to get both stars on Day 11:
  66) Dec 11  00:16:35  Bradley Louie
  67) Dec 11  00:16:36  Kevin Wang
  68) Dec 11  00:16:37  PikMike
- 69) Dec 11  00:16:37  ellie (AoC++)
+ 69) Dec 11  00:16:37  ellellie (AoC++)
  70) Dec 11  00:16:38  Jared Hughes
  71) Dec 11  00:16:48  Oskar Haarklou Veileborg (AoC++)
  72) Dec 11  00:16:52  Bradley He
@@ -100,25 +99,25 @@ First hundred users to get both stars on Day 11:
  98) Dec 11  00:18:04  Yenya (AoC++)
  99) Dec 11  00:18:05  jacobparish
 100) Dec 11  00:18:05  matthewmisiaszek (AoC++)
-First hundred users to get the first star on Day 11:
 
+First hundred users to get the first star on Day 11:
   1) Dec 11  00:06:06  mrphlip (AoC++)
   2) Dec 11  00:06:11  bluepichu
   3) Dec 11  00:06:43  betaveros (AoC++)
   4) Dec 11  00:06:54  hyper-neutrino (AoC++)
-  5) Dec 11  00:07:07  5space
+  5) Dec 11  00:07:07  5space (AoC++)
   6) Dec 11  00:07:18  Robert Xiao
   7) Dec 11  00:07:30  IndigoManedWolf
   8) Dec 11  00:07:51  LyricLy (AoC++)
   9) Dec 11  00:07:56  Anish Singhani
  10) Dec 11  00:08:18  bcc32 (AoC++)
  11) Dec 11  00:08:39  Tris Emmy Wilson (AoC++)
- 12) Dec 11  00:08:43  (anonymous user #1510407)
- 13) Dec 11  00:08:50  Dr. Pohly
+ 12) Dec 11  00:08:43  (anonymous user #1510407) (AoC++)
+ 13) Dec 11  00:08:50  djpohly
  14) Dec 11  00:08:50  mserrano
- 15) Dec 11  00:08:52  nthistle
+ 15) Dec 11  00:08:52  nthistle (AoC++)
  16) Dec 11  00:09:07  dan-simon
- 17) Dec 11  00:09:13  ellie (AoC++)
+ 17) Dec 11  00:09:13  ellellie (AoC++)
  18) Dec 11  00:09:27  Kirby703
  19) Dec 11  00:09:31  (anonymous user #2412806)
  20) Dec 11  00:09:33  LegionMammal978
@@ -139,7 +138,7 @@ First hundred users to get the first star on Day 11:
  35) Dec 11  00:10:42  SizableShrimp
  36) Dec 11  00:10:42  Ari Wachtel
  37) Dec 11  00:10:44  Thomas Draper
- 38) Dec 11  00:10:44  leijurv
+ 38) Dec 11  00:10:44  leijurv (AoC++)
  39) Dec 11  00:10:46  Peter Dowdy (AoC++)
  40) Dec 11  00:10:49  petertseng
  41) Dec 11  00:10:53  jonathanpaulson (AoC++)
@@ -154,10 +153,10 @@ First hundred users to get the first star on Day 11:
  50) Dec 11  00:11:20  Evan Howard (AoC++)
  51) Dec 11  00:11:21  Danny Lin
  52) Dec 11  00:11:25  CodingAP (AoC++)
- 53) Dec 11  00:11:26  Waffle 3z
+ 53) Dec 11  00:11:26  Waffle
  54) Dec 11  00:11:29  David Wahler (AoC++)
  55) Dec 11  00:11:29  (anonymous user #1565212)
- 56) Dec 11  00:11:33  Thomas Raskin
+ 56) Dec 11  00:11:33  (anonymous user #2444783)
  57) Dec 11  00:11:34  hughcoleman
  58) Dec 11  00:11:34  Craig White
  59) Dec 11  00:11:34  Thomas Norris

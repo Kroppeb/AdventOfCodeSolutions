@@ -1,0 +1,203 @@
+First hundred users to get both stars on Day 13:
+  1) Dec 13  00:08:22  glguy
+  2) Dec 13  00:08:27  dsemi
+  3) Dec 13  00:08:32  Austin
+  4) Dec 13  00:08:37  ethankward
+  5) Dec 13  00:08:46  Sreeram Ramachandran
+  6) Dec 13  00:08:53  dfyz
+  7) Dec 13  00:10:03  Tryneus
+  8) Dec 13  00:10:05  Thomas Holmes
+  9) Dec 13  00:10:27  Talchas
+ 10) Dec 13  00:10:41  ludic
+ 11) Dec 13  00:10:45  Roderic Day
+ 12) Dec 13  00:11:01  orez-
+ 13) Dec 13  00:11:20  asterite
+ 14) Dec 13  00:11:44  relsqui
+ 15) Dec 13  00:11:52  Ben Jones
+ 16) Dec 13  00:11:57  Anthony Nguyen
+ 17) Dec 13  00:12:04  dougg3
+ 18) Dec 13  00:12:06  edanaher
+ 19) Dec 13  00:12:15  epitron
+ 20) Dec 13  00:12:22  klieth
+ 21) Dec 13  00:12:39  malisper
+ 22) Dec 13  00:12:41  Shane Mc Cormack (AoC++)
+ 23) Dec 13  00:12:47  stringham
+ 24) Dec 13  00:12:57  0x0dea
+ 25) Dec 13  00:12:58  Igor Naverniouk
+ 26) Dec 13  00:13:11  Eli Lipsitz
+ 27) Dec 13  00:13:21  Andre LeBlanc
+ 28) Dec 13  00:13:47  Chouser
+ 29) Dec 13  00:13:57  (anonymous user #44119)
+ 30) Dec 13  00:14:02  Paweł Pamuła
+ 31) Dec 13  00:14:04  Marek Kukan
+ 32) Dec 13  00:14:05  Michael C. Martin
+ 33) Dec 13  00:14:06  Ryan Smith
+ 34) Dec 13  00:14:10  def-
+ 35) Dec 13  00:14:16  Michał Sylwester
+ 36) Dec 13  00:14:26  Jeff Till
+ 37) Dec 13  00:14:29  jspeiser
+ 38) Dec 13  00:14:44  marchelzo
+ 39) Dec 13  00:14:58  Chris Egerton
+ 40) Dec 13  00:15:07  Piotr Piatkowski
+ 41) Dec 13  00:15:09  (anonymous user #31658)
+ 42) Dec 13  00:15:10  Thomas Lamb
+ 43) Dec 13  00:15:16  @geoffcanyon
+ 44) Dec 13  00:15:21  Bali_Balo
+ 45) Dec 13  00:15:33  soolar
+ 46) Dec 13  00:15:40  chz16
+ 47) Dec 13  00:16:02  Michael Giuffrida
+ 48) Dec 13  00:16:22  Andrew Skalski
+ 49) Dec 13  00:16:50  (anonymous user #18180)
+ 50) Dec 13  00:17:31  dylanhart
+ 51) Dec 13  00:17:57  @xAndy
+ 52) Dec 13  00:18:02  Alex Crimi
+ 53) Dec 13  00:18:07  kevinavery
+ 54) Dec 13  00:18:18  (anonymous user #19765)
+ 55) Dec 13  00:18:24  cookieraid
+ 56) Dec 13  00:18:25  Jonathan Ostrander
+ 57) Dec 13  00:18:39  RotaryProphet
+ 58) Dec 13  00:18:41  Lance Nathan
+ 59) Dec 13  00:18:43  ns-szhang
+ 60) Dec 13  00:18:51  Scott Handelman
+ 61) Dec 13  00:18:52  juju2143
+ 62) Dec 13  00:18:54  player1537
+ 63) Dec 13  00:19:00  japillow
+ 64) Dec 13  00:19:00  Cory Chamblin
+ 65) Dec 13  00:19:23  Sam
+ 66) Dec 13  00:19:31  bluebear94
+ 67) Dec 13  00:19:38  Paradoxide
+ 68) Dec 13  00:19:46  alavers
+ 69) Dec 13  00:19:48  neckro
+ 70) Dec 13  00:19:49  phil_r
+ 71) Dec 13  00:20:22  ratmatix
+ 72) Dec 13  00:20:23  ezfe
+ 73) Dec 13  00:20:41  JP Burke
+ 74) Dec 13  00:20:47  Rossen
+ 75) Dec 13  00:20:53  Avery Crespi
+ 76) Dec 13  00:21:03  aaditya prakash
+ 77) Dec 13  00:21:03  (anonymous user #29405)
+ 78) Dec 13  00:21:05  @ckk
+ 79) Dec 13  00:21:11  minno726
+ 80) Dec 13  00:21:14  g-p-g
+ 81) Dec 13  00:21:20  (anonymous user #6947)
+ 82) Dec 13  00:21:21  Christopher
+ 83) Dec 13  00:21:23  bufordsharkley
+ 84) Dec 13  00:21:23  pdcamilleri
+ 85) Dec 13  00:21:24  Roger Versluis
+ 86) Dec 13  00:21:28  (anonymous user #6961)
+ 87) Dec 13  00:21:35  Spurlock
+ 88) Dec 13  00:21:41  (anonymous user #12617)
+ 89) Dec 13  00:22:13  djimenez
+ 90) Dec 13  00:22:28  (anonymous user #14246)
+ 91) Dec 13  00:22:46  Aymen Djellal
+ 92) Dec 13  00:22:54  (anonymous user #47933)
+ 93) Dec 13  00:22:55  1337Flash
+ 94) Dec 13  00:23:42  LieutenantSwr2d2
+ 95) Dec 13  00:23:52  (anonymous user #31480)
+ 96) Dec 13  00:23:54  lukechampine
+ 97) Dec 13  00:24:02  Robert Offner
+ 98) Dec 13  00:24:05  Aneurysm9 (AoC++)
+ 99) Dec 13  00:24:14  Alex Koay
+100) Dec 13  00:24:19  Mitch Keenan
+
+First hundred users to get the first star on Day 13:
+  1) Dec 13  00:06:17  Sreeram Ramachandran
+  2) Dec 13  00:06:27  Austin
+  3) Dec 13  00:07:21  dsemi
+  4) Dec 13  00:07:25  glguy
+  5) Dec 13  00:07:32  dfyz
+  6) Dec 13  00:07:41  Anthony Nguyen
+  7) Dec 13  00:07:56  ethankward
+  8) Dec 13  00:08:33  Thomas Holmes
+  9) Dec 13  00:09:02  Roderic Day
+ 10) Dec 13  00:09:08  stringham
+ 11) Dec 13  00:09:12  Ben Jones
+ 12) Dec 13  00:09:13  ludic
+ 13) Dec 13  00:09:14  Tryneus
+ 14) Dec 13  00:09:35  Jesse Rolheiser
+ 15) Dec 13  00:09:42  orez-
+ 16) Dec 13  00:09:49  epitron
+ 17) Dec 13  00:09:53  Talchas
+ 18) Dec 13  00:10:11  asterite
+ 19) Dec 13  00:10:21  Shane Mc Cormack (AoC++)
+ 20) Dec 13  00:10:38  dougg3
+ 21) Dec 13  00:10:44  relsqui
+ 22) Dec 13  00:10:55  0x0dea
+ 23) Dec 13  00:11:01  edanaher
+ 24) Dec 13  00:11:13  klieth
+ 25) Dec 13  00:11:16  Eli Lipsitz
+ 26) Dec 13  00:11:30  Thomas Lamb
+ 27) Dec 13  00:11:37  malisper
+ 28) Dec 13  00:11:45  Paweł Pamuła
+ 29) Dec 13  00:11:48  Marek Kukan
+ 30) Dec 13  00:11:53  Andre LeBlanc
+ 31) Dec 13  00:11:57  Ryan Smith
+ 32) Dec 13  00:12:07  (anonymous user #31658)
+ 33) Dec 13  00:12:08  Chouser
+ 34) Dec 13  00:12:12  Michael C. Martin
+ 35) Dec 13  00:12:16  marchelzo
+ 36) Dec 13  00:12:20  jspeiser
+ 37) Dec 13  00:12:23  Igor Naverniouk
+ 38) Dec 13  00:12:52  chz16
+ 39) Dec 13  00:12:52  (anonymous user #44119)
+ 40) Dec 13  00:13:04  def-
+ 41) Dec 13  00:13:13  Jeff Till
+ 42) Dec 13  00:13:23  Michał Sylwester
+ 43) Dec 13  00:13:30  Bali_Balo
+ 44) Dec 13  00:13:34  RotaryProphet
+ 45) Dec 13  00:13:35  Chris Egerton
+ 46) Dec 13  00:13:44  soolar
+ 47) Dec 13  00:13:53  @geoffcanyon
+ 48) Dec 13  00:14:03  Piotr Piatkowski
+ 49) Dec 13  00:14:53  (anonymous user #19765)
+ 50) Dec 13  00:15:08  (anonymous user #18180)
+ 51) Dec 13  00:15:09  juju2143
+ 52) Dec 13  00:15:12  Scott Handelman
+ 53) Dec 13  00:15:15  Michael Giuffrida
+ 54) Dec 13  00:15:28  Andrew Skalski
+ 55) Dec 13  00:15:30  LieutenantSwr2d2
+ 56) Dec 13  00:15:35  yigal irani
+ 57) Dec 13  00:15:41  japillow
+ 58) Dec 13  00:15:43  bluebear94
+ 59) Dec 13  00:15:55  Jonathan Ostrander
+ 60) Dec 13  00:15:55  dylanhart
+ 61) Dec 13  00:16:14  Cory Chamblin
+ 62) Dec 13  00:16:16  kevinavery
+ 63) Dec 13  00:16:24  @xAndy
+ 64) Dec 13  00:16:26  (anonymous user #29405)
+ 65) Dec 13  00:16:34  Lance Nathan
+ 66) Dec 13  00:16:52  Alex Crimi
+ 67) Dec 13  00:16:53  player1537
+ 68) Dec 13  00:17:15  ezfe
+ 69) Dec 13  00:17:17  ns-szhang
+ 70) Dec 13  00:17:19  cookieraid
+ 71) Dec 13  00:17:22  neckro
+ 72) Dec 13  00:17:23  Sam
+ 73) Dec 13  00:17:43  alavers
+ 74) Dec 13  00:17:46  Roger Versluis
+ 75) Dec 13  00:17:55  balidani
+ 76) Dec 13  00:18:15  Spurlock
+ 77) Dec 13  00:18:19  (anonymous user #12617)
+ 78) Dec 13  00:18:25  Christopher
+ 79) Dec 13  00:18:26  @ReadableName
+ 80) Dec 13  00:18:29  (anonymous user #6947)
+ 81) Dec 13  00:18:30  Robert Offner
+ 82) Dec 13  00:18:32  JP Burke
+ 83) Dec 13  00:18:42  g-p-g
+ 84) Dec 13  00:18:46  minno726
+ 85) Dec 13  00:18:48  bufordsharkley
+ 86) Dec 13  00:18:51  phil_r
+ 87) Dec 13  00:18:53  ratmatix
+ 88) Dec 13  00:18:57  Avery Crespi
+ 89) Dec 13  00:19:09  Paradoxide
+ 90) Dec 13  00:19:10  (anonymous user #6961)
+ 91) Dec 13  00:19:14  aaditya prakash
+ 92) Dec 13  00:19:16  @ckk
+ 93) Dec 13  00:19:16  Rossen
+ 94) Dec 13  00:19:34  (anonymous user #14246)
+ 95) Dec 13  00:19:36  1337Flash
+ 96) Dec 13  00:19:40  Ryman
+ 97) Dec 13  00:19:43  rahulsom
+ 98) Dec 13  00:20:09  Alex Malecker
+ 99) Dec 13  00:20:22  (anonymous user #39452)
+100) Dec 13  00:20:41  djimenez

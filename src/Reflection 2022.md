@@ -31,6 +31,7 @@ note: I want to add these helpers
 64/73; points: 65, 4th place
 * input parsing took long
 * Don't know why I went with Deques  
+* Note from 07/06/2023: can I index with ranges/progressions? if not, add that
 
 ## Day 06
 114/108; points: 0, 15th place

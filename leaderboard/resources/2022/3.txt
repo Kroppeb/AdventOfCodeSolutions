@@ -1,6 +1,5 @@
 First hundred users to get both stars on Day 3:
-
-  1) Dec 03  00:02:17  5space
+  1) Dec 03  00:02:17  5space (AoC++)
   2) Dec 03  00:02:25  ostwilkens
   3) Dec 03  00:02:34  tckmn
   4) Dec 03  00:02:54  Martin Camacho (AoC++)
@@ -8,7 +7,7 @@ First hundred users to get both stars on Day 3:
   6) Dec 03  00:03:13  boboquack
   7) Dec 03  00:03:17  betaveros (AoC++)
   8) Dec 03  00:03:18  ZED.Charley William Thairo
-  9) Dec 03  00:03:25  leijurv
+  9) Dec 03  00:03:25  leijurv (AoC++)
  10) Dec 03  00:03:28  bluepichu
  11) Dec 03  00:03:30  (anonymous user #2348523)
  12) Dec 03  00:03:31  kevinmchung (AoC++)
@@ -17,13 +16,13 @@ First hundred users to get both stars on Day 3:
  15) Dec 03  00:03:43  Carl Schildkraut
  16) Dec 03  00:03:45  larry
  17) Dec 03  00:03:45  D. Salgado
- 18) Dec 03  00:03:45  (anonymous user #645585)
+ 18) Dec 03  00:03:45  Ivan Galakhov (AoC++)
  19) Dec 03  00:03:49  PoustouFlan
  20) Dec 03  00:03:49  Lewin Gan
  21) Dec 03  00:03:50  Kroppeb (AoC++)
  22) Dec 03  00:03:51  Kami Leon
- 23) Dec 03  00:03:52  nthistle
- 24) Dec 03  00:03:55  (anonymous user #1510407)
+ 23) Dec 03  00:03:52  nthistle (AoC++)
+ 24) Dec 03  00:03:55  (anonymous user #1510407) (AoC++)
  25) Dec 03  00:03:56  dtinth (AoC++)
  26) Dec 03  00:03:56  Evan Zhang
  27) Dec 03  00:03:56  Anish Singhani
@@ -51,7 +50,7 @@ First hundred users to get both stars on Day 3:
  49) Dec 03  00:04:39  Kevin Yap (AoC++)
  50) Dec 03  00:04:40  jonathanpaulson (AoC++)
  51) Dec 03  00:04:40  Ian DeHaan
- 52) Dec 03  00:04:40  KevinL10 (Sponsor)
+ 52) Dec 03  00:04:40  KevinL10 (AoC++) (Sponsor)
  53) Dec 03  00:04:41  Coby Tran
  54) Dec 03  00:04:42  Oskar Haarklou Veileborg (AoC++)
  55) Dec 03  00:04:43  Vladislav Isenbaev
@@ -75,14 +74,14 @@ First hundred users to get both stars on Day 3:
  73) Dec 03  00:04:59  Sunny Guan
  74) Dec 03  00:05:00  andersonw
  75) Dec 03  00:05:00  Andrew X. (AoC++) (Sponsor)
- 76) Dec 03  00:05:00  Ryan Hitchman
+ 76) Dec 03  00:05:00  Ryan Hitchman (AoC++)
  77) Dec 03  00:05:01  Gorane7
  78) Dec 03  00:05:05  Brandon Lin
  79) Dec 03  00:05:06  Geronimo
  80) Dec 03  00:05:06  Jasper van Merle (AoC++)
  81) Dec 03  00:05:07  max-sixty (AoC++)
  82) Dec 03  00:05:07  Tis_awesomeness
- 83) Dec 03  00:05:11  msullivan
+ 83) Dec 03  00:05:11  msullivan (AoC++)
  84) Dec 03  00:05:12  Ethan C
  85) Dec 03  00:05:12  Tris Emmy Wilson (AoC++)
  86) Dec 03  00:05:13  TimHuisman1703
@@ -92,7 +91,7 @@ First hundred users to get both stars on Day 3:
  90) Dec 03  00:05:16  FillyAutomatic
  91) Dec 03  00:05:16  Arrowbounce
  92) Dec 03  00:05:19  chunkybanana
- 93) Dec 03  00:05:19  Colter
+ 93) Dec 03  00:05:19  Colter (AoC++)
  94) Dec 03  00:05:20  Bahnschrift (AoC++)
  95) Dec 03  00:05:20  Daniel Tse
  96) Dec 03  00:05:21  Buck4437
@@ -100,13 +99,13 @@ First hundred users to get both stars on Day 3:
  98) Dec 03  00:05:22  ganhongyao
  99) Dec 03  00:05:23  LegionMammal978
 100) Dec 03  00:05:24  Peter Dowdy (AoC++)
-First hundred users to get the first star on Day 3:
 
+First hundred users to get the first star on Day 3:
   1) Dec 03  00:00:10  ostwilkens
   2) Dec 03  00:00:30  max-sixty (AoC++)
   3) Dec 03  00:00:37  Darragh Griffin
   4) Dec 03  00:01:04  dtinth (AoC++)
-  5) Dec 03  00:01:24  5space
+  5) Dec 03  00:01:24  5space (AoC++)
   6) Dec 03  00:01:35  tckmn
   7) Dec 03  00:01:36  ZED.Charley William Thairo
   8) Dec 03  00:01:38  hyper-neutrino (AoC++)
@@ -120,26 +119,26 @@ First hundred users to get the first star on Day 3:
  16) Dec 03  00:02:00  larry
  17) Dec 03  00:02:03  PoustouFlan
  18) Dec 03  00:02:04  Evan Zhang
- 19) Dec 03  00:02:07  leijurv
+ 19) Dec 03  00:02:07  leijurv (AoC++)
  20) Dec 03  00:02:08  bcc32 (AoC++)
  21) Dec 03  00:02:08  Tanner Hoke
  22) Dec 03  00:02:09  Robert Xiao
  23) Dec 03  00:02:09  betaveros (AoC++)
  24) Dec 03  00:02:10  Carl Schildkraut
- 25) Dec 03  00:02:10  KevinL10 (Sponsor)
- 26) Dec 03  00:02:11  (anonymous user #1510407)
+ 25) Dec 03  00:02:10  KevinL10 (AoC++) (Sponsor)
+ 26) Dec 03  00:02:11  (anonymous user #1510407) (AoC++)
  27) Dec 03  00:02:13  mserrano
  28) Dec 03  00:02:13  Thomas Feld
  29) Dec 03  00:02:13  Lewin Gan
  30) Dec 03  00:02:14  (anonymous user #2348523)
  31) Dec 03  00:02:14  hltk
  32) Dec 03  00:02:14  LegionMammal978
- 33) Dec 03  00:02:17  Ryan Hitchman
+ 33) Dec 03  00:02:17  Ryan Hitchman (AoC++)
  34) Dec 03  00:02:18  Artemis
  35) Dec 03  00:02:20  zacharybarbanell
  36) Dec 03  00:02:21  Nick Frost (AoC++)
  37) Dec 03  00:02:23  kevinmchung (AoC++)
- 38) Dec 03  00:02:23  (anonymous user #645585)
+ 38) Dec 03  00:02:23  Ivan Galakhov (AoC++)
  39) Dec 03  00:02:24  Kroppeb (AoC++)
  40) Dec 03  00:02:26  Patrick Hogg (AoC++) (Sponsor)
  41) Dec 03  00:02:26  Zeyu Chen
@@ -148,7 +147,7 @@ First hundred users to get the first star on Day 3:
  44) Dec 03  00:02:28  mangoqwq
  45) Dec 03  00:02:29  mdlu
  46) Dec 03  00:02:30  (anonymous user #44119)
- 47) Dec 03  00:02:31  Erik Amirell Eklöf (Eae02)
+ 47) Dec 03  00:02:31  Erik Amirell Eklöf
  48) Dec 03  00:02:31  Kevin Yap (AoC++)
  49) Dec 03  00:02:32  Adavya Goyal
  50) Dec 03  00:02:32  Verulean
@@ -163,7 +162,7 @@ First hundred users to get the first star on Day 3:
  59) Dec 03  00:02:39  Javier Blazquez (Sponsor)
  60) Dec 03  00:02:40  Cefqrn
  61) Dec 03  00:02:40  nim-ka
- 62) Dec 03  00:02:40  Colter
+ 62) Dec 03  00:02:40  Colter (AoC++)
  63) Dec 03  00:02:41  Brandon Lin
  64) Dec 03  00:02:41  Craig Gidney
  65) Dec 03  00:02:41  Sunny Guan
@@ -172,7 +171,7 @@ First hundred users to get the first star on Day 3:
  68) Dec 03  00:02:44  lucifer1004 (AoC++)
  69) Dec 03  00:02:44  Shakya Majumdar
  70) Dec 03  00:02:44  Buck4437
- 71) Dec 03  00:02:45  nthistle
+ 71) Dec 03  00:02:45  nthistle (AoC++)
  72) Dec 03  00:02:45  Zack Chroman
  73) Dec 03  00:02:47  Ian DeHaan
  74) Dec 03  00:02:47  Nathan Fenner (AoC++)
@@ -192,7 +191,7 @@ First hundred users to get the first star on Day 3:
  88) Dec 03  00:02:57  Michael Goldwasser (AoC++)
  89) Dec 03  00:02:58  VJsong02
  90) Dec 03  00:02:58  awychong
- 91) Dec 03  00:02:58  msullivan
+ 91) Dec 03  00:02:58  msullivan (AoC++)
  92) Dec 03  00:02:59  Geronimo
  93) Dec 03  00:02:59  Lief
  94) Dec 03  00:02:59  LK (AoC++)

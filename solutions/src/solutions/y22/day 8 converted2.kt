@@ -30,7 +30,8 @@ private val xxxxx = Clock(6, 3);
 private fun part1() {
 	var data = getLines(2022_08).e().map2 { it - '0' }.grid()
 
-	data.count { p -> listOf(p.norths(), p.easts(), p.souths(), p.wests()).any { dir -> dir.all { it.v < p.v } } } log 1
+	data.count {
+		p -> listOf(p.norths(), p.easts(), p.souths(), p.wests()).any { dir -> dir.all { it.v < p.v } } } log 1
 }
 
 

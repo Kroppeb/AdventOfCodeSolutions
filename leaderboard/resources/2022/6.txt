@@ -1,5 +1,4 @@
 First hundred users to get both stars on Day 6:
-
   1) Dec 06  00:01:08  dtinth (AoC++)
   2) Dec 06  00:01:11  lemonsoc
   3) Dec 06  00:01:13  betaveros (AoC++)
@@ -10,7 +9,7 @@ First hundred users to get both stars on Day 6:
   8) Dec 06  00:01:23  Brandon Lin
   9) Dec 06  00:01:26  Martin Camacho (AoC++)
  10) Dec 06  00:01:28  hyper-neutrino (AoC++)
- 11) Dec 06  00:01:28  leijurv
+ 11) Dec 06  00:01:28  leijurv (AoC++)
  12) Dec 06  00:01:30  boboquack
  13) Dec 06  00:01:32  D. Salgado
  14) Dec 06  00:01:33  Anango Prabhat
@@ -34,7 +33,7 @@ First hundred users to get both stars on Day 6:
  32) Dec 06  00:01:52  Rohin Garg
  33) Dec 06  00:01:52  Sunny Guan
  34) Dec 06  00:01:53  Colton Pauderis (Sponsor)
- 35) Dec 06  00:01:54  nthistle
+ 35) Dec 06  00:01:54  nthistle (AoC++)
  36) Dec 06  00:01:54  Kami Leon
  37) Dec 06  00:01:54  tenth
  38) Dec 06  00:01:56  A5rocks
@@ -57,7 +56,7 @@ First hundred users to get both stars on Day 6:
  55) Dec 06  00:02:05  Aaron (AoC++)
  56) Dec 06  00:02:07  rhendric
  57) Dec 06  00:02:07  Bahnschrift (AoC++)
- 58) Dec 06  00:02:08  Pod
+ 58) Dec 06  00:02:08  JulesD
  59) Dec 06  00:02:08  (anonymous user #1565212)
  60) Dec 06  00:02:09  Robert Xiao
  61) Dec 06  00:02:09  Cyprien Mangin
@@ -70,7 +69,7 @@ First hundred users to get both stars on Day 6:
  68) Dec 06  00:02:12  (anonymous user #2375057)
  69) Dec 06  00:02:13  RootCubed (AoC++)
  70) Dec 06  00:02:13  twright0
- 71) Dec 06  00:02:13  (anonymous user #1510407)
+ 71) Dec 06  00:02:13  (anonymous user #1510407) (AoC++)
  72) Dec 06  00:02:13  Paul McMullin
  73) Dec 06  00:02:14  lethan3
  74) Dec 06  00:02:14  Patrick Ammons (AoC++)
@@ -79,14 +78,14 @@ First hundred users to get both stars on Day 6:
  77) Dec 06  00:02:17  whaatt (AoC++)
  78) Dec 06  00:02:17  btnlq
  79) Dec 06  00:02:17  Pedro Osório
- 80) Dec 06  00:02:17  Colter
+ 80) Dec 06  00:02:17  Colter (AoC++)
  81) Dec 06  00:02:18  petertseng
  82) Dec 06  00:02:18  dan-simon
  83) Dec 06  00:02:18  LegionMammal978
  84) Dec 06  00:02:19  Ethan Tillison
  85) Dec 06  00:02:20  Ritwin Narra
  86) Dec 06  00:02:20  Lionel Foxcroft
- 87) Dec 06  00:02:21  msullivan
+ 87) Dec 06  00:02:21  msullivan (AoC++)
  88) Dec 06  00:02:21  Jimmy Chen
  89) Dec 06  00:02:21  chrwoods
  90) Dec 06  00:02:22  Anish Singhani
@@ -100,8 +99,8 @@ First hundred users to get both stars on Day 6:
  98) Dec 06  00:02:25  Tristan Lee
  99) Dec 06  00:02:25  Matt Gruskin (AoC++)
 100) Dec 06  00:02:25  Alex Wice
-First hundred users to get the first star on Day 6:
 
+First hundred users to get the first star on Day 6:
   1) Dec 06  00:00:39  dtinth (AoC++)
   2) Dec 06  00:00:45  lemonsoc
   3) Dec 06  00:00:57  tckmn
@@ -121,7 +120,7 @@ First hundred users to get the first star on Day 6:
  17) Dec 06  00:01:10  hyper-neutrino (AoC++)
  18) Dec 06  00:01:12  Ian DeHaan
  19) Dec 06  00:01:14  jonathanpaulson (AoC++)
- 20) Dec 06  00:01:15  leijurv
+ 20) Dec 06  00:01:15  leijurv (AoC++)
  21) Dec 06  00:01:15  Kevin Yap (AoC++)
  22) Dec 06  00:01:16  D. Salgado
  23) Dec 06  00:01:16  clemdatacrunch (Sponsor)
@@ -129,7 +128,7 @@ First hundred users to get the first star on Day 6:
  25) Dec 06  00:01:20  Verulean
  26) Dec 06  00:01:20  Jasper van Merle (AoC++)
  27) Dec 06  00:01:21  Spyabo
- 28) Dec 06  00:01:21  Ryan Hitchman
+ 28) Dec 06  00:01:21  Ryan Hitchman (AoC++)
  29) Dec 06  00:01:25  Axel Brisse (AoC++)
  30) Dec 06  00:01:26  larry
  31) Dec 06  00:01:27  Rohin Garg
@@ -141,13 +140,13 @@ First hundred users to get the first star on Day 6:
  37) Dec 06  00:01:31  connorjayr (AoC++)
  38) Dec 06  00:01:32  Oof
  39) Dec 06  00:01:32  Oliver Ni (AoC++)
- 40) Dec 06  00:01:32  KevinL10 (Sponsor)
+ 40) Dec 06  00:01:32  KevinL10 (AoC++) (Sponsor)
  41) Dec 06  00:01:32  Tanner Hoke
  42) Dec 06  00:01:32  Henrik Lehtonen (Sponsor)
  43) Dec 06  00:01:33  Akimitsu Hogge
  44) Dec 06  00:01:34  Paul Draper
  45) Dec 06  00:01:34  Tim Vermeulen (AoC++)
- 46) Dec 06  00:01:35  Colter
+ 46) Dec 06  00:01:35  Colter (AoC++)
  47) Dec 06  00:01:35  The Friendly Enemy
  48) Dec 06  00:01:35  Roman Chesnokov
  49) Dec 06  00:01:35  RootCubed (AoC++)
@@ -163,9 +162,9 @@ First hundred users to get the first star on Day 6:
  59) Dec 06  00:01:39  jputlock
  60) Dec 06  00:01:40  Antonio Molina
  61) Dec 06  00:01:40  Dylan Weber
- 62) Dec 06  00:01:41  (anonymous user #645585)
+ 62) Dec 06  00:01:41  Ivan Galakhov (AoC++)
  63) Dec 06  00:01:41  UnrelatedString
- 64) Dec 06  00:01:41  nthistle
+ 64) Dec 06  00:01:41  nthistle (AoC++)
  65) Dec 06  00:01:41  tluo5458
  66) Dec 06  00:01:42  xnkvbo
  67) Dec 06  00:01:42  Kami Leon
@@ -186,7 +185,7 @@ First hundred users to get the first star on Day 6:
  82) Dec 06  00:01:46  lethan3
  83) Dec 06  00:01:47  Cyprien Mangin
  84) Dec 06  00:01:47  Craig Gidney
- 85) Dec 06  00:01:47  Pod
+ 85) Dec 06  00:01:47  JulesD
  86) Dec 06  00:01:47  Jau Tung Chan
  87) Dec 06  00:01:48  Patrick Ammons (AoC++)
  88) Dec 06  00:01:48  jakzo
@@ -200,5 +199,5 @@ First hundred users to get the first star on Day 6:
  96) Dec 06  00:01:51  Lief
  97) Dec 06  00:01:51  (anonymous user #2375057)
  98) Dec 06  00:01:52  Waleed Khan (AoC++)
- 99) Dec 06  00:01:52  Erik Amirell Eklöf (Eae02)
+ 99) Dec 06  00:01:52  Erik Amirell Eklöf
 100) Dec 06  00:01:52  jaeheonshim

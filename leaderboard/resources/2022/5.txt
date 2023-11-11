@@ -1,6 +1,5 @@
 First hundred users to get both stars on Day 5:
-
-  1) Dec 05  00:03:14  (anonymous user #1510407)
+  1) Dec 05  00:03:14  (anonymous user #1510407) (AoC++)
   2) Dec 05  00:03:37  bcc32 (AoC++)
   3) Dec 05  00:03:46  tckmn
   4) Dec 05  00:03:57  boboquack
@@ -8,7 +7,7 @@ First hundred users to get both stars on Day 5:
   6) Dec 05  00:04:07  nim-ka
   7) Dec 05  00:04:19  Brandon Lin
   8) Dec 05  00:04:23  Jared Hughes
-  9) Dec 05  00:04:25  ellie (AoC++)
+  9) Dec 05  00:04:25  ellellie (AoC++)
  10) Dec 05  00:04:25  mrphlip (AoC++)
  11) Dec 05  00:04:29  Lewin Gan
  12) Dec 05  00:04:38  Joshua Chen
@@ -19,14 +18,14 @@ First hundred users to get both stars on Day 5:
  17) Dec 05  00:05:13  Ian DeHaan
  18) Dec 05  00:05:16  alcatrazEscapee
  19) Dec 05  00:05:20  (anonymous user #1565212)
- 20) Dec 05  00:05:29  nthistle
+ 20) Dec 05  00:05:29  nthistle (AoC++)
  21) Dec 05  00:05:37  Evan Zhang
  22) Dec 05  00:05:39  alstonlo
  23) Dec 05  00:05:42  Paul Draper
  24) Dec 05  00:05:42  Thomas Feld
  25) Dec 05  00:05:49  Jonathan Ho (AoC++)
  26) Dec 05  00:05:50  Drew Boyuka
- 27) Dec 05  00:05:50  Daniel Huang
+ 27) Dec 05  00:05:50  Looking for an internship!
  28) Dec 05  00:05:52  (anonymous user #1345535)
  29) Dec 05  00:05:57  Antonio Molina
  30) Dec 05  00:05:59  Maxwell Zen
@@ -35,7 +34,7 @@ First hundred users to get both stars on Day 5:
  33) Dec 05  00:06:10  Kenneth Fitzgerald
  34) Dec 05  00:06:12  Zack Lee
  35) Dec 05  00:06:21  JackMacWindows
- 36) Dec 05  00:06:21  leijurv
+ 36) Dec 05  00:06:21  leijurv (AoC++)
  37) Dec 05  00:06:24  Adib Surani
  38) Dec 05  00:06:26  bluepichu
  39) Dec 05  00:06:26  Kevin Yap (AoC++)
@@ -57,9 +56,9 @@ First hundred users to get both stars on Day 5:
  55) Dec 05  00:06:58  dan-simon
  56) Dec 05  00:07:01  fowwo
  57) Dec 05  00:07:03  Sean Yawning
- 58) Dec 05  00:07:04  Dr. Pohly
+ 58) Dec 05  00:07:04  djpohly
  59) Dec 05  00:07:05  Kevin Wang
- 60) Dec 05  00:07:05  JuanPotato
+ 60) Dec 05  00:07:05  JuanPotato (AoC++)
  61) Dec 05  00:07:06  Shaunak Warty
  62) Dec 05  00:07:08  Zeyu Chen
  63) Dec 05  00:07:09  SeanRBurton
@@ -87,11 +86,11 @@ First hundred users to get both stars on Day 5:
  85) Dec 05  00:07:38  isnbh0
  86) Dec 05  00:07:39  Defelo (AoC++)
  87) Dec 05  00:07:39  petertseng
- 88) Dec 05  00:07:40  Andrey Akhmetov
+ 88) Dec 05  00:07:40  Andrey Akhmetov (AoC++)
  89) Dec 05  00:07:41  Mercerenies
  90) Dec 05  00:07:42  Nathan Fenner (AoC++)
  91) Dec 05  00:07:44  mjh316
- 92) Dec 05  00:07:47  KevinL10 (Sponsor)
+ 92) Dec 05  00:07:47  KevinL10 (AoC++) (Sponsor)
  93) Dec 05  00:07:51  Robert Xiao
  94) Dec 05  00:07:52  pkktino
  95) Dec 05  00:07:53  Tristan Lee
@@ -100,9 +99,9 @@ First hundred users to get both stars on Day 5:
  98) Dec 05  00:07:56  Oskar Haarklou Veileborg (AoC++)
  99) Dec 05  00:07:57  electraminer
 100) Dec 05  00:07:58  Jimmy Mårdell (AoC++) (Sponsor)
-First hundred users to get the first star on Day 5:
 
-  1) Dec 05  00:02:40  (anonymous user #1510407)
+First hundred users to get the first star on Day 5:
+  1) Dec 05  00:02:40  (anonymous user #1510407) (AoC++)
   2) Dec 05  00:02:56  boboquack
   3) Dec 05  00:03:08  bcc32 (AoC++)
   4) Dec 05  00:03:11  tckmn
@@ -113,7 +112,7 @@ First hundred users to get the first star on Day 5:
   9) Dec 05  00:03:51  Lewin Gan
  10) Dec 05  00:03:57  Gorane7
  11) Dec 05  00:03:57  mrphlip (AoC++)
- 12) Dec 05  00:03:58  ellie (AoC++)
+ 12) Dec 05  00:03:58  ellellie (AoC++)
  13) Dec 05  00:03:59  VJsong02
  14) Dec 05  00:04:04  Joshua Chen
  15) Dec 05  00:04:07  alcatrazEscapee
@@ -123,16 +122,16 @@ First hundred users to get the first star on Day 5:
  19) Dec 05  00:04:13  Tim Vermeulen (AoC++)
  20) Dec 05  00:04:17  (anonymous user #44119)
  21) Dec 05  00:04:30  Paul Draper
- 22) Dec 05  00:04:36  JuanPotato
+ 22) Dec 05  00:04:36  JuanPotato (AoC++)
  23) Dec 05  00:04:38  Kenneth Fitzgerald
  24) Dec 05  00:04:46  Evan Zhang
- 25) Dec 05  00:04:46  nthistle
+ 25) Dec 05  00:04:46  nthistle (AoC++)
  26) Dec 05  00:04:47  Jonathan Ho (AoC++)
  27) Dec 05  00:04:54  xnkvbo
  28) Dec 05  00:04:56  Maxwell Zen
  29) Dec 05  00:04:58  Drew Boyuka
  30) Dec 05  00:04:59  Buck4437
- 31) Dec 05  00:05:02  Daniel Huang
+ 31) Dec 05  00:05:02  Looking for an internship!
  32) Dec 05  00:05:08  JackMacWindows
  33) Dec 05  00:05:09  Andrew Jennings
  34) Dec 05  00:05:11  Thomas Feld
@@ -141,7 +140,7 @@ First hundred users to get the first star on Day 5:
  37) Dec 05  00:05:20  ItsMeNoobieboy
  38) Dec 05  00:05:20  Adib Surani
  39) Dec 05  00:05:23  Kevin Yap (AoC++)
- 40) Dec 05  00:05:23  leijurv
+ 40) Dec 05  00:05:23  leijurv (AoC++)
  41) Dec 05  00:05:25  Yiming Li
  42) Dec 05  00:05:26  Zack Lee
  43) Dec 05  00:05:26  larry
@@ -174,7 +173,7 @@ First hundred users to get the first star on Day 5:
  70) Dec 05  00:06:04  Jimmy Mårdell (AoC++) (Sponsor)
  71) Dec 05  00:06:05  Vince7778
  72) Dec 05  00:06:05  Vladislav Isenbaev
- 73) Dec 05  00:06:06  Dr. Pohly
+ 73) Dec 05  00:06:06  djpohly
  74) Dec 05  00:06:08  Craig Gidney
  75) Dec 05  00:06:09  thailandmatt
  76) Dec 05  00:06:10  ezraft
@@ -187,7 +186,7 @@ First hundred users to get the first star on Day 5:
  83) Dec 05  00:06:20  hyper-neutrino (AoC++)
  84) Dec 05  00:06:21  Zeyu Chen
  85) Dec 05  00:06:22  val tron
- 86) Dec 05  00:06:25  vstrimaitis
+ 86) Dec 05  00:06:25  vstrimaitis (AoC++)
  87) Dec 05  00:06:27  Para Dust
  88) Dec 05  00:06:27  TimHuisman1703
  89) Dec 05  00:06:30  Kevin Sheng
@@ -197,7 +196,7 @@ First hundred users to get the first star on Day 5:
  93) Dec 05  00:06:34  Defelo (AoC++)
  94) Dec 05  00:06:37  Kevin Wang
  95) Dec 05  00:06:37  dan-simon
- 96) Dec 05  00:06:37  Andrey Akhmetov
+ 96) Dec 05  00:06:37  Andrey Akhmetov (AoC++)
  97) Dec 05  00:06:38  pkktino
  98) Dec 05  00:06:40  bjebert
  99) Dec 05  00:06:41  Tristan Lee

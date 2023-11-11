@@ -1,9 +1,8 @@
 First hundred users to get both stars on Day 4:
-
   1) Dec 04  00:01:26  dtinth (AoC++)
   2) Dec 04  00:01:27  ostwilkens
   3) Dec 04  00:01:34  dan-simon
-  4) Dec 04  00:01:37  5space
+  4) Dec 04  00:01:37  5space (AoC++)
   5) Dec 04  00:01:40  betaveros (AoC++)
   6) Dec 04  00:01:44  Xavier Cooney (AoC++)
   7) Dec 04  00:01:47  Alex Wice
@@ -11,7 +10,7 @@ First hundred users to get both stars on Day 4:
   9) Dec 04  00:01:51  nim-ka
  10) Dec 04  00:01:54  mserrano
  11) Dec 04  00:01:54  bcc32 (AoC++)
- 12) Dec 04  00:01:54  leijurv
+ 12) Dec 04  00:01:54  leijurv (AoC++)
  13) Dec 04  00:02:01  Carl Schildkraut
  14) Dec 04  00:02:03  Joshua Chen
  15) Dec 04  00:02:06  Kroppeb (AoC++)
@@ -35,13 +34,13 @@ First hundred users to get both stars on Day 4:
  33) Dec 04  00:02:25  Antonio Molina
  34) Dec 04  00:02:27  Axel Brisse (AoC++)
  35) Dec 04  00:02:28  lethan3
- 36) Dec 04  00:02:29  Ryan Hitchman
+ 36) Dec 04  00:02:29  Ryan Hitchman (AoC++)
  37) Dec 04  00:02:34  (anonymous user #60233) (AoC++)
  38) Dec 04  00:02:36  The Friendly Enemy
  39) Dec 04  00:02:36  petertseng
  40) Dec 04  00:02:37  Kami Leon
  41) Dec 04  00:02:37  PoustouFlan
- 42) Dec 04  00:02:38  Waffle 3z
+ 42) Dec 04  00:02:38  Waffle
  43) Dec 04  00:02:39  rhendric
  44) Dec 04  00:02:39  Bryan Kok
  45) Dec 04  00:02:40  Marco Poon
@@ -54,11 +53,11 @@ First hundred users to get both stars on Day 4:
  52) Dec 04  00:02:50  mdlu
  53) Dec 04  00:02:51  piman51277
  54) Dec 04  00:02:51  Cade Cuddy
- 55) Dec 04  00:02:53  nthistle
+ 55) Dec 04  00:02:53  nthistle (AoC++)
  56) Dec 04  00:02:55  coolcomputery
  57) Dec 04  00:02:55  mustafaquraish
  58) Dec 04  00:02:55  Starwort
- 59) Dec 04  00:02:55  Daniel Huang
+ 59) Dec 04  00:02:55  Looking for an internship!
  60) Dec 04  00:02:58  Paul Draper
  61) Dec 04  00:02:58  connorjayr (AoC++)
  62) Dec 04  00:02:58  Nick Gavalas (AoC++)
@@ -99,14 +98,14 @@ First hundred users to get both stars on Day 4:
  97) Dec 04  00:03:21  Dan Roche
  98) Dec 04  00:03:21  Kirby703
  99) Dec 04  00:03:22  Virgile Andreani (AoC++)
-100) Dec 04  00:03:22  Ryan Zhang
-First hundred users to get the first star on Day 4:
+100) Dec 04  00:03:22  Rem Zhang
 
+First hundred users to get the first star on Day 4:
   1) Dec 04  00:00:16  max-sixty (AoC++)
   2) Dec 04  00:00:32  Luke M
   3) Dec 04  00:00:44  dtinth (AoC++)
   4) Dec 04  00:00:55  nim-ka
-  5) Dec 04  00:01:10  5space
+  5) Dec 04  00:01:10  5space (AoC++)
   6) Dec 04  00:01:12  Alex Wice
   7) Dec 04  00:01:12  betaveros (AoC++)
   8) Dec 04  00:01:17  dan-simon
@@ -126,16 +125,16 @@ First hundred users to get the first star on Day 4:
  22) Dec 04  00:01:31  Carl Schildkraut
  23) Dec 04  00:01:31  Svelte-Enthusiast
  24) Dec 04  00:01:32  PoustouFlan
- 25) Dec 04  00:01:33  Ryan Hitchman
+ 25) Dec 04  00:01:33  Ryan Hitchman (AoC++)
  26) Dec 04  00:01:33  Joshua Chen
  27) Dec 04  00:01:35  Kroppeb (AoC++)
  28) Dec 04  00:01:36  Oskar Haarklou Veileborg (AoC++)
- 29) Dec 04  00:01:36  leijurv
+ 29) Dec 04  00:01:36  leijurv (AoC++)
  30) Dec 04  00:01:37  Anish Singhani
  31) Dec 04  00:01:39  Qiqi Impact
  32) Dec 04  00:01:39  Antonio Molina
  33) Dec 04  00:01:40  noblematt
- 34) Dec 04  00:01:40  (anonymous user #645585)
+ 34) Dec 04  00:01:40  Ivan Galakhov (AoC++)
  35) Dec 04  00:01:40  Bradley He
  36) Dec 04  00:01:41  Hafnium780
  37) Dec 04  00:01:41  Sudo-Ivan
@@ -145,9 +144,9 @@ First hundred users to get the first star on Day 4:
  41) Dec 04  00:01:43  kevinmchung (AoC++)
  42) Dec 04  00:01:44  Kevin Sheng
  43) Dec 04  00:01:45  (anonymous user #1565212)
- 44) Dec 04  00:01:47  Ryan Zhang
+ 44) Dec 04  00:01:47  Rem Zhang
  45) Dec 04  00:01:47  Stovoy
- 46) Dec 04  00:01:47  Waffle 3z
+ 46) Dec 04  00:01:47  Waffle
  47) Dec 04  00:01:48  Tim Vermeulen (AoC++)
  48) Dec 04  00:01:48  ZED.Charley William Thairo
  49) Dec 04  00:01:49  boboquack

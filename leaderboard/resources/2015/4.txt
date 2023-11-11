@@ -1,0 +1,203 @@
+First hundred users to get both stars on Day 4:
+  1) Dec 04  00:02:09  Andrew Skalski
+  2) Dec 04  00:02:52  Katharine Berry
+  3) Dec 04  00:03:19  Jacob Potter
+  4) Dec 04  00:03:23  quantumcamel
+  5) Dec 04  00:04:04  jneubrand
+  6) Dec 04  00:04:39  Raj Pandita
+  7) Dec 04  00:04:54  Patrick Mylund Nielsen
+  8) Dec 04  00:04:54  Jakob Hedman
+  9) Dec 04  00:04:56  Caleb Brown
+ 10) Dec 04  00:04:59  ahorner
+ 11) Dec 04  00:05:06  Joshua Shanks
+ 12) Dec 04  00:05:15  Aneurysm9 (AoC++)
+ 13) Dec 04  00:05:20  aburnson
+ 14) Dec 04  00:05:23  minno726
+ 15) Dec 04  00:05:31  0
+ 16) Dec 04  00:05:40  @iscoresports
+ 17) Dec 04  00:06:15  Wes Evans
+ 18) Dec 04  00:06:20  Thomas Peters
+ 19) Dec 04  00:06:23  Hadyn Richard
+ 20) Dec 04  00:06:26  Sam Donow
+ 21) Dec 04  00:06:26  (anonymous user #8336)
+ 22) Dec 04  00:06:34  Dino Occhialini
+ 23) Dec 04  00:06:37  Corey Maher
+ 24) Dec 04  00:07:35  etotheipi1
+ 25) Dec 04  00:07:40  usandfriends
+ 26) Dec 04  00:07:43  x4A43
+ 27) Dec 04  00:07:44  (anonymous user #6947)
+ 28) Dec 04  00:07:47  Hwesta
+ 29) Dec 04  00:07:52  Joe LeGasse
+ 30) Dec 04  00:08:11  theGrue
+ 31) Dec 04  00:08:12  Nick Parisi
+ 32) Dec 04  00:08:12  Patrick Carroll
+ 33) Dec 04  00:08:15  Matt Thomas
+ 34) Dec 04  00:08:44  Jake Herman
+ 35) Dec 04  00:09:11  Arͫ̓ts̊̚kͩyd͛̊͂̿͋͆̉J
+ 36) Dec 04  00:09:15  Dan Seminara
+ 37) Dec 04  00:09:17  MrPingouin1
+ 38) Dec 04  00:09:29  Brandon Singer (AoC++)
+ 39) Dec 04  00:09:35  Anthony Turner
+ 40) Dec 04  00:09:36  @oskaritanner
+ 41) Dec 04  00:09:37  Godspiral
+ 42) Dec 04  00:09:50  Samuel Massinon
+ 43) Dec 04  00:10:14  (anonymous user #7648)
+ 44) Dec 04  00:10:24  gchan
+ 45) Dec 04  00:10:27  hlian
+ 46) Dec 04  00:10:29  Jim Johnson
+ 47) Dec 04  00:10:31  doshmajhan
+ 48) Dec 04  00:10:33  Toby Scrace
+ 49) Dec 04  00:10:36  yigal irani
+ 50) Dec 04  00:11:07  Mike Pirnat
+ 51) Dec 04  00:11:30  crazyguyonabike
+ 52) Dec 04  00:11:34  (anonymous user #22803)
+ 53) Dec 04  00:11:36  Nigelmnz
+ 54) Dec 04  00:11:37  relsqui
+ 55) Dec 04  00:11:38  @ReadableName
+ 56) Dec 04  00:11:38  elguillaume
+ 57) Dec 04  00:11:51  Ryman
+ 58) Dec 04  00:11:54  (anonymous user #10353)
+ 59) Dec 04  00:11:55  snobby_penguin
+ 60) Dec 04  00:12:04  eamondaly
+ 61) Dec 04  00:12:11  Anthony Nguyen
+ 62) Dec 04  00:12:11  Dan Christensen
+ 63) Dec 04  00:12:14  Tim Wells
+ 64) Dec 04  00:12:14  Adam Proctor
+ 65) Dec 04  00:12:17  David Bishop
+ 66) Dec 04  00:12:22  kalven
+ 67) Dec 04  00:12:24  dougg3
+ 68) Dec 04  00:12:36  Evan Burak
+ 69) Dec 04  00:12:37  starfys
+ 70) Dec 04  00:13:04  blindwaves
+ 71) Dec 04  00:13:11  Andrew Ek
+ 72) Dec 04  00:13:13  Hui Zhou
+ 73) Dec 04  00:13:21  @tylerdave
+ 74) Dec 04  00:13:24  Péter Szirmai
+ 75) Dec 04  00:13:28  Carl St-Laurent
+ 76) Dec 04  00:13:38  (anonymous user #446)
+ 77) Dec 04  00:13:40  (anonymous user #18301)
+ 78) Dec 04  00:14:14  al3ksandar
+ 79) Dec 04  00:14:18  Marco Jäger
+ 80) Dec 04  00:14:19  Juven Ardine
+ 81) Dec 04  00:14:43  theoriginalcamper
+ 82) Dec 04  00:14:46  Kyle Creamer
+ 83) Dec 04  00:14:47  funnymanpatrick
+ 84) Dec 04  00:14:47  rkallos
+ 85) Dec 04  00:14:56  juju2143
+ 86) Dec 04  00:15:01  Matt Jennings
+ 87) Dec 04  00:15:10  tanminivan
+ 88) Dec 04  00:15:11  Gary Fixler
+ 89) Dec 04  00:15:20  Vilsol
+ 90) Dec 04  00:15:27  Mark Zorn
+ 91) Dec 04  00:15:31  natessilva
+ 92) Dec 04  00:15:36  glowpop
+ 93) Dec 04  00:15:42  Kedirech
+ 94) Dec 04  00:15:54  (anonymous user #10795)
+ 95) Dec 04  00:16:07  Robin Schroer
+ 96) Dec 04  00:16:09  AlexQuenon
+ 97) Dec 04  00:16:09  Eric Kolbusz
+ 98) Dec 04  00:16:12  Igor Naverniouk
+ 99) Dec 04  00:16:15  Sebastian Sarbora
+100) Dec 04  00:16:25  kradical
+
+First hundred users to get the first star on Day 4:
+  1) Dec 04  00:01:55  Andrew Skalski
+  2) Dec 04  00:02:23  Katharine Berry
+  3) Dec 04  00:02:26  quantumcamel
+  4) Dec 04  00:02:56  Jacob Potter
+  5) Dec 04  00:03:35  jneubrand
+  6) Dec 04  00:03:59  Wes Evans
+  7) Dec 04  00:04:03  Caleb Brown
+  8) Dec 04  00:04:15  Raj Pandita
+  9) Dec 04  00:04:24  @iscoresports
+ 10) Dec 04  00:04:24  Joshua Shanks
+ 11) Dec 04  00:04:27  Jakob Hedman
+ 12) Dec 04  00:04:33  Patrick Mylund Nielsen
+ 13) Dec 04  00:04:39  ahorner
+ 14) Dec 04  00:04:41  Lenny Morayniss
+ 15) Dec 04  00:04:49  0
+ 16) Dec 04  00:04:50  minno726
+ 17) Dec 04  00:04:52  Aneurysm9 (AoC++)
+ 18) Dec 04  00:05:00  aburnson
+ 19) Dec 04  00:05:15  Sam Donow
+ 20) Dec 04  00:05:33  Hadyn Richard
+ 21) Dec 04  00:05:50  Dino Occhialini
+ 22) Dec 04  00:05:52  (anonymous user #286)
+ 23) Dec 04  00:05:55  Corey Maher
+ 24) Dec 04  00:06:05  (anonymous user #8336)
+ 25) Dec 04  00:06:05  Hwesta
+ 26) Dec 04  00:06:06  Thomas Peters
+ 27) Dec 04  00:06:19  Matt Thomas
+ 28) Dec 04  00:06:20  etotheipi1
+ 29) Dec 04  00:06:38  (anonymous user #6947)
+ 30) Dec 04  00:06:42  theGrue
+ 31) Dec 04  00:06:44  Patrick Carroll
+ 32) Dec 04  00:06:48  usandfriends
+ 33) Dec 04  00:07:10  Joe LeGasse
+ 34) Dec 04  00:07:19  x4A43
+ 35) Dec 04  00:07:33  Nick Parisi
+ 36) Dec 04  00:07:39  starfys
+ 37) Dec 04  00:07:40  Godspiral
+ 38) Dec 04  00:07:44  Jake Herman
+ 39) Dec 04  00:07:45  Jorene René
+ 40) Dec 04  00:07:47  gchan
+ 41) Dec 04  00:07:56  Hui Zhou
+ 42) Dec 04  00:07:59  Arͫ̓ts̊̚kͩyd͛̊͂̿͋͆̉J
+ 43) Dec 04  00:08:00  MrPingouin1
+ 44) Dec 04  00:08:12  tanminivan
+ 45) Dec 04  00:08:16  Anthony Turner
+ 46) Dec 04  00:08:20  @oskaritanner
+ 47) Dec 04  00:08:40  Mike Pirnat
+ 48) Dec 04  00:08:48  (anonymous user #7648)
+ 49) Dec 04  00:08:50  Dan Seminara
+ 50) Dec 04  00:08:59  yigal irani
+ 51) Dec 04  00:09:02  Brandon Singer (AoC++)
+ 52) Dec 04  00:09:06  Ryman
+ 53) Dec 04  00:09:12  Dan Christensen
+ 54) Dec 04  00:09:18  hlian
+ 55) Dec 04  00:09:22  (anonymous user #446)
+ 56) Dec 04  00:09:23  Samuel Massinon
+ 57) Dec 04  00:09:40  elguillaume
+ 58) Dec 04  00:09:49  doshmajhan
+ 59) Dec 04  00:09:51  Anthony Nguyen
+ 60) Dec 04  00:09:53  Andrew Ek
+ 61) Dec 04  00:10:07  Jim Johnson
+ 62) Dec 04  00:10:10  Clinton Curry
+ 63) Dec 04  00:10:11  Toby Scrace
+ 64) Dec 04  00:10:20  AlexQuenon
+ 65) Dec 04  00:10:27  krisburtoft
+ 66) Dec 04  00:10:35  relsqui
+ 67) Dec 04  00:10:50  crazyguyonabike
+ 68) Dec 04  00:10:50  klieth
+ 69) Dec 04  00:10:50  Evan Burak
+ 70) Dec 04  00:10:51  Tim Wells
+ 71) Dec 04  00:10:54  snobby_penguin
+ 72) Dec 04  00:10:57  (anonymous user #18301)
+ 73) Dec 04  00:10:59  Nigelmnz
+ 74) Dec 04  00:11:02  Adam Proctor
+ 75) Dec 04  00:11:02  Gary Fixler
+ 76) Dec 04  00:11:04  @ReadableName
+ 77) Dec 04  00:11:07  (anonymous user #22803)
+ 78) Dec 04  00:11:10  Harry Steel
+ 79) Dec 04  00:11:16  (anonymous user #10353)
+ 80) Dec 04  00:11:22  kalven
+ 81) Dec 04  00:11:23  Kyle Creamer
+ 82) Dec 04  00:11:31  Juven Ardine
+ 83) Dec 04  00:11:32  dougg3
+ 84) Dec 04  00:11:37  eamondaly
+ 85) Dec 04  00:11:44  David Bishop
+ 86) Dec 04  00:11:49  Marco Jäger
+ 87) Dec 04  00:12:11  rkallos
+ 88) Dec 04  00:12:12  Carl St-Laurent
+ 89) Dec 04  00:12:14  blindwaves
+ 90) Dec 04  00:12:22  Jonathan Bush
+ 91) Dec 04  00:12:24  Péter Szirmai
+ 92) Dec 04  00:12:28  theoriginalcamper
+ 93) Dec 04  00:12:31  @tylerdave
+ 94) Dec 04  00:13:05  Klaas Hoekema
+ 95) Dec 04  00:13:25  juju2143
+ 96) Dec 04  00:13:31  (anonymous user #10795)
+ 97) Dec 04  00:13:48  al3ksandar
+ 98) Dec 04  00:13:50  (anonymous user #5191)
+ 99) Dec 04  00:14:01  Matt Jennings
+100) Dec 04  00:14:05  funnymanpatrick

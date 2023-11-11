@@ -1,9 +1,8 @@
 First hundred users to get both stars on Day 8:
-
   1) Dec 08  00:04:20  Nathan Fenner (AoC++)
   2) Dec 08  00:04:47  Neal Wu
   3) Dec 08  00:04:50  Antonio Molina
-  4) Dec 08  00:04:55  Erik Amirell Eklöf (Eae02)
+  4) Dec 08  00:04:55  Erik Amirell Eklöf
   5) Dec 08  00:05:19  Oskar Haarklou Veileborg (AoC++)
   6) Dec 08  00:05:25  Ian DeHaan
   7) Dec 08  00:05:26  Allen Pei
@@ -21,9 +20,9 @@ First hundred users to get both stars on Day 8:
  19) Dec 08  00:07:01  Aaron (AoC++)
  20) Dec 08  00:07:03  hltk
  21) Dec 08  00:07:09  Robert P
- 22) Dec 08  00:07:20  5space
+ 22) Dec 08  00:07:20  5space (AoC++)
  23) Dec 08  00:07:21  Carl Schildkraut
- 24) Dec 08  00:07:22  (anonymous user #645585)
+ 24) Dec 08  00:07:22  Ivan Galakhov (AoC++)
  25) Dec 08  00:07:26  dan-simon
  26) Dec 08  00:07:31  Vince7778
  27) Dec 08  00:07:36  (anonymous user #1047278) (AoC++)
@@ -51,13 +50,13 @@ First hundred users to get both stars on Day 8:
  49) Dec 08  00:08:38  Ethan Olpin
  50) Dec 08  00:08:43  Jared Hughes
  51) Dec 08  00:08:44  Sohom Sahaun (AoC++)
- 52) Dec 08  00:08:44  (anonymous user #1510407)
+ 52) Dec 08  00:08:44  (anonymous user #1510407) (AoC++)
  53) Dec 08  00:08:45  Nikhil Vijai
  54) Dec 08  00:08:47  Golovanov399
  55) Dec 08  00:08:48  Henri Devillez
  56) Dec 08  00:08:48  boboquack
  57) Dec 08  00:08:51  Tanner Hoke
- 58) Dec 08  00:08:51  Waffle 3z
+ 58) Dec 08  00:08:51  Waffle
  59) Dec 08  00:08:54  almasip
  60) Dec 08  00:08:56  Springo (AoC++)
  61) Dec 08  00:08:57  Axel Brisse (AoC++)
@@ -94,22 +93,22 @@ First hundred users to get both stars on Day 8:
  92) Dec 08  00:09:58  Thomas Feld
  93) Dec 08  00:10:00  Katie Siegel
  94) Dec 08  00:10:01  mrkeldon
- 95) Dec 08  00:10:01  KevinL10 (Sponsor)
+ 95) Dec 08  00:10:01  KevinL10 (AoC++) (Sponsor)
  96) Dec 08  00:10:07  David Wahler (AoC++)
  97) Dec 08  00:10:08  Epiphane (AoC++)
  98) Dec 08  00:10:10  tjleing
  99) Dec 08  00:10:11  seligman99 (AoC++)
 100) Dec 08  00:10:12  (anonymous user #975121)
-First hundred users to get the first star on Day 8:
 
+First hundred users to get the first star on Day 8:
   1) Dec 08  00:01:29  Ritwin Narra
   2) Dec 08  00:02:01  Kevin Sheng
-  3) Dec 08  00:02:02  (anonymous user #1510407)
+  3) Dec 08  00:02:02  (anonymous user #1510407) (AoC++)
   4) Dec 08  00:02:03  Carl Schildkraut
   5) Dec 08  00:02:06  Joshua Chen
   6) Dec 08  00:02:19  Oliver Ni (AoC++)
   7) Dec 08  00:02:21  Nathan Fenner (AoC++)
-  8) Dec 08  00:02:28  leijurv
+  8) Dec 08  00:02:28  leijurv (AoC++)
   9) Dec 08  00:02:29  mserrano
  10) Dec 08  00:02:39  Ian DeHaan
  11) Dec 08  00:02:49  Robert Xiao
@@ -131,7 +130,7 @@ First hundred users to get the first star on Day 8:
  27) Dec 08  00:03:23  connorjayr (AoC++)
  28) Dec 08  00:03:32  Jared Hughes
  29) Dec 08  00:03:32  oparkerj
- 30) Dec 08  00:03:34  (anonymous user #645585)
+ 30) Dec 08  00:03:34  Ivan Galakhov (AoC++)
  31) Dec 08  00:03:37  Robert P
  32) Dec 08  00:03:38  Kroppeb (AoC++)
  33) Dec 08  00:03:40  ansvonwa
@@ -139,7 +138,7 @@ First hundred users to get the first star on Day 8:
  35) Dec 08  00:03:41  GregorKikelj
  36) Dec 08  00:03:42  Måns Magnusson
  37) Dec 08  00:03:43  Anish Singhani
- 38) Dec 08  00:03:44  Erik Amirell Eklöf (Eae02)
+ 38) Dec 08  00:03:44  Erik Amirell Eklöf
  39) Dec 08  00:03:45  Max Murin
  40) Dec 08  00:03:45  Jeffzycode
  41) Dec 08  00:03:47  Ankit Saini
@@ -179,9 +178,9 @@ First hundred users to get the first star on Day 8:
  75) Dec 08  00:04:13  Pedro Osório
  76) Dec 08  00:04:14  Anthony Li
  77) Dec 08  00:04:14  Artemis
- 78) Dec 08  00:04:14  5space
+ 78) Dec 08  00:04:14  5space (AoC++)
  79) Dec 08  00:04:15  Henrik Ygge (AoC++)
- 80) Dec 08  00:04:15  KevinL10 (Sponsor)
+ 80) Dec 08  00:04:15  KevinL10 (AoC++) (Sponsor)
  81) Dec 08  00:04:16  Samuel Wang
  82) Dec 08  00:04:18  t6twotwo
  83) Dec 08  00:04:20  Shashank Bhatt

@@ -1,0 +1,203 @@
+First hundred users to get both stars on Day 23:
+  1) Dec 23  00:06:20  Thomas Holmes
+  2) Dec 23  00:06:29  Remy Oukaour
+  3) Dec 23  00:06:45  ethankward
+  4) Dec 23  00:07:22  dougg3
+  5) Dec 23  00:07:46  Michal Forišek
+  6) Dec 23  00:08:22  Andrey Anurin
+  7) Dec 23  00:08:40  phil_r
+  8) Dec 23  00:09:49  Ago Luberg
+  9) Dec 23  00:10:02  Daniel Rejment
+ 10) Dec 23  00:10:39  Spurlock
+ 11) Dec 23  00:11:04  jweather
+ 12) Dec 23  00:11:17  JP Verkamp
+ 13) Dec 23  00:11:17  Caleb Robinson
+ 14) Dec 23  00:11:27  Paul Hankin
+ 15) Dec 23  00:11:43  (anonymous user #66912)
+ 16) Dec 23  00:11:47  David Wetterau
+ 17) Dec 23  00:11:52  Lance Nathan
+ 18) Dec 23  00:12:01  RidgeX
+ 19) Dec 23  00:12:30  Константин К
+ 20) Dec 23  00:12:35  jneubrand
+ 21) Dec 23  00:12:37  Pedro Osório
+ 22) Dec 23  00:13:03  marcusstuhr
+ 23) Dec 23  00:13:18  David Grenier
+ 24) Dec 23  00:14:02  SimonPrins (AoC++)
+ 25) Dec 23  00:14:05  pgao
+ 26) Dec 23  00:14:24  Tyler Bindon
+ 27) Dec 23  00:14:30  Sreeram Ramachandran
+ 28) Dec 23  00:14:34  Austin
+ 29) Dec 23  00:14:39  soolar
+ 30) Dec 23  00:15:09  Ambrose Feinstein
+ 31) Dec 23  00:15:19  Joe LeGasse
+ 32) Dec 23  00:15:19  vasi
+ 33) Dec 23  00:15:26  lukechampine
+ 34) Dec 23  00:15:33  Benjamin Geiger
+ 35) Dec 23  00:15:37  Jonathan N
+ 36) Dec 23  00:15:51  bildzeitung
+ 37) Dec 23  00:15:54  jonathanpaulson
+ 38) Dec 23  00:16:08  djimbob
+ 39) Dec 23  00:16:14  Mark Heath
+ 40) Dec 23  00:16:28  Jeremiah Simmons (AoC++)
+ 41) Dec 23  00:16:37  Martin Pärtel
+ 42) Dec 23  00:16:46  Andrey Astrelin
+ 43) Dec 23  00:17:00  gchan
+ 44) Dec 23  00:17:21  jabagawee
+ 45) Dec 23  00:17:24  tehalynn
+ 46) Dec 23  00:17:46  Robin Levins
+ 47) Dec 23  00:17:46  Isaac Mounce
+ 48) Dec 23  00:17:49  Fry
+ 49) Dec 23  00:17:55  Corey Peoples
+ 50) Dec 23  00:18:03  Matthew Semeniuk
+ 51) Dec 23  00:18:03  @TheMisssingLink
+ 52) Dec 23  00:18:05  Alex Malecker
+ 53) Dec 23  00:18:22  Erik Godard
+ 54) Dec 23  00:18:31  stringham
+ 55) Dec 23  00:18:37  dsemi
+ 56) Dec 23  00:18:39  Mause
+ 57) Dec 23  00:18:49  Adam Michaud
+ 58) Dec 23  00:19:13  Stereo
+ 59) Dec 23  00:19:48  Ian Su
+ 60) Dec 23  00:19:51  Thomas Lamb
+ 61) Dec 23  00:20:22  veryrusty
+ 62) Dec 23  00:20:30  Rossen
+ 63) Dec 23  00:20:31  (anonymous user #6947)
+ 64) Dec 23  00:20:39  (anonymous user #10353)
+ 65) Dec 23  00:20:42  Drew Buck
+ 66) Dec 23  00:21:03  @xAndy
+ 67) Dec 23  00:21:48  Stephen Lester
+ 68) Dec 23  00:22:14  chz16
+ 69) Dec 23  00:22:25  Kesavan Yogeswaran
+ 70) Dec 23  00:22:31  Frank Chu
+ 71) Dec 23  00:22:34  Edgaras Pocius
+ 72) Dec 23  00:22:45  Andrew Skalski
+ 73) Dec 23  00:23:05  Doug Orleans
+ 74) Dec 23  00:23:29  ns-szhang
+ 75) Dec 23  00:23:33  Алексей Дубровин
+ 76) Dec 23  00:23:34  Pavel Egorov
+ 77) Dec 23  00:23:49  Mark Gritter
+ 78) Dec 23  00:24:09  Andreas Karlsson
+ 79) Dec 23  00:24:11  zosiu
+ 80) Dec 23  00:24:12  Roderic Day
+ 81) Dec 23  00:24:18  Mikachu
+ 82) Dec 23  00:24:20  Eric Mannes
+ 83) Dec 23  00:24:28  gertk
+ 84) Dec 23  00:24:43  Kurt D
+ 85) Dec 23  00:24:49  @keithmo
+ 86) Dec 23  00:25:50  Nick Parisi
+ 87) Dec 23  00:26:36  serges-newj
+ 88) Dec 23  00:26:41  IMovedYourCheese
+ 89) Dec 23  00:26:43  Jacob Dennerlein
+ 90) Dec 23  00:26:56  lizthegrey (AoC++)
+ 91) Dec 23  00:27:07  Feriority
+ 92) Dec 23  00:27:09  Will Killian (AoC++)
+ 93) Dec 23  00:27:19  Ben Greene
+ 94) Dec 23  00:27:26  StephenChong
+ 95) Dec 23  00:27:29  Marco Jäger
+ 96) Dec 23  00:28:15  Thomas Kennedy
+ 97) Dec 23  00:28:40  Evan Ackmann
+ 98) Dec 23  00:29:16  SnacksOnAPlane
+ 99) Dec 23  00:29:23  Joshua Berne
+100) Dec 23  00:29:26  Alex Crimi
+
+First hundred users to get the first star on Day 23:
+  1) Dec 23  00:05:58  Thomas Holmes
+  2) Dec 23  00:06:12  Remy Oukaour
+  3) Dec 23  00:06:33  ethankward
+  4) Dec 23  00:07:09  dougg3
+  5) Dec 23  00:07:17  Michal Forišek
+  6) Dec 23  00:07:59  Andrey Anurin
+  7) Dec 23  00:08:19  phil_r
+  8) Dec 23  00:08:41  Daniel Rejment
+  9) Dec 23  00:09:14  Ago Luberg
+ 10) Dec 23  00:10:09  Spurlock
+ 11) Dec 23  00:10:49  jweather
+ 12) Dec 23  00:10:54  JP Verkamp
+ 13) Dec 23  00:11:01  Caleb Robinson
+ 14) Dec 23  00:11:09  Paul Hankin
+ 15) Dec 23  00:11:09  (anonymous user #66912)
+ 16) Dec 23  00:11:24  Lance Nathan
+ 17) Dec 23  00:11:25  RidgeX
+ 18) Dec 23  00:11:28  David Wetterau
+ 19) Dec 23  00:11:47  marcusstuhr
+ 20) Dec 23  00:11:58  Константин К
+ 21) Dec 23  00:12:02  Alex Malecker
+ 22) Dec 23  00:12:12  Pedro Osório
+ 23) Dec 23  00:12:18  jneubrand
+ 24) Dec 23  00:12:46  veryrusty
+ 25) Dec 23  00:12:52  David Grenier
+ 26) Dec 23  00:13:14  SimonPrins (AoC++)
+ 27) Dec 23  00:13:41  pgao
+ 28) Dec 23  00:13:52  Tyler Bindon
+ 29) Dec 23  00:14:08  soolar
+ 30) Dec 23  00:14:09  Sreeram Ramachandran
+ 31) Dec 23  00:14:17  Austin
+ 32) Dec 23  00:14:28  Ambrose Feinstein
+ 33) Dec 23  00:14:41  Fry
+ 34) Dec 23  00:14:51  Joe LeGasse
+ 35) Dec 23  00:14:57  vasi
+ 36) Dec 23  00:14:59  bildzeitung
+ 37) Dec 23  00:15:04  lukechampine
+ 38) Dec 23  00:15:13  Benjamin Geiger
+ 39) Dec 23  00:15:15  Jonathan N
+ 40) Dec 23  00:15:34  jonathanpaulson
+ 41) Dec 23  00:15:39  djimbob
+ 42) Dec 23  00:15:44  Mark Heath
+ 43) Dec 23  00:16:04  Jeremiah Simmons (AoC++)
+ 44) Dec 23  00:16:06  Andrey Astrelin
+ 45) Dec 23  00:16:15  Martin Pärtel
+ 46) Dec 23  00:16:29  gchan
+ 47) Dec 23  00:16:59  Corey Peoples
+ 48) Dec 23  00:17:00  jabagawee
+ 49) Dec 23  00:17:01  tehalynn
+ 50) Dec 23  00:17:06  Robin Levins
+ 51) Dec 23  00:17:06  Isaac Mounce
+ 52) Dec 23  00:17:41  Matthew Semeniuk
+ 53) Dec 23  00:17:43  @TheMisssingLink
+ 54) Dec 23  00:17:47  Mause
+ 55) Dec 23  00:17:57  stringham
+ 56) Dec 23  00:18:05  Erik Godard
+ 57) Dec 23  00:18:14  dsemi
+ 58) Dec 23  00:18:25  Adam Michaud
+ 59) Dec 23  00:18:39  Stereo
+ 60) Dec 23  00:18:40  (anonymous user #10353)
+ 61) Dec 23  00:18:47  Ian Su
+ 62) Dec 23  00:19:35  Thomas Lamb
+ 63) Dec 23  00:19:45  Nick Parisi
+ 64) Dec 23  00:19:59  Rossen
+ 65) Dec 23  00:20:00  (anonymous user #6947)
+ 66) Dec 23  00:20:03  Drew Buck
+ 67) Dec 23  00:20:16  @xAndy
+ 68) Dec 23  00:21:30  Stephen Lester
+ 69) Dec 23  00:21:57  Edgaras Pocius
+ 70) Dec 23  00:21:58  chz16
+ 71) Dec 23  00:22:06  Andrew Skalski
+ 72) Dec 23  00:22:06  Kesavan Yogeswaran
+ 73) Dec 23  00:22:10  Frank Chu
+ 74) Dec 23  00:22:13  Doug Orleans
+ 75) Dec 23  00:22:30  Eric Mannes
+ 76) Dec 23  00:22:47  Pavel Egorov
+ 77) Dec 23  00:23:04  Andreas Karlsson
+ 78) Dec 23  00:23:05  ns-szhang
+ 79) Dec 23  00:23:12  Алексей Дубровин
+ 80) Dec 23  00:23:12  Mark Gritter
+ 81) Dec 23  00:23:43  zosiu
+ 82) Dec 23  00:23:58  Mikachu
+ 83) Dec 23  00:23:58  Roderic Day
+ 84) Dec 23  00:24:08  gertk
+ 85) Dec 23  00:24:13  Kurt D
+ 86) Dec 23  00:24:19  @keithmo
+ 87) Dec 23  00:25:42  Will Killian (AoC++)
+ 88) Dec 23  00:25:48  Jacob Dennerlein
+ 89) Dec 23  00:25:58  serges-newj
+ 90) Dec 23  00:26:16  Thomas Kennedy
+ 91) Dec 23  00:26:22  IMovedYourCheese
+ 92) Dec 23  00:26:24  Feriority
+ 93) Dec 23  00:26:39  lizthegrey (AoC++)
+ 94) Dec 23  00:26:56  StephenChong
+ 95) Dec 23  00:26:57  Ben Greene
+ 96) Dec 23  00:27:07  Marco Jäger
+ 97) Dec 23  00:27:08  Joshua Berne
+ 98) Dec 23  00:27:29  charlieschmidt
+ 99) Dec 23  00:28:16  Evan Ackmann
+100) Dec 23  00:28:53  Alex Crimi

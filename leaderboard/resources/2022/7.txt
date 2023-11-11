@@ -1,7 +1,6 @@
 First hundred users to get both stars on Day 7:
-
   1) Dec 07  00:05:08  betaveros (AoC++)
-  2) Dec 07  00:07:02  nthistle
+  2) Dec 07  00:07:02  nthistle (AoC++)
   3) Dec 07  00:07:05  Antonio Molina
   4) Dec 07  00:07:17  jonathanpaulson (AoC++)
   5) Dec 07  00:07:27  Jan Verbeek
@@ -17,7 +16,7 @@ First hundred users to get both stars on Day 7:
  15) Dec 07  00:09:53  Adam Gausmann (AoC++)
  16) Dec 07  00:10:03  SizableShrimp
  17) Dec 07  00:10:06  Kevin Sheng
- 18) Dec 07  00:10:16  (anonymous user #1510407)
+ 18) Dec 07  00:10:16  (anonymous user #1510407) (AoC++)
  19) Dec 07  00:10:18  (anonymous user #1345535)
  20) Dec 07  00:10:28  Noble Mushtak
  21) Dec 07  00:10:34  Nathan Fenner (AoC++)
@@ -36,12 +35,12 @@ First hundred users to get both stars on Day 7:
  34) Dec 07  00:11:55  sampersand
  35) Dec 07  00:11:58  petertseng
  36) Dec 07  00:12:04  larry
- 37) Dec 07  00:12:14  Martyn Smith
+ 37) Dec 07  00:12:14  Martyn Smith (AoC++)
  38) Dec 07  00:12:16  Anish Singhani
  39) Dec 07  00:12:19  Marko Tsengov
  40) Dec 07  00:12:21  Vladislav Isenbaev
  41) Dec 07  00:12:28  Brandon Lin
- 42) Dec 07  00:12:29  (anonymous user #645585)
+ 42) Dec 07  00:12:29  Ivan Galakhov (AoC++)
  43) Dec 07  00:12:33  mangoqwq
  44) Dec 07  00:12:35  SeanRBurton
  45) Dec 07  00:12:41  tonghuikang
@@ -60,10 +59,10 @@ First hundred users to get both stars on Day 7:
  58) Dec 07  00:13:07  tiger0132
  59) Dec 07  00:13:08  Oliver Ni (AoC++)
  60) Dec 07  00:13:09  bluepichu
- 61) Dec 07  00:13:11  5space
+ 61) Dec 07  00:13:11  5space (AoC++)
  62) Dec 07  00:13:12  dtinth (AoC++)
  63) Dec 07  00:13:12  Yenya (AoC++)
- 64) Dec 07  00:13:22  Erik Amirell Eklöf (Eae02)
+ 64) Dec 07  00:13:22  Erik Amirell Eklöf
  65) Dec 07  00:13:22  Alex Wice
  66) Dec 07  00:13:23  FillyAutomatic
  67) Dec 07  00:13:25  Peter Dowdy (AoC++)
@@ -71,7 +70,7 @@ First hundred users to get both stars on Day 7:
  69) Dec 07  00:13:30  FliegendeWurst
  70) Dec 07  00:13:30  Karl Jiang
  71) Dec 07  00:13:36  Paul Draper
- 72) Dec 07  00:13:37  leijurv
+ 72) Dec 07  00:13:37  leijurv (AoC++)
  73) Dec 07  00:13:39  Epiphane (AoC++)
  74) Dec 07  00:13:39  xal-0
  75) Dec 07  00:13:39  LyricLy (AoC++)
@@ -91,7 +90,7 @@ First hundred users to get both stars on Day 7:
  89) Dec 07  00:14:22  Andrey Anurin (AoC++)
  90) Dec 07  00:14:22  Mattéo Delabre
  91) Dec 07  00:14:23  jmshoun
- 92) Dec 07  00:14:28  msullivan
+ 92) Dec 07  00:14:28  msullivan (AoC++)
  93) Dec 07  00:14:38  robotgenis
  94) Dec 07  00:14:38  A5rocks
  95) Dec 07  00:14:38  RundownRhino
@@ -100,11 +99,11 @@ First hundred users to get both stars on Day 7:
  98) Dec 07  00:14:45  Talchas
  99) Dec 07  00:14:46  DayDun
 100) Dec 07  00:14:47  pbnjay
-First hundred users to get the first star on Day 7:
 
+First hundred users to get the first star on Day 7:
   1) Dec 07  00:03:34  betaveros (AoC++)
   2) Dec 07  00:03:41  sumeet
-  3) Dec 07  00:05:15  nthistle
+  3) Dec 07  00:05:15  nthistle (AoC++)
   4) Dec 07  00:05:16  ZED.Charley William Thairo
   5) Dec 07  00:05:20  Antonio Molina
   6) Dec 07  00:05:25  Jan Verbeek
@@ -137,7 +136,7 @@ First hundred users to get the first star on Day 7:
  33) Dec 07  00:08:18  DLu
  34) Dec 07  00:08:20  Drew Boyuka
  35) Dec 07  00:08:24  (anonymous user #1345535)
- 36) Dec 07  00:08:27  (anonymous user #1510407)
+ 36) Dec 07  00:08:27  (anonymous user #1510407) (AoC++)
  37) Dec 07  00:08:29  Eric Yang
  38) Dec 07  00:08:31  LegionMammal978
  39) Dec 07  00:08:31  Ian DeHaan
@@ -148,11 +147,11 @@ First hundred users to get the first star on Day 7:
  44) Dec 07  00:08:47  bluepichu
  45) Dec 07  00:08:47  Nathan Fenner (AoC++)
  46) Dec 07  00:08:53  Patrick Hogg (AoC++) (Sponsor)
- 47) Dec 07  00:08:55  Martyn Smith
+ 47) Dec 07  00:08:55  Martyn Smith (AoC++)
  48) Dec 07  00:08:56  quentinmit
  49) Dec 07  00:08:58  Vladislav Isenbaev
  50) Dec 07  00:09:05  xnkvbo
- 51) Dec 07  00:09:07  5space
+ 51) Dec 07  00:09:07  5space (AoC++)
  52) Dec 07  00:09:13  Utkarsh Kukreti
  53) Dec 07  00:09:16  Jieruei Chang
  54) Dec 07  00:09:17  ruuddotorg
@@ -176,12 +175,12 @@ First hundred users to get the first star on Day 7:
  72) Dec 07  00:09:47  petertseng
  73) Dec 07  00:09:48  PoustouFlan
  74) Dec 07  00:09:53  ictrobot (AoC++)
- 75) Dec 07  00:09:56  (anonymous user #645585)
+ 75) Dec 07  00:09:56  Ivan Galakhov (AoC++)
  76) Dec 07  00:09:57  Oskar Haarklou Veileborg (AoC++)
- 77) Dec 07  00:09:58  Andrey Akhmetov
+ 77) Dec 07  00:09:58  Andrey Akhmetov (AoC++)
  78) Dec 07  00:10:08  (anonymous user #1132516)
  79) Dec 07  00:10:09  @koutaharu_
- 80) Dec 07  00:10:11  ellie (AoC++)
+ 80) Dec 07  00:10:11  ellellie (AoC++)
  81) Dec 07  00:10:11  LyricLy (AoC++)
  82) Dec 07  00:10:12  anthakki
  83) Dec 07  00:10:12  Dmitry Ivanov
@@ -189,7 +188,7 @@ First hundred users to get the first star on Day 7:
  85) Dec 07  00:10:18  tiger0132
  86) Dec 07  00:10:20  dan-simon
  87) Dec 07  00:10:21  (anonymous user #60233) (AoC++)
- 88) Dec 07  00:10:24  leijurv
+ 88) Dec 07  00:10:24  leijurv (AoC++)
  89) Dec 07  00:10:25  andy-k
  90) Dec 07  00:10:27  Epiphane (AoC++)
  91) Dec 07  00:10:31  Danny Lin

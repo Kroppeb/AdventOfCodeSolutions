@@ -2,6 +2,13 @@ val year = "2022"
 val user = "Kroppeb"
 val target = 50
 
+// Output is like this: " XX: A / B (C / D)"
+// XX: Day number
+// A: The ranking of the user
+// B: The number of people that have gotten any points
+// C: The number of points the user has
+// D: The number of points the person in place 'target' has
+
 
 val reg = Regex("""^\s*(\d+)\)\sDec\s\d+\s+[0-9:]+\s+(.+?)(\s*\(AoC\+\+\))?(\s*\(Sponsor\))?\s*$""", RegexOption.MULTILINE)
 

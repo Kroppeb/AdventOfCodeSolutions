@@ -55,7 +55,7 @@ private val xxxxx = Clock(6, 3);
 private fun part1() {
 	var data = getLines(2022_19).ints()
 
-	data.productOf { (id, oreCost, clayOreCost, obiOreCost, obiClayCost, geodeOreCost, geodeObiCost) ->
+	data.sumOf { (id, oreCost, clayOreCost, obiOreCost, obiClayCost, geodeOreCost, geodeObiCost) ->
 		id log 0
 		val start = listOf(1, 0, 0, 0) toH listOf(0, 0, 0) toH 0
 

@@ -1,6 +1,6 @@
 @file:Suppress("PackageDirectoryMismatch", "UnusedImport")
 
-package solutions.y22
+package solutions.y23
 
 
 /*
@@ -66,41 +66,13 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(25)
+	var data = getLines(1).splitOnEmpty().map{it.int()}.maxOf{it.sum()} log 0
 
-	val x = data.sumOf{ l -> l.reversed().mapIndexed{ i, c -> 5L.pow(i).s * when(c) {
-		'2' -> 2
-		'1' -> 1
-		'0' -> 0
-		'-' -> -1
-		'=' -> -2
-		else -> throw Exception("Invalid char $c")
-	} }.sum() } log 0
 
-	var res = ""
-	var uu= x
-
-	while (uu != 0.s) {
-		var dif = uu mod 5
-		if (dif <= 2) {
-			res = dif.i.toString() + res
-		} else if (dif == 4.s){
-			res = '-' + res
-			dif = -1.s
-		} else {
-			res = '=' + res
-			dif = -2.s
-		}
-
-		uu -= dif
-		uu /= 5
-	}
-
-	res log 1
 }
 
 fun main() {
-	println("Day 25: ")
+	println("Day 01: ")
 	part1()
 }
 
@@ -112,7 +84,7 @@ private fun <T> T.log(meta: String = ""): T =
 
 private infix fun <T> T.log(meta: Any?): T = this.log(meta.toString())
 private fun setClipboard(data: Any?) {
-	val s:String = if (data is Loggable) data.getCopyString() else data.toString()
+	val s: String = if (data is Loggable) data.getCopyString() else data.toString()
 	val selection = StringSelection(s)
 	val clipboard: Clipboard = Toolkit.getDefaultToolkit().systemClipboard
 	clipboard.setContents(selection, selection)
