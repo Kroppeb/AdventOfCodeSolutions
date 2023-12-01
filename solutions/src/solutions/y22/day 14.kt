@@ -154,7 +154,7 @@ private fun part2() {
 //		}
 //		println()
 //	}
-	sand.size log 1
+	sand.size log 2
 
 }
 

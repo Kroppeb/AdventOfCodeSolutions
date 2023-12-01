@@ -1,15 +1,15 @@
 package me.kroppeb.aoc.helpers.sint
 
+import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.context.InternalIndirectAddOp
 import me.kroppeb.aoc.helpers.context.SintOpps
 import me.kroppeb.aoc.helpers.contextual.cumSum
-import me.kroppeb.aoc.helpers.mod
-import me.kroppeb.aoc.helpers.scan
 import kotlin.contracts.contract
 import me.kroppeb.aoc.helpers.contextual.divBy as divByTrait
 
 val Int.s: Sint get() = Sint(this.toLong())
 val Long.s: Sint get() = Sint(this)
+
 @Deprecated("UwU")
 val Sint.s: Sint get() = this
 
@@ -88,11 +88,24 @@ fun Sint.coerceAtMost(max: Long) = this.coerceAtMost(max.s)
 fun Int.coerceAtMost(max: Sint) = this.s.coerceAtMost(max)
 fun Long.coerceAtMost(max: Sint) = this.s.coerceAtMost(max)
 
+@JvmName("sintCollectionsContainsInt")
 operator fun Collection<Sint>.contains(other: Int) = this.contains(other.s)
+
 @JvmName("sintCollectionsContainsLong")
 operator fun Collection<Sint>.contains(other: Long) = this.contains(other.s)
+
+private var _contains_warning = false
+
 @JvmName("intCollectionsContainsSint")
-operator fun Collection<Int>.contains(other: Sint) = this.contains(other.i)
+operator fun Collection<Int>.contains(other: Sint): Boolean {
+	if (other.canBeExactInt()) return this.contains(other.i)
+	if (!_contains_warning) {
+		_contains_warning = true
+		System.err.println("Warning: You are searching for a big Sint in a collection of Ints")
+	}
+	return false
+}
+
 @JvmName("longCollectionsContainsSint")
 operator fun Collection<Long>.contains(other: Sint) = this.contains(other.l)
 
@@ -120,23 +133,25 @@ infix fun Long.and(other: Sint) = this.s and other
 
 
 // list stuff
-operator fun <T>List<T>.get(index: Sint): T = this[index.i]
-operator fun <T>List<T>.get(index: SintRange): List<T> = this.subList(index.start.i, index.endInclusive.i + 1)
-operator fun <T>List<T>.get(index: SintProgression): List<T> = index.map { this[it.i] }
-operator fun <T>MutableList<T>.set(index: Sint, item: T): T = this.set(index.i, item)
+operator fun <T> List<T>.get(index: Sint): T = this[index.i]
+operator fun <T> List<T>.get(index: SintRange): List<T> = this.subList(index.start.i, index.endInclusive.i + 1)
+operator fun <T> List<T>.get(index: SintProgression): List<T> = index.map { this[it.i] }
+operator fun <T> MutableList<T>.set(index: Sint, item: T): T = this.set(index.i, item)
+
 @JvmName("getMutable")
-operator fun <T>MutableList<T>.get(index: SintRange): List<T> = this.subList(index.start.i, index.endInclusive.i + 1)
+operator fun <T> MutableList<T>.get(index: SintRange): List<T> = this.subList(index.start.i, index.endExclusive.i)
+
 @JvmName("getMutable")
-operator fun <T>MutableList<T>.get(index: SintProgression): List<T> = index.map { this[it.i] }
-fun <T>MutableList<T>.add(index: Sint, item: T) = this.add(index.i, item)
+operator fun <T> MutableList<T>.get(index: SintProgression): List<T> = index.map { this[it.i] }
+fun <T> MutableList<T>.add(index: Sint, item: T) = this.add(index.i, item)
 fun List<*>.idx() = 0.s..<this.size.s
 val List<*>.lastIdx: Sint get() = this.lastIndex.s
 
 // array stuff
-operator fun <T>Array<T>.get(index: Sint): T = this[index.i]
-operator fun <T>Array<T>.get(index: SintRange): List<T> = this.slice(index.start.i..index.endInclusive.i)
-operator fun <T>Array<T>.get(index: SintProgression): List<T> = index.map { this[it.i] }
-operator fun <T>Array<T>.set(index: Sint, item: T) = this.set(index.i, item)
+operator fun <T> Array<T>.get(index: Sint): T = this[index.i]
+operator fun <T> Array<T>.get(index: SintRange): List<T> = this.slice(index.start.i..index.endInclusive.i)
+operator fun <T> Array<T>.get(index: SintProgression): List<T> = index.map { this[it.i] }
+operator fun <T> Array<T>.set(index: Sint, item: T) = this.set(index.i, item)
 fun Array<*>.idx() = 0.s until this.size.s
 
 
@@ -145,7 +160,6 @@ infix fun Sint.divBy(other: Int): Boolean = this divBy other.s
 infix fun Sint.divBy(other: Long): Boolean = this divBy other.s
 infix fun Int.divBy(other: Sint): Boolean = this.s divBy other
 infix fun Long.divBy(other: Sint): Boolean = this.s divBy other
-
 
 
 inline fun repeat(times: Sint, action: (Sint) -> Unit) {
@@ -157,25 +171,23 @@ inline fun repeat(times: Sint, action: (Sint) -> Unit) {
 }
 
 
-
-infix fun Sint.mod(base:Sint) = this.l.mod(base.l).s
-infix fun Sint.mod(base:Int) = this mod base.s
-infix fun Sint.mod(base:Long) = this mod base.s
-infix fun Int.mod(base:Sint) = this.s mod base
-infix fun Long.mod(base:Sint) = this.s mod base
-
+infix fun Sint.mod(base: Sint) = this.l.mod(base.l).s
+infix fun Sint.mod(base: Int) = this mod base.s
+infix fun Sint.mod(base: Long) = this mod base.s
+infix fun Int.mod(base: Sint) = this.s mod base
+infix fun Long.mod(base: Sint) = this.s mod base
 
 
 fun Iterable<Sint>.sum(): Sint = fold(0.s) { a, b -> a + b }
 
-fun <T>Iterable<T>.sumOf(selector: (T) -> Sint): Sint = map(selector).sum()
+fun <T> Iterable<T>.sumOf(selector: (T) -> Sint): Sint = map(selector).sum()
 fun Iterable<Sint>.cumSum(): List<Sint> = scan { a, b -> a + b }
 
-fun <T>  Iterable<T>.cumSumOf(selector: (T) ->Sint): List<Sint> = map(selector).cumSum()
+fun <T> Iterable<T>.cumSumOf(selector: (T) -> Sint): List<Sint> = map(selector).cumSum()
 
-fun Iterable<Sint>.cumSum(initial:Sint): List<Sint> = scan(initial) { a, b -> a + b }
+fun Iterable<Sint>.cumSum(initial: Sint): List<Sint> = scan(initial) { a, b -> a + b }
 
-fun <T>  Iterable<T>.cumSumOf(initial:Sint, selector: (T) -> Sint): List<Sint> = map(selector).cumSum(initial)
+fun <T> Iterable<T>.cumSumOf(initial: Sint, selector: (T) -> Sint): List<Sint> = map(selector).cumSum(initial)
 
 fun abs(a: Sint) = if (a.l < 0) -a else a
 
@@ -195,3 +207,40 @@ infix fun Sint.mod(base: IntRange) = this % base
 infix fun Sint.mod(base: LongRange) = this % base
 infix fun Int.mod(base: SintRange) = this.s % base
 infix fun Long.mod(base: SintRange) = this.s % base
+
+
+fun Sint.pow(x: Sint): Sint = when {
+	x.l < 0 -> throw ArithmeticException("Negative exponent")
+	x.l == 0L -> 1.s // pow over integer can be safely considered 1
+	x.l == 1L -> this
+	this.l == 0L -> 0.s
+	x.l % 2 == 0L -> (this * this).pow(x / 2)
+	else -> (this * this).pow(x / 2) * this
+}
+
+fun Sint.pow(x: Int) = this.pow(x.s)
+fun Sint.pow(x: Long) = this.pow(x.s)
+fun Int.pow(x: Sint) = this.s.pow(x)
+fun Long.pow(x: Sint) = this.s.pow(x)
+
+fun Sint.powMod(x: Sint, y: Sint): Sint = when {
+	y.l <= 1 -> throw ArithmeticException("Bad modulus")
+	x.l < 0 -> if (this.l == 0L) throw ArithmeticException("Division by zero") else this.modInv(y).powMod(-x, y)
+	x.l == 0L -> 1.s // pow over integer can be safely considered 1
+	this.l == 0L -> 0.s
+	x.l == 1L -> this mod y
+	x.l % 2 == 0L -> (this * this mod y).powMod(x / 2, y)
+	else -> (this * this mod y).powMod(x / 2, y) * this mod y
+}
+
+fun Sint.floorDiv(x: Sint): Sint = l.floorDiv(x.l).s
+fun Sint.floorDiv(x: Int) = this.floorDiv(x.s)
+fun Sint.floorDiv(x: Long) = this.floorDiv(x.s)
+fun Int.floorDiv(x: Sint) = this.s.floorDiv(x)
+fun Long.floorDiv(x: Sint) = this.s.floorDiv(x)
+
+fun Sint.modInv(base: Sint): Sint {
+	val (g, x, _) = egcd(this, base)
+	if (g != 1.s) throw IllegalArgumentException("No inverse")
+	return x mod base
+}

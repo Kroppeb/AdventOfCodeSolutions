@@ -9,10 +9,10 @@ import kotlin.math.sqrt
  * righthanded rotations for now
  */
 data class Point3DI(val x: Int, val y: Int, val z: Int) : PointNI<Point3DI> {
-	val right by lazy { (x toPI y) + Clock.right toPI z }
-	val left by lazy { (x toPI y) + Clock.left toPI z }
-	val down by lazy { (x toPI y) + Clock.down toPI z }
-	val up by lazy { (x toPI y) + Clock.up toPI z }
+	val right by lazy { (x toPI y) + Clock.rightI toPI z }
+	val left by lazy { (x toPI y) + Clock.leftI toPI z }
+	val down by lazy { (x toPI y) + Clock.downI toPI z }
+	val up by lazy { (x toPI y) + Clock.upI toPI z }
 	val front by lazy { x toPI y toPI z + 1 }
 	val back by lazy { x toPI y toPI z - 1 }
 

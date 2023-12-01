@@ -24,16 +24,15 @@ abstract class IBounds : Collection<Point> {
 			else -> error("")
 		}
 	val nw
-		get() =
-			when (Clock.nX - Clock.eX) {
-				1 -> higher.x
-				-1 -> lower.x
-				else -> error("")
-			} toP when (Clock.nY - Clock.eY) {
-				1 -> higher.y
-				-1 -> lower.y
-				else -> error("")
-			}
+		get() = when (Clock.nX - Clock.eX) {
+			1 -> higher.x
+			-1 -> lower.x
+			else -> error("")
+		} toP when (Clock.nY - Clock.eY) {
+			1 -> higher.y
+			-1 -> lower.y
+			else -> error("")
+		}
 	val se get() = higher + lower - nw
 	val sw get() = higher + lower - ne
 	val upperLeft get() = nw
@@ -50,7 +49,13 @@ abstract class IBounds : Collection<Point> {
 	open val ySize get() = (this.higher.y - this.lower.y + 1)
 	val sizes get() = xSize toP ySize
 	val area get() = xSize * ySize
+
+	@Deprecated("use area", ReplaceWith("area"))
 	override val size get() = area.i
+
+	override fun isEmpty() = xs.isEmpty() || ys.isEmpty()
+
+	override fun containsAll(elements: Collection<Point>): Boolean = elements.all { it in this }
 
 	fun exactCenter() = (lower + higher).also {
 		require(it.x divBy 2)
@@ -66,10 +71,6 @@ abstract class IBounds : Collection<Point> {
 	fun southEdge() = bottomEdge()
 	fun eastEdge() = rightEdge()
 	fun westEdge() = leftEdge()
-
-	override fun containsAll(elements: Collection<Point>): Boolean = elements.all { it in this }
-
-	override fun isEmpty(): Boolean = size == 0
 }
 
 data class Bounds(override val lower: Point, override val higher: Point) : IBounds() {
@@ -78,20 +79,12 @@ data class Bounds(override val lower: Point, override val higher: Point) : IBoun
 	constructor(xs: SintRange, ys: SintRange) : this(xs.first toP ys.first, xs.last toP ys.last)
 
 
-
 	/**
 	 * ∀x:x in this && x in other <-> x in this.intersect(other)
 	 */
-	fun intersect(other: IBounds): Bounds = Bounds(
-		this.lower.max(other.lower),
-		this.higher.min(other.higher)
-	)
+	fun intersect(other: IBounds): Bounds = Bounds(this.lower.max(other.lower), this.higher.min(other.higher))
 
-	fun intersect(other: IBoundsI): Bounds = Bounds(
-		this.lower.max(other.lower.sint),
-		this.higher.min(other.higher.sint)
-	)
-
+	fun intersect(other: IBoundsI): Bounds = Bounds(this.lower.max(other.lower.sint), this.higher.min(other.higher.sint))
 
 
 	/**
@@ -101,33 +94,19 @@ data class Bounds(override val lower: Point, override val higher: Point) : IBoun
 	 * 	as small as possible
 	 *
 	 */
-	fun merge(other: IBounds): Bounds = Bounds(
-		this.lower.min(other.lower),
-		this.higher.max(other.higher)
-	)
+	fun merge(other: IBounds): Bounds = Bounds(this.lower.min(other.lower), this.higher.max(other.higher))
 
-	fun merge(other: IBoundsI): Bounds = Bounds(
-		this.lower.min(other.lower.sint),
-		this.higher.max(other.higher.sint)
-	)
+	fun merge(other: IBoundsI): Bounds = Bounds(this.lower.min(other.lower.sint), this.higher.max(other.higher.sint))
 
-	companion object {
-		/**
-		∀x Point: x in INFINITE
-		∀x Bound: x.intersect(INFINITE) == x
-		∀x Bound: x.merge(INFINITE) == INFINITE
-		 */
-		val INFINITE = (Int.MIN_VALUE toPI Int.MIN_VALUE) toB (Int.MAX_VALUE toPI Int.MAX_VALUE)
-		val EMPTY = Bounds(0 toPI 0, -1 toPI -1)
-	}
+	fun weight(): Sint = super.area
+
+	fun fracture(other: Bounds): List<Bounds> = cartesianProductOf(
+		xs.fracture(other.xs), ys.fracture(other.ys)) { x, y -> Bounds(x, y) }
 
 
 	fun expand(x: Sint, y: Sint): Bounds {
 		val offset = x toP y
-		return Bounds(
-			this.lower - offset,
-			this.higher + offset
-		)
+		return Bounds(this.lower - offset, this.higher + offset)
 	}
 
 	fun expand(i: Sint): Bounds = expand(i, i)
@@ -137,6 +116,20 @@ data class Bounds(override val lower: Point, override val higher: Point) : IBoun
 	fun retract(i: Sint): Bounds = expand(-i)
 	fun retract(x: Int, y: Int): Bounds = expand(-x, -y)
 	fun retract(i: Int): Bounds = expand(-i)
+
+	fun frac(i: Int): List<Bounds> = xs.frac(i).cartesianProduct(ys.frac(i)).map { (a, b) -> Bounds(a, b) }
+
+
+	companion object {
+		/**
+		∀x Point: x in INFINITE
+		∀x Bound: x.intersect(INFINITE) == x
+		∀x Bound: x.merge(INFINITE) == INFINITE
+		 */
+		val INFINITE: Bounds = (Long.MIN_VALUE toP Long.MIN_VALUE) toB (Int.MAX_VALUE toPI Int.MAX_VALUE)
+		val EMPTY: Bounds = Bounds(0 toPI 0, -1 toPI -1)
+		val LARGE: Bounds = (Sint.NEG_MEGA toP Sint.NEG_MEGA) toB (Sint.POS_MEGA toP Sint.POS_MEGA)
+	}
 }
 
 class MutableBounds : IBounds {
@@ -169,19 +162,24 @@ class MutableBounds : IBounds {
 		get() = super.ySize.coerceAtLeast(0)
 }
 
-infix fun Point.toB(other: Point): Bounds = Bounds(
-	min(this.x, other.x) toP min(this.y, other.y), max(this.x, other.x) toP max(this.y, other.y)
-)
+infix fun Point.toB(other: Point): Bounds = Bounds(min(this.x, other.x) toP min(this.y, other.y), max(this.x, other.x) toP max(this.y, other.y))
+
+infix fun Point.toB(other: PointI): Bounds = this toB other.sint
+infix fun PointI.toB(other: Point): Bounds = this.sint toB other
+infix fun PointI.toB(other: PointI): Bounds = this.sint toB other.sint
+infix fun Point.toB(other: PointL): Bounds = this toB other.sint
+infix fun PointL.toB(other: Point): Bounds = this.sint toB other
+infix fun PointL.toB(other: PointL): Bounds = this.sint toB other.sint
+
 
 operator fun Point.rangeTo(other: Point) = this toB other
-operator fun Point.rem(bounds: IBounds) = x % bounds.xs  toP y % bounds.ys
+operator fun Point.rem(bounds: IBounds) = x % bounds.xs toP y % bounds.ys
 
 fun Iterable<Point>.bounds(): Bounds {
 	val bounds = MutableBounds()
 	forEach { bounds.add(it) }
 	return bounds.toBounds()
 }
-
 
 
 @OptIn(kotlin.experimental.ExperimentalTypeInference::class)
@@ -218,3 +216,6 @@ inline fun IBounds.print(transform: (Point) -> Char) {
 
 val BoundsI.sint: Bounds
 	get() = Bounds(lower.sint, higher.sint)
+
+
+val Bounds.upper: Point get() = higher

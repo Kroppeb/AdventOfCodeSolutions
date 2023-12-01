@@ -6,7 +6,7 @@ import me.kroppeb.aoc.helpers.grid.entityGrid
 import kotlin.collections.*
 
 import me.kroppeb.aoc.helpers.point.PointI
-import me.kroppeb.aoc.helpers.point.toB
+import me.kroppeb.aoc.helpers.point.toBI
 import me.kroppeb.aoc.helpers.point.toPI
 
 
@@ -44,7 +44,7 @@ private fun part1(data: Data) {
 		bios.add(bio)
 		val counts = current.flatMap { it.getQuadNeighbours() }.groupingBy { it }.eachCount()
 		current = counts.filter { (p, c) ->
-			p in (0 toPI 0) toB (4 toPI 4) &&
+			p in (0 toPI 0) toBI (4 toPI 4) &&
 			if (p in current) {
 				c == 1
 			}
@@ -87,7 +87,7 @@ private fun part2(data: Data) {
 			counts[2 toPI 2] = 0
 
 			i to counts.filter { (p, c) ->
-				p in (0 toPI 0) toB (4 toPI 4) &&
+				p in (0 toPI 0) toBI (4 toPI 4) &&
 						if (p in current) {
 							c == 1
 						}

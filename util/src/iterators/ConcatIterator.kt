@@ -12,7 +12,7 @@ class ConcatIterator<T>(iterator: Iterator<T>) : Iterator<T> {
 
 	override fun hasNext(): Boolean = when {
 		store.isEmpty() -> false
-		else -> store.first.hasNext()
+		else -> store.first.hasNext()  // isn't this always true?
 	}
 
 	override fun next(): T {

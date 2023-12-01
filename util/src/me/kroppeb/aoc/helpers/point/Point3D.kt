@@ -11,23 +11,28 @@ import kotlin.math.sqrt
  * righthanded rotations for now
  */
 data class Point3D(val x: Sint, val y: Sint, val z: Sint) : PointNS<Point3D> {
-	val right by lazy { (x toP y) + Clock.right toP z }
-	val left by lazy { (x toP y) + Clock.left toP z }
-	val down by lazy { (x toP y) + Clock.down toP z }
-	val up by lazy { (x toP y) + Clock.up toP z }
+	val right by lazy { (x toP y) + Clock.rightI toP z }
+	val left by lazy { (x toP y) + Clock.leftI toP z }
+	val down by lazy { (x toP y) + Clock.downI toP z }
+	val up by lazy { (x toP y) + Clock.upI toP z }
 	val front by lazy { x toP y toP z + 1 }
 	val back by lazy { x toP y toP z - 1 }
 
 	@Deprecated("Is always right handed")
 	fun rotateClockX() = x toP -z toP y
+
 	@Deprecated("Is always right handed")
 	fun rotateAntiClockX() = x toP z toP -y
+
 	@Deprecated("Is always right handed")
 	fun rotateClockY() = z toP y toP -x
+
 	@Deprecated("Is always right handed")
 	fun rotateAntiClockY() = -z toP y toP x
+
 	@Deprecated("Is always right handed")
 	fun rotateClockZ() = -y toP x toP z
+
 	@Deprecated("Is always right handed")
 	fun rotateAntiClockZ() = y toP -x toP z
 
@@ -86,18 +91,21 @@ data class Point3D(val x: Sint, val y: Sint, val z: Sint) : PointNS<Point3D> {
 	override fun manDist(): Sint = abs(x) + abs(y) + abs(z)
 	override fun chebyshevDist(): Sint = maxOf(abs(x), abs(y), abs(z))
 
-	override fun gcd():Sint = me.kroppeb.aoc.helpers.gcd(abs(x), gcd(abs(y), abs(z)))
+	override fun gcd(): Sint = gcd(abs(x), gcd(abs(y), abs(z)))
 
-	override fun min(other: Point3D): Point3D = min(this.x, other.x) toP min(
-		this.y,
-		other.y
-	) toP min(this.z, other.z)
-	override fun max(other: Point3D): Point3D = max(this.x, other.x) toP max(
-		this.y,
-		other.y
-	) toP max(this.z, other.z)
+	override fun min(other: Point3D): Point3D =
+		min(this.x, other.x) toP min(this.y, other.y) toP min(this.z, other.z)
+
+	override fun max(other: Point3D): Point3D =
+		max(this.x, other.x) toP max(this.y, other.y) toP max(this.z, other.z)
 
 	override fun dot(other: Point3D) = this.x * other.x + this.y * other.y + this.z * other.z
 
 	override fun sign() = x.sign() toP y.sign() toP z.sign()
+
+
+	companion object {
+		val ZERO = 0 toP 0 toP 0
+		val DIRS get() = ZERO.getHexNeighbours()
+	}
 }

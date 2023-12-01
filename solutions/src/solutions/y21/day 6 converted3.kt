@@ -11,7 +11,6 @@ import kotlin.math.*
 
 import me.kroppeb.aoc.helpers.Clock
 import me.kroppeb.aoc.helpers.*
-import kotlin.math.*
 
 private val xxxxx = Clock(6, 3);
 
@@ -20,7 +19,7 @@ private val xxxxx = Clock(6, 3);
 */
 
 private fun part1() {
-	var data = getLines(2021_06)[0].ints().countEach()
+	var data = getLines(2021_06)[0].ints().countEachI()
 
 	repeat(80) {
 		data = data.filterKeys { k -> k > 0 }.mapKeys { (k) -> k - 1 }
@@ -31,7 +30,7 @@ private fun part1() {
 }
 
 private fun part2() {
-	var data = getLines(2021_06)[0].ints().countEach().mapValues { (_,v) -> v.toLong()}
+	var data = getLines(2021_06)[0].ints().countEachI().mapValues { (_,v) -> v.toLong()}
 
 	repeat(256) {
 		data = data.filterKeys { k -> k > 0 }.mapKeys { (k) -> k - 1 }

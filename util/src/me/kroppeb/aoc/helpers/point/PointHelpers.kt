@@ -1,9 +1,6 @@
 package me.kroppeb.aoc.helpers.point
 
-import me.kroppeb.aoc.helpers.Clock.down
-import me.kroppeb.aoc.helpers.Clock.left
-import me.kroppeb.aoc.helpers.Clock.right
-import me.kroppeb.aoc.helpers.Clock.up
+import me.kroppeb.aoc.helpers.Clock
 import me.kroppeb.aoc.helpers.sint.Sint
 import me.kroppeb.aoc.helpers.sint.s
 
@@ -12,7 +9,7 @@ infix fun PointI.toPI(z: Int): Point3DI = Point3DI(x, y, z)
 
 
 infix fun Long.toPL(o: Long) = PointL(this, o)
-infix fun PointL.toPL (o: Long) = Point3DL(this.x, this.y, o)
+infix fun PointL.toPL(o: Long) = Point3DL(this.x, this.y, o)
 
 infix fun Sint.toP(y: Sint): Point = Point(this, y)
 infix fun Sint.toP(y: Int): Point = Point(this, y.s)
@@ -36,34 +33,34 @@ infix fun PointL.toP(z: Sint): Point3D = Point3D(x.s, y.s, z)
 infix fun PointL.toP(z: Int): Point3D = Point3D(x.s, y.s, z.s)
 infix fun PointL.toP(z: Long): Point3D = Point3D(x.s, y.s, z.s)
 
-fun Char.toPointI(): PointI = when (this.toUpperCase()) {
-	'E' -> right
-	'R' -> right
+fun Char.toPoint(): Point = when (this.toUpperCase()) {
+	'E' -> Clock.right
+	'R' -> Clock.right
 
-	'S' -> down
-	'D' -> down
+	'S' -> Clock.down
+	'D' -> Clock.down
 
-	'W' -> left
-	'L' -> left
+	'W' -> Clock.left
+	'L' -> Clock.left
 
-	'N' -> up
-	'U' -> up
+	'N' -> Clock.up
+	'U' -> Clock.up
 	else -> error("")
 }
 
-fun Char.toPoint() = toPointI().sint
+fun Char.toPointI() = toPoint().int
 
 fun <T : PointN<T, *>> abs(v: T) = v.abs()
 
 
-fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getClosest(): T? = this.minByOrNull(PointN<T,C>::sqrDist)
-fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getClosestMan(): T? = this.minByOrNull(PointN<T,C>::manDist)
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getClosest(): T? = this.minByOrNull(PointN<T, C>::sqrDist)
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getClosestMan(): T? = this.minByOrNull(PointN<T, C>::manDist)
 
 fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getClosestTo(other: T): T? = this.minByOrNull { it.sqrDistTo(other) }
 fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getClosestManTo(other: T): T? = this.minByOrNull { it.manDistTo(other) }
 
-fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getFurthest(): T? = this.maxByOrNull(PointN<T,C>::sqrDist)
-fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getFurthestMan(): T? = this.maxByOrNull(PointN<T,C>::manDist)
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getFurthest(): T? = this.maxByOrNull(PointN<T, C>::sqrDist)
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getFurthestMan(): T? = this.maxByOrNull(PointN<T, C>::manDist)
 
 fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getFurthestTo(other: T): T? = this.maxByOrNull { it.sqrDistTo(other) }
 fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getFurthestManTo(other: T): T? = this.maxByOrNull { it.manDistTo(other) }
@@ -74,31 +71,35 @@ fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getClosestManDist(): C? = 
 
 fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getClosestSqrDistTo(other: T): C? =
 	this.minOfOrNull { it.sqrDistTo(other) }
+
 fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getClosestDistTo(other: T): Double? =
 	this.minOfOrNull { it.distTo(other) }
+
 fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getClosestManDistTo(other: T): C? =
 	this.minOfOrNull { it.manDistTo(other) }
 
-fun <T : PointN<T, C>, C:Comparable<C>> Iterable<T>.getFurthestSqrDist(): C? = this.maxOfOrNull(PointN<T, C>::sqrDist)
-fun <T : PointN<T, C>, C:Comparable<C>> Iterable<T>.getFurthestDist(): Double? = this.maxOfOrNull(PointN<T, C>::dist)
-fun <T : PointN<T, C>, C:Comparable<C>> Iterable<T>.getFurthestManDist(): C? = this.maxOfOrNull(PointN<T, C>::manDist)
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getFurthestSqrDist(): C? = this.maxOfOrNull(PointN<T, C>::sqrDist)
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getFurthestDist(): Double? = this.maxOfOrNull(PointN<T, C>::dist)
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getFurthestManDist(): C? = this.maxOfOrNull(PointN<T, C>::manDist)
 
-fun <T : PointN<T, C>, C:Comparable<C>> Iterable<T>.getFurthestSqrDistTo(other: T): C? =
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getFurthestSqrDistTo(other: T): C? =
 	this.maxOfOrNull { it.sqrDistTo(other) }
-fun <T : PointN<T, C>, C:Comparable<C>> Iterable<T>.getFurthestDistTo(other: T): Double? =
+
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getFurthestDistTo(other: T): Double? =
 	this.maxOfOrNull { it.distTo(other) }
-fun <T : PointN<T, C>, C:Comparable<C>> Iterable<T>.getFurthestManDistTo(other: T): C? =
+
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.getFurthestManDistTo(other: T): C? =
 	this.maxOfOrNull { it.manDistTo(other) }
 
-fun <T : PointN<T, C>, C:Comparable<C>> Iterable<T>.sortByClosestTo(other: T) = sortedBy { it.sqrDistTo(other) }
-fun <T : PointN<T, C>, C:Comparable<C>> Iterable<T>.sortByClosestManTo(other: T) = sortedBy { it.sqrDistTo(other) }
-fun <T : PointN<T, C>, C:Comparable<C>> Iterable<T>.sortByFurthestTo(other: T) = sortedByDescending { it.manDistTo(other) }
-fun <T : PointN<T, C>, C:Comparable<C>> Iterable<T>.sortByFurthestManTo(other: T) = sortedByDescending { it.manDistTo(other) }
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.sortByClosestTo(other: T) = sortedBy { it.sqrDistTo(other) }
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.sortByClosestManTo(other: T) = sortedBy { it.sqrDistTo(other) }
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.sortByFurthestTo(other: T) = sortedByDescending { it.manDistTo(other) }
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.sortByFurthestManTo(other: T) = sortedByDescending { it.manDistTo(other) }
 
-fun <T : PointN<T, C>, C:Comparable<C>> Iterable<T>.sortByClosest() = sortedBy(PointN<T,C>::sqrDist)
-fun <T : PointN<T, C>, C:Comparable<C>> Iterable<T>.sortByClosestMan() = sortedBy(PointN<T,C>::manDist)
-fun <T : PointN<T, C>, C:Comparable<C>> Iterable<T>.sortByFurthest() = sortedByDescending(PointN<T,C>::sqrDist)
-fun <T : PointN<T, C>, C:Comparable<C>> Iterable<T>.sortByFurthestMan() = sortedByDescending(PointN<T,C>::manDist)
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.sortByClosest() = sortedBy(PointN<T, C>::sqrDist)
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.sortByClosestMan() = sortedBy(PointN<T, C>::manDist)
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.sortByFurthest() = sortedByDescending(PointN<T, C>::sqrDist)
+fun <T : PointN<T, C>, C : Comparable<C>> Iterable<T>.sortByFurthestMan() = sortedByDescending(PointN<T, C>::manDist)
 
 object PointOrdering {
 	object XMayor : Comparator<PointI> {
@@ -160,3 +161,23 @@ operator fun PointI.div(other: Sint) = this.sint.div(other)
 operator fun PointI.rem(other: Sint) = this.sint.rem(other)
 
 val Point3DI.sint get() = this.x.s toP this.y.s toP this.z.s
+
+
+val PointL.sint get() = this.x.s toP this.y.s
+fun PointL.dot(other: Point) = this.sint.dot(other)
+operator fun Point.plus(other: PointL) = this.plus(other.sint)
+operator fun PointL.plus(other: Point) = this.sint.plus(other)
+operator fun Point.minus(other: PointL) = this.minus(other.sint)
+operator fun PointL.minus(other: Point) = this.sint.minus(other)
+operator fun Point.times(other: PointL) = this.times(other.sint)
+operator fun PointL.times(other: Point) = this.sint.times(other)
+operator fun Point.div(other: PointL) = this.div(other.sint)
+operator fun PointL.div(other: Point) = this.sint.div(other)
+operator fun Point.rem(other: PointL) = this.rem(other.sint)
+operator fun PointL.rem(other: Point) = this.sint.rem(other)
+
+operator fun PointL.times(other: Sint) = this.sint.times(other)
+operator fun PointL.div(other: Sint) = this.sint.div(other)
+operator fun PointL.rem(other: Sint) = this.sint.rem(other)
+
+val Point3DL.sint get() = this.x.s toP this.y.s toP this.z.s

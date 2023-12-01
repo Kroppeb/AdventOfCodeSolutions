@@ -48,7 +48,7 @@ private val xxxxx = Clock(6, 3);
 
 
 private fun part1() {
-	var data = getLines(202216)
+	var data = getLines(2022_16)
 	val pres = mutableMapOf<String, Sint>()
 	val tunn = mutableMapOf<String, List<String>>()
 
@@ -149,7 +149,7 @@ private fun part2() {
 
 fun main() {
 	println("Day 16: ")
-	part1()
+//	part1()
 	part2()
 }
 

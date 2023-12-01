@@ -94,7 +94,7 @@ private fun part2() = start{
 				} else {
 					item * ob
 				}
-				new %= 2L * 3L * 5L * 7L * 11L * 13L * 17L * 19L.s
+				new %= 2.s * 3 * 5 * 7 * 11 * 13 * 17 * 19
 //				new /= 3
 				if (new divBy test[m]) {
 					items[steps[m].first] = items[steps[m].first] + listOf(new)

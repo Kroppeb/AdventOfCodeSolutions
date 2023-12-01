@@ -9,12 +9,10 @@ import itertools.*
 import kotlin.math.*
  */
 
-import me.kroppeb.aoc.helpers.graph.dijkstra
+import me.kroppeb.aoc.helpers.graph.dijkstraI
 
 import me.kroppeb.aoc.helpers.*
-import itertools.*
 import java.util.ArrayDeque
-import kotlin.math.*
 
 
 private val xxxxx = Clock(6, 3);
@@ -290,7 +288,7 @@ private fun part2Old() {
 		applyForced(it)
 	}.log()
 
-	dijkstra(end, { it.size == 1 && it.first() == "e" }) { mol ->
+	dijkstraI(end, { it.size == 1 && it.first() == "e" }) { mol ->
 		var decal = decalcify(mol, reverse)
 		var short = mol.size - decal.size
 		val x = applyForced(decal)

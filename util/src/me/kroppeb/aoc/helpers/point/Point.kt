@@ -8,15 +8,41 @@ import kotlin.math.sqrt
 
 data class Point(val x: Sint, val y: Sint) : PointNS<Point> {
 	// TODO: evaluate whether having these as lazy actually helps or hurts
-	val right by lazy { x + Clock.eX toP y + Clock.eY }
-	val down by lazy { x - Clock.nX toP y - Clock.nY }
-	val left by lazy { x - Clock.eX toP y - Clock.eY }
-	val up by lazy { x + Clock.nX toP y + Clock.nY }
+	val right by lazy { this + Clock.right }
+	val down by lazy { this + Clock.down }
+	val left by lazy { this + Clock.left }
+	val up by lazy { this + Clock.up }
 
 	val north get() = up
 	val east get() = right
 	val south get() = down
 	val west get() = left
+
+	val downRight get() = down.right
+	val downLeft get() = down.left
+	val upRight get() = up.right
+	val upLeft get() = up.left
+	val rightDown get() = right.down
+	val rightUp get() = right.up
+	val leftDown get() = left.down
+	val leftUp get() = left.up
+
+	val northEast get() = north.east
+	val southEast get() = south.east
+	val southWest get() = south.west
+	val northWest get() = north.west
+
+	// useful for hex grids
+	val downDown get() = down.down
+	val rightRight get() = right.right
+	val upUp get() = up.up
+	val leftLeft get() = left.left
+
+	val northNorth get() = north.north
+	val eastEast get() = east.east
+	val southSouth get() = south.south
+	val westWest get() = west.west
+
 
 	val r get() = right
 	val d get() = down
@@ -42,9 +68,22 @@ data class Point(val x: Sint, val y: Sint) : PointNS<Point> {
 	val sw get() = south.west
 	val nw get() = north.west
 
+	// useful for hex grids
+	val dd get() = down.down
+	val rr get() = right.right
+	val uu get() = up.up
+	val ll get() = left.left
 
-	fun rotateClock() = Clock.right * Clock.up.dot(this) + Clock.up * Clock.left.dot(this)
-	fun rotateAntiClock() = -rotateClock()
+	val nn get() = north.north
+	val ee get() = east.east
+	val ss get() = south.south
+	val ww get() = west.west
+
+
+
+
+	fun rotateClock(): Point = Clock.right * Clock.up.dot(this) + Clock.up * Clock.left.dot(this)
+	fun rotateAntiClock(): Point = -rotateClock()
 
 	fun getQuadNeighbours() = listOf(right, down, left, up)
 	fun getDiagonalNeighbours() = listOf(right.down, left.down, left.up, right.up)
@@ -62,8 +101,8 @@ data class Point(val x: Sint, val y: Sint) : PointNS<Point> {
 	override operator fun minus(other: Point): Point = x - other.x toP y - other.y
 	override operator fun plus(other: Point): Point = x + other.x toP y + other.y
 
-	operator fun minus(other: Char): Point = this - other.toPointI().sint
-	operator fun plus(other: Char): Point = this + other.toPointI().sint
+	operator fun minus(other: Char): Point = this - other.toPoint()
+	operator fun plus(other: Char): Point = this + other.toPoint()
 
 
 	override operator fun times(other: Point): Point = x * other.x toP y * other.y
@@ -100,14 +139,14 @@ data class Point(val x: Sint, val y: Sint) : PointNS<Point> {
 	fun sameUpDown(other: Point) = Clock.up.dot(this) == Clock.up.dot(other)
 
 	companion object {
-		val ZERO = 0 toPI 0
-		val DIRS = ZERO.getQuadNeighbours()
+		val ZERO = 0 toP 0
+		val DIRS get() = ZERO.getQuadNeighbours()
 	}
 
-	fun northsInc() = this.sequence(Clock.up.sint)
-	fun southsInc() = this.sequence(Clock.down.sint)
-	fun eastsInc() = this.sequence(Clock.right.sint)
-	fun westsInc() = this.sequence(Clock.left.sint)
+	fun northsInc() = this.sequence(Clock.up)
+	fun southsInc() = this.sequence(Clock.down)
+	fun eastsInc() = this.sequence(Clock.right)
+	fun westsInc() = this.sequence(Clock.left)
 
 	fun norths() = this.northsInc().drop(1)
 	fun souths() = this.southsInc().drop(1)

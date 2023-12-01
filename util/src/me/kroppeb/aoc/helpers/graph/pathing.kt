@@ -1,12 +1,20 @@
 package me.kroppeb.aoc.helpers.graph
 
 import me.kroppeb.aoc.helpers.Loggable
+import me.kroppeb.aoc.helpers.sint.Sint
+import me.kroppeb.aoc.helpers.sint.s
 import java.util.*
 
-data class BfsResult<out State>(val path: List<State>) {
+data class BfsResult<out State>(val path: List<State>) : Loggable {
 	val start get() = path.first()
 	val end get() = path.last()
 	val length get() = path.size - 1
+
+	override fun getCopyString(): String = length.toString()
+
+	override fun toString(): String {
+		return "BfsResult(start=$start, end=$end, length=$length)"
+	}
 }
 
 inline fun <State> bfs(start: State, isEnd: (State) -> Boolean, next: (State) -> Iterable<State>): Res<State> {
@@ -101,7 +109,6 @@ inline fun <State> bfsDist(
 }
 
 
-
 inline fun <State> bfslDist(
 	starts: List<State>,
 	isEnd: (State, Int) -> Boolean,
@@ -186,7 +193,7 @@ inline fun <State> bfslPath(
 	var queue = starts.toMutableList()
 	var nextQueue = mutableListOf<State>()
 	val back = mutableMapOf<State, State>()
-	var dist = -1
+	var dist = -1.s
 
 	while (queue.isNotEmpty()) {
 //		if (dist % 100 == 0)
@@ -227,7 +234,7 @@ inline fun <State> bfsPathDist(
 	var queue = mutableListOf(start)
 	var nextQueue = mutableListOf<State>()
 	val back = mutableMapOf<State, State>()
-	var dist = -1
+	var dist = -1.s
 
 	while (queue.isNotEmpty()) {
 		// each dist needs its own "seen" set
@@ -236,7 +243,7 @@ inline fun <State> bfsPathDist(
 //			println("dist:$dist, seen: ${seen.size}, queue: ${queue.size}")
 		dist++
 		for (current in queue) {
-			if (isEnd(current, dist)) {
+			if (isEnd(current, dist.i)) {
 				val path = mutableListOf(current)
 				var c = current
 				while (true) {
@@ -246,7 +253,7 @@ inline fun <State> bfsPathDist(
 				return BfsResult(path)
 			}
 
-			for (i in next(current, dist)) {
+			for (i in next(current, dist.i)) {
 				if (seen.add(i)) {
 					nextQueue.add(i)
 					back[i] = current
@@ -306,11 +313,16 @@ inline fun <State> bfslPathDist(
 }
 
 
-
-data class DfsResult<out State>(val path: List<State>) {
+data class DfsResult<out State>(val path: List<State>) : Loggable {
 	val start get() = path.first()
 	val end get() = path.last()
 	val length get() = path.size - 1
+
+	override fun getCopyString(): String = length.toString()
+
+	override fun toString(): String {
+		return "DfsResult(start=$start, end=$end, length=$length)"
+	}
 }
 
 
@@ -331,7 +343,6 @@ inline fun <State> dfs(start: State, isEnd: (State) -> Boolean, next: (State) ->
 	}
 	return Res(null, maxDist)
 }
-
 
 
 inline fun <State> dfsl(starts: List<State>, isEnd: (State) -> Boolean, next: (State) -> Iterable<State>): Res<State> {
@@ -380,7 +391,7 @@ inline fun <State> dfslDist(
 	isEnd: (State, Int) -> Boolean,
 	next: (State, Int) -> Iterable<State>
 ): Res<State> {
-	val seen = starts.map{it to 0}.toMutableSet()
+	val seen = starts.map { it to 0 }.toMutableSet()
 	var stack = starts.mapTo(mutableListOf()) { it to 0 }
 	var maxDist = 0
 
@@ -436,7 +447,7 @@ inline fun <State> dfslPath(
 	isEnd: (State) -> Boolean,
 	next: (State) -> Iterable<State>
 ): BfsResult<State>? {
-	val seen = starts.map{it to 0}.toMutableSet()
+	val seen = starts.map { it to 0 }.toMutableSet()
 	var stack = starts.mapTo(mutableListOf()) { it to 0 }
 	val back = mutableMapOf<State, State>()
 
@@ -502,7 +513,7 @@ inline fun <State> dfsPathDist(
 	isEnd: (State, Int) -> Boolean,
 	next: (State, Int) -> Iterable<State>
 ): BfsResult<State>? {
-	val seen = starts.map{it to 0}.toMutableSet()
+	val seen = starts.map { it to 0 }.toMutableSet()
 	var stack = starts.mapTo(mutableListOf()) { it to 0 }
 	val back = mutableMapOf<State, State>()
 
@@ -529,29 +540,109 @@ inline fun <State> dfsPathDist(
 	return null
 }
 
-data class DijkstraResult<out State>(val path: List<State>, val cost: Double) : Loggable {
+data class DijkstraResult<out State>(val path: List<State>, val cost: Sint) : Loggable {
 	val start get() = path.first()
 	val end get() = path.last()
 	val length get() = path.size - 1
 
 	override fun getCopyString(): String = cost.toString()
+
+	override fun toString(): String {
+		return "DijkstraResult(start=$start, end=$end, length=$length, cost=$cost)"
+	}
 }
 
-fun <State> dijkstra(
+data class DijkstraResultD<out State>(val path: List<State>, val cost: Double) : Loggable {
+	val start get() = path.first()
+	val end get() = path.last()
+	val length get() = path.size - 1
+
+	override fun getCopyString(): String = cost.toString()
+
+	override fun toString(): String {
+		return "DijkstraResult(start=$start, end=$end, length=$length, cost=$cost)"
+	}
+}
+
+inline fun <State> dijkstraI(
 	start: State,
 	isEnd: (State) -> Boolean,
 	next: (State) -> Iterable<Pair<State, Int>>
-): DijkstraResult<State>? = dijkstraD(start, isEnd) {
-	next(it).map { val (state, cost) = it; state to cost.toDouble() }
+): DijkstraResult<State>? = dijkstra(start, isEnd) { next(it).map { (state, cost) -> state to cost.s } }
+
+inline fun <State> dijkstra(
+	start: State,
+	isEnd: (State) -> Boolean,
+	next: (State) -> Iterable<Pair<State, Sint>>
+): DijkstraResult<State>? {
+	val costs = mutableMapOf(start to 0.s)
+	val queue = PriorityQueue<Pair<State, Sint>>(compareBy { it.second })
+	queue += start to 0.s
+	val back = mutableMapOf<State, State>()
+
+	while (queue.isNotEmpty()) {
+		val (current, currentCost) = queue.poll()
+		if (costs[current] != currentCost) continue
+		if (isEnd(current)) {
+			val path = mutableListOf(current)
+			var c = current
+			while (true) {
+				c = back[c] ?: break
+				path += c
+			}
+			return DijkstraResult(path, currentCost)
+		}
+
+		for ((next, cost) in next(current)) {
+			val newCost = currentCost + cost
+			val previousCost = costs[next]
+			if (previousCost == null || newCost < previousCost) {
+				costs[next] = newCost
+				queue += next to newCost
+				back[next] = current
+			}
+		}
+	}
+
+	return null
 }
 
 
-fun <State> dijkstral(
+inline fun <State> dijkstral(
 	starts: List<State>,
 	isEnd: (State) -> Boolean,
-	next: (State) -> Iterable<Pair<State, Int>>
-): DijkstraResult<State>? = dijkstralD(starts, isEnd) {
-	next(it).map { val (state, cost) = it; state to cost.toDouble() }
+	next: (State) -> Iterable<Pair<State, Sint>>
+): DijkstraResult<State>? {
+	val costs = starts.associateWith { 0.s }.toMutableMap()
+	val queue = PriorityQueue<Pair<State, Sint>>(compareBy { it.second })
+	queue += starts.map { it to 0.s }
+	val back = mutableMapOf<State, State>()
+
+	while (queue.isNotEmpty()) {
+		val (current, currentCost) = queue.poll()
+		if (costs[current] != currentCost) continue
+		if (isEnd(current)) {
+			val path = mutableListOf(current)
+			var c = current
+			while (true) {
+				c = back[c] ?: break
+				path += c
+			}
+			return DijkstraResult(path, currentCost)
+		}
+
+		for ((next, cost) in next(current)) {
+			val newCost = currentCost + cost
+			val previousCost = costs[next]
+			if (previousCost == null || newCost < previousCost) {
+				costs[next] = newCost
+				queue += next to newCost
+				back[next] = current
+			}
+		}
+	}
+
+	return null
 }
 
 
@@ -559,7 +650,7 @@ inline fun <State> dijkstraD(
 	start: State,
 	isEnd: (State) -> Boolean,
 	next: (State) -> Iterable<Pair<State, Double>>
-): DijkstraResult<State>? {
+): DijkstraResultD<State>? {
 	val costs = mutableMapOf(start to 0.0)
 	val queue = PriorityQueue<Pair<State, Double>>(compareBy { it.second })
 	queue += start to 0.0
@@ -575,7 +666,7 @@ inline fun <State> dijkstraD(
 				c = back[c] ?: break
 				path += c
 			}
-			return DijkstraResult(path, currentCost)
+			return DijkstraResultD(path, currentCost)
 		}
 
 		for ((next, cost) in next(current)) {
@@ -597,7 +688,7 @@ inline fun <State> dijkstralD(
 	starts: List<State>,
 	isEnd: (State) -> Boolean,
 	next: (State) -> Iterable<Pair<State, Double>>
-): DijkstraResult<State>? {
+): DijkstraResultD<State>? {
 	val costs = starts.associateWith { 0.0 }.toMutableMap()
 	val queue = PriorityQueue<Pair<State, Double>>(compareBy { it.second })
 	queue += starts.map { it to 0.0 }
@@ -613,7 +704,7 @@ inline fun <State> dijkstralD(
 				c = back[c] ?: break
 				path += c
 			}
-			return DijkstraResult(path, currentCost)
+			return DijkstraResultD(path, currentCost)
 		}
 
 		for ((next, cost) in next(current)) {
@@ -631,28 +722,86 @@ inline fun <State> dijkstralD(
 }
 
 
-fun <State> dijkstraDist(
+inline fun <State> dijkstraDist(
 	start: State,
-	isEnd: (State, Int) -> Boolean,
-	next: (State, Int) -> Iterable<Pair<State, Int>>
-): DijkstraResult<State>? = dijkstraDDist(start, { state, dist -> isEnd(state, dist.toInt()) }) { it, dist ->
-	next(it, dist.toInt()).map { val (state, cost) = it; state to cost.toDouble() }
+	isEnd: (State, Sint) -> Boolean,
+	next: (State, Sint) -> Iterable<Pair<State, Sint>>
+): DijkstraResult<State>? {
+	val costs = mutableMapOf(start to 0.s)
+	val queue = PriorityQueue<Pair<State, Sint>>(compareBy { it.second })
+	queue += start to 0.s
+	val back = mutableMapOf<State, State>()
+
+	while (queue.isNotEmpty()) {
+		val (current, currentCost) = queue.poll()
+		if (costs[current] != currentCost) continue
+		if (isEnd(current, currentCost)) {
+			val path = mutableListOf(current)
+			var c = current
+			while (true) {
+				c = back[c] ?: break
+				path += c
+			}
+			return DijkstraResult(path, currentCost)
+		}
+
+		for ((next, cost) in next(current, currentCost)) {
+			val newCost = currentCost + cost
+			val previousCost = costs[next]
+			if (previousCost == null || newCost < previousCost) {
+				costs[next] = newCost
+				queue += next to newCost
+				back[next] = current
+			}
+		}
+	}
+
+	return null
 }
 
 
-fun <State> dijkstralDist(
+inline fun <State> dijkstralDist(
 	starts: List<State>,
-	isEnd: (State, Int) -> Boolean,
-	next: (State, Int) -> Iterable<Pair<State, Int>>
-): DijkstraResult<State>? = dijkstralDDist(starts, { state, dist -> isEnd(state, dist.toInt()) }) { it, dist ->
-	next(it, dist.toInt()).map { val (state, cost) = it; state to cost.toDouble() }
+	isEnd: (State, Sint) -> Boolean,
+	next: (State, Sint) -> Iterable<Pair<State, Sint>>
+): DijkstraResult<State>? {
+	val costs = starts.associateWith { 0.s }.toMutableMap()
+	val queue = PriorityQueue<Pair<State, Sint>>(compareBy { it.second })
+	queue += starts.map { it to 0.s }
+	val back = mutableMapOf<State, State>()
+
+	while (queue.isNotEmpty()) {
+		val (current, currentCost) = queue.poll()
+		if (costs[current] != currentCost) continue
+		if (isEnd(current, currentCost)) {
+			val path = mutableListOf(current)
+			var c = current
+			while (true) {
+				c = back[c] ?: break
+				path += c
+			}
+			return DijkstraResult(path, currentCost)
+		}
+
+		for ((next, cost) in next(current, currentCost)) {
+			val newCost = currentCost + cost
+			val previousCost = costs[next]
+			if (previousCost == null || newCost < previousCost) {
+				costs[next] = newCost
+				queue += next to newCost
+				back[next] = current
+			}
+		}
+	}
+
+	return null
 }
 
 inline fun <State> dijkstraDDist(
 	start: State,
 	isEnd: (State, Double) -> Boolean,
 	next: (State, Double) -> Iterable<Pair<State, Double>>
-): DijkstraResult<State>? {
+): DijkstraResultD<State>? {
 	val costs = mutableMapOf(start to 0.0)
 	val queue = PriorityQueue<Pair<State, Double>>(compareBy { it.second })
 	queue += start to 0.0
@@ -668,7 +817,7 @@ inline fun <State> dijkstraDDist(
 				c = back[c] ?: break
 				path += c
 			}
-			return DijkstraResult(path, currentCost)
+			return DijkstraResultD(path, currentCost)
 		}
 
 		for ((next, cost) in next(current, currentCost)) {
@@ -690,7 +839,7 @@ inline fun <State> dijkstralDDist(
 	starts: List<State>,
 	isEnd: (State, Double) -> Boolean,
 	next: (State, Double) -> Iterable<Pair<State, Double>>
-): DijkstraResult<State>? {
+): DijkstraResultD<State>? {
 	val costs = starts.associateWith { 0.0 }.toMutableMap()
 	val queue = PriorityQueue<Pair<State, Double>>(compareBy { it.second })
 	queue += starts.map { it to 0.0 }
@@ -706,7 +855,7 @@ inline fun <State> dijkstralDDist(
 				c = back[c] ?: break
 				path += c
 			}
-			return DijkstraResult(path, currentCost)
+			return DijkstraResultD(path, currentCost)
 		}
 
 		for ((next, cost) in next(current, currentCost)) {

@@ -3,7 +3,7 @@ package me.kroppeb.aoc.helpers.grid
 import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.point.BoundsI
 import me.kroppeb.aoc.helpers.point.PointI
-import me.kroppeb.aoc.helpers.point.toB
+import me.kroppeb.aoc.helpers.point.toBI
 import me.kroppeb.aoc.helpers.point.toPI
 
 class MutableSimpleGrid<T>(val items: MutableList<MutableList<T>>) : StrictGrid<T>, MutableGrid<T> {
@@ -12,10 +12,10 @@ class MutableSimpleGrid<T>(val items: MutableList<MutableList<T>>) : StrictGrid<
 	init {
 		if (Clock.nX != 0) {
 			// x is first index
-			boundsI = (0 toPI 0) toB (items.lastIndex toPI items[0].lastIndex)
+			boundsI = (0 toPI 0) toBI (items.lastIndex toPI items[0].lastIndex)
 		} else {
 			// y is first index
-			boundsI = (0 toPI 0) toB (items[0].lastIndex toPI items.lastIndex)
+			boundsI = (0 toPI 0) toBI (items[0].lastIndex toPI items.lastIndex)
 		}
 	}
 

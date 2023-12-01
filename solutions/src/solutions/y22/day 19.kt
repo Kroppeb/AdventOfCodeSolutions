@@ -40,7 +40,8 @@ import java.awt.datatransfer.Clipboard
 import java.awt.datatransfer.StringSelection
 
 import me.kroppeb.aoc.helpers.*
-import me.kroppeb.aoc.helpers.collections.list.toH
+import me.kroppeb.aoc.helpers.collections.list.*
+import me.kroppeb.aoc.helpers.collections.extensions.*
 import me.kroppeb.aoc.helpers.sint.*
 import kotlin.*
 import kotlin.collections.*

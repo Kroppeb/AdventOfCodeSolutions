@@ -85,9 +85,9 @@ private fun part1() {
 	var uu = x
 
 	while (uu != 0.s) {
-		val dif = (uu mod -2..2).i
+		val dif = (uu mod -2..2)
 
-		res += when (dif) {
+		res += when (dif.i) {
 			-2 -> "="
 			-1 -> "-"
 			0 -> "0"
@@ -100,7 +100,7 @@ private fun part1() {
 		uu /= 5
 	}
 
-	res log 1
+	res.reversed() log 1
 }
 
 fun main() {
@@ -119,5 +119,5 @@ private fun setClipboard(data: Any?) {
 	val s: String = if (data is Loggable) data.getCopyString() else data.toString()
 	val selection = StringSelection(s)
 	val clipboard: Clipboard = Toolkit.getDefaultToolkit().systemClipboard
-	clipboard.setContents(selection, selection)
+//	clipboard.setContents(selection, selection)
 }

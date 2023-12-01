@@ -100,7 +100,7 @@ private fun part2() {
 		return getEro(point).toInt() % 3
 	}
 
-	dijkstra(0 toPI 0 to "torch", { (p, i) -> p == target && i == "torch"}) { (p, i) ->
+	dijkstraI(0 toPI 0 to "torch", { (p, i) -> p == target && i == "torch"}) { (p, i) ->
 		listOf("torch", "gear", "").map{p to it to 7} +
 				p.getQuadNeighbours().filter{it.x >= 0 && it.y >= 0}.filter{when(i) {
 					"torch" -> getType(p) in listOf(0,2)

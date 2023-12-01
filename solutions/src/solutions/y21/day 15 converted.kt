@@ -9,7 +9,7 @@ import itertools.*
 import kotlin.math.*
  */
 
-import me.kroppeb.aoc.helpers.graph.dijkstra
+import me.kroppeb.aoc.helpers.graph.dijkstraI
 import me.kroppeb.aoc.helpers.Clock
 
 import me.kroppeb.aoc.helpers.*
@@ -26,7 +26,7 @@ private val xxxxx = Clock(6, 3);
 private fun part1() {
 	var data = getLines(2021_15).digits().grid()
 
-	val res = dijkstra(
+	val res = dijkstraI(
 		0 toPI 0,
 		{ point -> point == data.boundsI.se },
 		{ point -> point.getQuadNeighbours().filter{it in data.boundsI}.map { it to data[it] } })
@@ -42,7 +42,7 @@ private fun part2() {
 		.transpose()
 		.grid()
 
-	val res = dijkstra(
+	val res = dijkstraI(
 		0 toPI 0,
 		{ point -> point == data.boundsI.se },
 		{ point -> point.getQuadNeighbours().filter{it in data.boundsI}.map { it to data[it] } })

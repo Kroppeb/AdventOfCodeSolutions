@@ -2,7 +2,7 @@ package me.kroppeb.aoc.helpers.grid
 
 import me.kroppeb.aoc.helpers.point.BoundsI
 import me.kroppeb.aoc.helpers.point.PointI
-import me.kroppeb.aoc.helpers.point.toB
+import me.kroppeb.aoc.helpers.point.toBI
 import me.kroppeb.aoc.helpers.point.toPI
 
 class StrictPointGrid(override val boundsI: BoundsI, var points: Set<PointI>) : StrictGrid<Boolean> {
@@ -37,7 +37,7 @@ fun Iterable<PointI>.entityGrid(): StrictPointGrid {
 		points += p
 
 	}
-	return StrictPointGrid((minX toPI minY) toB (maxX toPI maxY), points)
+	return StrictPointGrid((minX toPI minY) toBI (maxX toPI maxY), points)
 }
 
 

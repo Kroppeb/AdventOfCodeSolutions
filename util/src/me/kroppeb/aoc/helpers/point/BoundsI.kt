@@ -1,6 +1,7 @@
 package me.kroppeb.aoc.helpers.point
 
 import me.kroppeb.aoc.helpers.*
+import me.kroppeb.aoc.helpers.sint.Sint
 
 /**
  * lower and higher are inclusive
@@ -95,8 +96,8 @@ data class BoundsI(override val lower: PointI, override val higher: PointI) : IB
 		∀x Bound: x.intersect(INFINITE) == x
 		∀x Bound: x.merge(INFINITE) == INFINITE
 		 */
-		val INFINITE = (Int.MIN_VALUE toPI Int.MIN_VALUE) toB (Int.MAX_VALUE toPI Int.MAX_VALUE)
-		val EMPTY = BoundsI(0 toPI 0, -1 toPI -1)
+		val INFINITE: BoundsI = (Int.MIN_VALUE toPI Int.MIN_VALUE) toBI (Int.MAX_VALUE toPI Int.MAX_VALUE)
+		val EMPTY: BoundsI = BoundsI(0 toPI 0, -1 toPI -1)
 	}
 }
 
@@ -130,11 +131,11 @@ class MutableBoundsI : IBoundsI {
 		get() = super.ySize.coerceAtLeast(0)
 }
 
-infix fun PointI.toB(other: PointI): BoundsI = BoundsI(
+infix fun PointI.toBI(other: PointI): BoundsI = BoundsI(
 	min(this.x, other.x) toPI min(this.y, other.y), max(this.x, other.x) toPI max(this.y, other.y)
 )
 
-operator fun PointI.rangeTo(other: PointI) = this toB other
+operator fun PointI.rangeTo(other: PointI) = this toBI other
 operator fun PointI.rem(bounds: IBoundsI) = x % bounds.xs  toPI y % bounds.ys
 
 fun Iterable<PointI>.bounds(): BoundsI {

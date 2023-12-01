@@ -8,7 +8,7 @@ import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.grid.entityGrid
 import me.kroppeb.aoc.helpers.point.PointI
 import me.kroppeb.aoc.helpers.point.Point3DI
-import me.kroppeb.aoc.helpers.point.toB
+import me.kroppeb.aoc.helpers.point.toBI
 import me.kroppeb.aoc.helpers.point.toPI
 
 private val xxxxx = Clock(6, 3);
@@ -45,7 +45,7 @@ private fun part1(data: Data) {
 					}
 				}
 				if (b) {
-					bounds = bounds.merge(base toB base)
+					bounds = bounds.merge(base toBI base)
 				}
 
 			}
@@ -71,7 +71,7 @@ private fun part2(data: Data) {
 	val st = data.e().entityGrid { it == '#' }
 	var current = st.points.map { it to (0 toPI 0) }.toSet()
 	var boundsa = st.boundsI
-	var boundsb = (0 toPI 0) toB (0 toPI 0)
+	var boundsb = (0 toPI 0) toBI (0 toPI 0)
 	repeat(6) {
 		var next = mutableSetOf<Pair<PointI, PointI>>()
 		for (x in (boundsa.xs.start - 10)..(boundsa.xs.endInclusive + 10))
@@ -87,18 +87,18 @@ private fun part2(data: Data) {
 							if (count in 2..3) {
 								next.add(c)
 								b = true
-								boundsb = boundsb.merge(sec toB sec)
+								boundsb = boundsb.merge(sec toBI sec)
 							}
 						} else {
 							if (count == 3) {
 								next.add(c)
 								b = true
-								boundsb = boundsb.merge(sec toB sec)
+								boundsb = boundsb.merge(sec toBI sec)
 							}
 						}
 					}
 				if (b) {
-					boundsa = boundsa.merge(base toB base)
+					boundsa = boundsa.merge(base toBI base)
 				}
 			}
 		current = next

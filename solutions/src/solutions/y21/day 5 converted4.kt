@@ -24,7 +24,7 @@ private fun part1() {
 		.map { (a,b) -> a toL b }
 		.filter { it.isAxisAligned() }
 		.flatten()
-		.countEach()
+		.countEachI()
 		.count{ (k,v) -> v > 1 }
 		.log()
 }
@@ -33,7 +33,7 @@ private fun part2() {
 	getLines(2021_05).pointsI()
 		.map { (a,b) -> a toL b }
 		.flatten()
-		.countEach()
+		.countEachI()
 		.count{ (k,v) -> v > 1 }
 		.log()
 }

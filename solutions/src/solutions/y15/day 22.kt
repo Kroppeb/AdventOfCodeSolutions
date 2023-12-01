@@ -14,12 +14,9 @@ import java.util.PriorityQueue
 import kotlin.math.*
  */
 
-import me.kroppeb.aoc.helpers.collections.*
 import me.kroppeb.aoc.helpers.graph.*
 
 import me.kroppeb.aoc.helpers.*
-import itertools.*
-import kotlin.math.*
 
 
 private val xxxxx = Clock(6, 3);
@@ -43,8 +40,8 @@ data class State(val isPlayer:Boolean, val bossHp:Int, val playerHp:Int, val eff
 private fun part1() {
 	var (bossHp, bossD) = getLines(2015_22).int()
 
-	dijkstra(State(true, bossHp, 50, mapOf(), 500), {state -> state.bossHp <= 0}){state ->
-		if (state.playerHp <= 0) return@dijkstra listOf()
+	dijkstraI(State(true, bossHp, 50, mapOf(), 500), { state -> state.bossHp <= 0}){ state ->
+		if (state.playerHp <= 0) return@dijkstraI listOf()
 		var bossHp = state.bossHp
 		var mana = state.mana
 		if (Effect.POISON in state.effects) {
@@ -83,8 +80,8 @@ private fun part1() {
 private fun part2() {
 	var (bossHp, bossD) = getLines(2015_22).int()
 
-	dijkstra(State(true, bossHp, 50, mapOf(), 500), {state -> state.bossHp <= 0}){state ->
-		if (state.playerHp <= 0) return@dijkstra listOf()
+	dijkstraI(State(true, bossHp, 50, mapOf(), 500), { state -> state.bossHp <= 0}){ state ->
+		if (state.playerHp <= 0) return@dijkstraI listOf()
 		var bossHp = state.bossHp
 		var mana = state.mana
 		if (Effect.POISON in state.effects) {
@@ -96,7 +93,7 @@ private fun part2() {
 		var nextEffects = state.effects.mapValues { (_,v) -> v - 1 }.filterValues { it > 0 }
 
 		if (state.isPlayer) {
-			if (state.playerHp <= 1) return@dijkstra listOf()
+			if (state.playerHp <= 1) return@dijkstraI listOf()
 			spells.filter{it.mana <= mana}.filter{it.effect?.let{it !in nextEffects}?:true}.map{spell ->
 				State(false,
 					bossHp - spell.damage,

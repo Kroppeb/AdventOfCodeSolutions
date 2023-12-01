@@ -26,8 +26,13 @@ abstract class IBounds3D : Collection<Point3D> {
 	open val zSize get() = (this.higher.z - this.lower.z + 1)
 	val sizes get() = xSize toP ySize toP zSize
 	val volume get() = xSize * ySize * zSize
+
+	@Deprecated("use volume", ReplaceWith("volume"))
 	override val size get() = volume.i
+
 	override fun isEmpty() = xs.isEmpty() || ys.isEmpty() || zs.isEmpty()
+
+	override fun containsAll(elements: Collection<Point3D>): Boolean = elements.all { it in this }
 
 	fun exactCenter() = (lower + higher).also {
 		require(it.x divBy 2)
@@ -35,30 +40,19 @@ abstract class IBounds3D : Collection<Point3D> {
 		require(it.z divBy 2)
 	} / 2
 
-	override fun containsAll(elements: Collection<Point3D>): Boolean = elements.all { it in this }
 }
 
-data class Bounds3D(override val lower: Point3D, override val higher: Point3D) : IBounds3D(),
-	BoundsN<Bounds3D, Point3D, Sint> {
+data class Bounds3D(override val lower: Point3D, override val higher: Point3D) : IBounds3D(), BoundsN<Bounds3D, Point3D, Sint> {
 	constructor(lower: Point3DI, higher: Point3DI) : this(lower.sint, higher.sint)
-	constructor(xs: IntRange, ys: IntRange, zs: IntRange) : this(
-		xs.first.s toP ys.first.s toP zs.first.s,
-		xs.last.s toP ys.last.s toP zs.last.s
-	)
+	constructor(xs: IntRange, ys: IntRange, zs: IntRange) : this(xs.first.s toP ys.first.s toP zs.first.s, xs.last.s toP ys.last.s toP zs.last.s)
 
-	constructor(xs: SintRange, ys: SintRange, zs: SintRange) : this(
-		xs.first toP ys.first toP zs.first,
-		xs.last toP ys.last toP zs.last
-	)
+	constructor(xs: SintRange, ys: SintRange, zs: SintRange) : this(xs.first toP ys.first toP zs.first, xs.last toP ys.last toP zs.last)
 
 
 	/**
 	 * ∀x:x in this && x in other <-> x in this.intersect(other)
 	 */
-	fun intersect(other: IBounds3D): Bounds3D = Bounds3D(
-		this.lower.max(other.lower),
-		this.higher.min(other.higher)
-	)
+	fun intersect(other: IBounds3D): Bounds3D = Bounds3D(this.lower.max(other.lower), this.higher.min(other.higher))
 
 	override fun intersect(other: Bounds3D): Bounds3D = intersect(other as IBounds3D)
 
@@ -69,10 +63,7 @@ data class Bounds3D(override val lower: Point3D, override val higher: Point3D) :
 	 * 	as small as possible
 	 *
 	 */
-	fun merge(other: IBounds3D): Bounds3D = Bounds3D(
-		this.lower.min(other.lower),
-		this.higher.max(other.higher)
-	)
+	fun merge(other: IBounds3D): Bounds3D = Bounds3D(this.lower.min(other.lower), this.higher.max(other.higher))
 
 	override fun merge(other: Bounds3D): Bounds3D = this.merge(other as IBounds3D)
 
@@ -80,19 +71,12 @@ data class Bounds3D(override val lower: Point3D, override val higher: Point3D) :
 
 	override fun weight(): Sint = super.volume
 
-	override fun fracture(other: Bounds3D): Collection<Bounds3D> {
-		val xr = this.xs.fracture(other.xs)
-		val yr = this.ys.fracture(other.ys)
-		val zr = this.zs.fracture(other.zs)
-		return xr.flatMap { x -> yr.flatMap { y -> zr.map { z -> Bounds3D(x, y, z) } } }
-	}
+	override fun fracture(other: Bounds3D): List<Bounds3D> = cartesianProductOf(
+		xs.fracture(other.xs), ys.fracture(other.ys), zs.fracture(other.zs)) { x, y, z -> Bounds3D(x, y, z) }
 
 	fun expand(x: Sint, y: Sint, z: Sint): Bounds3D {
 		val offset = x toP y toP z
-		return Bounds3D(
-			this.lower - offset,
-			this.higher + offset
-		)
+		return Bounds3D(this.lower - offset, this.higher + offset)
 	}
 
 	fun expand(i: Sint): Bounds3D = expand(i, i, i)
@@ -103,15 +87,17 @@ data class Bounds3D(override val lower: Point3D, override val higher: Point3D) :
 	fun retract(x: Int, y: Int, z: Int): Bounds3D = expand(-x, -y, -z)
 	fun retract(i: Int): Bounds3D = expand(-i)
 
+	fun frac(i: Int): List<Bounds3D> = cartesianProductOf(xs.frac(i), ys.frac(i), zs.frac(i)) { a, b, c -> Bounds3D(a, b, c) }
+
 	companion object {
 		/**
 		∀x Point: x in INFINITE
 		∀x Bound: x.intersect(INFINITE) == x
 		∀x Bound: x.merge(INFINITE) == INFINITE
 		 */
-		val INFINITE =
-			(Sint.MIN_VALUE toP Sint.MIN_VALUE toP Sint.MIN_VALUE) toB (Sint.MAX_VALUE toP Sint.MAX_VALUE toP Sint.MAX_VALUE)
-		val EMPTY = Bounds3D(0 toP 0 toP 0, -1 toP -1 toP -1)
+		val INFINITE: Bounds3D = (Sint.MIN_VALUE toP Sint.MIN_VALUE toP Sint.MIN_VALUE) toB (Sint.MAX_VALUE toP Sint.MAX_VALUE toP Sint.MAX_VALUE)
+		val EMPTY: Bounds3D = Bounds3D(0 toP 0 toP 0, -1 toP -1 toP -1)
+		val LARGE: Bounds3D = (Sint.NEG_MEGA toP Sint.NEG_MEGA toP Sint.NEG_MEGA) toB (Sint.POS_MEGA toP Sint.POS_MEGA toP Sint.POS_MEGA)
 	}
 }
 

@@ -343,9 +343,9 @@ fun <T> List<T>.mut() = this.toMutableList()
 fun <T> List<List<T>>.mut2() = this.map { it.mut() }.mut()
 fun <T> List<List<List<T>>>.mut3() = this.map { it.mut2() }.mut()
 
-inline fun <T> pureStateLoop(start: T, steps: Int,f: (T) -> T): T = pureStateLoop(start, steps, 0, f)
+inline fun <T> pureStateLoop(start: T, steps: Int, f: (T) -> T): T = pureStateLoop(start, steps, 0, f)
 
-inline fun <T> pureStateLoop(start: T, steps: Int, skipSteps: Int ,f: (T) -> T): T {
+inline fun <T> pureStateLoop(start: T, steps: Int, skipSteps: Int, f: (T) -> T): T {
 	var id = 0
 	var state = start
 	val seen = mutableMapOf<T, Int>()
@@ -373,14 +373,14 @@ inline fun <T> pureStateLoop(start: T, steps: Int, skipSteps: Int ,f: (T) -> T):
 
 inline fun <T> pureStateLoopScore(start: T, steps: Sint, f: (T) -> Pair<T, Sint>): Sint = pureStateLoopScore(start, steps, 0.s, f)
 
-inline fun <T> pureStateLoopScore(start: T, steps: Sint, skipSteps: Sint ,f: (T) -> Pair<T, Sint>): Sint {
+inline fun <T> pureStateLoopScore(start: T, steps: Sint, skipSteps: Sint, f: (T) -> Pair<T, Sint>): Sint {
 	var id = 0.s
 	var state = start
 	val seen = mutableMapOf<T, Sint>()
 	val reverse = mutableListOf<T>(start)
 	val scores = mutableListOf(0.s)
 	while (id < steps) {
-		val (s,score) = f(state)
+		val (s, score) = f(state)
 		state = s
 
 		id++
@@ -406,3 +406,36 @@ inline fun <T> pureStateLoopScore(start: T, steps: Sint, skipSteps: Sint ,f: (T)
 	}
 	return scores.last()
 }
+
+class UPair<T>(val first: T, val second: T) {
+	override fun equals(other: Any?): Boolean {
+		if (this === other) return true
+		if (other !is UPair<*>) return false
+
+		if (first != other.first && first != other.second) return false
+		if (second != other.second && second != other.first) return false
+
+		return true
+	}
+
+	override fun hashCode(): Int {
+		val ha = first.hashCode()
+		val hb = second.hashCode()
+		// just xoring means that all pairs of the same elements will have the same hash, which is bad
+		val mix = ha.toLong() * hb.toLong() shl 16
+		return (ha xor hb xor mix.toInt())
+	}
+
+	override fun toString(): String {
+		return "{$first, $second}"
+	}
+
+	operator fun component1() = first
+	operator fun component2() = second
+}
+
+infix fun <T> T.toU(other: T) = UPair(this, other)
+
+
+operator fun Boolean.inc() = true
+operator fun Boolean.dec() = false

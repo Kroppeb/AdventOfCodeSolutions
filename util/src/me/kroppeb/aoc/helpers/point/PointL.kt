@@ -18,7 +18,7 @@ data class PointL(val x: Long, val y: Long) : PointNL<PointL> {
 	val west get() = left
 
 
-	fun rotateClock() = Clock.right.toPointL() * Clock.up.dot(this) + Clock.up.toPointL() * Clock.left.dot(this)
+	fun rotateClock() = Clock.rightI.toPointL() * Clock.upI.dot(this) + Clock.upI.toPointL() * Clock.leftI.dot(this)
 	fun rotateAntiClock() = -rotateClock()
 
 	fun getQuadNeighbours() = listOf(right, down, left, up)
@@ -72,12 +72,12 @@ data class PointL(val x: Long, val y: Long) : PointNL<PointL> {
 
 	override fun dot(other: PointL) = this.x * other.x + this.y * other.y
 
-	fun isLeftOf(other: PointL) = Clock.left.dot(this) > Clock.left.dot(other)
-	fun isRightOf(other: PointL) = Clock.right.dot(this) > Clock.right.dot(other)
-	fun isAbove(other: PointL) = Clock.up.dot(this) > Clock.up.dot(other)
-	fun isBelow(other: PointL) = Clock.down.dot(this) > Clock.down.dot(other)
-	fun sameLeftRight(other: PointL) = Clock.left.dot(this) == Clock.left.dot(other)
-	fun sameUpDown(other: PointL) = Clock.up.dot(this) == Clock.up.dot(other)
+	fun isLeftOf(other: PointL) = Clock.leftI.dot(this) > Clock.leftI.dot(other)
+	fun isRightOf(other: PointL) = Clock.rightI.dot(this) > Clock.rightI.dot(other)
+	fun isAbove(other: PointL) = Clock.upI.dot(this) > Clock.upI.dot(other)
+	fun isBelow(other: PointL) = Clock.downI.dot(this) > Clock.downI.dot(other)
+	fun sameLeftRight(other: PointL) = Clock.leftI.dot(this) == Clock.leftI.dot(other)
+	fun sameUpDown(other: PointL) = Clock.upI.dot(this) == Clock.upI.dot(other)
 
 	override fun sign() = x.sign.toLong() toPL y.sign.toLong()
 

@@ -19,6 +19,10 @@ data class LineN<P : PointN<P, *>>(val start: P, val end: P) : Collection<P> {
 	val length = diff.manDist().intDivBy(step.manDist())
 	override val size = length + 1
 
+	override fun toString(): String {
+		return "LineN(start=$start, end=$end, diff=$diff, step=$step, length=$length)"
+	}
+
 	override operator fun contains(element: P): Boolean = when (element) {
 		start -> true
 		end -> true
@@ -48,16 +52,29 @@ data class LineN<P : PointN<P, *>>(val start: P, val end: P) : Collection<P> {
 
 infix fun <P : PointN<P, *>> P.toL(other: P) = LineN(this, other)
 
+
 @JvmName("lineIsHorizontal")
-fun LineI.isHorizontal() = if (Clock.eX != 0) diff.y == 0 else diff.x == 0
+fun Line.isHorizontal() = Clock.up.dot(start) == Clock.up.dot(end)
 
 @JvmName("lineIsVertical")
-fun LineI.isVertical() = if (Clock.nX != 0) diff.y == 0 else diff.x == 0
+fun Line.isVertical() = Clock.right.dot(start) == Clock.right.dot(end)
 
 @JvmName("lineIsAxisAligned")
+fun Line.isAxisAligned() = diff.x == 0.s || diff.y == 0.s
+
+@JvmName("line3DIsAxisAligned")
+fun Line3D.isAxisAligned() = diff.x == 0.s || diff.y == 0.s || diff.z == 0.s
+
+@JvmName("lineIIsHorizontal")
+fun LineI.isHorizontal() = if (Clock.eX != 0) diff.y == 0 else diff.x == 0
+
+@JvmName("lineIIsVertical")
+fun LineI.isVertical() = if (Clock.nX != 0) diff.y == 0 else diff.x == 0
+
+@JvmName("lineIIsAxisAligned")
 fun LineI.isAxisAligned() = diff.x == 0 || diff.y == 0
 
-@JvmName("3DIsAxisAligned")
+@JvmName("lineI3DIsAxisAligned")
 fun Line3DI.isAxisAligned() = diff.x == 0 || diff.y == 0 || diff.z == 0
 
 @JvmName("lineLIsHorizontal")
@@ -78,7 +95,7 @@ private fun Comparable<*>.intDivBy(other: Comparable<*>) = when (this) {
 	is Long -> (this / other as Long).s.i
 	is Double -> (this / other as Double).toInt()
 	is Float -> (this / other as Float).toInt()
-	is BigInteger -> (this / other as BigInteger).toInt()
+	is BigInteger -> (this / other as BigInteger).intValueExact()
 	is Sint -> (this / other as Sint).i
 	else -> error("Unknown type")
 }

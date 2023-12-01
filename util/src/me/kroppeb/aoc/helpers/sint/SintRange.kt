@@ -1,11 +1,18 @@
 package me.kroppeb.aoc.helpers.sint
 
+private var _hasWarnedAboutToBigRange = false
 
 
 /**
  * A range of values of type `Int`.
  */
 public class SintRange(start: Sint, endInclusive: Sint) : SintProgression(start, endInclusive, 1.s), ClosedRange<Sint>, OpenEndRange<Sint> {
+	init {
+		if (_hasWarnedAboutToBigRange && (start + 1) > endInclusive) {
+			System.err.println("Warning: A negative sized sint range was created")
+			_hasWarnedAboutToBigRange = true
+		}
+	}
     override val start: Sint get() = first
     override val endInclusive: Sint get() = last
     
@@ -171,4 +178,16 @@ public abstract class SintIterator : Iterator<Sint> {
 
 	/** Returns the next value in the sequence without boxing. */
 	public abstract fun nextSint(): Sint
+}
+
+public infix fun SintProgression.step(step: Sint): SintProgression {
+    checkStepIsPositive(step > 0, step.l)
+    return SintProgression.fromClosedRange(first, last, if (this.step > 0) step else -step)
+}
+
+public infix fun SintProgression.step(step: Int): SintProgression = step(step.s)
+public infix fun SintProgression.step(step: Long): SintProgression = step(step.s)
+
+internal fun checkStepIsPositive(isPositive: Boolean, step: Number) {
+    if (!isPositive) throw IllegalArgumentException("Step must be positive, was: $step.")
 }

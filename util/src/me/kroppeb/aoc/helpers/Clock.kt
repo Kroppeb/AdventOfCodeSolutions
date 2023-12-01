@@ -1,19 +1,31 @@
 package me.kroppeb.aoc.helpers
 
 
+import me.kroppeb.aoc.helpers.point.Point
 import me.kroppeb.aoc.helpers.point.PointI
+import me.kroppeb.aoc.helpers.point.toP
 import me.kroppeb.aoc.helpers.point.toPI
 
-// TODO: make this into a class and use it as a context instead
 object Clock {
-	lateinit var left: PointI
+	lateinit var left: Point
 		private set;
-	lateinit var right: PointI
+	lateinit var right: Point
 		private set;
-	lateinit var up: PointI
+	lateinit var up: Point
 		private set;
-	lateinit var down: PointI
+	lateinit var down: Point
 		private set;
+
+	val north get() = up
+	val east get() = right
+	val south get() = down
+	val west get() = left
+
+
+	val leftI get() = left.int
+	val rightI get() = right.int
+	val upI get() = up.int
+	val downI get() = down.int
 
 	// bounds calculation
 	var nX: Int = 0
@@ -43,8 +55,8 @@ object Clock {
 			12 -> nY = 1
 			else -> error("invalid clock y")
 		}
-		up = nX toPI nY
-		right = eX toPI eY
+		up = nX toP nY
+		right = eX toP eY
 		left = -right
 		down = -up
 
@@ -98,7 +110,7 @@ object Clock {
 	}
 
 	fun firstRange(size: Int): IntProgression {
-		return if (down.x + down.y > 0) {
+		return if (downI.x + downI.y > 0) {
 			0 until size
 		} else {
 			size - 1 downTo 0
@@ -106,7 +118,7 @@ object Clock {
 	}
 
 	fun secondRange(size: Int): IntProgression {
-		return if (right.x + right.y > 0) {
+		return if (rightI.x + rightI.y > 0) {
 			0 until size
 		} else {
 			size - 1 downTo 0
@@ -114,6 +126,6 @@ object Clock {
 	}
 
 	fun fromIndices(first: Int, second: Int): PointI {
-		return down * first + right * second
+		return downI * first + rightI * second
 	}
 }

@@ -1,6 +1,6 @@
 package me.kroppeb.aoc.helpers.graph
 
-// no double edges
+// no double edges, bidirectional
 class SimpleGraph<T> {
 	val neighbours: MutableMap<T, MutableMap<T, Double>> = mutableMapOf()
 	fun connect(a: T, b: T, weight:Double = 1.0) {

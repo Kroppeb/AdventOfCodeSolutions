@@ -5,14 +5,12 @@ import me.kroppeb.aoc.helpers.point.*
 import me.kroppeb.aoc.helpers.sint.Sint
 import me.kroppeb.aoc.helpers.sint.s
 
-data class BoundedGridPoint<out T>(val p: Point, val v: T, val g: SimpleGrid<T>) {
+data class BoundedGridPoint<T>(val p: Point, val v: T, val g: SimpleGrid<T>) {
 
 	constructor(pi: PointI, v: T, g: SimpleGrid<T>) : this(pi.sint, v, g)
-	val bi get() = g.boundsI
 	val b get() = g.bounds
-	val pi: PointI get() = p.x.i toPI  p.y.i
+	val pi: PointI get() = p.int
 
-	// TODO: evaluate whether having these as lazy actually helps or hurts
 	val right get() = g.getBpOrNull(this.p.right)
 	val down get() = g.getBpOrNull(this.p.down)
 	val left get() = g.getBpOrNull(this.p.left)
@@ -58,19 +56,19 @@ data class BoundedGridPoint<out T>(val p: Point, val v: T, val g: SimpleGrid<T>)
 	fun distTo(other: BoundedGridPoint<*>): Double = (this.pi - other.pi).dist()
 	fun manDistTo(other: BoundedGridPoint<*>): Int = (this.pi - other.pi).manDist()
 
-	fun isLeftOf(other: PointI) = Clock.left.dot(this.pi) > Clock.left.dot(other)
-	fun isRightOf(other: PointI) = Clock.right.dot(this.pi) > Clock.right.dot(other)
-	fun isAbove(other: PointI) = Clock.up.dot(this.pi) > Clock.up.dot(other)
-	fun isBelow(other: PointI) = Clock.down.dot(this.pi) > Clock.down.dot(other)
-	fun sameLeftRight(other: PointI) = Clock.left.dot(this.pi) == Clock.left.dot(other)
-	fun sameUpDown(other: PointI) = Clock.up.dot(this.pi) == Clock.up.dot(other)
+	fun isLeftOf(other: PointI) = Clock.leftI.dot(this.pi) > Clock.leftI.dot(other)
+	fun isRightOf(other: PointI) = Clock.rightI.dot(this.pi) > Clock.rightI.dot(other)
+	fun isAbove(other: PointI) = Clock.upI.dot(this.pi) > Clock.upI.dot(other)
+	fun isBelow(other: PointI) = Clock.downI.dot(this.pi) > Clock.downI.dot(other)
+	fun sameLeftRight(other: PointI) = Clock.leftI.dot(this.pi) == Clock.leftI.dot(other)
+	fun sameUpDown(other: PointI) = Clock.upI.dot(this.pi) == Clock.upI.dot(other)
 
-	fun isLeftOf(other: Point) = Clock.left.dot(this.p) > Clock.left.dot(other)
-	fun isRightOf(other: Point) = Clock.right.dot(this.p) > Clock.right.dot(other)
-	fun isAbove(other: Point) = Clock.up.dot(this.p) > Clock.up.dot(other)
-	fun isBelow(other: Point) = Clock.down.dot(this.p) > Clock.down.dot(other)
-	fun sameLeftRight(other: Point) = Clock.left.dot(this.p) == Clock.left.dot(other)
-	fun sameUpDown(other: Point) = Clock.up.dot(this.p) == Clock.up.dot(other)
+	fun isLeftOf(other: Point) = Clock.leftI.dot(this.p) > Clock.leftI.dot(other)
+	fun isRightOf(other: Point) = Clock.rightI.dot(this.p) > Clock.rightI.dot(other)
+	fun isAbove(other: Point) = Clock.upI.dot(this.p) > Clock.upI.dot(other)
+	fun isBelow(other: Point) = Clock.downI.dot(this.p) > Clock.downI.dot(other)
+	fun sameLeftRight(other: Point) = Clock.leftI.dot(this.p) == Clock.leftI.dot(other)
+	fun sameUpDown(other: Point) = Clock.upI.dot(this.p) == Clock.upI.dot(other)
 
 	fun isLeftOf(other: BoundedGridPoint<*>) = isLeftOf(other.p)
 	fun isRightOf(other: BoundedGridPoint<*>) = isRightOf(other.p)

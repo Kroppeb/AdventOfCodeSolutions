@@ -21,7 +21,7 @@ private val xxxxx = Clock(6, 3);
 */
 
 private fun part1() {
-    var data = getLines(2021_06)[0].ints().countEach().xArray(9,0).toIntArray();
+    var data = getLines(2021_06)[0].ints().countEachI().xArray(9,0).toIntArray();
 
     repeat(80){
         var next = IntArray(9)
@@ -36,7 +36,7 @@ private fun part1() {
 }
 
 private fun part2() {
-    var data = getLines(2021_06)[0].ints().countEach().xArray(9,0).toLongArray();
+    var data = getLines(2021_06)[0].ints().countEachI().xArray(9,0).toLongArray();
     AtomicInteger(0).getAndAccumulate(5, ::min)
     repeat(256){
         var next = LongArray(9)

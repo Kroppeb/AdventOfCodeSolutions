@@ -13,7 +13,7 @@ import me.kroppeb.aoc.helpers.Clock
 
 import me.kroppeb.aoc.helpers.*
 import me.kroppeb.aoc.helpers.grid.mutableGrid
-import me.kroppeb.aoc.helpers.point.toB
+import me.kroppeb.aoc.helpers.point.toBI
 import me.kroppeb.aoc.helpers.point.toPI
 
 
@@ -31,7 +31,7 @@ private fun part1() {
 
 	for (line in data){
 		val (a,b,c,d) = line.ints()
-		val bounds = (a toPI b) toB (c toPI d)
+		val bounds = (a toPI b) toBI (c toPI d)
 
 		if ("on" in line) {
 			for (p in bounds) {
@@ -59,7 +59,7 @@ private fun part2() {
 
 	for (line in data){
 		val (a,b,c,d) = line.ints()
-		val bounds = (a toPI b) toB (c toPI d)
+		val bounds = (a toPI b) toBI (c toPI d)
 
 		if ("on" in line) {
 			for (p in bounds) {

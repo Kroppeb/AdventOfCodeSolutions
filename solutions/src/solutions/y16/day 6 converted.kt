@@ -14,23 +14,18 @@ import java.util.PriorityQueue
 import kotlin.math.*
  */
 
-import me.kroppeb.aoc.helpers.collections.*
-import me.kroppeb.aoc.helpers.graph.*
-
 import me.kroppeb.aoc.helpers.*
-import itertools.*
-import kotlin.math.*
 
 
 private val xxxxx = Clock(6, 3);
 
 private fun part1() {
-	var data = getLines(2016_06).e().transpose().map{it.countEach().maxByValue()}.join().log()
+	var data = getLines(2016_06).e().transpose().map{it.countEachI().maxByValue()}.join().log()
 
 }
 
 private fun part2() {
-	var data = getLines(2016_06).e().transpose().map{it.countEach().minByValue()}.join().log()
+	var data = getLines(2016_06).e().transpose().map{it.countEachI().minByValue()}.join().log()
 }
 
 

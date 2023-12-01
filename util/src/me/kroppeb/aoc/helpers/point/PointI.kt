@@ -43,7 +43,7 @@ data class PointI(val x: Int, val y: Int) : PointNI<PointI> {
 	val nw get() = north.west
 
 
-	fun rotateClock() = Clock.right * Clock.up.dot(this) + Clock.up * Clock.left.dot(this)
+	fun rotateClock() = Clock.rightI * Clock.upI.dot(this) + Clock.upI * Clock.leftI.dot(this)
 	fun rotateAntiClock() = -rotateClock()
 
 	fun getQuadNeighbours() = listOf(right, down, left, up)
@@ -92,22 +92,22 @@ data class PointI(val x: Int, val y: Int) : PointNI<PointI> {
 
 	override fun dot(other: PointI) = this.x * other.x + this.y * other.y
 
-	fun isLeftOf(other: PointI) = Clock.left.dot(this) > Clock.left.dot(other)
-	fun isRightOf(other: PointI) = Clock.right.dot(this) > Clock.right.dot(other)
-	fun isAbove(other: PointI) = Clock.up.dot(this) > Clock.up.dot(other)
-	fun isBelow(other: PointI) = Clock.down.dot(this) > Clock.down.dot(other)
-	fun sameLeftRight(other: PointI) = Clock.left.dot(this) == Clock.left.dot(other)
-	fun sameUpDown(other: PointI) = Clock.up.dot(this) == Clock.up.dot(other)
+	fun isLeftOf(other: PointI) = Clock.leftI.dot(this) > Clock.leftI.dot(other)
+	fun isRightOf(other: PointI) = Clock.rightI.dot(this) > Clock.rightI.dot(other)
+	fun isAbove(other: PointI) = Clock.upI.dot(this) > Clock.upI.dot(other)
+	fun isBelow(other: PointI) = Clock.downI.dot(this) > Clock.downI.dot(other)
+	fun sameLeftRight(other: PointI) = Clock.leftI.dot(this) == Clock.leftI.dot(other)
+	fun sameUpDown(other: PointI) = Clock.upI.dot(this) == Clock.upI.dot(other)
 
 	companion object {
 		val ZERO = 0 toPI 0
-		val DIRS = ZERO.getQuadNeighbours()
+		val DIRS get() = ZERO.getQuadNeighbours()
 	}
 
-	fun northsInc() = this.sequence(Clock.up)
-	fun southsInc() = this.sequence(Clock.down)
-	fun eastsInc() = this.sequence(Clock.right)
-	fun westsInc() = this.sequence(Clock.left)
+	fun northsInc() = this.sequence(Clock.upI)
+	fun southsInc() = this.sequence(Clock.downI)
+	fun eastsInc() = this.sequence(Clock.rightI)
+	fun westsInc() = this.sequence(Clock.leftI)
 
 	fun norths() = this.northsInc().drop(1)
 	fun souths() = this.southsInc().drop(1)

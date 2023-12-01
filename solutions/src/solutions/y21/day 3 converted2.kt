@@ -11,8 +11,8 @@ private val xxxxx = Clock(6, 3);
 private fun part1() {
 	var data = getLines(2021_03).e().transpose()
 
-	data.map { it.countEach().maxByValue() }.join().toInt(2) *
-			data.map { it.countEach().minByValue() }.join().toInt(2) log 1
+	data.map { it.countEachI().maxByValue() }.join().toInt(2) *
+			data.map { it.countEachI().minByValue() }.join().toInt(2) log 1
 }
 
 private fun part2() {
@@ -22,8 +22,8 @@ private fun part2() {
 	var co = data
 
 	repeat(data[0].size) { i ->
-		val oxP = ox.transpose().map { it.countEach().allMaxByValue().sortedDescending()[0] }[i]
-		val coP = co.transpose().map { it.countEach().allMinByValue().sorted()[0] }[i]
+		val oxP = ox.transpose().map { it.countEachI().allMaxByValue().sortedDescending()[0] }[i]
+		val coP = co.transpose().map { it.countEachI().allMinByValue().sorted()[0] }[i]
 
 		ox = ox.filter { it[i] == oxP }
 		co = co.filter { it[i] == coP }
